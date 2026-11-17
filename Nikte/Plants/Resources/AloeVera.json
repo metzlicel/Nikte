@@ -1,0 +1,825 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar ficha Aloe vera de cuatro secciones en Nikte reutilizando el flujo que ya funciona para Manzanilla, Menta y Jengibre.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar modelos/vistas Codable y componentes SwiftUI existentes. No modificar otras fichas; para polímeros con fórmula null mostrar unidad repetitiva esquemática y aclaración. No generar fórmula o estructura 2D de una molécula única para el polímero natural.",
+    "scientificIntegrity": "Separar gel interno, látex y hoja completa. Los estudios clínicos de gel tópico no validan ingestión. Mantener advertencias breves en ficha, no crear quinta sección. Fuentes internas mediante sourceIds.",
+    "extractionUI": "Cada plant.section4.items[*] contiene extractionExperience con pasos y principios fisicoquímicos, igual que Menta_actualizada.json y Jengibre_actualizado.json.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "extractionInteraction": "Reutilizar Picker por id, cards animadas, comparar gel versus látex; usar visualType como pista, con fallback genérico si el componente aún no lo conoce.",
+    "extractionSource": "Diagramas educativos sobre separación, formulación y adsorción; no son procedimientos domésticos ni instrucciones de ingestión."
+  },
+  "plant": {
+    "id": "aloe_vera",
+    "commonName": "Aloe vera",
+    "scientificName": "Aloe vera (L.) Burm.f.",
+    "searchAlias": "Aloe barbadensis Mill.",
+    "family": "Asphodelaceae",
+    "usedParts": [
+      "gel interno transparente de la hoja",
+      "látex amarillo subepidérmico (solo para diferenciación y riesgos)"
+    ],
+    "summary": "Planta suculenta cuyo gel interno rico en agua y polisacáridos se usa en formulaciones tópicas. Distinguir el gel del látex amarillo y de los extractos de hoja completa es esencial: tienen perfiles químicos y riesgos distintos.",
+    "section1": {
+      "id": "properties",
+      "title": "¿Para qué se estudia?",
+      "items": [
+        {
+          "id": "hydration",
+          "title": "Hidratante y formadora de película",
+          "description": "Los polisacáridos del gel poseen muchos grupos –OH y favorecen la retención de agua y la formación de una matriz húmeda sobre la piel; es principalmente una propiedad fisicoquímica del preparado.",
+          "evidenceContext": "No prometer un efecto clínico universal: depende de la formulación.",
+          "relatedCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "relatedPreparationIds": [
+            "inner_gel",
+            "topical_gel"
+          ],
+          "sourceIds": [
+            "review_acemannan",
+            "review_hydrogel"
+          ]
+        },
+        {
+          "id": "burns",
+          "title": "Apoyo en quemaduras superficiales",
+          "description": "Estudios clínicos sugieren que ciertas formulaciones tópicas de gel de aloe podrían acelerar la curación de algunas quemaduras y reducir el dolor. No reemplazan la atención de quemaduras graves.",
+          "evidenceContext": "Evidencia para determinadas formulaciones tópicas; no extrapolar a látex ni jugos orales.",
+          "relatedCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "relatedPreparationIds": [
+            "topical_gel",
+            "hydrogel"
+          ],
+          "sourceIds": [
+            "nih_aloe",
+            "review_systematic"
+          ]
+        },
+        {
+          "id": "healing",
+          "title": "Reparación de tejidos (investigación)",
+          "description": "En modelos celulares y animales los polisacáridos del gel se relacionan con cambios en fibroblastos, proliferación celular y producción de componentes de matriz extracelular.",
+          "evidenceContext": "Mecanismo principalmente preclínico; no afirmar que todo gel cicatriza cualquier herida.",
+          "relatedCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "relatedPreparationIds": [
+            "inner_gel",
+            "hydrogel"
+          ],
+          "sourceIds": [
+            "review_acemannan",
+            "review_hydrogel"
+          ]
+        },
+        {
+          "id": "inflammation",
+          "title": "Modulación de la inflamación (experimental)",
+          "description": "Algunos componentes del gel pueden modificar la respuesta de células inmunitarias y mediadores inflamatorios en modelos experimentales.",
+          "evidenceContext": "La presencia de una actividad celular no demuestra eficacia antiinflamatoria sistémica en humanos.",
+          "relatedCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "relatedPreparationIds": [
+            "hydrogel",
+            "topical_gel"
+          ],
+          "sourceIds": [
+            "review_acemannan",
+            "review_hydrogel"
+          ]
+        },
+        {
+          "id": "latex_laxative",
+          "title": "Efecto laxante del látex: diferencia de seguridad",
+          "description": "La aloína del látex amarillo puede convertirse mediante la microbiota intestinal en metabolitos que aumentan la secreción de agua y la motilidad colónica. No se recomienda su consumo como remedio casero.",
+          "evidenceContext": "NIH advierte cólicos, diarrea y riesgos asociados al látex; la FDA retiró sus ingredientes de laxantes OTC por falta de datos de seguridad.",
+          "relatedCompoundIds": [
+            "aloin",
+            "aloe_emodin"
+          ],
+          "relatedPreparationIds": [
+            "yellow_latex",
+            "whole_leaf"
+          ],
+          "sourceIds": [
+            "nih_aloe",
+            "niehs_aloe"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "La química detrás",
+      "items": [
+        {
+          "id": "acemannan",
+          "name": "Acemanano",
+          "molecularFormula": null,
+          "chemicalClass": "Polisacárido: manano acetilado",
+          "functionalGroups": [
+            "grupos hidroxilo –OH",
+            "enlaces glucosídicos β(1→4)",
+            "grupos acetilo (ésteres)"
+          ],
+          "description": "Polímero de unidades de manosa con acetilaciones y estructura variable. Sus grupos polares interactúan con agua mediante puentes de hidrógeno; se investiga por su relación con procesos de reparación tisular. No tiene una única fórmula molecular representativa del material natural.",
+          "associatedProperties": [
+            "hidratación de matrices",
+            "reparación de tejidos experimental"
+          ],
+          "distribution": "Gel interno de las hojas.",
+          "pubchemCID": 134129847,
+          "structureImage": null,
+          "sourceIds": [
+            "review_acemannan",
+            "pubchem_acemannan"
+          ]
+        },
+        {
+          "id": "glucomannan",
+          "name": "Glucomananos",
+          "molecularFormula": null,
+          "chemicalClass": "Polisacáridos de glucosa y manosa",
+          "functionalGroups": [
+            "grupos hidroxilo –OH",
+            "enlaces glucosídicos"
+          ],
+          "description": "Familia de polímeros hidrofílicos; las cadenas retienen agua y contribuyen a la viscosidad del gel. La proporción y longitud de los azúcares varían, por lo que no se asigna una fórmula molecular única.",
+          "associatedProperties": [
+            "retención de agua",
+            "matriz de gel",
+            "reparación experimental"
+          ],
+          "distribution": "Gel interno.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_hydrogel",
+            "review_systematic"
+          ]
+        },
+        {
+          "id": "mannose",
+          "name": "Manosa",
+          "molecularFormula": "C6H12O6",
+          "chemicalClass": "Monosacárido (aldohexosa)",
+          "functionalGroups": [
+            "grupos hidroxilo –OH",
+            "hemiacetal en forma cíclica"
+          ],
+          "description": "Unidad de azúcar frecuente en los polisacáridos de aloe. Sirve para entender cómo se forman cadenas por enlaces glucosídicos; la actividad del acemanano no puede atribuirse automáticamente a manosa libre.",
+          "associatedProperties": [
+            "unidad estructural de polisacáridos"
+          ],
+          "distribution": "Unidades constituyentes de mananos del gel; no confundir con una dosis de manosa libre.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_acemannan"
+          ]
+        },
+        {
+          "id": "aloin",
+          "name": "Aloína (aloínas A y B)",
+          "molecularFormula": "C21H22O9",
+          "chemicalClass": "Derivados antrónicos C-glucosilados",
+          "functionalGroups": [
+            "grupos hidroxilo fenólicos",
+            "grupo carbonilo",
+            "unidad glucosídica unida por enlace C–C"
+          ],
+          "description": "Constituyentes característicos del exudado amarillo. Su transformación por microbiota intestinal se relaciona con el efecto laxante estimulante y con riesgos digestivos. No debe confundirse con los polisacáridos del gel interno.",
+          "associatedProperties": [
+            "efecto laxante no recomendado como automedicación",
+            "riesgos por ingestión"
+          ],
+          "distribution": "Látex amarillo cercano a la corteza de la hoja; posible contaminante de preparados no purificados.",
+          "pubchemCID": 9866696,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_aloin",
+            "nih_aloe"
+          ]
+        },
+        {
+          "id": "aloe_emodin",
+          "name": "Aloe-emodina",
+          "molecularFormula": "C15H10O5",
+          "chemicalClass": "Antraquinona",
+          "functionalGroups": [
+            "dos grupos carbonilo de quinona",
+            "grupos hidroxilo fenólicos",
+            "alcohol primario"
+          ],
+          "description": "Derivado antraquinónico diferente del acemanano. Se ha investigado por efectos biológicos in vitro y puede estar relacionado con el metabolismo de compuestos antranoides; su presencia no avala el consumo de látex.",
+          "associatedProperties": [
+            "actividad experimental de antraquinonas",
+            "precauciones de exposición oral"
+          ],
+          "distribution": "Fracción de antranoides, especialmente relacionada con exudados o preparados no depurados; no es marcador principal del gel purificado.",
+          "pubchemCID": 10207,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_aloe_emodin",
+            "nih_aloe"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "¿Cómo funciona químicamente?",
+      "items": [
+        {
+          "id": "water_hbond",
+          "title": "Hidratación: puentes de hidrógeno",
+          "compoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "explanation": "Los grupos hidroxilo polares de los polisacáridos establecen interacciones por puentes de hidrógeno con agua y contribuyen a la viscosidad y capacidad de retención de humedad de las formulaciones.",
+          "steps": [
+            {
+              "title": "Polisacáridos del gel",
+              "detail": "Cadenas con múltiples grupos –OH."
+            },
+            {
+              "title": "Interacción con agua",
+              "detail": "Los grupos –OH forman puentes de hidrógeno con moléculas de H₂O."
+            },
+            {
+              "title": "Matriz hidratada",
+              "detail": "La red polimérica contribuye a mantener humedad y viscosidad."
+            },
+            {
+              "title": "Aplicación tópica",
+              "detail": "La película hidratante depende de formulación, concentración y superficie."
+            }
+          ],
+          "plainLanguage": "Las largas cadenas de azúcares del aloe atraen y retienen agua mediante interacciones entre grupos polares.",
+          "sourceIds": [
+            "review_acemannan",
+            "review_hydrogel"
+          ]
+        },
+        {
+          "id": "fibroblast",
+          "title": "Reparación cutánea: señalización celular",
+          "compoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "explanation": "Ensayos preclínicos muestran que ciertos polisacáridos del aloe pueden modificar respuestas de fibroblastos y queratinocitos, así como síntesis de matriz extracelular; no se conoce una secuencia molecular única que explique todo efecto clínico.",
+          "steps": [
+            {
+              "title": "Gel interno",
+              "detail": "Aporta una matriz rica en polisacáridos."
+            },
+            {
+              "title": "Contacto con células cutáneas",
+              "detail": "En modelos experimentales se investigan respuestas de fibroblastos y queratinocitos."
+            },
+            {
+              "title": "Respuesta de reparación",
+              "detail": "Se observan cambios en proliferación y marcadores de matriz extracelular."
+            },
+            {
+              "title": "Potencial de cicatrización",
+              "detail": "El resultado clínico depende de la lesión y formulación específica."
+            }
+          ],
+          "plainLanguage": "Los polisacáridos pueden influir en células que participan en la reparación de tejidos; esto no significa que cualquier gel cure una herida.",
+          "sourceIds": [
+            "review_hydrogel",
+            "review_acemannan",
+            "nih_aloe"
+          ]
+        },
+        {
+          "id": "immune_modulation",
+          "title": "Inflamación: respuestas celulares investigadas",
+          "compoundIds": [
+            "acemannan"
+          ],
+          "explanation": "En modelos preclínicos se han estudiado efectos del acemanano sobre células inmunitarias y mediadores inflamatorios. No debe dibujarse un bloqueo universal de NF-κB, COX-2 o citocinas sin vincularlo a un experimento y extracto específico.",
+          "steps": [
+            {
+              "title": "Componente del gel",
+              "detail": "Acemanano y mezclas de polisacáridos."
+            },
+            {
+              "title": "Contacto experimental",
+              "detail": "Interacción con células y mediadores de respuesta inmune."
+            },
+            {
+              "title": "Señalización modificada",
+              "detail": "Algunos ensayos reportan cambios en la producción de mediadores."
+            },
+            {
+              "title": "Interpretación",
+              "detail": "Hipótesis antiinflamatoria en investigación, no tratamiento sistémico demostrado."
+            }
+          ],
+          "plainLanguage": "Algunas sustancias del gel modifican señales relacionadas con la inflamación en estudios de laboratorio.",
+          "sourceIds": [
+            "review_acemannan",
+            "review_hydrogel"
+          ]
+        },
+        {
+          "id": "latex_metabolism",
+          "title": "Látex: metabolismo y efecto laxante",
+          "compoundIds": [
+            "aloin",
+            "aloe_emodin"
+          ],
+          "explanation": "La aloína del exudado no es equivalente al gel interno. La microbiota del colon puede transformarla en metabolitos antrónicos activos que favorecen secreción y movimiento intestinal, con riesgo de cólicos y diarrea.",
+          "steps": [
+            {
+              "title": "Látex amarillo",
+              "detail": "Contiene derivados antrónicos como la aloína."
+            },
+            {
+              "title": "Paso intestinal",
+              "detail": "Parte alcanza el colon y es metabolizada por microorganismos."
+            },
+            {
+              "title": "Metabolitos activos",
+              "detail": "Participan en cambios de secreción de agua y motilidad del colon."
+            },
+            {
+              "title": "Riesgo",
+              "detail": "Posibles diarrea, dolor y alteraciones electrolíticas."
+            }
+          ],
+          "plainLanguage": "El látex contiene moléculas que pueden actuar como laxantes fuertes; no son los mismos compuestos que hidratan la piel.",
+          "sourceIds": [
+            "nih_aloe",
+            "niehs_aloe",
+            "pubchem_aloin"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "title": "Gel vs. látex: dos fracciones, dos químicas diferentes",
+        "startingCompoundId": "acemannan",
+        "endingCompoundId": "aloin",
+        "reactionClass": "comparación de fracciones, NO es una reacción química ni conversión entre acemanano y aloína",
+        "latex": null,
+        "description": "El gel interno contiene polisacáridos hidratantes; el látex amarillento cercano a la corteza concentra antranoides como la aloína. Separar fracciones es un proceso físico, no una transformación de uno en otro.",
+        "educationalValue": "Identificar polisacáridos y compuestos antranoides; comparar polaridad, grupos funcionales y seguridad. No dibujar flecha de reacción entre estas moléculas.",
+        "sourceIds": [
+          "nih_aloe",
+          "review_acemannan",
+          "pubchem_aloin"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "¿Dónde se encuentra y en qué presentación se aprovecha?",
+      "items": [
+        {
+          "id": "whole_leaf",
+          "title": "Hoja completa",
+          "extractionMethod": "Material vegetal sin extracción",
+          "description": "Incluye tejido verde, gel interno y látex subepidérmico con perfiles químicos distintos.",
+          "highlightCompoundIds": [
+            "acemannan",
+            "aloin"
+          ],
+          "warning": "No usar la hoja entera licuada como equivalente al gel interno; los extractos no decolorizados presentan riesgos.",
+          "extractionExperience": {
+            "heading": "Hoja de aloe",
+            "processTitle": "Identificar las capas",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Corte transversal",
+                "detail": "Se distinguen corteza, región subepidérmica y parénquima interno."
+              },
+              {
+                "index": 2,
+                "title": "Localizar fracciones",
+                "detail": "La región interna aporta gel rico en polisacáridos; cerca de la corteza puede encontrarse látex."
+              },
+              {
+                "index": 3,
+                "title": "Comparar composición",
+                "detail": "La separación incompleta puede introducir antranoides en un preparado de gel."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Anatomía vegetal",
+              "Separación de fracciones",
+              "Composición heterogénea"
+            ],
+            "focusCompoundIds": [
+              "acemannan",
+              "aloin"
+            ],
+            "visualType": "leaf_layers",
+            "comparisonNote": "La hoja entera no tiene el mismo perfil ni la misma seguridad que el gel interno purificado.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_aloe",
+              "niehs_aloe"
+            ]
+          }
+        },
+        {
+          "id": "inner_gel",
+          "title": "Gel interno transparente",
+          "extractionMethod": "Separación mecánica del parénquima interno",
+          "description": "Gel con agua y polisacáridos, como acemanano y glucomananos; no debe contaminarse con el exudado amarillo.",
+          "highlightCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "warning": "No recomendar extracción casera para ingestión; incluso el gel para uso tópico puede irritar la piel.",
+          "extractionExperience": {
+            "heading": "Gel interno",
+            "processTitle": "Separación física de la hoja",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Tejido vegetal",
+                "detail": "La hoja contiene capas de diferente composición."
+              },
+              {
+                "index": 2,
+                "title": "Separación de fracciones",
+                "detail": "Se distingue la pulpa interna transparente del exudado amarillo."
+              },
+              {
+                "index": 3,
+                "title": "Gel resultante",
+                "detail": "Matriz acuosa viscosa con polisacáridos; la pureza depende del procesamiento."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Separación mecánica",
+              "Matriz acuosa",
+              "Control de contaminación cruzada"
+            ],
+            "focusCompoundIds": [
+              "acemannan",
+              "glucomannan"
+            ],
+            "visualType": "gel_separation",
+            "comparisonNote": "El gel interno no equivale al látex, al aceite esencial ni al jugo de hoja completa.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_aloe",
+              "review_acemannan"
+            ]
+          }
+        },
+        {
+          "id": "topical_gel",
+          "title": "Gel o crema tópica formulada",
+          "extractionMethod": "Formulación y estabilización; no es extracción",
+          "description": "Producto que incorpora gel interno o extractos adecuados a una base cosmética o dermatológica; viscosidad y humectación dependen de formulación y conservación.",
+          "highlightCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "warning": "No aplicar sobre quemaduras graves, heridas profundas o infectadas como sustituto de atención médica.",
+          "extractionExperience": {
+            "heading": "Gel tópico",
+            "processTitle": "Formulación de una matriz hidratante",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia prima",
+                "detail": "Gel interno preparado y controlado."
+              },
+              {
+                "index": 2,
+                "title": "Formulación",
+                "detail": "Se incorpora a una matriz con excipientes para estabilidad y aplicación."
+              },
+              {
+                "index": 3,
+                "title": "Contacto con piel",
+                "detail": "Los polímeros hidrofílicos pueden ayudar a conservar humedad superficial."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Puentes de hidrógeno",
+              "Viscosidad",
+              "Estabilidad de formulaciones"
+            ],
+            "focusCompoundIds": [
+              "acemannan",
+              "glucomannan"
+            ],
+            "visualType": "topical_gel",
+            "comparisonNote": "El efecto depende del producto final; no asumir que un gel casero es igual a un gel estudiado clínicamente.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_aloe",
+              "review_hydrogel"
+            ]
+          }
+        },
+        {
+          "id": "hydrogel",
+          "title": "Hidrogel o apósito con aloe",
+          "extractionMethod": "Gelificación y tecnología de biomateriales",
+          "description": "Matriz polimérica que retiene agua; puede incorporar extractos o polisacáridos de aloe para estudiar cicatrización en formulaciones específicas.",
+          "highlightCompoundIds": [
+            "acemannan",
+            "glucomannan"
+          ],
+          "warning": "Los apósitos de investigación no equivalen a preparaciones caseras; uso clínico según producto e indicación.",
+          "extractionExperience": {
+            "heading": "Hidrogel",
+            "processTitle": "Retención de agua en redes poliméricas",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Polímeros",
+                "detail": "Se incorpora una fracción del gel o polisacáridos."
+              },
+              {
+                "index": 2,
+                "title": "Red hidratada",
+                "detail": "La matriz contiene agua asociada a grupos hidrofílicos."
+              },
+              {
+                "index": 3,
+                "title": "Liberación y contacto",
+                "detail": "El material puede mantener un ambiente húmedo según diseño y formulación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Gelificación",
+              "Puentes de hidrógeno",
+              "Matriz polimérica"
+            ],
+            "focusCompoundIds": [
+              "acemannan",
+              "glucomannan"
+            ],
+            "visualType": "polymer_network",
+            "comparisonNote": "Un hidrogel formulado es distinto de la pulpa recién extraída.",
+            "isExtraction": false,
+            "sourceIds": [
+              "review_hydrogel",
+              "review_acemannan"
+            ]
+          }
+        },
+        {
+          "id": "yellow_latex",
+          "title": "Látex amarillo",
+          "extractionMethod": "Recolección del exudado subepidérmico; fracción NO equivalente al gel",
+          "description": "Fracción amarga amarillenta con derivados antrónicos como la aloína. Su estudio permite comprender el efecto laxante y los riesgos digestivos.",
+          "highlightCompoundIds": [
+            "aloin",
+            "aloe_emodin"
+          ],
+          "warning": "NO recomendar ingestión: el NIH señala diarrea, dolor abdominal e incertidumbres de seguridad.",
+          "extractionExperience": {
+            "heading": "Látex amarillo",
+            "processTitle": "Distinguir una fracción de riesgo",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Capa cercana a la corteza",
+                "detail": "Contiene el exudado rico en antranoides."
+              },
+              {
+                "index": 2,
+                "title": "Separación de fracciones",
+                "detail": "Puede mezclarse con el gel si se procesa toda la hoja."
+              },
+              {
+                "index": 3,
+                "title": "Consecuencia química",
+                "detail": "Una preparación contaminada puede contener aloína; el gel y el látex no son equivalentes."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Distribución de metabolitos",
+              "Separación física",
+              "Control de calidad"
+            ],
+            "focusCompoundIds": [
+              "aloin",
+              "aloe_emodin"
+            ],
+            "visualType": "latex_layer",
+            "comparisonNote": "El látex no es una presentación recomendada para aprovechar propiedades hidratantes.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_aloe",
+              "niehs_aloe",
+              "pubchem_aloin"
+            ]
+          }
+        },
+        {
+          "id": "whole_leaf_extract",
+          "title": "Extracto comercial de hoja completa",
+          "extractionMethod": "Procesamiento y, en algunos productos, filtración con carbón activado",
+          "description": "Los extractos de hoja completa pueden contener mezclas del gel y látex. Algunas formulaciones comerciales reciben tratamiento con carbón activado para reducir antranoides como aloína.",
+          "highlightCompoundIds": [
+            "acemannan",
+            "aloin"
+          ],
+          "warning": "No interpretar decolorización como garantía de inocuidad ni recomendar jugos caseros; consultar a profesionales antes de consumo oral.",
+          "extractionExperience": {
+            "heading": "Extracto de hoja completa",
+            "processTitle": "Mezcla, depuración y control",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Trituración de hoja",
+                "detail": "Puede mezclar gel, corteza y látex."
+              },
+              {
+                "index": 2,
+                "title": "Depuración comercial",
+                "detail": "Algunos procesos emplean carbón activado para retirar parte de los antranoides."
+              },
+              {
+                "index": 3,
+                "title": "Control de producto",
+                "detail": "La composición final depende de la técnica y del control analítico."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Adsorción en carbón activado",
+              "Separación de fracciones",
+              "Control de antranoides"
+            ],
+            "focusCompoundIds": [
+              "acemannan",
+              "aloin"
+            ],
+            "visualType": "activated_carbon",
+            "comparisonNote": "El extracto entero no decolorizado mostró efectos cancerígenos en ratas; no extrapolar esos resultados de manera directa al gel tópico.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_aloe",
+              "niehs_aloe"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Priorizar uso tópico de formulaciones adecuadas. El gel puede causar irritación o alergia. No recomendar ingestión del látex ni jugos caseros de hoja completa; puede haber diarrea, cólicos, interacciones y riesgos hepáticos. Consultar atención sanitaria para quemaduras importantes, heridas profundas o uso en embarazo/lactancia.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "hydration",
+        "compoundIds": [
+          "acemannan",
+          "glucomannan"
+        ],
+        "mechanismIds": [
+          "water_hbond"
+        ],
+        "preparationIds": [
+          "topical_gel",
+          "hydrogel"
+        ],
+        "note": "Fenómeno de hidratación y formulación, no efecto farmacológico sistémico."
+      },
+      {
+        "propertyId": "burns",
+        "compoundIds": [
+          "acemannan",
+          "glucomannan"
+        ],
+        "mechanismIds": [
+          "water_hbond",
+          "fibroblast"
+        ],
+        "preparationIds": [
+          "topical_gel"
+        ],
+        "note": "NIH reconoce evidencia clínica para algunas formulaciones tópicas; no implica mecanismo individual demostrado."
+      },
+      {
+        "propertyId": "healing",
+        "compoundIds": [
+          "acemannan",
+          "glucomannan"
+        ],
+        "mechanismIds": [
+          "fibroblast"
+        ],
+        "preparationIds": [
+          "hydrogel"
+        ],
+        "note": "Los mecanismos celulares son principalmente experimentales."
+      },
+      {
+        "propertyId": "inflammation",
+        "compoundIds": [
+          "acemannan"
+        ],
+        "mechanismIds": [
+          "immune_modulation"
+        ],
+        "preparationIds": [
+          "hydrogel",
+          "topical_gel"
+        ],
+        "note": "Actividad experimental; no prometer efectos clínicos generales."
+      },
+      {
+        "propertyId": "latex_laxative",
+        "compoundIds": [
+          "aloin",
+          "aloe_emodin"
+        ],
+        "mechanismIds": [
+          "latex_metabolism"
+        ],
+        "preparationIds": [
+          "yellow_latex",
+          "whole_leaf_extract"
+        ],
+        "note": "Contenido educativo y de seguridad, no recomendación de consumo."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_aloe",
+      "organization": "NIH/NCCIH",
+      "title": "Aloe Vera: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/aloe-vera",
+      "note": "Usos tópicos, beneficios evaluados, distinción gel/látex/hoja completa y seguridad; actualización febrero 2025."
+    },
+    {
+      "id": "niehs_aloe",
+      "organization": "NIH/NIEHS – National Toxicology Program",
+      "title": "Aloe Vera",
+      "url": "https://www.niehs.nih.gov/health/topics/agents/aloe",
+      "note": "Riesgos de extractos de hoja completa no decolorizados; estudios en roedores."
+    },
+    {
+      "id": "review_acemannan",
+      "organization": "PubMed Central – revisión científica",
+      "title": "Extraction, Purification, Structural Characteristics, Biological Activities and Pharmacological Applications of Acemannan, a Polysaccharide from Aloe vera",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6515206/",
+      "note": "Estructura polimérica, obtención, estabilidad y estudios farmacológicos de acemanano."
+    },
+    {
+      "id": "review_hydrogel",
+      "organization": "PubMed Central – revisión científica",
+      "title": "Aloe vera-Based Hydrogels for Wound Healing: Properties and Therapeutic Effects",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10379830/",
+      "note": "Matriz del gel, polisacáridos y cicatrización; separar mecanismos preclínicos de eficacia clínica."
+    },
+    {
+      "id": "review_systematic",
+      "organization": "PubMed Central – revisión sistemática",
+      "title": "Evaluation of biological properties and clinical effectiveness of Aloe vera: A systematic review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4488101/",
+      "note": "Resultados clínicos y posibles mecanismos con limitaciones metodológicas."
+    },
+    {
+      "id": "pubchem_acemannan",
+      "organization": "NIH PubChem",
+      "title": "Acemannan CID 134129847",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/134129847",
+      "note": "Registro de una estructura representativa; el polímero natural no tiene fórmula molecular única."
+    },
+    {
+      "id": "pubchem_aloin",
+      "organization": "NIH PubChem",
+      "title": "Aloin CID 9866696",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/9866696",
+      "note": "Mezcla de aloinas A/B; C21H22O9."
+    },
+    {
+      "id": "pubchem_aloe_emodin",
+      "organization": "NIH PubChem",
+      "title": "Aloe-emodin CID 10207",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/10207",
+      "note": "Estructura de antraquinona C15H10O5."
+    }
+  ]
+}

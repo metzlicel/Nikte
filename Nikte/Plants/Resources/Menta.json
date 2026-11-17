@@ -1,0 +1,782 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar una ficha educativa de fitoquímica en la app iOS Nikte siguiendo el formato de 4 secciones de la ficha de manzanilla.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Mapear los campos a modelos y vistas SwiftUI existentes; evitar sobreescribir datos de otras plantas. Usar diagramas de pasos en mechanisms y estructuras químicas verificadas por CID de PubChem cuando estén disponibles. Las imágenes no están incluidas en este archivo.",
+    "scientificIntegrity": "No convertir resultados in vitro en recomendaciones clínicas. No equiparar infusión, aceite esencial y cápsulas entéricas. Preservar las precauciones dentro de la ficha, sin crear una quinta sección de evidencia. Las referencias se almacenan como metadatos internos.",
+    "extractionUI": "Cada elemento de plant.section4.items incluye extractionExperience con tarjetas por pasos y principios químicos. Reutilizar ExtractionExplorerView y ExtractionComparison como componentes genéricos data-driven; mantener la ficha de manzanilla sin cambios. steps son educativos y no instrucciones de uso/dosificación.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "extractionInteraction": "Picker seleccionado por id único; renderizar flujo animado de pasos, visualizar moléculas relacionadas mediante compound IDs, mostrar comparación química y avisos de seguridad. Evitar porcentajes, rendimientos, dosis o reacciones no sustentadas.",
+    "extractionSource": "Contenido ampliado a partir de los principios fisicoquímicos de extracción y composición descrita en las fuentes del archivo; los diagramas son educativos, no protocolos experimentales ni evidencia clínica adicional."
+  },
+  "plant": {
+    "id": "mentha_piperita",
+    "commonName": "Menta",
+    "scientificName": "Mentha × piperita L.",
+    "searchAlias": "Mentha piperita",
+    "family": "Lamiaceae",
+    "usedParts": [
+      "hojas",
+      "sumidades floridas"
+    ],
+    "summary": "Planta aromática rica en monoterpenos y compuestos fenólicos. Sus componentes se han estudiado por sus efectos sobre las contracciones intestinales, la percepción del frío, el dolor y determinadas actividades antimicrobianas y antioxidantes.",
+    "section1": {
+      "id": "properties",
+      "title": "¿Para qué se estudia?",
+      "items": [
+        {
+          "id": "digestive",
+          "title": "Digestiva y antiespasmódica",
+          "description": "El aceite de menta puede contribuir a relajar el músculo liso intestinal. Algunas cápsulas con recubrimiento entérico han mostrado beneficios a corto plazo sobre el dolor abdominal y otros síntomas del síndrome de intestino irritable. Las hojas también se utilizan tradicionalmente para gases e indigestión.",
+          "evidenceContext": "El respaldo clínico más relevante corresponde a formulaciones específicas de aceite de menta; no debe extrapolarse automáticamente a infusiones.",
+          "relatedCompoundIds": [
+            "menthol"
+          ],
+          "relatedPreparationIds": [
+            "enteric_capsules",
+            "infusion"
+          ],
+          "sourceIds": [
+            "nih_peppermint",
+            "ema_oil",
+            "ema_leaf"
+          ]
+        },
+        {
+          "id": "cooling_analgesic",
+          "title": "Refrescante y analgésica",
+          "description": "El mentol activa receptores implicados en la percepción de frío y puede modificar determinadas señales dolorosas. Algunas formulaciones tópicas se han investigado para el alivio temporal de cefaleas tensionales.",
+          "evidenceContext": "La percepción de frescura es un efecto sensorial; la eficacia clínica depende de la formulación y la indicación.",
+          "relatedCompoundIds": [
+            "menthol"
+          ],
+          "relatedPreparationIds": [
+            "topical",
+            "essential_oil"
+          ],
+          "sourceIds": [
+            "nih_peppermint",
+            "review_physiology"
+          ]
+        },
+        {
+          "id": "antimicrobial",
+          "title": "Antimicrobiana",
+          "description": "Componentes del aceite esencial pueden alterar membranas microbianas y reducir el crecimiento de ciertos microorganismos en condiciones experimentales.",
+          "evidenceContext": "Actividad principalmente in vitro: no implica que un té o enjuague casero pueda tratar infecciones.",
+          "relatedCompoundIds": [
+            "menthol",
+            "menthone"
+          ],
+          "relatedPreparationIds": [
+            "essential_oil"
+          ],
+          "sourceIds": [
+            "review_essential_oil"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Antioxidante",
+          "description": "El ácido rosmarínico y algunos flavonoides contienen grupos fenólicos capaces de participar en reacciones de neutralización de radicales libres.",
+          "evidenceContext": "Mecanismo químico experimental; no demuestra por sí solo un beneficio antioxidante clínico al beber té.",
+          "relatedCompoundIds": [
+            "rosmarinic_acid",
+            "eriocitrin",
+            "luteolin"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "hydroalcoholic_extract"
+          ],
+          "sourceIds": [
+            "review_essential_oil",
+            "polyphenols_study"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "La química detrás de la menta",
+      "items": [
+        {
+          "id": "menthol",
+          "name": "Mentol",
+          "molecularFormula": "C10H20O",
+          "chemicalClass": "Alcohol monoterpénico",
+          "functionalGroups": [
+            "alcohol secundario (-OH)",
+            "cicloalcano"
+          ],
+          "description": "Su estructura contiene un anillo de ciclohexano y un grupo hidroxilo. Puede activar el canal TRPM8 y modular respuestas del músculo liso.",
+          "associatedProperties": [
+            "frescura",
+            "analgesia",
+            "acción antiespasmódica"
+          ],
+          "distribution": "Fracción volátil de las hojas; concentrado en el aceite esencial.",
+          "pubchemCID": 1254,
+          "structureImage": null,
+          "sourceIds": [
+            "review_physiology",
+            "review_essential_oil"
+          ]
+        },
+        {
+          "id": "menthone",
+          "name": "Mentona",
+          "molecularFormula": "C10H18O",
+          "chemicalClass": "Cetona monoterpénica",
+          "functionalGroups": [
+            "cetona (C=O)",
+            "cicloalcano"
+          ],
+          "description": "Contiene un grupo carbonilo en una estructura cíclica; contribuye al aroma y a la composición del aceite esencial.",
+          "associatedProperties": [
+            "perfil aromático",
+            "actividad biológica experimental"
+          ],
+          "distribution": "Fracción volátil del aceite esencial.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_essential_oil"
+          ]
+        },
+        {
+          "id": "rosmarinic_acid",
+          "name": "Ácido rosmarínico",
+          "molecularFormula": "C18H16O8",
+          "chemicalClass": "Compuesto fenólico",
+          "functionalGroups": [
+            "hidroxilos fenólicos (-OH)",
+            "éster",
+            "ácido carboxílico"
+          ],
+          "description": "Posee grupos fenólicos que pueden donar hidrógeno o electrones a ciertas especies radicalarias.",
+          "associatedProperties": [
+            "actividad antioxidante experimental",
+            "actividad antiinflamatoria experimental"
+          ],
+          "distribution": "Hojas y extractos polares, incluidos los acuosos.",
+          "pubchemCID": 5281792,
+          "structureImage": null,
+          "sourceIds": [
+            "polyphenols_study"
+          ]
+        },
+        {
+          "id": "eriocitrin",
+          "name": "Eriocitrina",
+          "molecularFormula": "C27H32O15",
+          "chemicalClass": "Flavonoide glucosilado (flavanona glucósido)",
+          "functionalGroups": [
+            "hidroxilos fenólicos (-OH)",
+            "enlaces glucosídicos"
+          ],
+          "description": "Flavanona unida a azúcares. Sus grupos fenólicos participan en actividad antioxidante experimental y los azúcares influyen en su solubilidad.",
+          "associatedProperties": [
+            "actividad antioxidante experimental"
+          ],
+          "distribution": "Hojas y extractos polares.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "polyphenols_study"
+          ]
+        },
+        {
+          "id": "luteolin",
+          "name": "Luteolina",
+          "molecularFormula": "C15H10O6",
+          "chemicalClass": "Flavona",
+          "functionalGroups": [
+            "hidroxilos fenólicos (-OH)",
+            "carbonilo conjugado"
+          ],
+          "description": "Flavonoide polifenólico cuyos derivados, incluidos glucósidos, aparecen en la menta; se investiga por sus propiedades antioxidantes y antiinflamatorias en modelos experimentales.",
+          "associatedProperties": [
+            "actividad antioxidante experimental",
+            "modulación inflamatoria experimental"
+          ],
+          "distribution": "Hojas; en parte en forma de derivados glucosilados.",
+          "pubchemCID": 5280445,
+          "structureImage": null,
+          "sourceIds": [
+            "polyphenols_study"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "¿Cómo funciona químicamente?",
+      "items": [
+        {
+          "id": "intestinal_relaxation",
+          "title": "Mecanismo digestivo y antiespasmódico",
+          "compoundIds": [
+            "menthol"
+          ],
+          "explanation": "Las contracciones del músculo liso intestinal dependen en parte del calcio intracelular. En determinados modelos, el mentol inhibe corrientes de calcio, incluidas las de canales tipo L, y reduce algunas contracciones musculares.",
+          "steps": [
+            {
+              "title": "Mentol",
+              "detail": "Componente del aceite esencial"
+            },
+            {
+              "title": "Menor entrada de Ca²⁺",
+              "detail": "Inhibición de determinadas corrientes de calcio"
+            },
+            {
+              "title": "Menor contracción",
+              "detail": "Se reduce la activación de mecanismos contráctiles"
+            },
+            {
+              "title": "Relajación muscular",
+              "detail": "Puede contribuir a disminuir espasmos intestinales"
+            }
+          ],
+          "plainLanguage": "El mentol puede disminuir la entrada de calcio a ciertas células musculares intestinales. Como el calcio participa en la contracción, esto puede favorecer la relajación del intestino.",
+          "sourceIds": [
+            "review_physiology"
+          ]
+        },
+        {
+          "id": "trpm8_cooling",
+          "title": "Mecanismo refrescante y analgésico",
+          "compoundIds": [
+            "menthol"
+          ],
+          "explanation": "El mentol es agonista de TRPM8, un canal termosensible presente en neuronas sensoriales. Su activación permite corrientes de cationes (como Na⁺ y Ca²⁺), alterando la actividad eléctrica neuronal y generando sensación de frío.",
+          "steps": [
+            {
+              "title": "Mentol",
+              "detail": "Molécula agonista"
+            },
+            {
+              "title": "Activación de TRPM8",
+              "detail": "Canal iónico sensible a estímulos fríos"
+            },
+            {
+              "title": "Flujo de cationes",
+              "detail": "Na⁺ y Ca²⁺ contribuyen a la despolarización"
+            },
+            {
+              "title": "Percepción de frescura",
+              "detail": "Puede ocurrir sin descenso de temperatura real"
+            }
+          ],
+          "plainLanguage": "El mentol activa receptores del frío de la piel y mucosas. Así produce frescura aunque la temperatura no haya disminuido; también puede modificar algunas señales de dolor.",
+          "sourceIds": [
+            "review_physiology",
+            "trpm8_study"
+          ]
+        },
+        {
+          "id": "membrane_antimicrobial",
+          "title": "Mecanismo antimicrobiano",
+          "compoundIds": [
+            "menthol",
+            "menthone"
+          ],
+          "explanation": "Monoterpenos lipofílicos del aceite esencial pueden alterar las propiedades de membranas microbianas, afectando permeabilidad, gradientes iónicos y funciones celulares en ensayos de laboratorio.",
+          "steps": [
+            {
+              "title": "Monoterpenos",
+              "detail": "Compuestos lipofílicos del aceite"
+            },
+            {
+              "title": "Interacción con membrana",
+              "detail": "Alteración de la bicapa lipídica"
+            },
+            {
+              "title": "Cambios de permeabilidad",
+              "detail": "Disrupción de funciones celulares"
+            },
+            {
+              "title": "Menor crecimiento microbiano",
+              "detail": "Resultado observado para algunas condiciones in vitro"
+            }
+          ],
+          "plainLanguage": "Algunos componentes del aceite de menta pueden dañar funciones de membranas microbianas en laboratorio, pero eso no convierte a la infusión en un tratamiento de infecciones.",
+          "sourceIds": [
+            "review_essential_oil"
+          ]
+        },
+        {
+          "id": "phenolic_antioxidant",
+          "title": "Mecanismo antioxidante",
+          "compoundIds": [
+            "rosmarinic_acid",
+            "eriocitrin",
+            "luteolin"
+          ],
+          "explanation": "Los grupos fenólicos pueden transferir hidrógeno o electrones a algunas especies radicalarias. El radical fenóxico formado puede estabilizarse por resonancia.",
+          "reaction": {
+            "name": "Transferencia de átomo de hidrógeno (esquema general)",
+            "latex": "\\mathrm{ArOH + R^\\bullet \\rightarrow ArO^\\bullet + RH}",
+            "reactantsMeaning": {
+              "ArOH": "compuesto fenólico",
+              "R•": "radical libre"
+            },
+            "productsMeaning": {
+              "ArO•": "radical fenóxico estabilizable por resonancia",
+              "RH": "producto de la transferencia de hidrógeno"
+            },
+            "note": "Ecuación conceptual general, no reacción fisiológica cuantificada para una infusión de menta."
+          },
+          "steps": [
+            {
+              "title": "Grupo fenólico",
+              "detail": "Presencia de uno o varios grupos –OH aromáticos"
+            },
+            {
+              "title": "Transferencia de H o electrones",
+              "detail": "Interacción química con ciertas especies radicalarias"
+            },
+            {
+              "title": "Estabilización por resonancia",
+              "detail": "Distribución electrónica en la estructura aromática"
+            }
+          ],
+          "plainLanguage": "Algunos polifenoles de la menta pueden neutralizar radicales a través de reacciones de oxidación-reducción gracias a su estructura molecular.",
+          "sourceIds": [
+            "polyphenols_study"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "title": "De mentona a mentol: reducción de una cetona",
+        "startingCompoundId": "menthone",
+        "endingCompoundId": "menthol",
+        "reactionClass": "reducción de un grupo carbonilo (C=O) a alcohol secundario (–OH)",
+        "latex": "\\mathrm{C_{10}H_{18}O + 2[H] \\rightarrow C_{10}H_{20}O}",
+        "description": "Esquema general de transformación química. La estereoquímica controla qué isómero alcohólico se forma; no ocurre automáticamente por hervir las hojas.",
+        "educationalValue": "Comparar los grupos funcionales cetona y alcohol presentes en dos componentes de la misma planta."
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "¿Dónde se encuentra y en qué presentación se aprovecha?",
+      "items": [
+        {
+          "id": "leaves",
+          "title": "Hojas frescas o secas",
+          "extractionMethod": "Materia vegetal sin extracción específica",
+          "description": "Las hojas poseen estructuras glandulares con aceite esencial, además de ácidos fenólicos y flavonoides. El secado y almacenamiento pueden modificar los volátiles.",
+          "highlightCompoundIds": [
+            "menthol",
+            "menthone",
+            "rosmarinic_acid",
+            "eriocitrin",
+            "luteolin"
+          ],
+          "warning": null,
+          "extractionExperience": {
+            "heading": "Materia prima: hojas",
+            "processTitle": "Conservación y pérdida de volátiles",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Las glándulas de las hojas almacenan aceite esencial rico en mentol y mentona."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Secar reduce el contenido de agua, pero parte de los volátiles puede perderse durante el proceso."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Los ácidos fenólicos y flavonoides permanecen en la matriz vegetal hasta una extracción posterior."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Agua contenida en el tejido",
+              "Volatilidad",
+              "Matriz vegetal"
+            ],
+            "focusCompoundIds": [
+              "menthol",
+              "menthone",
+              "rosmarinic_acid"
+            ],
+            "visualType": "leaf_drying",
+            "comparisonNote": "Las hojas secas no son un extracto: no hay separación deliberada de los compuestos mediante un disolvente.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión de hojas",
+          "extractionMethod": "Extracción acuosa con agua caliente",
+          "description": "Favorece la extracción de componentes polares como ácido rosmarínico y flavonoides glucosilados; también incorpora cantidades variables de sustancias aromáticas volátiles.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "eriocitrin",
+            "luteolin"
+          ],
+          "warning": "Su composición y sus efectos no son equivalentes a los de aceite encapsulado.",
+          "extractionExperience": {
+            "heading": "Extracción con agua caliente",
+            "processTitle": "Disolución y difusión en medio acuoso",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "El agua entra en contacto con las hojas y humedece su tejido."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Los constituyentes relativamente polares, como el ácido rosmarínico y flavonoides glucosilados, pueden disolverse y difundirse al agua."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Una cantidad variable de sustancias aromáticas puede incorporarse o perderse por evaporación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad",
+              "Solubilidad",
+              "Difusión",
+              "Volatilidad"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "eriocitrin",
+              "menthol"
+            ],
+            "visualType": "water_extraction",
+            "comparisonNote": "Una infusión no contiene la misma cantidad de mentol que el aceite esencial ni equivale a una cápsula entérica.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial",
+          "extractionMethod": "Destilación por arrastre de vapor y condensación",
+          "description": "Concentra componentes volátiles como mentol y mentona y deja fuera gran parte de los compuestos fenólicos no volátiles.",
+          "highlightCompoundIds": [
+            "menthol",
+            "menthone"
+          ],
+          "warning": "No ingerir aceite esencial concentrado directamente ni aplicarlo sin la formulación adecuada.",
+          "extractionExperience": {
+            "heading": "Aceite esencial",
+            "processTitle": "Destilación por arrastre de vapor",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "El vapor pasa por el material vegetal y transporta componentes relativamente volátiles."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "La mezcla de vapor y compuestos aromáticos se enfría y condensa."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "La fracción de aceite esencial se separa del destilado acuoso."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Condensación",
+              "Separación de fases",
+              "Lipofilia"
+            ],
+            "focusCompoundIds": [
+              "menthol",
+              "menthone"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "La destilación separa sustancias volátiles; no concentra automáticamente los polifenoles no volátiles de la infusión. El aceite concentrado requiere manejo y formulación seguros.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        },
+        {
+          "id": "enteric_capsules",
+          "title": "Cápsulas con recubrimiento entérico",
+          "extractionMethod": "Formulación farmacéutica con cubierta gastrorresistente",
+          "description": "Contienen aceite de menta dosificado. Su cubierta busca resistir el ambiente ácido del estómago y liberar el contenido en el intestino.",
+          "highlightCompoundIds": [
+            "menthol",
+            "menthone"
+          ],
+          "warning": "El respaldo clínico corresponde a formulaciones estudiadas para síntomas específicos; algunas personas pueden presentar acidez o reflujo.",
+          "extractionExperience": {
+            "heading": "Cápsula de aceite con recubrimiento entérico",
+            "processTitle": "Protección y liberación de una formulación",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Una cápsula contiene una formulación de aceite de menta con composición controlada."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "El recubrimiento se diseña para resistir el ambiente ácido del estómago."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "El recubrimiento permite liberar el contenido posteriormente en el intestino según la formulación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "pH",
+              "Solubilidad del recubrimiento",
+              "Liberación intestinal"
+            ],
+            "focusCompoundIds": [
+              "menthol",
+              "menthone"
+            ],
+            "visualType": "enteric_release",
+            "comparisonNote": "Es una formulación farmacéutica, NO un método para extraer compuestos de la hoja; el beneficio depende de la formulación estudiada.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic_extract",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción con mezcla de agua y etanol",
+          "description": "Puede recuperar sustancias de diferentes polaridades, como ácidos fenólicos y flavonoides. Su composición depende de la proporción de agua/etanol y el procedimiento.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "eriocitrin",
+            "luteolin"
+          ],
+          "warning": "No todos los extractos cuentan con eficacia clínica demostrada.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Extracción en mezcla de disolventes",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Se pone la matriz vegetal en contacto con una mezcla de agua y etanol."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "La polaridad de la mezcla favorece la disolución de distintas familias de metabolitos."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Se separa el líquido del residuo vegetal mediante filtración u otro método apropiado."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad del disolvente",
+              "Solubilidad diferencial",
+              "Difusión",
+              "Filtración"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "eriocitrin",
+              "luteolin"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "La composición depende de la proporción agua/etanol; no debe atribuirse a este extracto la eficacia estudiada con cápsulas entéricas.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        },
+        {
+          "id": "topical",
+          "title": "Preparación tópica con mentol",
+          "extractionMethod": "Formulación tópica de mentol o aceite de menta diluido",
+          "description": "Permite la interacción del mentol con receptores sensoriales cutáneos, produciendo frescura y posible alivio temporal.",
+          "highlightCompoundIds": [
+            "menthol"
+          ],
+          "warning": "Evitar ojos, mucosas y aplicación cerca del rostro de bebés o niños pequeños; seguir indicaciones del producto.",
+          "extractionExperience": {
+            "heading": "Preparación tópica con mentol",
+            "processTitle": "Incorporación a una base tópica",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Se incorpora mentol o una preparación caracterizada de aceite de menta en una base apropiada."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "La base facilita la distribución localizada sobre la piel."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "El mentol puede activar canales TRPM8 de terminaciones nerviosas sensoriales."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Formulación",
+              "Distribución local",
+              "Interacción con TRPM8"
+            ],
+            "focusCompoundIds": [
+              "menthol"
+            ],
+            "visualType": "topical_formulation",
+            "comparisonNote": "Es una formulación, NO una extracción. El aceite esencial sin diluir puede irritar la piel; nunca aplicar cerca de la cara de lactantes.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_peppermint",
+              "ema_leaf",
+              "ema_oil",
+              "review_physiology",
+              "review_essential_oil"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Los aceites esenciales concentrados no son intercambiables con infusiones. El aceite de menta puede agravar acidez o reflujo en algunas personas. Evitar mentol o aceite esencial cerca del rostro de bebés y niños pequeños. Ante síntomas persistentes o uso de medicamentos, consultar a un profesional sanitario.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "digestive",
+        "compoundIds": [
+          "menthol"
+        ],
+        "mechanismId": "intestinal_relaxation",
+        "preparationIds": [
+          "enteric_capsules"
+        ]
+      },
+      {
+        "propertyId": "cooling_analgesic",
+        "compoundIds": [
+          "menthol"
+        ],
+        "mechanismId": "trpm8_cooling",
+        "preparationIds": [
+          "topical"
+        ]
+      },
+      {
+        "propertyId": "antimicrobial",
+        "compoundIds": [
+          "menthol",
+          "menthone"
+        ],
+        "mechanismId": "membrane_antimicrobial",
+        "preparationIds": [
+          "essential_oil"
+        ]
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "rosmarinic_acid",
+          "eriocitrin",
+          "luteolin"
+        ],
+        "mechanismId": "phenolic_antioxidant",
+        "preparationIds": [
+          "infusion",
+          "hydroalcoholic_extract"
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_peppermint",
+      "organization": "NIH/NCCIH",
+      "title": "Peppermint Oil: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/peppermint-oil"
+    },
+    {
+      "id": "review_physiology",
+      "organization": "PubMed Central",
+      "title": "Physiologic Effects and Safety of Peppermint Oil",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5814329/"
+    },
+    {
+      "id": "review_essential_oil",
+      "organization": "PubMed Central",
+      "title": "Mentha piperita: Essential Oil and Extracts",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10649426/"
+    },
+    {
+      "id": "polyphenols_study",
+      "organization": "PubMed Central",
+      "title": "In Vitro Antiglycation and Methylglyoxal Trapping Effect of Peppermint Leaf",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10056224/"
+    },
+    {
+      "id": "ema_leaf",
+      "organization": "European Medicines Agency",
+      "title": "Menthae piperitae folium",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/menthae-piperitae-folium"
+    },
+    {
+      "id": "ema_oil",
+      "organization": "European Medicines Agency",
+      "title": "Menthae piperitae aetheroleum",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/menthae-piperitae-aetheroleum"
+    },
+    {
+      "id": "trpm8_study",
+      "organization": "PubMed",
+      "title": "Gating of TRPM8 Channels Activated by Cold and Chemical Agonists",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20844147/"
+    }
+  ]
+}

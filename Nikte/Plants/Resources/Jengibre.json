@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar la ficha educativa de fitoquímica del jengibre en Nikte con las mismas 4 secciones y estructura JSON que la ficha de menta.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar componentes, modelos y vistas SwiftUI existentes. Mostrar estructuras 2D a partir de los CID de PubChem; structureImage es null porque no se incluyen archivos de imágenes. steps proporciona los diagramas interactivos. No sobrescribir otras fichas.",
+    "scientificIntegrity": "Vincular las propiedades a su preparación y calidad de evidencia sin crear quinta sección. No presentar mecanismos celulares como beneficios clínicos. El NIH señala que la mayoría de estudios sobre náuseas evaluaron suplementos y no tés/alimentos. No afirmar que refuerza el sistema inmune o mejora la circulación, pues faltan pruebas clínicas suficientes.",
+    "extractionUI": "Cada elemento de plant.section4.items incluye extractionExperience con tarjetas por pasos y principios químicos. Reutilizar ExtractionExplorerView y ExtractionComparison como componentes genéricos data-driven; mantener la ficha de manzanilla sin cambios. steps son educativos y no instrucciones de uso/dosificación.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "extractionInteraction": "Picker seleccionado por id único; renderizar flujo animado de pasos, visualizar moléculas relacionadas mediante compound IDs, mostrar comparación química y avisos de seguridad. Evitar porcentajes, rendimientos, dosis o reacciones no sustentadas.",
+    "extractionSource": "Contenido ampliado a partir de los principios fisicoquímicos de extracción y composición descrita en las fuentes del archivo; los diagramas son educativos, no protocolos experimentales ni evidencia clínica adicional."
+  },
+  "plant": {
+    "id": "zingiber_officinale",
+    "commonName": "Jengibre",
+    "scientificName": "Zingiber officinale Roscoe",
+    "searchAlias": "Zingiber officinale",
+    "family": "Zingiberaceae",
+    "usedParts": [
+      "rizoma fresco",
+      "rizoma seco"
+    ],
+    "summary": "El jengibre es un rizoma aromático cuyos gingeroles y shogaoles se investigan por sus efectos sobre las náuseas, la inflamación y procesos oxidativos. El secado y el calentamiento pueden cambiar su composición química, especialmente mediante la deshidratación de gingeroles a shogaoles.",
+    "section1": {
+      "id": "properties",
+      "title": "¿Para qué se estudia?",
+      "items": [
+        {
+          "id": "antiemetic",
+          "title": "Antináuseas",
+          "description": "Determinados preparados orales de jengibre pueden ayudar a reducir las náuseas relacionadas con el embarazo. La mayoría de los estudios clínicos evaluaron suplementos, no infusiones. Su eficacia para el mareo por movimiento no está respaldada por la mayoría de los estudios, y para las náuseas por quimioterapia o cirugía los resultados siguen siendo inciertos.",
+          "evidenceContext": "El NIH/NCCIH destaca la evidencia más favorable para náuseas del embarazo. Durante el embarazo, consultar antes de tomar suplementos de jengibre.",
+          "relatedCompoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "relatedPreparationIds": [
+            "standardized_capsules",
+            "fresh_rhizome",
+            "infusion"
+          ],
+          "sourceIds": [
+            "nih_ginger",
+            "review_antiemetic"
+          ]
+        },
+        {
+          "id": "menstrual",
+          "title": "Alivio potencial de cólicos menstruales",
+          "description": "Algunos estudios en humanos sugieren que suplementos de jengibre podrían reducir la intensidad de los cólicos menstruales. Se investigan mecanismos relacionados con mediadores inflamatorios, aunque no se ha confirmado que un compuesto aislado explique el efecto clínico.",
+          "evidenceContext": "Evidencia clínica referida a determinados suplementos y dosis estudiadas, no a cualquier bebida con jengibre.",
+          "relatedCompoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "relatedPreparationIds": [
+            "standardized_capsules",
+            "powder"
+          ],
+          "sourceIds": [
+            "nih_ginger",
+            "review_antiinflammatory"
+          ]
+        },
+        {
+          "id": "antiinflammatory",
+          "title": "Antiinflamatoria",
+          "description": "El 6-shogaol y otros compuestos del jengibre pueden modular rutas de señalización celular como NF-κB y la expresión de COX-2 e iNOS en modelos experimentales. Algunos ensayos sugieren beneficios modestos para síntomas de osteoartritis de rodilla, pero la calidad de la evidencia es variable.",
+          "evidenceContext": "Las interacciones moleculares se han estudiado en células y animales; el efecto sobre osteoartritis depende de la formulación clínica estudiada.",
+          "relatedCompoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "relatedPreparationIds": [
+            "powder",
+            "standardized_capsules"
+          ],
+          "sourceIds": [
+            "nih_ginger",
+            "review_antiinflammatory"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Antioxidante",
+          "description": "Los grupos fenólicos presentes en gingeroles, shogaoles y zingerona pueden intervenir en reacciones de transferencia de hidrógeno o electrones frente a especies radicalarias. También se ha investigado la regulación de Nrf2 y HO-1, relacionadas con las defensas antioxidantes de las células.",
+          "evidenceContext": "Actividad experimental que no demuestra por sí misma protección antioxidante clínica al consumir té o alimentos con jengibre.",
+          "relatedCompoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "zingerone"
+          ],
+          "relatedPreparationIds": [
+            "fresh_rhizome",
+            "powder",
+            "hydroalcoholic_extract"
+          ],
+          "sourceIds": [
+            "review_antiinflammatory",
+            "review_bioactives"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "La química detrás del jengibre",
+      "items": [
+        {
+          "id": "6_gingerol",
+          "name": "6-Gingerol",
+          "molecularFormula": "C17H26O4",
+          "chemicalClass": "Fenilalcanoide; β-hidroxicetona fenólica",
+          "functionalGroups": [
+            "hidroxilo fenólico (Ar–OH)",
+            "éter metoxi (–OCH3)",
+            "cetona (C=O)",
+            "alcohol secundario (–CHOH–)"
+          ],
+          "description": "Es uno de los principales compuestos picantes del jengibre fresco. Contiene un grupo β-hidroxicetona que puede sufrir deshidratación y formar 6-shogaol durante ciertos tratamientos térmicos o de procesamiento. Se estudia por efectos antieméticos y moduladores de la inflamación.",
+          "associatedProperties": [
+            "actividad antináuseas estudiada",
+            "actividad antiinflamatoria experimental",
+            "actividad antioxidante experimental"
+          ],
+          "distribution": "Rizoma fresco; también en el seco en proporciones variables.",
+          "pubchemCID": 442793,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_gingerol",
+            "review_antiemetic"
+          ]
+        },
+        {
+          "id": "6_shogaol",
+          "name": "6-Shogaol",
+          "molecularFormula": "C17H24O3",
+          "chemicalClass": "Fenilalcanoide; cetona α,β-insaturada (enona)",
+          "functionalGroups": [
+            "hidroxilo fenólico (Ar–OH)",
+            "éter metoxi (–OCH3)",
+            "cetona (C=O)",
+            "doble enlace C=C conjugado con carbonilo"
+          ],
+          "description": "Relacionado estructuralmente con el 6-gingerol, pero carece del grupo alcohol secundario en su cadena y tiene un doble enlace conjugado. Puede aumentar relativamente durante el secado o calentamiento y se ha investigado por actividad antiinflamatoria experimental.",
+          "associatedProperties": [
+            "actividad antiinflamatoria experimental",
+            "actividad antináuseas estudiada",
+            "modulación de Nrf2/HO-1 experimental"
+          ],
+          "distribution": "Rizoma procesado o seco; también puede encontrarse en otras preparaciones según procesamiento.",
+          "pubchemCID": 5281794,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_shogaol",
+            "review_antiinflammatory",
+            "review_antiemetic"
+          ]
+        },
+        {
+          "id": "8_gingerol",
+          "name": "8-Gingerol",
+          "molecularFormula": "C19H30O4",
+          "chemicalClass": "Gingerol homólogo; β-hidroxicetona fenólica",
+          "functionalGroups": [
+            "hidroxilo fenólico",
+            "éter metoxi",
+            "cetona",
+            "alcohol secundario"
+          ],
+          "description": "Es un gingerol con una cadena alquílica más larga que la del 6-gingerol. Forma parte de la familia responsable del sabor picante y de actividades bioquímicas experimentales.",
+          "associatedProperties": [
+            "actividad biológica experimental",
+            "perfil picante"
+          ],
+          "distribution": "Rizoma, en proporciones dependientes del material y el procesamiento.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_antiemetic",
+            "review_bioactives"
+          ]
+        },
+        {
+          "id": "zingerone",
+          "name": "Zingerona",
+          "molecularFormula": "C11H14O3",
+          "chemicalClass": "Cetona aromática fenólica",
+          "functionalGroups": [
+            "hidroxilo fenólico",
+            "éter metoxi",
+            "cetona"
+          ],
+          "description": "Molécula aromática más pequeña que los gingeroles, con un anillo guayacílico y una cetona. Se encuentra en el jengibre y puede generarse o incrementarse con ciertos procesamientos. Se investiga por actividades biológicas experimentales, sin que ello implique efectos terapéuticos demostrados.",
+          "associatedProperties": [
+            "actividad antioxidante experimental",
+            "aroma y sabor"
+          ],
+          "distribution": "Rizoma y preparaciones procesadas, en cantidades variables.",
+          "pubchemCID": 31211,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_zingerone",
+            "review_bioactives"
+          ]
+        },
+        {
+          "id": "zingiberene",
+          "name": "α-Zingibereno",
+          "molecularFormula": "C15H24",
+          "chemicalClass": "Sesquiterpeno hidrocarbonado",
+          "functionalGroups": [
+            "dobles enlaces C=C (alquenos)",
+            "anillo carbocíclico"
+          ],
+          "description": "Componente volátil característico del aceite esencial de jengibre. Carece de oxígeno en su fórmula; su volatilidad y carácter lipofílico lo diferencian de gingeroles y shogaoles, que no son componentes típicos del aceite esencial destilado.",
+          "associatedProperties": [
+            "aroma característico del jengibre"
+          ],
+          "distribution": "Fracción volátil del rizoma y aceite esencial.",
+          "pubchemCID": 92776,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_zingiberene",
+            "review_bioactives"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "¿Cómo funciona químicamente?",
+      "items": [
+        {
+          "id": "nausea_5ht3",
+          "title": "Mecanismo antináuseas: señalización serotoninérgica",
+          "compoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "explanation": "Las señales que producen náusea incluyen la activación de receptores serotoninérgicos 5-HT3 en vías gastrointestinales y nerviosas. Estudios preclínicos indican que 6-gingerol y compuestos relacionados pueden modular esta señalización; no se ha probado que este único mecanismo explique la eficacia clínica de todos los suplementos.",
+          "steps": [
+            {
+              "title": "Estímulo de náusea",
+              "detail": "Activa señales gastrointestinales y nerviosas, entre ellas vías serotoninérgicas"
+            },
+            {
+              "title": "Receptores 5-HT3",
+              "detail": "Participan en la transmisión de señales eméticas"
+            },
+            {
+              "title": "Gingeroles y shogaoles",
+              "detail": "Pueden modular estas vías en estudios experimentales"
+            },
+            {
+              "title": "Posible reducción de la señal emética",
+              "detail": "Mecanismo propuesto, no equivalente a eficacia de una infusión concreta"
+            }
+          ],
+          "plainLanguage": "Algunos compuestos del jengibre pueden modificar señales nerviosas y digestivas relacionadas con las náuseas. Los resultados clínicos más favorables corresponden a determinados suplementos para náuseas del embarazo.",
+          "sourceIds": [
+            "nih_ginger",
+            "review_antiemetic",
+            "gingerol_5ht3_rat"
+          ]
+        },
+        {
+          "id": "inflammation_nfkB",
+          "title": "Mecanismo antiinflamatorio: NF-κB, COX-2 e iNOS",
+          "compoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "explanation": "En modelos celulares y animales, principalmente 6-shogaol puede reducir la activación de NF-κB y vías MAPK, así como la expresión de enzimas y mediadores inflamatorios, incluidos COX-2 e iNOS. La respuesta depende de concentración, tejido y modelo.",
+          "steps": [
+            {
+              "title": "Estímulo inflamatorio",
+              "detail": "Activa señales intracelulares"
+            },
+            {
+              "title": "Activación de NF-κB / MAPK",
+              "detail": "Favorece la expresión de genes inflamatorios"
+            },
+            {
+              "title": "Acción experimental de 6-shogaol",
+              "detail": "Puede modular la activación de estas rutas"
+            },
+            {
+              "title": "Menor expresión de mediadores",
+              "detail": "En ciertos modelos se observa reducción de COX-2, iNOS y otros marcadores"
+            }
+          ],
+          "plainLanguage": "Algunas moléculas del jengibre pueden disminuir señales celulares que favorecen la inflamación. Este mecanismo está estudiado en laboratorio y no significa que una taza de té trate enfermedades inflamatorias.",
+          "sourceIds": [
+            "review_antiinflammatory"
+          ]
+        },
+        {
+          "id": "antioxidant_redox",
+          "title": "Mecanismo antioxidante: transferencia de hidrógeno y Nrf2",
+          "compoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "zingerone"
+          ],
+          "explanation": "Los grupos fenólicos pueden transferir átomos de hidrógeno o electrones a ciertos radicales en sistemas experimentales. Además, el 6-shogaol se ha vinculado a la modulación de Nrf2/HO-1, una vía de respuesta antioxidante intracelular. Se trata de mecanismos distintos: neutralización química directa y señalización celular.",
+          "reaction": {
+            "name": "Transferencia de átomo de hidrógeno (modelo general)",
+            "latex": "\\mathrm{ArOH + R^\\bullet \\rightarrow ArO^\\bullet + RH}",
+            "reactantsMeaning": {
+              "ArOH": "molécula con grupo fenólico",
+              "R•": "radical libre"
+            },
+            "productsMeaning": {
+              "ArO•": "radical fenóxico que puede estabilizarse por resonancia",
+              "RH": "especie que recibió hidrógeno"
+            },
+            "note": "Esquema conceptual de actividad antioxidante, no una reacción cuantificada en el organismo después de beber una infusión."
+          },
+          "steps": [
+            {
+              "title": "Grupo fenólico –OH",
+              "detail": "Presente en gingeroles, shogaoles y zingerona"
+            },
+            {
+              "title": "Transferencia de H o e⁻",
+              "detail": "Puede neutralizar algunas especies radicalarias en pruebas químicas"
+            },
+            {
+              "title": "Estabilización electrónica",
+              "detail": "La resonancia ayuda a estabilizar el radical fenóxico"
+            },
+            {
+              "title": "Ruta Nrf2/HO-1",
+              "detail": "En modelos celulares se investigan respuestas antioxidantes adicionales"
+            }
+          ],
+          "plainLanguage": "Las moléculas fenólicas pueden participar en reacciones de oxidación-reducción. Algunas también modifican mecanismos con los que las células responden al estrés oxidativo.",
+          "sourceIds": [
+            "review_antiinflammatory",
+            "review_bioactives"
+          ]
+        },
+        {
+          "id": "bioavailability_processing",
+          "title": "Cambio de estructura química durante el procesamiento",
+          "compoundIds": [
+            "6_gingerol",
+            "6_shogaol"
+          ],
+          "explanation": "El 6-gingerol es una β-hidroxicetona; mediante eliminación de una molécula de agua puede producir 6-shogaol, que contiene una enona conjugada. El grado de transformación depende de tiempo, temperatura y otras condiciones, y no implica conversión completa en infusiones caseras.",
+          "steps": [
+            {
+              "title": "6-Gingerol",
+              "detail": "β-hidroxicetona, frecuente en rizoma fresco"
+            },
+            {
+              "title": "Calentamiento o procesamiento",
+              "detail": "Puede favorecer una eliminación de H2O"
+            },
+            {
+              "title": "Formación de doble enlace",
+              "detail": "Se genera una cetona α,β-insaturada"
+            },
+            {
+              "title": "6-Shogaol",
+              "detail": "Composición diferente, con actividad biológica experimental distinta"
+            }
+          ],
+          "plainLanguage": "Al secarse o calentarse, parte del gingerol puede perder agua y convertirse en shogaol. Por eso el jengibre fresco y el seco no siempre contienen las mismas proporciones de moléculas.",
+          "sourceIds": [
+            "review_antiemetic",
+            "pubchem_gingerol",
+            "pubchem_shogaol"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "title": "De 6-gingerol a 6-shogaol: deshidratación",
+        "startingCompoundId": "6_gingerol",
+        "endingCompoundId": "6_shogaol",
+        "reactionClass": "eliminación de agua de una β-hidroxicetona para producir una cetona α,β-insaturada",
+        "latex": "\\mathrm{C_{17}H_{26}O_4 \\rightarrow C_{17}H_{24}O_3 + H_2O}",
+        "description": "Transformación posible durante secado y calentamiento. Es una reacción química de deshidratación, no una extracción. La velocidad y el alcance dependen de las condiciones y no se debe afirmar que todo gingerol se convierte en shogaol al preparar té.",
+        "educationalValue": "Comparar alcohol secundario, cetona y enona; identificar pérdida de H2O y formación de C=C conjugado con C=O.",
+        "sourceIds": [
+          "review_antiemetic",
+          "pubchem_gingerol",
+          "pubchem_shogaol"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "¿Dónde se encuentra y en qué presentación se aprovecha?",
+      "items": [
+        {
+          "id": "fresh_rhizome",
+          "title": "Rizoma fresco rallado",
+          "extractionMethod": "Uso alimentario sin extracción; trituración mecánica",
+          "description": "Contiene gingeroles, como 6-gingerol, además de sustancias volátiles. Al rallarlo se incrementa la superficie de contacto con agua o alimentos; el contenido depende de variedad y estado de conservación.",
+          "highlightCompoundIds": [
+            "6_gingerol",
+            "8_gingerol",
+            "zingiberene"
+          ],
+          "warning": "Los beneficios clínicos estudiados con cápsulas o extractos no deben trasladarse automáticamente al rizoma como alimento.",
+          "extractionExperience": {
+            "heading": "Rizoma fresco",
+            "processTitle": "Liberación física desde el tejido",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "El rizoma fresco contiene gingeroles y una fracción volátil aromática."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Cortar o rallar aumenta la superficie de contacto y rompe parcialmente el tejido."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Los compuestos quedan más expuestos al agua, otros ingredientes o medios de extracción posteriores."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Matriz vegetal",
+              "Área superficial",
+              "Difusión"
+            ],
+            "focusCompoundIds": [
+              "6_gingerol",
+              "8_gingerol",
+              "zingiberene"
+            ],
+            "visualType": "tissue_breakdown",
+            "comparisonNote": "Rallar no equivale a extraer selectivamente ni asegura una dosis concreta de compuestos.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        },
+        {
+          "id": "powder",
+          "title": "Rizoma seco y molido",
+          "extractionMethod": "Secado, molienda y exposición variable al calor",
+          "description": "Mantiene gingeroles y puede presentar una proporción mayor de shogaoles según las condiciones del secado. La molienda facilita la dispersión del material, pero no estandariza la dosis química.",
+          "highlightCompoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "zingerone"
+          ],
+          "warning": "La composición cambia con temperatura, humedad, almacenamiento y origen.",
+          "extractionExperience": {
+            "heading": "Rizoma seco y molido",
+            "processTitle": "Deshidratación del tejido y posibles cambios químicos",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "La pérdida de agua durante el secado cambia la concentración por masa del material vegetal."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Según las condiciones, parte de los gingeroles puede deshidratarse y dar lugar a shogaoles."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "La molienda aumenta la superficie de contacto para posteriores extracciones."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Pérdida de agua",
+              "Transformación química",
+              "Área superficial"
+            ],
+            "focusCompoundIds": [
+              "6_gingerol",
+              "6_shogaol",
+              "8_gingerol"
+            ],
+            "visualType": "gingerol_dehydration",
+            "comparisonNote": "La deshidratación 6-gingerol → 6-shogaol es una reacción posible, no inevitable ni completa; secar no es lo mismo que extraer.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión o decocción",
+          "extractionMethod": "Extracción acuosa mediante contacto con agua caliente",
+          "description": "El agua extrae una fracción de compuestos del rizoma; cantidades de gingeroles y shogaoles dependen del tamaño de partícula, cantidad de planta, tiempo y temperatura. Su solubilidad acuosa limitada dificulta equiparar una taza con una dosis de extracto estandarizado.",
+          "highlightCompoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "zingerone"
+          ],
+          "warning": "No se debe afirmar que el té tiene la misma eficacia para náuseas que los suplementos estudiados.",
+          "extractionExperience": {
+            "heading": "Infusión o decocción",
+            "processTitle": "Contacto con agua caliente y extracción parcial",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "El agua caliente humedece el rizoma cortado o rallado."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Algunos compuestos hidrosolubles y una fracción variable de gingeroles se dispersan o pasan al líquido."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "El calentamiento prolongado puede modificar el perfil químico y favorecer pérdida de algunos volátiles."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Solubilidad",
+              "Difusión",
+              "Temperatura",
+              "Volatilidad"
+            ],
+            "focusCompoundIds": [
+              "6_gingerol",
+              "6_shogaol",
+              "zingerone"
+            ],
+            "visualType": "water_extraction",
+            "comparisonNote": "No se puede asumir que una infusión alcance la dosis de suplementos estudiados para náuseas. La conversión a shogaol depende de condiciones concretas.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        },
+        {
+          "id": "standardized_capsules",
+          "title": "Cápsulas o extractos orales caracterizados",
+          "extractionMethod": "Polvo dosificado o extracción y estandarización según formulación",
+          "description": "Permiten medir la cantidad de material o de determinados compuestos (por ejemplo, gingeroles totales). Muchos estudios clínicos de náuseas y cólicos menstruales utilizaron suplementos; las formulaciones no son necesariamente equivalentes.",
+          "highlightCompoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "8_gingerol"
+          ],
+          "warning": "Consultar con profesionales de salud antes de usar suplementos durante el embarazo o junto con medicamentos; pueden causar acidez, malestar abdominal y diarrea.",
+          "extractionExperience": {
+            "heading": "Cápsulas de polvo o extracto",
+            "processTitle": "Dosificación de una preparación definida",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Se caracteriza el polvo o extracto según un proceso de producción."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "El material se incorpora a una cápsula con cantidad declarada de ingredientes o marcadores."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Tras la ingestión, se libera el contenido según el diseño de la formulación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Estandarización",
+              "Dosis",
+              "Liberación de formulación"
+            ],
+            "focusCompoundIds": [
+              "6_gingerol",
+              "6_shogaol"
+            ],
+            "visualType": "capsule_release",
+            "comparisonNote": "Es una forma de administración, NO una técnica de extracción. Las cápsulas comerciales pueden tener composiciones y biodisponibilidades distintas.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic_extract",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción con mezclas controladas de agua y etanol",
+          "description": "Permite recuperar diferentes proporciones de fenoles picantes y otros compuestos según la mezcla de disolventes, la temperatura y el tiempo. Es útil para caracterización fitoquímica.",
+          "highlightCompoundIds": [
+            "6_gingerol",
+            "6_shogaol",
+            "zingerone"
+          ],
+          "warning": "No todos los extractos tienen ensayos clínicos de eficacia.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Selección de compuestos mediante polaridad",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Se pone el rizoma en contacto con agua y etanol en una proporción determinada."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "La combinación de disolventes modifica cuánto se recupera de diversos gingeroles y shogaoles."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Se separa el extracto líquido del residuo sólido."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad",
+              "Solubilidad diferencial",
+              "Difusión",
+              "Filtración"
+            ],
+            "focusCompoundIds": [
+              "6_gingerol",
+              "6_shogaol",
+              "8_gingerol"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "No asumir que todos los extractos hidroalcohólicos tienen la misma composición o eficacia clínica.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial de jengibre",
+          "extractionMethod": "Destilación por arrastre de vapor de la fracción volátil",
+          "description": "Concentra terpenos volátiles, como α-zingibereno. Los gingeroles y shogaoles no son componentes principales del aceite esencial destilado, por lo que este producto NO es equivalente a la preparación oral investigada para las náuseas.",
+          "highlightCompoundIds": [
+            "zingiberene"
+          ],
+          "warning": "No ingerir aceite esencial concentrado ni emplearlo para tratar náuseas sin formulación médica apropiada.",
+          "extractionExperience": {
+            "heading": "Aceite esencial de jengibre",
+            "processTitle": "Destilación de compuestos volátiles",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "El vapor transporta una fracción de los componentes aromáticos volátiles del rizoma."
+              },
+              {
+                "index": 2,
+                "title": "Proceso fisicoquímico",
+                "detail": "Los vapores se enfrían y condensan."
+              },
+              {
+                "index": 3,
+                "title": "Resultado o composición",
+                "detail": "Se separa la fracción oleosa, rica en ciertos terpenos, del agua condensada."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Condensación",
+              "Separación de fases"
+            ],
+            "focusCompoundIds": [
+              "zingiberene"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "El aceite esencial se caracteriza por terpenos volátiles; no equivale a un extracto rico en gingeroles o shogaoles. No debe ingerirse directamente.",
+            "isExtraction": true,
+            "sourceIds": [
+              "nih_ginger",
+              "review_antiemetic",
+              "review_antiinflammatory"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "El NIH señala que el jengibre oral puede causar acidez, molestias abdominales, diarrea e irritación de boca o garganta. Quienes toman medicamentos deben consultar por posibles interacciones. En el embarazo, hablar con el profesional de salud antes de usar suplementos; hay datos insuficientes de seguridad en lactancia. No recomendar aceite esencial concentrado para ingestión.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "antiemetic",
+        "compoundIds": [
+          "6_gingerol",
+          "6_shogaol"
+        ],
+        "mechanismIds": [
+          "nausea_5ht3"
+        ],
+        "preparationIds": [
+          "standardized_capsules"
+        ],
+        "note": "La mayor parte de la evidencia clínica evaluó suplementos."
+      },
+      {
+        "propertyId": "menstrual",
+        "compoundIds": [
+          "6_gingerol",
+          "6_shogaol"
+        ],
+        "mechanismIds": [
+          "inflammation_nfkB"
+        ],
+        "preparationIds": [
+          "standardized_capsules",
+          "powder"
+        ],
+        "note": "El mecanismo propuesto no demuestra causalidad directa para el efecto clínico."
+      },
+      {
+        "propertyId": "antiinflammatory",
+        "compoundIds": [
+          "6_gingerol",
+          "6_shogaol"
+        ],
+        "mechanismIds": [
+          "inflammation_nfkB"
+        ],
+        "preparationIds": [
+          "standardized_capsules",
+          "powder",
+          "hydroalcoholic_extract"
+        ],
+        "note": "La evidencia mecanística es principalmente preclínica."
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "6_gingerol",
+          "6_shogaol",
+          "zingerone"
+        ],
+        "mechanismIds": [
+          "antioxidant_redox"
+        ],
+        "preparationIds": [
+          "fresh_rhizome",
+          "powder",
+          "hydroalcoholic_extract"
+        ],
+        "note": "Evidencia experimental; no equivale a beneficio clínico probado."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_ginger",
+      "organization": "NIH/NCCIH",
+      "title": "Ginger: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/ginger",
+      "note": "Información oficial sobre indicaciones, grado general de evidencia y seguridad."
+    },
+    {
+      "id": "review_antiemetic",
+      "organization": "PubMed Central / revista científica",
+      "title": "The Antiemetic Mechanisms of Gingerols against Chemotherapy-Induced Nausea and Vomiting",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8893993/",
+      "note": "Revisión de 5-HT3 y deshidratación de gingeroles a shogaoles."
+    },
+    {
+      "id": "review_antiinflammatory",
+      "organization": "PubMed Central / revista científica",
+      "title": "Benefits of Ginger and Its Constituent 6-Shogaol in Inhibiting Inflammatory Processes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8232759/",
+      "note": "Revisión de rutas NF-κB, MAPK, COX-2, iNOS y Nrf2/HO-1; evidencia principalmente preclínica."
+    },
+    {
+      "id": "review_bioactives",
+      "organization": "PubMed (NIH/NLM) / revista científica",
+      "title": "Ginger Bioactives: A Comprehensive Review of Health Benefits and Potential Food Applications",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Ginger+Bioactives+A+Comprehensive+Review+of+Health+Benefits+and+Potential+Food+Applications",
+      "note": "Revisión sobre composición y características de gingeroles, shogaoles, zingerona y volátiles."
+    },
+    {
+      "id": "gingerol_5ht3_rat",
+      "organization": "Journal of Functional Foods / estudio experimental",
+      "title": "6-Gingerol attenuated cisplatin-induced pica in rats via regulating 5-HT3R/Ca2+/CaMKII/ERK1/2 signaling pathway",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1756464622004595",
+      "note": "Estudio preclínico, no evidencia directa en seres humanos."
+    },
+    {
+      "id": "pubchem_gingerol",
+      "organization": "NIH/NLM PubChem",
+      "title": "(6)-Gingerol — CID 442793",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/442793"
+    },
+    {
+      "id": "pubchem_shogaol",
+      "organization": "NIH/NLM PubChem",
+      "title": "6-Shogaol — CID 5281794",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281794"
+    },
+    {
+      "id": "pubchem_zingerone",
+      "organization": "NIH/NLM PubChem",
+      "title": "Zingerone — CID 31211",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/31211"
+    },
+    {
+      "id": "pubchem_zingiberene",
+      "organization": "NIH/NLM PubChem",
+      "title": "(-)-Zingiberene — CID 92776",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/92776"
+    }
+  ]
+}

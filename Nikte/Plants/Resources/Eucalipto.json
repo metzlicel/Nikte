@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar solamente Eucalipto en Nikte usando las cuatro secciones de fichas anteriores.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar modelos Codable y exploradores SwiftUI ya existentes para Manzanilla, Menta, Jengibre, Aloe vera y Lavanda.",
+    "scientificIntegrity": "EMA identifica usos tradicionales para tos y molestias musculares, no eficacia clínica general; evitar equiparar 1,8-cineol puro con aceite, té o vapor. NIH/NLM alerta toxicidad del aceite. Mantener cautelas dentro de las 4 secciones, sin quinta pantalla.",
+    "extractionUI": "section4.items[*].extractionExperience incluye 3 pasos para el diagrama; si visualType no está implementado, usar fallback visual existente.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "featuredChemistry": "Comparación de 1,8-cineol como éter volátil frente a flavonoides glucosilados: no es reacción de conversión, sino separación fisicoquímica."
+  },
+  "plant": {
+    "id": "eucalyptus",
+    "commonName": "Eucalipto",
+    "scientificName": "Eucalyptus globulus Labill.",
+    "searchAlias": [
+      "Eucalyptus globulus",
+      "Eucalypti folium",
+      "eucaliptol",
+      "1,8-cineol"
+    ],
+    "family": "Myrtaceae",
+    "usedParts": [
+      "Hojas maduras",
+      "Hojas y ramillas terminales para aceite esencial"
+    ],
+    "summary": "Árbol aromático cuyas hojas contienen aceite esencial rico en 1,8-cineol, además de flavonoides polares. El uso de determinadas preparaciones para la tos por resfriado es tradicional según EMA; otros mecanismos se estudian a nivel experimental.",
+    "section1": {
+      "id": "properties",
+      "title": "01 · Propiedades",
+      "items": [
+        {
+          "id": "cough",
+          "title": "Alivio tradicional de la tos",
+          "description": "Las hojas y preparaciones de aceite de eucalipto tienen uso tradicional para aliviar la tos asociada al resfriado.",
+          "evidenceContext": "La EMA clasifica el uso como tradicional; no equivale a eficacia demostrada por ensayos clínicos del producto completo.",
+          "relatedCompoundIds": [
+            "cineole"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "essential_oil",
+            "formulated_inhalation"
+          ],
+          "sourceIds": [
+            "ema_leaf",
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "respiratory_inflammation",
+          "title": "Actividad antiinflamatoria respiratoria investigada",
+          "description": "El 1,8-cineol aislado se ha investigado por sus efectos sobre mediadores inflamatorios y secreción de moco.",
+          "evidenceContext": "Los estudios con 1,8-cineol aislado o formulado no demuestran idénticos efectos para té o vapores caseros.",
+          "relatedCompoundIds": [
+            "cineole"
+          ],
+          "relatedPreparationIds": [
+            "cineole_capsules"
+          ],
+          "sourceIds": [
+            "ema_oil",
+            "cineole_review"
+          ]
+        },
+        {
+          "id": "muscle_pain",
+          "title": "Alivio tradicional de molestias musculares localizadas",
+          "description": "Algunas preparaciones tópicas farmacéuticas con aceite de eucalipto se usan tradicionalmente para síntomas de dolor muscular localizado.",
+          "evidenceContext": "Uso tradicional según EMA; no confundir con ingerir o aplicar aceite puro.",
+          "relatedCompoundIds": [
+            "cineole",
+            "alpha_pinene"
+          ],
+          "relatedPreparationIds": [
+            "topical"
+          ],
+          "sourceIds": [
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "antimicrobial",
+          "title": "Actividad antimicrobiana experimental",
+          "description": "El aceite esencial puede afectar membranas y crecimiento de microorganismos en ensayos de laboratorio.",
+          "evidenceContext": "No demuestra que inhalaciones, tés o ungüentos caseros curen infecciones.",
+          "relatedCompoundIds": [
+            "cineole",
+            "alpha_pinene",
+            "limonene"
+          ],
+          "relatedPreparationIds": [
+            "essential_oil"
+          ],
+          "sourceIds": [
+            "phenolics_study",
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Actividad antioxidante experimental",
+          "description": "Flavonoides fenólicos presentes en las hojas pueden participar en reacciones de transferencia de electrones o hidrógeno.",
+          "evidenceContext": "Resultados in vitro; no afirmar que infusiones tratan el estrés oxidativo humano.",
+          "relatedCompoundIds": [
+            "hyperoside",
+            "rutin"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "phenolics_study"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "02 · Composición química",
+      "items": [
+        {
+          "id": "cineole",
+          "name": "1,8-cineol (eucaliptol)",
+          "molecularFormula": "C₁₀H₁₈O",
+          "chemicalClass": "Éter cíclico monoterpénico",
+          "functionalGroups": [
+            "éter cíclico C–O–C"
+          ],
+          "description": "Molécula volátil predominante en numerosos aceites de eucalipto; estudiada por su modulación de rutas inflamatorias y secreciones respiratorias. No es un expectorante clínico demostrado para cualquier preparación.",
+          "associatedProperties": [
+            "modulación inflamatoria experimental",
+            "uso respiratorio tradicional"
+          ],
+          "distribution": "Glándulas secretoras de hojas; concentrado por destilación.",
+          "pubchemCID": 2758,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_cineole",
+            "ema_oil",
+            "cineole_review"
+          ]
+        },
+        {
+          "id": "alpha_pinene",
+          "name": "α-Pineno",
+          "molecularFormula": "C₁₀H₁₆",
+          "chemicalClass": "Monoterpeno bicíclico",
+          "functionalGroups": [
+            "alqueno C=C",
+            "hidrocarburo bicíclico"
+          ],
+          "description": "Compuesto volátil que contribuye al aroma. Se han estudiado efectos antimicrobianos en sistemas experimentales, no una eficacia terapéutica aislada.",
+          "associatedProperties": [
+            "aroma",
+            "actividad antimicrobiana experimental"
+          ],
+          "distribution": "Fracción volátil de hojas y aceite esencial.",
+          "pubchemCID": 6654,
+          "structureImage": null,
+          "sourceIds": [
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "limonene",
+          "name": "Limoneno",
+          "molecularFormula": "C₁₀H₁₆",
+          "chemicalClass": "Monoterpeno cíclico",
+          "functionalGroups": [
+            "alquenos C=C",
+            "hidrocarburo cíclico"
+          ],
+          "description": "Constituyente volátil minoritario o variable del aceite según composición botánica y proceso; se utiliza para enseñar lipofilia y volatilidad.",
+          "associatedProperties": [
+            "aroma",
+            "interacciones de membrana experimentales"
+          ],
+          "distribution": "Aceite esencial en proporción variable.",
+          "pubchemCID": 22311,
+          "structureImage": null,
+          "sourceIds": [
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "hyperoside",
+          "name": "Hiperósido (quercetina-3-O-galactósido)",
+          "molecularFormula": "C₂₁H₂₀O₁₂",
+          "chemicalClass": "Flavonol glucosilado",
+          "functionalGroups": [
+            "hidroxilos fenólicos –OH",
+            "enlace O-glucosídico",
+            "carbonilo"
+          ],
+          "description": "Flavonoide identificado en hojas de E. globulus; los grupos fenólicos contribuyen a actividad antioxidante en ensayos químicos.",
+          "associatedProperties": [
+            "actividad antioxidante in vitro"
+          ],
+          "distribution": "Fracción polar de hojas; recuperable en extractos hidroalcohólicos.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "phenolics_study"
+          ]
+        },
+        {
+          "id": "rutin",
+          "name": "Rutina (quercetina-3-O-rutinósido)",
+          "molecularFormula": "C₂₇H₃₀O₁₆",
+          "chemicalClass": "Flavonol glucosilado",
+          "functionalGroups": [
+            "hidroxilos fenólicos –OH",
+            "enlaces O-glucosídicos",
+            "carbonilo"
+          ],
+          "description": "Flavonoide identificado y cuantificado en hojas de E. globulus, con propiedades antioxidantes observadas experimentalmente.",
+          "associatedProperties": [
+            "actividad antioxidante in vitro"
+          ],
+          "distribution": "Hojas y extractos polares.",
+          "pubchemCID": 5280805,
+          "structureImage": null,
+          "sourceIds": [
+            "phenolics_study"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "03 · Reacciones y mecanismos",
+      "items": [
+        {
+          "id": "mucus",
+          "title": "Modulación de mucinas y vías respiratorias",
+          "compoundIds": [
+            "cineole"
+          ],
+          "explanation": "Estudios con 1,8-cineol, no necesariamente con la hoja, han observado cambios en expresión de mucinas y señales inflamatorias respiratorias. La EMA reconoce uso tradicional para aliviar tos del resfriado. No describirlo como curación de infección o descongestión anatómica garantizada.",
+          "steps": [
+            {
+              "title": "1,8-cineol",
+              "detail": "Monoterpeno presente en el aceite esencial."
+            },
+            {
+              "title": "Células de vía aérea",
+              "detail": "En modelos experimentales se estudian secreción de mucinas y señales intracelulares."
+            },
+            {
+              "title": "Modulación de secreciones",
+              "detail": "Se han observado cambios en marcadores de hipersecreción."
+            },
+            {
+              "title": "Uso respiratorio",
+              "detail": "No equiparar resultados de cineol aislado con inhalación casera."
+            }
+          ],
+          "plainLanguage": "Se investiga si el eucaliptol modifica procesos relacionados con moco e inflamación. Las hojas se usan tradicionalmente para aliviar la tos del resfriado.",
+          "sourceIds": [
+            "ema_leaf",
+            "ema_oil",
+            "cineole_review"
+          ]
+        },
+        {
+          "id": "nfkb",
+          "title": "Señalización inflamatoria: NF-κB",
+          "compoundIds": [
+            "cineole"
+          ],
+          "explanation": "Investigaciones preclínicas sobre 1,8-cineol describen modulación de señalización inflamatoria, incluidos mediadores relacionados con NF-κB. Es señalización bioquímica, no una reacción química de conversión de cineol.",
+          "steps": [
+            {
+              "title": "Estímulo inflamatorio",
+              "detail": "Células activan redes de señalización."
+            },
+            {
+              "title": "NF-κB y mediadores",
+              "detail": "Se regulan genes asociados con inflamación."
+            },
+            {
+              "title": "Exposición a 1,8-cineol",
+              "detail": "En ciertos modelos cambia la actividad de estas vías."
+            },
+            {
+              "title": "Respuesta experimental",
+              "detail": "Pueden disminuir determinados mediadores; no extrapolar dosis a inhalaciones caseras."
+            }
+          ],
+          "plainLanguage": "El cineol puede modificar señales celulares inflamatorias en modelos de laboratorio.",
+          "sourceIds": [
+            "cineole_review"
+          ]
+        },
+        {
+          "id": "membrane",
+          "title": "Interacción de monoterpenos con membranas",
+          "compoundIds": [
+            "cineole",
+            "alpha_pinene",
+            "limonene"
+          ],
+          "explanation": "Por su carácter lipofílico, ciertos componentes de aceites esenciales pueden alterar propiedades de membranas microbianas a concentraciones ensayadas in vitro. No son antibióticos clínicamente equivalentes.",
+          "steps": [
+            {
+              "title": "Mezcla de monoterpenos",
+              "detail": "Aceite esencial con componentes poco polares."
+            },
+            {
+              "title": "Contacto con microorganismos",
+              "detail": "Interacciones fisicoquímicas con membranas."
+            },
+            {
+              "title": "Permeabilidad alterada",
+              "detail": "En algunos experimentos se observan cambios celulares."
+            },
+            {
+              "title": "Actividad in vitro",
+              "detail": "Puede variar por cepa y concentración; no demuestra eliminación de infección en personas."
+            }
+          ],
+          "plainLanguage": "La fracción aromática del eucalipto puede afectar microorganismos en laboratorio, sin sustituir tratamientos médicos.",
+          "sourceIds": [
+            "phenolics_study"
+          ]
+        },
+        {
+          "id": "redox",
+          "title": "Antioxidantes fenólicos de la hoja",
+          "compoundIds": [
+            "hyperoside",
+            "rutin"
+          ],
+          "explanation": "Los grupos fenol –OH pueden donar hidrógeno o electrones a especies radicalarias. Es una reacción redox genérica que explica ensayos antioxidantes, no un efecto clínico por beber infusión.",
+          "steps": [
+            {
+              "title": "Flavonoide fenólico",
+              "detail": "Hiperósido y rutina presentan grupos –OH."
+            },
+            {
+              "title": "Radical libre R•",
+              "detail": "Especie que puede captar hidrógeno."
+            },
+            {
+              "title": "Transferencia",
+              "detail": "ArOH + R• → ArO• + RH (modelo simplificado)."
+            },
+            {
+              "title": "Estabilización",
+              "detail": "El radical fenóxico resultante puede estabilizarse por resonancia."
+            }
+          ],
+          "plainLanguage": "Los polifenoles de las hojas pueden neutralizar ciertos radicales en experimentos químicos.",
+          "sourceIds": [
+            "phenolics_study"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "title": "Éter cíclico frente a compuestos fenólicos: dos extracciones diferentes",
+        "startingCompoundId": "cineole",
+        "endingCompoundId": "hyperoside",
+        "reactionClass": "Comparación fisicoquímica de volatilidad y polaridad (NO es una reacción de conversión)",
+        "latex": null,
+        "description": "1,8-cineol es un monoterpeno éter relativamente volátil, que se recupera en destilación por vapor. Hiperósido es un flavonoide glucosilado mucho menos volátil, recuperable mediante disolventes polares. No existe una reacción cineol → hiperósido durante la preparación.",
+        "educationalValue": "Distinguir éteres cíclicos, flavonoides glucosilados, volatilidad, polaridad, condensación y separación de fases.",
+        "sourceIds": [
+          "ema_oil",
+          "phenolics_study"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "04 · Extracciones y presentaciones",
+      "items": [
+        {
+          "id": "dried_leaves",
+          "title": "Hojas maduras secas",
+          "extractionMethod": "Materia vegetal / secado, sin extracción selectiva",
+          "description": "Hojas de ramas maduras, completas o troceadas, con glándulas de aceite y compuestos fenólicos. El secado modifica el contenido de agua y puede provocar pérdida de volátiles.",
+          "highlightCompoundIds": [
+            "cineole",
+            "hyperoside",
+            "rutin"
+          ],
+          "warning": "No son equivalentes a gotas de aceite esencial.",
+          "extractionExperience": {
+            "heading": "Hojas maduras secas",
+            "processTitle": "De la hoja a la materia vegetal",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Glándulas foliares",
+                "detail": "La hoja contiene una fracción aromática y otra fenólica."
+              },
+              {
+                "index": 2,
+                "title": "Corte y secado",
+                "detail": "Disminuye el agua; parte de los volátiles puede perderse."
+              },
+              {
+                "index": 3,
+                "title": "Hoja seca",
+                "detail": "Conserva mezclas de componentes con propiedades diferentes."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Anatomía secretora",
+              "Evaporación de agua",
+              "Volatilidad"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "hyperoside",
+              "rutin"
+            ],
+            "visualType": "leaf_glands",
+            "comparisonNote": "Secar no es extraer de manera selectiva.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_leaf",
+              "phenolics_study"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión acuosa de hojas",
+          "extractionMethod": "Extracción sólido-líquido con agua caliente",
+          "description": "El agua caliente puede extraer componentes polares de hojas secas; parte de los volátiles puede pasar al líquido o escapar al aire. La EMA contempla preparaciones de hojas para uso tradicional contra tos, con restricciones de edad.",
+          "highlightCompoundIds": [
+            "hyperoside",
+            "rutin",
+            "cineole"
+          ],
+          "warning": "No equiparar con aceite esencial ni presentar como tratamiento de infecciones.",
+          "extractionExperience": {
+            "heading": "Infusión acuosa de hojas",
+            "processTitle": "Solubilidad y difusión",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Contacto con agua",
+                "detail": "El líquido humedece la matriz vegetal."
+              },
+              {
+                "index": 2,
+                "title": "Migración de solutos",
+                "detail": "Los compuestos más polares se disuelven y difunden."
+              },
+              {
+                "index": 3,
+                "title": "Mezcla acuosa",
+                "detail": "Queda una infusión con composición variable y distinta del destilado."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad del agua",
+              "Difusión",
+              "Puentes de hidrógeno",
+              "Pérdida de volátiles"
+            ],
+            "focusCompoundIds": [
+              "hyperoside",
+              "rutin",
+              "cineole"
+            ],
+            "visualType": "hot_water_diffusion",
+            "comparisonNote": "El agua favorece polifenoles; el aceite destilado favorece terpenos volátiles.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_leaf",
+              "phenolics_study"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial destilado",
+          "extractionMethod": "Destilación por arrastre de vapor y separación de fases",
+          "description": "El vapor transporta compuestos volátiles; al condensarse, se separa una fase oleosa rica en 1,8-cineol y otros monoterpenos. No arrastra eficazmente flavonoides no volátiles.",
+          "highlightCompoundIds": [
+            "cineole",
+            "alpha_pinene",
+            "limonene"
+          ],
+          "warning": "Aceite concentrado: la ingestión accidental puede intoxicar; no ingerir aceite comercial para aromaterapia.",
+          "extractionExperience": {
+            "heading": "Aceite esencial destilado",
+            "processTitle": "Destilación de fracción volátil",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Paso de vapor",
+                "detail": "El vapor atraviesa hojas y arrastra componentes volátiles."
+              },
+              {
+                "index": 2,
+                "title": "Condensador",
+                "detail": "El vapor se enfría y vuelve a líquido."
+              },
+              {
+                "index": 3,
+                "title": "Separación",
+                "detail": "Aceite y fase acuosa se separan por sus propiedades de miscibilidad y densidad."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Co-destilación",
+              "Condensación",
+              "Inmiscibilidad"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "alpha_pinene",
+              "limonene"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "El aceite no reproduce los flavonoides de una infusión. No hay conversión química obligatoria en la destilación.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_oil",
+              "pubchem_cineole"
+            ]
+          }
+        },
+        {
+          "id": "formulated_inhalation",
+          "title": "Inhalación de preparación formulada",
+          "extractionMethod": "Administración por inhalación: NO es extracción",
+          "description": "Algunas preparaciones medicinales inhalables contienen aceite de eucalipto. La evaporación y el transporte de moléculas aromáticas difieren de la separación industrial del aceite.",
+          "highlightCompoundIds": [
+            "cineole",
+            "alpha_pinene"
+          ],
+          "warning": "Evitar inhalación casera sobre recipientes con agua hirviendo por quemaduras; el aceite puede irritar y tiene restricciones pediátricas.",
+          "extractionExperience": {
+            "heading": "Inhalación de preparación formulada",
+            "processTitle": "Volatilidad e inhalación",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Producto formulado",
+                "detail": "Se parte de una preparación diseñada para inhalación."
+              },
+              {
+                "index": 2,
+                "title": "Liberación de volátiles",
+                "detail": "Una fracción de monoterpenos pasa al aire."
+              },
+              {
+                "index": 3,
+                "title": "Exposición inhalatoria",
+                "detail": "Los volátiles entran en contacto con vías respiratorias; dosis depende de la formulación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Evaporación",
+              "Transporte por aire"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "alpha_pinene"
+            ],
+            "visualType": "vapor_dispersion",
+            "comparisonNote": "Vapor inhalado no es aceite esencial destilado ni demuestra desbloqueo físico de la nariz.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_oil",
+              "medlineplus_poison"
+            ]
+          }
+        },
+        {
+          "id": "topical",
+          "title": "Preparación tópica con aceite",
+          "extractionMethod": "Dilución/formulación; NO extracción",
+          "description": "Formulaciones con aceite de eucalipto se usan tradicionalmente para molestias musculares localizadas. El vehículo dispersa o diluye los terpenos y condiciona exposición en piel.",
+          "highlightCompoundIds": [
+            "cineole",
+            "alpha_pinene"
+          ],
+          "warning": "No aplicar aceite puro, no usar en piel lesionada ni cerca del rostro de niños pequeños.",
+          "extractionExperience": {
+            "heading": "Preparación tópica con aceite",
+            "processTitle": "Formulación tópica",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Aceite esencial",
+                "detail": "Materia prima concentrada."
+              },
+              {
+                "index": 2,
+                "title": "Vehículo farmacéutico",
+                "detail": "Se incorpora a una crema o ungüento con concentración controlada."
+              },
+              {
+                "index": 3,
+                "title": "Aplicación externa",
+                "detail": "La exposición se limita a una preparación dermatológica específica."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Dilución",
+              "Partición en fases",
+              "Permeación cutánea"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "alpha_pinene"
+            ],
+            "visualType": "oil_dilution",
+            "comparisonNote": "La formulación modifica la concentración y la seguridad; no crea un compuesto nuevo.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_oil"
+            ]
+          }
+        },
+        {
+          "id": "cineole_capsules",
+          "title": "Cápsulas farmacéuticas de 1,8-cineol",
+          "extractionMethod": "Aislamiento previo y formulación oral, NO extracción doméstica",
+          "description": "Algunas investigaciones clínicas utilizan 1,8-cineol purificado en cápsulas. La dosis y absorción dependen del preparado. No equivale a ingerir gotas de aceite esencial.",
+          "highlightCompoundIds": [
+            "cineole"
+          ],
+          "warning": "No automedicar ni ingerir aceites esenciales no destinados al consumo medicinal.",
+          "extractionExperience": {
+            "heading": "Cápsulas farmacéuticas de 1,8-cineol",
+            "processTitle": "Principio activo y dosis",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Ingrediente caracterizado",
+                "detail": "Se dispone de cineol purificado o estandarizado."
+              },
+              {
+                "index": 2,
+                "title": "Formulación",
+                "detail": "Se incorpora una cantidad definida en cápsula farmacéutica."
+              },
+              {
+                "index": 3,
+                "title": "Liberación",
+                "detail": "La forma farmacéutica controla dónde/cuándo se libera el contenido."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Pureza química",
+              "Concentración",
+              "Biodisponibilidad",
+              "Liberación farmacéutica"
+            ],
+            "focusCompoundIds": [
+              "cineole"
+            ],
+            "visualType": "capsule_release",
+            "comparisonNote": "Ensayos con cineol aislado no prueban eficacia de vapor casero.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_oil",
+              "cineole_review"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Tintura o extracto hidroalcohólico",
+          "extractionMethod": "Extracción sólido-líquido con agua y etanol",
+          "description": "La mezcla agua-etanol puede solubilizar diferentes proporciones de compuestos fenólicos y algunos constituyentes aromáticos; la composición depende de concentración de etanol. La EMA contempla tinturas de hoja para uso tradicional.",
+          "highlightCompoundIds": [
+            "hyperoside",
+            "rutin",
+            "cineole"
+          ],
+          "warning": "La EMA restringe tinturas foliares a adultos por su contenido alcohólico; no sugerir preparación o consumo sin supervisión.",
+          "extractionExperience": {
+            "heading": "Tintura o extracto hidroalcohólico",
+            "processTitle": "Mezcla de disolventes",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Hojas trituradas",
+                "detail": "Aumenta superficie de contacto."
+              },
+              {
+                "index": 2,
+                "title": "Agua y etanol",
+                "detail": "Solubilizan componentes según su polaridad."
+              },
+              {
+                "index": 3,
+                "title": "Separación del sólido",
+                "detail": "Se obtiene extracto con perfil distinto a infusión y aceite destilado."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad mixta",
+              "Solubilidad diferencial",
+              "Difusión",
+              "Filtración"
+            ],
+            "focusCompoundIds": [
+              "hyperoside",
+              "rutin",
+              "cineole"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "No asumir que más etanol implica automáticamente mayor beneficio terapéutico.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_leaf",
+              "phenolics_study"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Contenido educativo. No ingerir aceite esencial común ni aplicarlo puro. NIH/MedlinePlus advierte toxicidad por ingestión. EMA contraindica preparados con cineol en niños menores de 30 meses y en niños con antecedentes de convulsiones; las edades permitidas dependen de la vía y formulación (aceite oral solo desde 12 años e inhalación/tópico desde 4 años para preparaciones medicinales específicas). Evitar inhalación de vapor sobre agua hirviendo por riesgo de quemaduras. Consultar prospecto y profesionales de salud, especialmente en niños, asma o síntomas persistentes.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "cough",
+        "compoundIds": [
+          "cineole"
+        ],
+        "mechanismIds": [
+          "mucus"
+        ],
+        "preparationIds": [
+          "infusion",
+          "essential_oil",
+          "formulated_inhalation"
+        ],
+        "note": "La EMA clasifica el uso como tradicional; no equivale a eficacia demostrada por ensayos clínicos del producto completo."
+      },
+      {
+        "propertyId": "respiratory_inflammation",
+        "compoundIds": [
+          "cineole"
+        ],
+        "mechanismIds": [
+          "mucus",
+          "nfkb"
+        ],
+        "preparationIds": [
+          "cineole_capsules"
+        ],
+        "note": "Los estudios con 1,8-cineol aislado o formulado no demuestran idénticos efectos para té o vapores caseros."
+      },
+      {
+        "propertyId": "muscle_pain",
+        "compoundIds": [
+          "cineole",
+          "alpha_pinene"
+        ],
+        "mechanismIds": [
+          "nfkb"
+        ],
+        "preparationIds": [
+          "topical"
+        ],
+        "note": "Uso tradicional según EMA; no confundir con ingerir o aplicar aceite puro."
+      },
+      {
+        "propertyId": "antimicrobial",
+        "compoundIds": [
+          "cineole",
+          "alpha_pinene",
+          "limonene"
+        ],
+        "mechanismIds": [
+          "membrane"
+        ],
+        "preparationIds": [
+          "essential_oil"
+        ],
+        "note": "No demuestra que inhalaciones, tés o ungüentos caseros curen infecciones."
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "hyperoside",
+          "rutin"
+        ],
+        "mechanismIds": [
+          "redox"
+        ],
+        "preparationIds": [
+          "infusion",
+          "hydroalcoholic"
+        ],
+        "note": "Resultados in vitro; no afirmar que infusiones tratan el estrés oxidativo humano."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "ema_leaf",
+      "organization": "European Medicines Agency (EMA)",
+      "title": "Eucalypti folium — Eucalyptus leaf",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-folium",
+      "note": "Monografía para hojas y uso tradicional de tos del resfriado; edades y diferencia entre té y tintura."
+    },
+    {
+      "id": "ema_oil",
+      "organization": "European Medicines Agency (EMA)",
+      "title": "Eucalypti aetheroleum — Eucalyptus oil (revision 2025)",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-aetheroleum",
+      "note": "Destilación, usos tradicionales, formulaciones y contraindicaciones; distinguir cineol aislado de aceite completo."
+    },
+    {
+      "id": "ema_assessment",
+      "organization": "European Medicines Agency (EMA)",
+      "title": "Assessment report on eucalyptus oil — revision 1 (2025)",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-eucalyptus-globulus-labill-eucalyptus-polybractea-rt-baker-eucalyptus-smithii-rt-baker-aetheroleum-revision-1_en.pdf",
+      "note": "Informe oficial de evaluación; seguridad por vía de uso, toxicidad y límites de extrapolación."
+    },
+    {
+      "id": "medlineplus_poison",
+      "organization": "NIH/NLM MedlinePlus",
+      "title": "Sobredosis de aceite de eucalipto",
+      "url": "https://www.medlineplus.gov/spanish/ency/article/002646.htm",
+      "note": "Toxicidad por ingestión de aceite de eucalipto; no equivale a una preparación alimentaria."
+    },
+    {
+      "id": "pubchem_cineole",
+      "organization": "NIH/NLM PubChem",
+      "title": "1,8-Cineole (Eucalyptol), CID 2758",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/2758",
+      "note": "Fórmula, grupo funcional e identificación química de cineol."
+    },
+    {
+      "id": "phenolics_study",
+      "organization": "PubMed Central / revista científica",
+      "title": "Antimicrobial and Antioxidant Activities and Phenolic Profile of Eucalyptus globulus and Corymbia ficifolia Leaves",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6272638/",
+      "note": "Identificación analítica de hiperósido y rutina en hoja de E. globulus; actividad experimental."
+    },
+    {
+      "id": "cineole_review",
+      "organization": "European Medicines Agency (EMA)",
+      "title": "Eucalyptus oil assessment report — pharmacology and clinical studies",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-aetheroleum",
+      "note": "Evaluación de estudios de 1,8-cineol sobre vías aéreas; diferenciar cineol purificado de preparado botánico."
+    }
+  ]
+}

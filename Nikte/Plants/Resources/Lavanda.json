@@ -1,0 +1,915 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar exclusivamente la ficha de Lavanda en Nikte, con las cuatro secciones e interactividad comparable a Manzanilla, Menta, Jengibre y Aloe vera.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar la arquitectura Codable y los componentes SwiftUI compartidos existentes, sin duplicar vistas ni alterar fichas previas.",
+    "scientificIntegrity": "Distinguir mecanismo de aceite total vs molécula aislada, aromaterapia vs aceite oral estandarizado, infusión vs destilado; no confundir actividad experimental con eficacia clínica. Mantener notas breves de seguridad en el contenido, sin quinta sección de bibliografía.",
+    "extractionUI": "Cada plant.section4.items[*].extractionExperience proporciona el contenido para diagramas de tres pasos. Usar visualType si existe, de lo contrario fallback genérico.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "featuredChemistry": "Mostrar la relación alcohol-ester linalool/acetato de linalilo con hidrólisis como reacción química conceptual, NO afirmar que ocurre cuantitativamente durante una infusión ni una destilación."
+  },
+  "plant": {
+    "id": "lavender",
+    "commonName": "Lavanda",
+    "scientificName": "Lavandula angustifolia Mill.",
+    "searchAlias": [
+      "Lavandula angustifolia",
+      "lavanda verdadera",
+      "English lavender"
+    ],
+    "family": "Lamiaceae",
+    "usedParts": [
+      "Flores y sumidades floridas (parte principal para aceite esencial)",
+      "Hojas y tallos: composición diferente; no intercambiables con el aceite de flores"
+    ],
+    "summary": "Planta aromática rica en monoterpenos volátiles (linalool y acetato de linalilo) y compuestos fenólicos. Se investiga principalmente para síntomas de ansiedad, estrés leve y sueño; los efectos dependen de la formulación, no solo del aroma.",
+    "section1": {
+      "id": "properties",
+      "title": "¿Para qué se estudia?",
+      "items": [
+        {
+          "id": "anxiety",
+          "title": "Ansiedad y tensión nerviosa",
+          "description": "Ciertas preparaciones orales estandarizadas de aceite de lavanda han mostrado resultados prometedores sobre síntomas de ansiedad.",
+          "evidenceContext": "Los ensayos clínicos corresponden a productos concretos; el NIH advierte limitaciones y no permite generalizar a té, aroma o aceite casero.",
+          "relatedCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "relatedPreparationIds": [
+            "standard_oral"
+          ],
+          "sourceIds": [
+            "nih_lavender",
+            "nih_anxiety",
+            "study_calcium"
+          ]
+        },
+        {
+          "id": "stress",
+          "title": "Estrés mental leve",
+          "description": "El aceite de lavanda tiene uso tradicional reconocido por EMA para el alivio de síntomas leves de estrés y agotamiento mental.",
+          "evidenceContext": "Uso tradicional; no equivale a eficacia clínica demostrada para todas las preparaciones.",
+          "relatedCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "relatedPreparationIds": [
+            "standard_oral",
+            "aromatherapy"
+          ],
+          "sourceIds": [
+            "ema_lavender",
+            "nih_lavender"
+          ]
+        },
+        {
+          "id": "sleep",
+          "title": "Apoyo al sueño",
+          "description": "Se ha utilizado tradicionalmente para favorecer el sueño, con resultados clínicos heterogéneos según el producto y la vía de administración.",
+          "evidenceContext": "La evidencia de aromaterapia para insomnio o calidad del sueño no es concluyente.",
+          "relatedCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "relatedPreparationIds": [
+            "aromatherapy",
+            "standard_oral"
+          ],
+          "sourceIds": [
+            "nih_lavender",
+            "ema_lavender"
+          ]
+        },
+        {
+          "id": "pain",
+          "title": "Actividad analgésica experimental",
+          "description": "Los monoterpenos de lavanda se han estudiado sobre excitabilidad neuronal y señales asociadas con dolor en modelos preclínicos.",
+          "evidenceContext": "El NIH considera incierto el beneficio de aromaterapia para el dolor; no prometer alivio del dolor muscular.",
+          "relatedCompoundIds": [
+            "linalool"
+          ],
+          "relatedPreparationIds": [
+            "topical_diluted",
+            "aromatherapy"
+          ],
+          "sourceIds": [
+            "nih_lavender",
+            "review_phytochem"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Actividad antioxidante experimental",
+          "description": "Compuestos fenólicos presentes en la planta pueden transferir hidrógeno o electrones a determinadas especies radicalarias en ensayos químicos.",
+          "evidenceContext": "No implica que una infusión prevenga el daño oxidativo en personas.",
+          "relatedCompoundIds": [
+            "rosmarinic_acid"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "review_polyphenols"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "La química detrás de la lavanda",
+      "items": [
+        {
+          "id": "linalool",
+          "name": "Linalool",
+          "molecularFormula": "C₁₀H₁₈O",
+          "chemicalClass": "Alcohol monoterpénico terciario",
+          "functionalGroups": [
+            "alcohol –OH",
+            "alquenos C=C"
+          ],
+          "description": "Monoterpeno volátil, componente importante del olor característico. Participa en el perfil químico del aceite; no debe atribuirse a una única molécula toda la acción ansiolítica del preparado completo.",
+          "associatedProperties": [
+            "aroma",
+            "actividad neurológica experimental"
+          ],
+          "distribution": "Aceite esencial obtenido de sumidades floridas.",
+          "pubchemCID": 6549,
+          "structureImage": null,
+          "sourceIds": [
+            "review_phytochem",
+            "pubchem_linalool"
+          ]
+        },
+        {
+          "id": "linalyl_acetate",
+          "name": "Acetato de linalilo",
+          "molecularFormula": "C₁₂H₂₀O₂",
+          "chemicalClass": "Éster monoterpénico",
+          "functionalGroups": [
+            "éster –O–C(=O)–",
+            "alquenos C=C"
+          ],
+          "description": "Éster derivado de linalool y ácido acético. Es volátil y contribuye al aroma floral. Su enlace éster permite explicar hidrólisis química y diferencias de grupos funcionales.",
+          "associatedProperties": [
+            "aroma",
+            "perfil del aceite esencial"
+          ],
+          "distribution": "Aceite esencial de flores y sumidades floridas.",
+          "pubchemCID": 8294,
+          "structureImage": null,
+          "sourceIds": [
+            "review_phytochem",
+            "pubchem_linalyl"
+          ]
+        },
+        {
+          "id": "rosmarinic_acid",
+          "name": "Ácido rosmarínico",
+          "molecularFormula": "C₁₈H₁₆O₈",
+          "chemicalClass": "Ácido fenólico / éster polifenólico",
+          "functionalGroups": [
+            "hidroxilos fenólicos –OH",
+            "ácido carboxílico –COOH",
+            "éster"
+          ],
+          "description": "Sus múltiples grupos fenólicos explican la capacidad de transferir hidrógeno o electrones en pruebas antioxidantes. Es más afín a extractos polares que al aceite esencial.",
+          "associatedProperties": [
+            "actividad antioxidante experimental"
+          ],
+          "distribution": "Tejidos vegetales; extraíble con agua o medios hidroalcohólicos.",
+          "pubchemCID": 5281792,
+          "structureImage": null,
+          "sourceIds": [
+            "review_polyphenols",
+            "pubchem_rosmarinic"
+          ]
+        },
+        {
+          "id": "lavandulyl_acetate",
+          "name": "Acetato de lavandulilo",
+          "molecularFormula": "C₁₂H₂₀O₂",
+          "chemicalClass": "Éster monoterpénico",
+          "functionalGroups": [
+            "éster –O–C(=O)–",
+            "alquenos C=C"
+          ],
+          "description": "Constituyente volátil característico de algunos aceites de lavanda. Tiene la misma fórmula molecular que el acetato de linalilo pero diferente conectividad estructural: isomería constitucional.",
+          "associatedProperties": [
+            "aroma",
+            "isomería química"
+          ],
+          "distribution": "Fracción aromática del aceite esencial.",
+          "pubchemCID": 30247,
+          "structureImage": null,
+          "sourceIds": [
+            "review_phytochem",
+            "pubchem_lavandulyl"
+          ]
+        },
+        {
+          "id": "terpinen4ol",
+          "name": "Terpinen-4-ol",
+          "molecularFormula": "C₁₀H₁₈O",
+          "chemicalClass": "Alcohol monoterpénico",
+          "functionalGroups": [
+            "alcohol –OH",
+            "alqueno C=C"
+          ],
+          "description": "Componente volátil cuya proporción cambia mucho con la variedad y la procedencia. Se ha investigado en mezclas de aceites por actividades biológicas in vitro; no equivale a un beneficio clínico específico.",
+          "associatedProperties": [
+            "perfil aromático",
+            "bioactividad experimental"
+          ],
+          "distribution": "Aceite esencial en cantidades variables.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_phytochem"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "¿Cómo funciona químicamente?",
+      "items": [
+        {
+          "id": "calcium_channels",
+          "title": "Modulación de canales de Ca²⁺ en neuronas",
+          "compoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "explanation": "En experimentos con una preparación estandarizada del aceite de lavanda completo (Silexan), se observó reducción de la corriente a través de diversos canales de calcio dependientes de voltaje (N, P/Q y T) en células neuronales. La inhibición del flujo de calcio puede modificar la liberación de neurotransmisores. No atribuir el efecto a una sola molécula ni equipararlo a GABA-A o pregabalina.",
+          "steps": [
+            {
+              "title": "Aceite de lavanda estandarizado",
+              "detail": "Mezcla de monoterpenos, incluidos linalool y acetato de linalilo."
+            },
+            {
+              "title": "Canales de calcio dependientes de voltaje",
+              "detail": "En modelos neuronales se observó disminución de corrientes de Ca²⁺."
+            },
+            {
+              "title": "Señalización sináptica",
+              "detail": "Menor entrada de Ca²⁺ puede modificar la liberación de neurotransmisores."
+            },
+            {
+              "title": "Actividad ansiolítica propuesta",
+              "detail": "Mecanismo experimental que puede contribuir a resultados observados con ciertas cápsulas."
+            }
+          ],
+          "plainLanguage": "En estudios con aceite de lavanda formulado, se ha observado modulación de canales de calcio en neuronas, que intervienen en la comunicación nerviosa.",
+          "sourceIds": [
+            "study_calcium",
+            "nih_lavender"
+          ]
+        },
+        {
+          "id": "olfaction",
+          "title": "Aroma y percepción olfativa",
+          "compoundIds": [
+            "linalool",
+            "linalyl_acetate",
+            "lavandulyl_acetate"
+          ],
+          "explanation": "Los compuestos volátiles alcanzan receptores olfativos en la nariz; se generan señales nerviosas que procesan olor, memoria y respuesta emocional. No puede deducirse que inhalar aroma reproduzca la acción farmacológica de cápsulas orales.",
+          "steps": [
+            {
+              "title": "Evaporación",
+              "detail": "Las moléculas volátiles pasan de la superficie del aceite al aire."
+            },
+            {
+              "title": "Entrada por la nariz",
+              "detail": "Las moléculas odorantes llegan al epitelio olfativo."
+            },
+            {
+              "title": "Receptores olfativos",
+              "detail": "Los receptores activan señales en neuronas sensoriales."
+            },
+            {
+              "title": "Percepción y contexto",
+              "detail": "El sistema nervioso interpreta el aroma; cualquier cambio de estrés o sueño no está garantizado."
+            }
+          ],
+          "plainLanguage": "La lavanda huele porque pequeñas moléculas volátiles llegan a receptores olfativos. Percibir el aroma no equivale a recibir la dosis de un aceite oral estandarizado.",
+          "sourceIds": [
+            "nih_lavender",
+            "review_phytochem"
+          ]
+        },
+        {
+          "id": "antioxidant_redox",
+          "title": "Antioxidante: transferencia de hidrógeno",
+          "compoundIds": [
+            "rosmarinic_acid"
+          ],
+          "explanation": "En ensayos químicos, grupos fenólicos de compuestos como el ácido rosmarínico pueden transferir hidrógeno a especies radicalarias; el radical fenóxico resultante puede estabilizarse por resonancia. Es un mecanismo químico in vitro, no un efecto demostrado en sangre tras tomar infusión.",
+          "steps": [
+            {
+              "title": "Molécula fenólica",
+              "detail": "El ácido rosmarínico presenta varios grupos –OH fenólicos."
+            },
+            {
+              "title": "Encuentro con radical",
+              "detail": "Un grupo fenólico puede donar hidrógeno o electrón."
+            },
+            {
+              "title": "Producto estabilizado",
+              "detail": "El radical derivado del fenol se deslocaliza por resonancia."
+            },
+            {
+              "title": "Interpretación",
+              "detail": "La actividad de un extracto depende de concentraciones y condiciones experimentales."
+            }
+          ],
+          "plainLanguage": "Los grupos fenólicos pueden participar en reacciones de oxidación-reducción; esto describe química del extracto, no prevención clínica de enfermedades.",
+          "sourceIds": [
+            "review_polyphenols"
+          ],
+          "reaction": {
+            "name": "Modelo general de transferencia de hidrógeno",
+            "latex": "\\mathrm{ArOH + R^\\bullet \\rightarrow ArO^\\bullet + RH}",
+            "reactantsMeaning": {
+              "ArOH": "compuesto fenólico",
+              "R•": "radical"
+            },
+            "productsMeaning": {
+              "ArO•": "radical fenóxico estabilizable",
+              "RH": "producto de transferencia"
+            },
+            "note": "Ejemplo genérico de reacción antioxidante; no es una reacción exclusiva de lavanda."
+          }
+        },
+        {
+          "id": "oxidation_sensitization",
+          "title": "Oxidación de terpenos y sensibilización",
+          "compoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "explanation": "Linalool y acetato de linalilo pueden oxidarse gradualmente en presencia de aire formando, entre otros productos, hidroperóxidos que tienen mayor potencial de provocar alergia de contacto. Es una transformación de almacenamiento, no un beneficio medicinal.",
+          "steps": [
+            {
+              "title": "Aceite expuesto al aire",
+              "detail": "Linalool y acetato de linalilo contienen enlaces susceptibles de autoxidación."
+            },
+            {
+              "title": "Reacción con oxígeno",
+              "detail": "Pueden formarse derivados oxidados como hidroperóxidos."
+            },
+            {
+              "title": "Composición alterada",
+              "detail": "El aceite almacenado ya no es químicamente idéntico al fresco."
+            },
+            {
+              "title": "Precaución cutánea",
+              "detail": "Los productos oxidados pueden aumentar el riesgo de dermatitis por contacto."
+            }
+          ],
+          "plainLanguage": "El aceite de lavanda cambia con el contacto prolongado con el aire; algunos productos de oxidación pueden sensibilizar la piel.",
+          "sourceIds": [
+            "study_oxidation",
+            "nih_lavender"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "title": "Alcohol y éster: linalool ↔ acetato de linalilo",
+        "startingCompoundId": "linalyl_acetate",
+        "endingCompoundId": "linalool",
+        "reactionClass": "hidrólisis de un éster (esquema químico conceptual)",
+        "latex": "\\mathrm{C_{12}H_{20}O_2 + H_2O \\rightarrow C_{10}H_{18}O + CH_3COOH}",
+        "description": "La hidrólisis del acetato de linalilo puede producir linalool y ácido acético bajo condiciones químicas apropiadas. Es una reacción de grupos funcionales, no se debe representar como conversión completa durante destilación, infusión o inhalación.",
+        "educationalValue": "Comparar un alcohol terciario con su éster acetato e identificar el rompimiento del enlace éster por hidrólisis.",
+        "sourceIds": [
+          "pubchem_linalool",
+          "pubchem_linalyl"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "¿Dónde se encuentra y en qué presentación se aprovecha?",
+      "items": [
+        {
+          "id": "dried_flowers",
+          "title": "Flores frescas o secas",
+          "extractionMethod": "Materia vegetal sin extracción selectiva",
+          "description": "Las sumidades floridas contienen glándulas con monoterpenos volátiles y tejidos ricos en compuestos fenólicos. El secado puede cambiar la fracción aromática.",
+          "highlightCompoundIds": [
+            "linalool",
+            "linalyl_acetate",
+            "rosmarinic_acid"
+          ],
+          "warning": "Flores enteras no equivalen a aceite esencial, ni se deben inferir dosis terapéuticas.",
+          "extractionExperience": {
+            "heading": "Flores frescas o secas",
+            "processTitle": "Distribución en las flores",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Sumidades floridas",
+                "detail": "Glándulas especializadas contienen la fracción de aceite aromático."
+              },
+              {
+                "index": 2,
+                "title": "Cosecha y secado",
+                "detail": "Se pierde agua y puede cambiar la proporción de volátiles."
+              },
+              {
+                "index": 3,
+                "title": "Material final",
+                "detail": "Permanece una matriz vegetal que contiene compuestos volátiles y no volátiles."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Anatomía de glándulas",
+              "Evaporación",
+              "Deshidratación"
+            ],
+            "focusCompoundIds": [
+              "linalool",
+              "linalyl_acetate",
+              "rosmarinic_acid"
+            ],
+            "visualType": "flower_glands",
+            "comparisonNote": "No es una extracción: secar modifica contenido de agua y puede cambiar componentes volátiles.",
+            "isExtraction": false,
+            "sourceIds": [
+              "review_phytochem",
+              "review_extraction"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión de flores",
+          "extractionMethod": "Extracción acuosa",
+          "description": "El agua caliente extrae preferentemente sustancias polares y parte de los compuestos volátiles, que también pueden escapar al aire. No equivale a la composición del aceite esencial ni a la dosis de cápsulas estudiadas.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "linalool"
+          ],
+          "warning": "No prometer los mismos efectos ansiolíticos clínicos de formulaciones de aceite oral.",
+          "extractionExperience": {
+            "heading": "Infusión de flores",
+            "processTitle": "Difusión hacia el agua",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Contacto con agua caliente",
+                "detail": "Las flores liberan componentes desde la matriz vegetal."
+              },
+              {
+                "index": 2,
+                "title": "Disolución y difusión",
+                "detail": "Compuestos fenólicos relativamente polares pasan al líquido."
+              },
+              {
+                "index": 3,
+                "title": "Pérdida parcial de volátiles",
+                "detail": "Parte de los componentes aromáticos puede evaporarse durante la preparación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad del disolvente",
+              "Puentes de hidrógeno",
+              "Difusión",
+              "Volatilidad"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "linalool"
+            ],
+            "visualType": "hot_water_diffusion",
+            "comparisonNote": "Infusión rica en componentes solubles en agua; no reproduce el perfil ni concentración del aceite destilado.",
+            "isExtraction": true,
+            "sourceIds": [
+              "review_polyphenols",
+              "review_phytochem",
+              "nih_lavender"
+            ]
+          }
+        },
+        {
+          "id": "steam_oil",
+          "title": "Aceite esencial destilado",
+          "extractionMethod": "Destilación por arrastre de vapor",
+          "description": "Las sumidades floridas producen un aceite rico en componentes volátiles como linalool y acetato de linalilo. El destilado es químicamente diferente al extracto acuoso de flores.",
+          "highlightCompoundIds": [
+            "linalool",
+            "linalyl_acetate",
+            "lavandulyl_acetate",
+            "terpinen4ol"
+          ],
+          "warning": "Aceite esencial concentrado: no ingerir ni aplicar puro sin instrucciones de producto/formulación.",
+          "extractionExperience": {
+            "heading": "Aceite esencial destilado",
+            "processTitle": "Arrastre de volátiles",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Contacto con vapor",
+                "detail": "El vapor facilita el transporte de compuestos aromáticos."
+              },
+              {
+                "index": 2,
+                "title": "Condensación",
+                "detail": "Los vapores se enfrían para formar un destilado."
+              },
+              {
+                "index": 3,
+                "title": "Separación de fases",
+                "detail": "Se recolecta el aceite esencial de la fracción acuosa según sus propiedades."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Condensación",
+              "Inmiscibilidad parcial",
+              "Separación de fases"
+            ],
+            "focusCompoundIds": [
+              "linalool",
+              "linalyl_acetate",
+              "lavandulyl_acetate",
+              "terpinen4ol"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "Concentra monoterpenos volátiles y no los compuestos fenólicos no volátiles presentes en la infusión.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_lavender",
+              "review_extraction",
+              "review_phytochem"
+            ]
+          }
+        },
+        {
+          "id": "aromatherapy",
+          "title": "Aromaterapia (inhalación)",
+          "extractionMethod": "Exposición a compuestos volátiles, no extracción vegetal",
+          "description": "Moléculas volátiles del aceite esencial llegan al aire y son detectadas por receptores olfativos. No permite extrapolar la dosificación ni eficacia de una cápsula oral.",
+          "highlightCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "warning": "Evitar difusión excesiva y exposición irritante; la aromaterapia puede ocasionar dolor de cabeza o tos.",
+          "extractionExperience": {
+            "heading": "Aromaterapia (inhalación)",
+            "processTitle": "Volatilización y olfato",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Fuente aromática",
+                "detail": "Una preparación libera una fracción de compuestos volátiles al aire."
+              },
+              {
+                "index": 2,
+                "title": "Dispersión",
+                "detail": "Las moléculas se transportan por el aire en concentración variable."
+              },
+              {
+                "index": 3,
+                "title": "Detección olfativa",
+                "detail": "Los receptores nasales generan señales que interpretamos como aroma."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Presión de vapor",
+              "Difusión en gases",
+              "Interacción ligando-receptor olfativo"
+            ],
+            "focusCompoundIds": [
+              "linalool",
+              "linalyl_acetate"
+            ],
+            "visualType": "olfactory_pathway",
+            "comparisonNote": "No extrae compuestos desde la planta ni equivale a administración oral; la dosis inhalada es variable.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_lavender",
+              "review_phytochem"
+            ]
+          }
+        },
+        {
+          "id": "topical_diluted",
+          "title": "Preparación tópica formulada",
+          "extractionMethod": "Dilución en vehículo dérmico, no extracción vegetal",
+          "description": "El aceite esencial se incorpora a un vehículo apropiado. La formulación altera la concentración y el contacto cutáneo; pueden existir alergias a aceites oxidados.",
+          "highlightCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "warning": "La lavanda puede causar dermatitis; no aplicar aceites concentrados directamente sobre la piel.",
+          "extractionExperience": {
+            "heading": "Preparación tópica formulada",
+            "processTitle": "Formulación cutánea",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Aceite esencial",
+                "detail": "Fracción volátil concentrada."
+              },
+              {
+                "index": 2,
+                "title": "Vehículo tópico",
+                "detail": "Se mezcla con una base apta para piel en un producto formulado."
+              },
+              {
+                "index": 3,
+                "title": "Aplicación",
+                "detail": "La exposición dérmica depende de concentración, estabilidad y superficie."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Dilución",
+              "Partición en fases lipídicas",
+              "Estabilidad oxidativa"
+            ],
+            "focusCompoundIds": [
+              "linalool",
+              "linalyl_acetate"
+            ],
+            "visualType": "topical_mixing",
+            "comparisonNote": "Un masaje no prueba por sí solo efecto farmacológico específico; influye el masaje y la formulación.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_lavender",
+              "study_oxidation"
+            ]
+          }
+        },
+        {
+          "id": "standard_oral",
+          "title": "Cápsulas orales estandarizadas",
+          "extractionMethod": "Formulación farmacéutica de aceite esencial estandarizado",
+          "description": "Ciertos ensayos clínicos evaluaron preparados orales de aceite de lavanda con composición y dosis controladas, como Silexan. No son equivalentes a infusión ni a aceite esencial doméstico.",
+          "highlightCompoundIds": [
+            "linalool",
+            "linalyl_acetate"
+          ],
+          "warning": "No ingerir aceite esencial sin formulación oral autorizada o indicación profesional; potenciales efectos adversos e interacciones.",
+          "extractionExperience": {
+            "heading": "Cápsulas orales estandarizadas",
+            "processTitle": "Formulación y administración",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Aceite caracterizado",
+                "detail": "El preparado utiliza aceite de composición controlada."
+              },
+              {
+                "index": 2,
+                "title": "Encapsulación",
+                "detail": "La formulación facilita administrar una cantidad conocida."
+              },
+              {
+                "index": 3,
+                "title": "Exposición sistémica",
+                "detail": "La liberación y absorción difieren de inhalación o té."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Estandarización",
+              "Formulación",
+              "Biodisponibilidad"
+            ],
+            "focusCompoundIds": [
+              "linalool",
+              "linalyl_acetate"
+            ],
+            "visualType": "oral_capsule",
+            "comparisonNote": "La evidencia sobre ansiedad evaluó formulaciones específicas, no aceite comprado para aromaterapia.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_lavender",
+              "nih_anxiety",
+              "study_calcium"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción con agua y etanol",
+          "description": "Una mezcla de agua y etanol permite extraer diversos compuestos fenólicos y otras sustancias según la proporción del disolvente, con perfil distinto al aceite destilado.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid"
+          ],
+          "warning": "No atribuir propiedades clínicas a un extracto no estandarizado sin ensayos de esa formulación.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Extracción por polaridad",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Material vegetal",
+                "detail": "Las flores trituradas exponen distintas familias químicas."
+              },
+              {
+                "index": 2,
+                "title": "Contacto con mezcla de disolventes",
+                "detail": "Agua y etanol disuelven sustancias de polaridades diferentes."
+              },
+              {
+                "index": 3,
+                "title": "Separación de sólidos",
+                "detail": "Se filtra la matriz vegetal, conservando la fracción disuelta."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad",
+              "Solubilidad diferencial",
+              "Difusión",
+              "Filtración"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "La mezcla hidroalcohólica no equivale al aceite esencial obtenido con vapor.",
+            "isExtraction": true,
+            "sourceIds": [
+              "review_polyphenols",
+              "review_phytochem"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Contenido educativo. NIH: las formulaciones orales de aceite de lavanda pueden producir náuseas, diarrea, cefalea o eructos y podrían interactuar con sedantes; no tomar aceites esenciales destinados a aromaterapia. El aceite tópico puede causar alergia, especialmente si está oxidado. La inhalación puede causar tos o dolor de cabeza. Seguridad en embarazo/lactancia insuficientemente conocida. Seguir indicaciones del producto y consultar a profesionales ante síntomas persistentes.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "anxiety",
+        "compoundIds": [
+          "linalool",
+          "linalyl_acetate"
+        ],
+        "mechanismIds": [
+          "calcium_channels"
+        ],
+        "preparationIds": [
+          "standard_oral"
+        ],
+        "note": "Mecanismo experimental del aceite total; ensayos clínicos con formulación oral estandarizada."
+      },
+      {
+        "propertyId": "stress",
+        "compoundIds": [
+          "linalool",
+          "linalyl_acetate"
+        ],
+        "mechanismIds": [
+          "olfaction",
+          "calcium_channels"
+        ],
+        "preparationIds": [
+          "aromatherapy",
+          "standard_oral"
+        ],
+        "note": "El efecto de aroma no se debe equiparar con el aceite oral; uso tradicional en EMA."
+      },
+      {
+        "propertyId": "sleep",
+        "compoundIds": [
+          "linalool",
+          "linalyl_acetate"
+        ],
+        "mechanismIds": [
+          "olfaction"
+        ],
+        "preparationIds": [
+          "aromatherapy"
+        ],
+        "note": "Eficacia clínica de aromaterapia para sueño incierta."
+      },
+      {
+        "propertyId": "pain",
+        "compoundIds": [
+          "linalool"
+        ],
+        "mechanismIds": [
+          "olfaction"
+        ],
+        "preparationIds": [
+          "topical_diluted"
+        ],
+        "note": "No afirmar alivio clínico analgésico; evidencia heterogénea."
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "rosmarinic_acid"
+        ],
+        "mechanismIds": [
+          "antioxidant_redox"
+        ],
+        "preparationIds": [
+          "infusion",
+          "hydroalcoholic"
+        ],
+        "note": "Actividad química experimental, no beneficio clínico establecido."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_lavender",
+      "organization": "NIH/NCCIH",
+      "title": "Lavender: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/lavender",
+      "note": "Beneficios y límites de productos orales, aromaterapia, sueño y seguridad."
+    },
+    {
+      "id": "nih_anxiety",
+      "organization": "NIH/NCCIH",
+      "title": "Anxiety and Complementary Health Approaches",
+      "url": "https://www.nccih.nih.gov/health/anxiety-and-complementary-health-approaches",
+      "note": "Evidencia de formulaciones orales y heterogeneidad en aromaterapia."
+    },
+    {
+      "id": "ema_lavender",
+      "organization": "European Medicines Agency",
+      "title": "Lavandulae aetheroleum",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/lavandulae-aetheroleum",
+      "note": "Uso tradicional reconocido para estrés mental leve y ayuda al sueño, preparaciones específicas."
+    },
+    {
+      "id": "review_phytochem",
+      "organization": "PubMed Central",
+      "title": "A review of the bioactive components and pharmacological properties of Lavandula species",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079719/",
+      "note": "Composición variable de aceites y compuestos activos."
+    },
+    {
+      "id": "review_polyphenols",
+      "organization": "PubMed Central",
+      "title": "Phytochemical Profiling, Antioxidant and Anti-Inflammatory Activity of Plants Belonging to the Lavandula Genus",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9821988/",
+      "note": "Polifenoles y mecanismos antioxidantes experimentales."
+    },
+    {
+      "id": "study_calcium",
+      "organization": "PubMed / PLOS ONE",
+      "title": "Lavender oil-potent anxiolytic properties via modulating voltage dependent calcium channels",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3639265/",
+      "note": "Modulación experimental de canales de calcio por aceite oral estandarizado; no atribuir resultado a cada monoterpeno individual."
+    },
+    {
+      "id": "review_extraction",
+      "organization": "PubMed Central",
+      "title": "Towards a Greener Future: Sustainable Innovations in the Extraction of Lavender Essential Oil",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11720256/",
+      "note": "Destilación, volatilidad y variación química por extracción."
+    },
+    {
+      "id": "study_oxidation",
+      "organization": "PubMed",
+      "title": "Patch Testing with Main Sensitizers Does Not Detect All Cases of Contact Allergy to Oxidized Lavender Oil",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26671837/",
+      "note": "Oxidación de terpenos al aire y sensibilización cutánea."
+    },
+    {
+      "id": "pubchem_linalool",
+      "organization": "NIH PubChem",
+      "title": "Linalool CID 6549",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/6549",
+      "note": "Fórmula y grupo alcohol monoterpénico."
+    },
+    {
+      "id": "pubchem_linalyl",
+      "organization": "NIH PubChem",
+      "title": "Linalyl acetate CID 8294",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/8294",
+      "note": "Fórmula y grupo éster del acetato de linalilo."
+    },
+    {
+      "id": "pubchem_lavandulyl",
+      "organization": "NIH PubChem",
+      "title": "Lavandulyl acetate CID 30247",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/30247",
+      "note": "Estructura y grupo éster monoterpénico."
+    },
+    {
+      "id": "pubchem_rosmarinic",
+      "organization": "NIH PubChem",
+      "title": "Rosmarinic acid",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Rosmarinic-Acid",
+      "note": "Estructura y funcionalidad fenólica."
+    }
+  ]
+}
