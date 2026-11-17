@@ -1,0 +1,1010 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar únicamente Cúrcuma a Nikte, conservando las cuatro secciones e interactividad y los modelos ya usados para Romero, Eucalipto y Lavanda.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar modelos Codable y componentes SwiftUI para composición, propiedades, mecanismos, featuredChemistry y section4.items[*].extractionExperience.",
+    "scientificIntegrity": "Mantener diferencia entre usos tradicionales EMA, estudios clínicos exploratorios NIH y mecanismos in vitro. No mostrar curcumina como hepatoprotector.",
+    "extractionUI": "Cada presentación contiene tres pasos, principios químicos, IDs de compuestos, visualType, comparación e isExtraction. Tipos visuales nuevos solo si la arquitectura ya soporta su representación; usar fallback genérico de pasos si no.",
+    "safetyUI": "Mostrar precauciones de suplementos en las preparaciones relacionadas, sin una quinta sección de estudios.",
+    "structureNote": "Usar PubChem CID para 2D de curcumina y otros compuestos. turmerones representa mezcla sin fórmula fija."
+  },
+  "plant": {
+    "id": "turmeric",
+    "commonName": "Cúrcuma",
+    "scientificName": "Curcuma longa L.",
+    "searchAlias": [
+      "turmeric",
+      "Curcuma domestica Valeton",
+      "cúrcuma"
+    ],
+    "family": "Zingiberaceae",
+    "usedParts": [
+      "Rizoma fresco",
+      "Rizoma seco y pulverizado"
+    ],
+    "summary": "El rizoma de cúrcuma contiene curcuminoides no volátiles —como curcumina— y una fracción volátil con turmeronas. Sus efectos dependen de la preparación y de la absorción; las formulaciones concentradas no son equivalentes al condimento culinario.",
+    "section1": {
+      "id": "properties",
+      "title": "01 · Propiedades",
+      "items": [
+        {
+          "id": "digestive",
+          "title": "Digestiva (uso tradicional)",
+          "description": "La EMA reconoce preparados específicos del rizoma para aliviar molestias digestivas leves, como sensación de llenura, digestión lenta y flatulencia.",
+          "evidenceContext": "Uso tradicional reconocido; no constituye demostración clínica firme de eficacia para cualquier trastorno gastrointestinal.",
+          "relatedCompoundIds": [
+            "curcumin"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "powder",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "ema_turmeric"
+          ]
+        },
+        {
+          "id": "joint",
+          "title": "Molestias articulares (investigación clínica)",
+          "description": "Se han estudiado formulaciones orales de cúrcuma o curcumina para dolor y rigidez de rodilla por osteoartritis; hay resultados iniciales prometedores.",
+          "evidenceContext": "El NIH considera que la evidencia aún no permite conclusiones definitivas y la composición/formulación difiere entre estudios.",
+          "relatedCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin"
+          ],
+          "relatedPreparationIds": [
+            "standardized_capsules",
+            "enhanced_capsules"
+          ],
+          "sourceIds": [
+            "nih_turmeric"
+          ]
+        },
+        {
+          "id": "inflammatory",
+          "title": "Actividad antiinflamatoria experimental",
+          "description": "Curcuminoides pueden modificar rutas como NF-κB y la expresión de mediadores inflamatorios en sistemas experimentales.",
+          "evidenceContext": "Mecanismo observado principalmente en laboratorio; no asumir que se reproduce tras ingerir una cantidad culinaria.",
+          "relatedCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "relatedPreparationIds": [
+            "hydroalcoholic",
+            "standardized_capsules"
+          ],
+          "sourceIds": [
+            "chem_review",
+            "medchem_review"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Actividad antioxidante experimental",
+          "description": "Sus estructuras fenólicas pueden participar en transferencia de hidrógeno o electrones a determinados radicales en ensayos químicos.",
+          "evidenceContext": "Neutralización química in vitro no demuestra que se prevenga enfermedad o estrés oxidativo clínicamente.",
+          "relatedCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "relatedPreparationIds": [
+            "powder",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "chem_review",
+            "medchem_review"
+          ]
+        },
+        {
+          "id": "hepatic_caution",
+          "title": "Seguridad hepática (precaución importante)",
+          "description": "La cúrcuma no debe presentarse como hepatoprotector demostrado. Se han notificado casos de lesión hepática vinculados a suplementos de cúrcuma/curcumina, sobre todo ciertas formulaciones de mayor biodisponibilidad.",
+          "evidenceContext": "Advertencia basada en información oficial NIH/NCCIH y LiverTox; no es una propiedad medicinal.",
+          "relatedCompoundIds": [
+            "curcumin"
+          ],
+          "relatedPreparationIds": [
+            "enhanced_capsules",
+            "standardized_capsules"
+          ],
+          "sourceIds": [
+            "nih_turmeric",
+            "nih_livertox"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "02 · Composición química",
+      "items": [
+        {
+          "id": "curcumin",
+          "name": "Curcumina",
+          "molecularFormula": "C₂₁H₂₀O₆",
+          "chemicalClass": "Curcuminoide polifenólico (diarilheptanoide)",
+          "functionalGroups": [
+            "grupos fenol –OH",
+            "grupos metoxi –OCH₃",
+            "sistema conjugado",
+            "β-dicarbonilo / tautomería ceto-enol"
+          ],
+          "description": "Pigmento amarillo-anaranjado con baja solubilidad en agua. Sus grupos fenólicos pueden participar en procesos redox; posee tautómeros ceto-enol y puede degradarse dependiendo del pH y del medio.",
+          "associatedProperties": [
+            "antiinflamatoria experimental",
+            "antioxidante experimental"
+          ],
+          "distribution": "Rizoma y extractos de curcuminoides; no es componente característico del aceite esencial obtenido por destilación.",
+          "pubchemCID": 969516,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_curcumin",
+            "medchem_review"
+          ]
+        },
+        {
+          "id": "demethoxycurcumin",
+          "name": "Demetoxicurcumina",
+          "molecularFormula": "C₂₀H₁₈O₅",
+          "chemicalClass": "Curcuminoide polifenólico",
+          "functionalGroups": [
+            "grupos fenol",
+            "un grupo metoxi",
+            "β-dicarbonilo conjugado"
+          ],
+          "description": "Análogo de curcumina al que le falta un grupo metoxi; su estructura cambia su comportamiento químico y perfil de propiedades.",
+          "associatedProperties": [
+            "actividad antioxidante experimental",
+            "actividad antiinflamatoria experimental"
+          ],
+          "distribution": "Fracción no volátil de curcuminoides del rizoma; extractos de solventes adecuados.",
+          "pubchemCID": 5469424,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_dmc",
+            "phytochem_review"
+          ]
+        },
+        {
+          "id": "bisdemethoxycurcumin",
+          "name": "Bisdemetoxicurcumina",
+          "molecularFormula": "C₁₉H₁₆O₄",
+          "chemicalClass": "Curcuminoide polifenólico",
+          "functionalGroups": [
+            "grupos fenol",
+            "β-dicarbonilo",
+            "sistema de dobles enlaces conjugados"
+          ],
+          "description": "Análogo sin los dos grupos metoxi de la curcumina; comparte un sistema conjugado y grupos fenólicos.",
+          "associatedProperties": [
+            "actividad antioxidante experimental",
+            "actividad antiinflamatoria experimental"
+          ],
+          "distribution": "Fracción no volátil; extracción con mezclas orgánicas apropiadas.",
+          "pubchemCID": 5315472,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_bdmc",
+            "phytochem_review"
+          ]
+        },
+        {
+          "id": "ar_turmerone",
+          "name": "ar-Turmerona",
+          "molecularFormula": "C₁₅H₂₀O",
+          "chemicalClass": "Sesquiterpenoide cetónico",
+          "functionalGroups": [
+            "grupo cetona C=O",
+            "doble enlace C=C",
+            "anillo aromático"
+          ],
+          "description": "Componente volátil del aceite de cúrcuma que contribuye a su perfil aromático; sus posibles efectos biológicos siguen investigándose.",
+          "associatedProperties": [
+            "actividad biológica experimental"
+          ],
+          "distribution": "Fracción aromática volátil del rizoma; aceite esencial de destilación.",
+          "pubchemCID": 160512,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_turmerone",
+            "phytochem_review"
+          ]
+        },
+        {
+          "id": "turmerones",
+          "name": "Turmeronas (mezcla)",
+          "molecularFormula": "No aplica (mezcla)",
+          "chemicalClass": "Familia de sesquiterpenos del aceite esencial",
+          "functionalGroups": [
+            "cetonas terpénicas",
+            "dobles enlaces C=C"
+          ],
+          "description": "Etiqueta para una mezcla de turmeronas y otros volátiles, NO una molécula única con estructura molecular fija.",
+          "associatedProperties": [
+            "fracción aromática"
+          ],
+          "distribution": "Aceite esencial; no equivalente al extracto de curcuminoides.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "phytochem_review"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "03 · Reacciones y mecanismos",
+      "items": [
+        {
+          "id": "nfkb",
+          "title": "Modulación de la inflamación: vía NF-κB",
+          "compoundIds": [
+            "curcumin",
+            "demethoxycurcumin"
+          ],
+          "explanation": "En modelos experimentales, curcuminoides pueden alterar la señalización NF-κB y la expresión de algunos mediadores inflamatorios. Esto no demuestra inhibición directa específica en humanos ni garantiza efectos tras una infusión.",
+          "steps": [
+            {
+              "title": "Señal inflamatoria",
+              "detail": "Ciertos estímulos activan rutas de señalización."
+            },
+            {
+              "title": "NF-κB",
+              "detail": "Se regulan genes vinculados a citocinas y enzimas inflamatorias."
+            },
+            {
+              "title": "Exposición experimental a curcuminoides",
+              "detail": "Se han observado cambios en la actividad de la ruta bajo condiciones controladas."
+            },
+            {
+              "title": "Respuesta celular",
+              "detail": "Pueden modificarse mediadores inflamatorios según modelo, concentración y tiempo."
+            }
+          ],
+          "plainLanguage": "La curcumina se estudia por cómo modifica señales celulares relacionadas con la inflamación; aún no se puede equiparar ese mecanismo a beber té de cúrcuma.",
+          "sourceIds": [
+            "chem_review",
+            "medchem_review"
+          ]
+        },
+        {
+          "id": "redox",
+          "title": "Reacción antioxidante de grupos fenólicos",
+          "compoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "explanation": "Reacción conceptual de transferencia de hidrógeno: ArOH + R• → ArO• + RH. Los radicales derivados pueden estabilizarse por resonancia; la eficacia real depende del medio, reactividad y biodisponibilidad.",
+          "steps": [
+            {
+              "title": "Fenol ArOH",
+              "detail": "Los curcuminoides tienen grupos fenólicos."
+            },
+            {
+              "title": "Radical libre R•",
+              "detail": "Especie con electrón desapareado."
+            },
+            {
+              "title": "Transferencia",
+              "detail": "Bajo determinadas condiciones un H puede transferirse al radical."
+            },
+            {
+              "title": "Estabilización",
+              "detail": "El radical fenóxico producido puede distribuir su electrón mediante resonancia."
+            }
+          ],
+          "plainLanguage": "La estructura de sus fenoles permite reacciones redox medidas en laboratorio, pero esto no equivale a protección clínica demostrada.",
+          "sourceIds": [
+            "chem_review",
+            "medchem_review"
+          ]
+        },
+        {
+          "id": "keto_enol",
+          "title": "Tautomería ceto-enol de la curcumina",
+          "compoundIds": [
+            "curcumin"
+          ],
+          "explanation": "El fragmento β-dicarbonilo permite interconvertir formas ceto y enol mediante movimiento de un protón y reorganización de dobles enlaces. La proporción depende del solvente y condiciones; no afirmar que una forma predomina universalmente. No es la transformación de curcumina en otra sustancia distinta.",
+          "steps": [
+            {
+              "title": "Forma ceto",
+              "detail": "Representación de la región β-dicarbonilo."
+            },
+            {
+              "title": "Transferencia protónica",
+              "detail": "Un protón cambia de posición en el sistema."
+            },
+            {
+              "title": "Redistribución de dobles enlaces",
+              "detail": "Se obtiene la forma enólica."
+            },
+            {
+              "title": "Equilibrio",
+              "detail": "El medio y el pH influyen; curcumina también puede degradarse en ciertas condiciones."
+            }
+          ],
+          "plainLanguage": "Una misma molécula puede adoptar dos formas interconvertibles que cambian la distribución de enlaces sin alterar su fórmula molecular.",
+          "sourceIds": [
+            "medchem_review",
+            "chem_review"
+          ]
+        },
+        {
+          "id": "bioavailability",
+          "title": "Baja solubilidad y biodisponibilidad",
+          "compoundIds": [
+            "curcumin"
+          ],
+          "explanation": "La curcumina es poco soluble en agua y experimenta metabolismo rápido; la cantidad absorbida y su destino dependen de la formulación. La adición de grasas puede cambiar su dispersión, sin demostrar una dosis terapéutica.",
+          "steps": [
+            {
+              "title": "Agua",
+              "detail": "Una gran fracción de curcumina no se disuelve completamente."
+            },
+            {
+              "title": "Preparación",
+              "detail": "Solventes, grasas y sistemas de formulación cambian dispersión o entrega."
+            },
+            {
+              "title": "Absorción y metabolismo",
+              "detail": "La exposición sistémica depende de absorción y transformación metabólica."
+            },
+            {
+              "title": "Precaución",
+              "detail": "Aumentar exposición con suplementos no garantiza mayor beneficio y puede elevar riesgos."
+            }
+          ],
+          "plainLanguage": "Que algo esté presente en un alimento no significa que llegue a sangre en la misma concentración que en el laboratorio.",
+          "sourceIds": [
+            "nih_turmeric",
+            "medchem_review",
+            "nih_livertox"
+          ]
+        },
+        {
+          "id": "oil_difference",
+          "title": "Diferencia entre curcuminoides y aceite esencial",
+          "compoundIds": [
+            "curcumin",
+            "ar_turmerone",
+            "turmerones"
+          ],
+          "explanation": "La destilación a vapor separa principalmente sustancias volátiles; los curcuminoides no se volatilizan de la misma manera. El aceite esencial y el extracto rico en curcumina contienen familias químicas diferentes.",
+          "steps": [
+            {
+              "title": "Rizoma",
+              "detail": "Contiene compuestos volátiles y no volátiles."
+            },
+            {
+              "title": "Calentamiento con agua/vapor",
+              "detail": "El vapor transporta componentes suficientemente volátiles."
+            },
+            {
+              "title": "Condensación y separación",
+              "detail": "Se recoge una fracción aromática de turmeronas."
+            },
+            {
+              "title": "Residuo/otra extracción",
+              "detail": "La curcumina no se convierte en aceite esencial y suele permanecer fuera de esa fracción."
+            }
+          ],
+          "plainLanguage": "El aceite de cúrcuma y las cápsulas de curcumina no son químicamente equivalentes.",
+          "sourceIds": [
+            "phytochem_review",
+            "extraction_review"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "id": "curcumin_keto_enol",
+        "title": "Una molécula, dos formas: tautomería ceto-enol",
+        "reactionType": "tautomerización ceto-enol reversible (equilibrio químico)",
+        "reactants": [
+          "Curcumina, forma ceto"
+        ],
+        "products": [
+          "Curcumina, forma enol"
+        ],
+        "equation": "Curcumina (ceto) ⇌ Curcumina (enol)",
+        "description": "Se transfieren protones y se redistribuyen enlaces dentro del sistema β-dicarbonilo; no se crean ni destruyen átomos ni cambia la fórmula molecular C₂₁H₂₀O₆. La proporción observada depende de medio y método de medida; también debe considerarse la degradación de curcumina.",
+        "interactiveSteps": [
+          {
+            "index": 1,
+            "title": "Reconoce los grupos",
+            "detail": "Selecciona los dos carbonilos y el carbono entre ellos en la estructura."
+          },
+          {
+            "index": 2,
+            "title": "Traslado del protón",
+            "detail": "Representa la transferencia formal de H y el cambio de enlaces π."
+          },
+          {
+            "index": 3,
+            "title": "Forma enólica",
+            "detail": "Muestra OH enólico y el nuevo doble enlace."
+          },
+          {
+            "index": 4,
+            "title": "Comparación",
+            "detail": "Destaca misma fórmula y distinto patrón de enlaces; el medio influye en el equilibrio."
+          }
+        ],
+        "compoundIds": [
+          "curcumin"
+        ],
+        "sourceIds": [
+          "medchem_review",
+          "chem_review"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "04 · Extracciones",
+      "items": [
+        {
+          "id": "fresh_rhizome",
+          "title": "Rizoma fresco",
+          "extractionMethod": "Materia prima y corte (sin extracción selectiva)",
+          "description": "El tejido fresco aporta curcuminoides y una fracción aromática; al trocearlo se expone más superficie de contacto.",
+          "highlightCompoundIds": [
+            "curcumin",
+            "ar_turmerone"
+          ],
+          "warning": "El rizoma fresco no es una dosis estandarizada ni equivale a un extracto.",
+          "extractionExperience": {
+            "heading": "Rizoma fresco",
+            "processTitle": "Exploración del rizoma",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Rizoma intacto",
+                "detail": "El tejido contiene pigmentos no volátiles y componentes aromáticos."
+              },
+              {
+                "index": 2,
+                "title": "Corte o rallado",
+                "detail": "La ruptura física expone una mayor superficie."
+              },
+              {
+                "index": 3,
+                "title": "Material preparado",
+                "detail": "Los compuestos siguen en una matriz alimentaria variable."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Matriz vegetal",
+              "Área superficial",
+              "Difusión"
+            ],
+            "focusCompoundIds": [
+              "curcumin",
+              "ar_turmerone"
+            ],
+            "visualType": "rhizome_cut",
+            "comparisonNote": "Cortar no crea curcumina ni la extrae selectivamente.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_turmeric",
+              "phytochem_review"
+            ]
+          }
+        },
+        {
+          "id": "powder",
+          "title": "Rizoma seco y molido",
+          "extractionMethod": "Secado y molienda (sin extracción selectiva)",
+          "description": "El agua del rizoma disminuye durante el secado y la molienda fragmenta el tejido. El polvo sigue siendo una mezcla vegetal, no curcumina purificada.",
+          "highlightCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "warning": "El calentamiento excesivo y almacenamiento pueden alterar algunos componentes; no asumir concentración fija.",
+          "extractionExperience": {
+            "heading": "Rizoma seco y molido",
+            "processTitle": "Del rizoma al polvo",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Secado",
+                "detail": "Se reduce el agua del tejido."
+              },
+              {
+                "index": 2,
+                "title": "Molienda",
+                "detail": "Aumenta la superficie específica del material."
+              },
+              {
+                "index": 3,
+                "title": "Polvo",
+                "detail": "Se obtiene material vegetal con curcuminoides y otros constituyentes."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Evaporación de agua",
+              "Molienda",
+              "Área superficial"
+            ],
+            "focusCompoundIds": [
+              "curcumin",
+              "demethoxycurcumin",
+              "bisdemethoxycurcumin"
+            ],
+            "visualType": "dry_grind",
+            "comparisonNote": "Polvo integral no equivale a extracto estandarizado.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_turmeric",
+              "phytochem_review"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión acuosa",
+          "extractionMethod": "Extracción con agua caliente",
+          "description": "El agua favorece la extracción de componentes hidrosolubles; la curcumina tiene muy baja solubilidad acuosa, por lo que su extracción disuelta es limitada. Puede haber partículas suspendidas.",
+          "highlightCompoundIds": [
+            "curcumin"
+          ],
+          "warning": "No afirmar que contiene la misma cantidad de curcumina que los extractos concentrados.",
+          "extractionExperience": {
+            "heading": "Infusión acuosa",
+            "processTitle": "Qué se disuelve en el agua",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Contacto con agua caliente",
+                "detail": "El solvente penetra en el tejido vegetal."
+              },
+              {
+                "index": 2,
+                "title": "Difusión selectiva",
+                "detail": "Los compuestos polares pasan mejor al agua; poca curcumina queda realmente disuelta."
+              },
+              {
+                "index": 3,
+                "title": "Infusión",
+                "detail": "Contiene mezcla acuosa y, según filtrado, material en suspensión."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad",
+              "Solubilidad limitada",
+              "Difusión"
+            ],
+            "focusCompoundIds": [
+              "curcumin"
+            ],
+            "visualType": "aqueous_extraction",
+            "comparisonNote": "Color amarillo no demuestra cuánta curcumina se disolvió.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_turmeric",
+              "medchem_review"
+            ]
+          }
+        },
+        {
+          "id": "cooking_fat",
+          "title": "Preparación culinaria con grasa",
+          "extractionMethod": "Mezcla y dispersión en medio alimentario (no extracción purificada)",
+          "description": "La curcumina lipofílica puede dispersarse en una matriz alimentaria con grasa mejor que en agua sola; esto no garantiza absorción ni beneficio clínico.",
+          "highlightCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin"
+          ],
+          "warning": "No afirmar que grasa + cúrcuma asegura dosis terapéutica.",
+          "extractionExperience": {
+            "heading": "Preparación culinaria con grasa",
+            "processTitle": "La matriz alimentaria cambia",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Condimento",
+                "detail": "Se incorpora polvo o rizoma a una comida."
+              },
+              {
+                "index": 2,
+                "title": "Contacto con lípidos",
+                "detail": "Parte de los curcuminoides se distribuye en la fase grasa."
+              },
+              {
+                "index": 3,
+                "title": "Consumo alimentario",
+                "detail": "La disponibilidad real sigue dependiendo de digestión y metabolismo."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Lipofilia",
+              "Dispersión",
+              "Matriz alimentaria"
+            ],
+            "focusCompoundIds": [
+              "curcumin",
+              "demethoxycurcumin"
+            ],
+            "visualType": "lipid_dispersion",
+            "comparisonNote": "Mezclar con grasa no equivale a cápsula de absorción mejorada.",
+            "isExtraction": false,
+            "sourceIds": [
+              "medchem_review",
+              "nih_turmeric"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción por agua y etanol",
+          "description": "Las mezclas de agua y etanol pueden recuperar curcuminoides mejor que el agua sola; el perfil depende del porcentaje de solvente y del proceso.",
+          "highlightCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "warning": "Extracción de laboratorio/fabricación: no proporciona instrucciones para preparar o ingerir disolventes en casa.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Separación de curcuminoides",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Fragmentación del rizoma",
+                "detail": "Se expone la matriz vegetal."
+              },
+              {
+                "index": 2,
+                "title": "Contacto con solvente",
+                "detail": "El etanol acuoso disuelve mejor varios curcuminoides que el agua sola."
+              },
+              {
+                "index": 3,
+                "title": "Separación del extracto",
+                "detail": "Se retira el residuo vegetal; la composición depende del proceso."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Polaridad del solvente",
+              "Solubilidad diferencial",
+              "Filtración"
+            ],
+            "focusCompoundIds": [
+              "curcumin",
+              "demethoxycurcumin",
+              "bisdemethoxycurcumin"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "Extracto hidroalcohólico ≠ infusión de cúrcuma.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_turmeric",
+              "extraction_review"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial de cúrcuma",
+          "extractionMethod": "Destilación por arrastre de vapor",
+          "description": "El vapor moviliza compuestos volátiles, como turmeronas, que después se condensan y se separan de la fase acuosa. La curcumina no es un componente característico del aceite destilado.",
+          "highlightCompoundIds": [
+            "ar_turmerone",
+            "turmerones"
+          ],
+          "warning": "No ingerir aceite esencial concentrado por cuenta propia.",
+          "extractionExperience": {
+            "heading": "Aceite esencial de cúrcuma",
+            "processTitle": "De vapor a aceite aromático",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Calentamiento y vapor",
+                "detail": "Se volatilizan y transportan compuestos aromáticos."
+              },
+              {
+                "index": 2,
+                "title": "Condensación",
+                "detail": "El vapor se enfría y vuelve a estado líquido."
+              },
+              {
+                "index": 3,
+                "title": "Separación de fases",
+                "detail": "Se recoge una fracción de aceite volátil diferente de los curcuminoides."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Volatilidad",
+              "Condensación",
+              "Inmiscibilidad parcial"
+            ],
+            "focusCompoundIds": [
+              "ar_turmerone",
+              "turmerones"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "La destilación no convierte curcumina en turmeronas.",
+            "isExtraction": true,
+            "sourceIds": [
+              "phytochem_review",
+              "extraction_review"
+            ]
+          }
+        },
+        {
+          "id": "standardized_capsules",
+          "title": "Cápsulas de curcuminoides estandarizados",
+          "extractionMethod": "Extracción, cuantificación y encapsulación",
+          "description": "Una formulación industrial puede declarar la cantidad de curcuminoides; no necesariamente cambia su baja biodisponibilidad ni implica eficacia garantizada.",
+          "highlightCompoundIds": [
+            "curcumin",
+            "demethoxycurcumin",
+            "bisdemethoxycurcumin"
+          ],
+          "warning": "Consultar profesional si se toman medicamentos o existen problemas hepáticos o biliares.",
+          "extractionExperience": {
+            "heading": "Cápsulas de curcuminoides estandarizados",
+            "processTitle": "Del extracto a la cápsula",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Extracción industrial",
+                "detail": "Se obtiene una fracción rica en curcuminoides."
+              },
+              {
+                "index": 2,
+                "title": "Estandarización",
+                "detail": "Se cuantifican componentes mediante métodos analíticos."
+              },
+              {
+                "index": 3,
+                "title": "Encapsulación",
+                "detail": "Se prepara una dosis etiquetada; no se garantiza absorción equivalente entre marcas."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Separación",
+              "Estandarización",
+              "Formulación"
+            ],
+            "focusCompoundIds": [
+              "curcumin",
+              "demethoxycurcumin",
+              "bisdemethoxycurcumin"
+            ],
+            "visualType": "capsule_release",
+            "comparisonNote": "Concentración declarada no es igual a concentración absorbida.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_turmeric",
+              "nih_livertox"
+            ]
+          }
+        },
+        {
+          "id": "enhanced_capsules",
+          "title": "Formulaciones de mayor biodisponibilidad",
+          "extractionMethod": "Tecnología de formulación / cambios de exposición",
+          "description": "Algunos suplementos combinan curcumina con piperina o sistemas formulados para aumentar exposición; el mecanismo depende de la tecnología y puede modificar riesgos e interacciones.",
+          "highlightCompoundIds": [
+            "curcumin"
+          ],
+          "warning": "NIH advierte que se han asociado lesiones hepáticas a ciertas formulaciones de mayor biodisponibilidad. No se recomiendan como opción automáticamente superior.",
+          "extractionExperience": {
+            "heading": "Formulaciones de mayor biodisponibilidad",
+            "processTitle": "Más absorción no significa más seguridad",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Problema original",
+                "detail": "La curcumina es poco soluble y se metaboliza rápidamente."
+              },
+              {
+                "index": 2,
+                "title": "Formulación mejorada",
+                "detail": "Se modifica dispersión, absorción o metabolismo, según el sistema."
+              },
+              {
+                "index": 3,
+                "title": "Nueva exposición",
+                "detail": "Puede aumentar la exposición y también cambiar efectos adversos e interacciones."
+              }
+            ],
+            "chemicalPrinciples": [
+              "Biodisponibilidad",
+              "Metabolismo",
+              "Formulación farmacéutica"
+            ],
+            "focusCompoundIds": [
+              "curcumin"
+            ],
+            "visualType": "bioavailability",
+            "comparisonNote": "Mayor biodisponibilidad ≠ mayor eficacia ni inocuidad.",
+            "isExtraction": false,
+            "sourceIds": [
+              "nih_turmeric",
+              "nih_livertox"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Contenido educativo. No atribuir hepatoprotección a la cúrcuma: NIH/NCCIH y LiverTox describen lesión hepática asociada a determinados suplementos, especialmente algunas formulaciones de alta biodisponibilidad. Puede causar molestias gastrointestinales; consultar con profesional antes de suplementos, especialmente en embarazo, con medicamentos o problemas hepáticos/biliares. El condimento alimentario no equivale a cápsulas concentradas.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "digestive",
+        "compoundIds": [
+          "curcumin"
+        ],
+        "mechanismIds": [
+          "bioavailability"
+        ],
+        "preparationIds": [
+          "powder",
+          "infusion",
+          "hydroalcoholic"
+        ],
+        "note": "Uso tradicional de preparados de rizoma: no atribuir efecto digestivo a una diana molecular verificada."
+      },
+      {
+        "propertyId": "joint",
+        "compoundIds": [
+          "curcumin",
+          "demethoxycurcumin"
+        ],
+        "mechanismIds": [
+          "nfkb",
+          "bioavailability"
+        ],
+        "preparationIds": [
+          "standardized_capsules",
+          "enhanced_capsules"
+        ],
+        "note": "Resultados clínicos preliminares, formulaciones no equivalentes; distinguir riesgos de alta exposición."
+      },
+      {
+        "propertyId": "inflammatory",
+        "compoundIds": [
+          "curcumin",
+          "demethoxycurcumin",
+          "bisdemethoxycurcumin"
+        ],
+        "mechanismIds": [
+          "nfkb"
+        ],
+        "preparationIds": [
+          "hydroalcoholic",
+          "standardized_capsules"
+        ],
+        "note": "Mecanismos experimentales; sin extrapolación a comidas/infusión."
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "curcumin",
+          "demethoxycurcumin",
+          "bisdemethoxycurcumin"
+        ],
+        "mechanismIds": [
+          "redox",
+          "keto_enol"
+        ],
+        "preparationIds": [
+          "powder",
+          "hydroalcoholic"
+        ],
+        "note": "Química redox ilustrativa, no beneficio clínico probado."
+      },
+      {
+        "propertyId": "hepatic_caution",
+        "compoundIds": [
+          "curcumin"
+        ],
+        "mechanismIds": [
+          "bioavailability"
+        ],
+        "preparationIds": [
+          "standardized_capsules",
+          "enhanced_capsules"
+        ],
+        "note": "Advertencia de seguridad, no propiedad beneficiosa."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_turmeric",
+      "organization": "NIH / NCCIH",
+      "title": "Turmeric: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/turmeric",
+      "relevance": "Información oficial de beneficios en investigación, formulaciones, precauciones y hepatotoxicidad."
+    },
+    {
+      "id": "nih_livertox",
+      "organization": "NIH / NCBI Bookshelf (LiverTox)",
+      "title": "Turmeric",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK548561/",
+      "relevance": "Casos documentados de lesión hepática por productos con cúrcuma/curcumina; actualización de 2025."
+    },
+    {
+      "id": "ema_turmeric",
+      "organization": "EMA / HMPC",
+      "title": "Curcumae longae rhizoma",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/curcumae-longae-rhizoma",
+      "relevance": "Uso tradicional para molestias digestivas leves y preparaciones de rizoma."
+    },
+    {
+      "id": "pubchem_curcumin",
+      "organization": "NIH / PubChem",
+      "title": "Curcumin, CID 969516",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/969516",
+      "relevance": "Fórmula molecular y estructura de curcumina."
+    },
+    {
+      "id": "pubchem_dmc",
+      "organization": "NIH / PubChem",
+      "title": "Demethoxycurcumin, CID 5469424",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/5469424",
+      "relevance": "Fórmula y estructura del curcuminoide sin un grupo metoxi."
+    },
+    {
+      "id": "pubchem_bdmc",
+      "organization": "NIH / PubChem",
+      "title": "Bisdemethoxycurcumin, CID 5315472",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/5315472",
+      "relevance": "Fórmula y estructura del curcuminoide sin ambos grupos metoxi."
+    },
+    {
+      "id": "pubchem_turmerone",
+      "organization": "NIH / PubChem",
+      "title": "(+)-ar-Turmerone, CID 160512",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/160512",
+      "relevance": "Identidad química de un componente volátil del aceite."
+    },
+    {
+      "id": "medchem_review",
+      "organization": "Journal of Medicinal Chemistry / PubMed Central",
+      "title": "The Essential Medicinal Chemistry of Curcumin",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5346970/",
+      "relevance": "Solubilidad acuosa, tautomería ceto-enol, degradación y límites de inferencias farmacológicas."
+    },
+    {
+      "id": "chem_review",
+      "organization": "PubMed Central",
+      "title": "Curcumin: Biological, Pharmaceutical, Nutraceutical, and Analytical Aspects",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6720683/",
+      "relevance": "Química, perfil de extracción y propiedades de curcumina."
+    },
+    {
+      "id": "extraction_review",
+      "organization": "PubMed Central",
+      "title": "Recent Progress in Curcumin Extraction, Synthesis, and Applications",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12841163/",
+      "relevance": "Técnicas de extracción y problemas de solubilidad y biodisponibilidad."
+    },
+    {
+      "id": "phytochem_review",
+      "organization": "PubMed Central",
+      "title": "Turmeric: from spice to cure – review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11165187/",
+      "relevance": "Clases de compuestos, aceites esenciales y solventes de extracción."
+    }
+  ]
+}

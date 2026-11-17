@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "valerian",
+  "guides": [
+    {
+      "id": "valerian-occasional-sleep-difficulty-infusion",
+      "plantId": "valerian",
+      "plantName": "Valeriana",
+      "scientificName": "Valeriana officinalis L.",
+      "symptomIds": [
+        "occasional-sleep-difficulty"
+      ],
+      "symptomLabels": [
+        "Dificultad ocasional para conciliar el sueño"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de valeriana",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Raíz seca troceada de valeriana de calidad para infusión",
+          "amount": "0.3–3 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 0.3–3 g de raíz seca troceada de valeriana en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo sobre la raíz."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar entre 5 y 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber. La EMA describe su uso tradicional entre 30 y 60 minutos antes de acostarse."
+        }
+      ],
+      "chemistry": {
+        "title": "De la raíz al agua",
+        "explanation": "El agua caliente extrae una mezcla de sustancias solubles de la raíz. El ácido valerénico, estudiado por su interacción con receptores GABA-A, es relativamente lipofílico: la infusión no equivale a un extracto estandarizado.",
+        "interactiveSteps": [
+          {
+            "title": "Raíz seca",
+            "description": "Contiene diversos metabolitos, incluidos ácidos sesquiterpénicos como el ácido valerénico."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "Favorece la disolución y difusión de sustancias hacia el agua; no todos los compuestos se extraen por igual."
+          },
+          {
+            "title": "Infusión colada",
+            "description": "El líquido contiene una mezcla acuosa con composición distinta de la de los extractos concentrados."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso tradicional para adultos y adolescentes a partir de 12 años. Puede causar somnolencia: no combinar con alcohol ni sedantes y evitar conducir si afecta el estado de alerta. Evitar durante embarazo y lactancia por falta de datos. Consultar si las dificultades para dormir persisten o empeoran; no es tratamiento demostrado del insomnio crónico.",
+      "references": [
+        {
+          "id": "EMA_valerian_root_final_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Valeriana officinalis L., radix (final)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-valeriana-officinalis-l-radix_en.pdf",
+          "supports": [
+            "uso tradicional para ayudar a dormir",
+            "0.3–3 g de raíz troceada en 150 mL de agua hirviendo",
+            "toma tradicional de 30–60 minutos antes de acostarse",
+            "restricciones y precauciones"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_herbal_teas_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "infusión con agua hirviendo",
+            "reposo habitual de 5–15 minutos si no se especifica otro"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_NCCIH_valerian",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Valerian: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/valerian",
+          "supports": [
+            "evidencia inconsistente sobre problemas de sueño",
+            "no combinar con alcohol o sedantes",
+            "seguridad e incertidumbre en embarazo y lactancia",
+            "limitación de uso a corto plazo"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PubMed_valerenic_acid_GABAA",
+          "organization": "PubMed — artículo de farmacología experimental",
+          "title": "Valerenic acid potentiates and inhibits GABA(A) receptors: molecular mechanism and subunit specificity",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17585957/",
+          "supports": [
+            "modulación de receptores GABA-A por ácido valerénico en condiciones experimentales",
+            "no se extrapola la concentración del compuesto a una infusión"
+          ],
+          "sourceType": "peer_reviewed_research"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos y adolescentes a partir de 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes a partir de 12 años",
+        "herbalMaterial": "0.3–3 g",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "Para ayudar a dormir: una toma tradicional entre 30 y 60 minutos antes de acostarse (EMA); no mostrar como prescripción personalizada",
+        "note": "La dosis y el volumen corresponden a la monografía EMA de uso tradicional. El reposo proviene de su guía general, no de un ensayo específico con valeriana. El NIH considera inconsistente la evidencia clínica sobre el sueño."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

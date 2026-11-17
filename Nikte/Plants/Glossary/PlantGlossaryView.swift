@@ -231,6 +231,18 @@ struct PlantGlossaryView: View {
         case "Eucalipto":
             EucalyptusDetailView()
 
+        case "Romero":
+            RosemaryDetailView()
+
+        case "Cúrcuma":
+            TurmericDetailView()
+
+        case "Valeriana":
+            ValerianDetailView()
+
+        case "Ginseng":
+            GinsengDetailView()
+
         default:
             PlaceholderPlantView(plant: plant)
         }

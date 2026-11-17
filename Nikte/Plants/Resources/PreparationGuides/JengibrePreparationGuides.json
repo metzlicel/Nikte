@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "zingiber_officinale",
+  "guides": [
+    {
+      "id": "ginger-motion-sickness-powder",
+      "plantId": "zingiber_officinale",
+      "plantName": "Jengibre",
+      "scientificName": "Zingiber officinale Roscoe",
+      "symptomIds": [
+        "motion-sickness-nausea"
+      ],
+      "preparationId": "powdered-rhizome-with-water",
+      "title": "Jengibre en polvo con agua",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Rizoma seco de jengibre pulverizado, apto para consumo",
+          "amount": "1–2 g"
+        },
+        {
+          "name": "Agua potable para acompañar",
+          "amount": "Cantidad suficiente"
+        },
+        {
+          "name": "Vaso y báscula de precisión alimentaria",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Mide entre 1 y 2 g de jengibre seco pulverizado con una báscula adecuada."
+        },
+        {
+          "number": 2,
+          "instruction": "Coloca el polvo en un vaso y añade agua potable."
+        },
+        {
+          "number": 3,
+          "instruction": "Mezcla y consume todo el polvo con el agua, aproximadamente una hora antes del viaje."
+        }
+      ],
+      "chemistry": {
+        "title": "Del rizoma al organismo",
+        "explanation": "El polvo conserva gingeroles y shogaoles del rizoma; al tomarlo con agua no se filtran ni se separan por extracción. Estos compuestos pueden modular señales 5-HT₃ relacionadas con las náuseas en estudios experimentales.",
+        "interactiveSteps": [
+          {
+            "title": "Rizoma seco",
+            "description": "Contiene gingeroles y, según el procesamiento, shogaoles."
+          },
+          {
+            "title": "Pulverización",
+            "description": "Rompe el material vegetal y aumenta la superficie expuesta."
+          },
+          {
+            "title": "Polvo con agua",
+            "description": "Se ingiere la mezcla completa; no se prepara una infusión filtrada."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos. Evitar en caso de alergia al jengibre. Puede causar acidez o molestias gástricas. En embarazo, lactancia, con anticoagulantes o ante náuseas persistentes o intensas, consultar a un profesional de salud.",
+      "references": [
+        {
+          "id": "EMA_ginger_monograph_2025",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Zingiber officinale Roscoe, rhizoma — Revision 1 (2025)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-zingiber-officinale-roscoe-rhizoma-revision-1_en.pdf",
+          "supports": [
+            "rizoma seco pulverizado para prevención de náuseas y vómitos por cinetosis en adultos",
+            "1–2 g 1 hora antes del viaje (uso bien establecido en monografía)",
+            "no equivalencia entre polvo y preparación acuosa",
+            "hipersensibilidad, acidez, molestias gástricas y precauciones en embarazo/lactancia"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_ginger",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Ginger: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/ginger",
+          "supports": [
+            "beneficios y limitaciones para náuseas según su causa",
+            "los estudios clínicos generalmente evaluaron suplementos, no alimentos o bebidas",
+            "efectos adversos e interacciones potenciales"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "NIH_PubMed_ginger_5HT3",
+          "organization": "PubMed — British Journal of Pharmacology",
+          "title": "Ginger and its pungent constituents non-competitively inhibit activation of human recombinant and native 5-HT3 receptors of enteric neurons",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23490018/",
+          "supports": [
+            "gingeroles y shogaoles modulan actividad del complejo 5-HT3 en estudios experimentales"
+          ],
+          "sourceType": "peer_reviewed_study"
+        },
+        {
+          "id": "EMA_ginger_summary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Ginger rhizoma — Assessment report summary for the public",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-summary/ginger-rhizoma-assessment-report-summary-public-arsp_en.pdf",
+          "supports": [
+            "indicación específica de polvo de rizoma para cinetosis",
+            "diferencia entre uso tradicional y uso documentado con estudios"
+          ],
+          "sourceType": "official_summary"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Náuseas por movimiento (viajes)"
+      ],
+      "targetPopulation": {
+        "display": "Adultos"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": "1–2 g de rizoma seco pulverizado",
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": "Una toma una hora antes del viaje, según monografía EMA (no mostrar como recomendación individual)",
+        "note": "La EMA documenta esta dosis para polvo ingerido por vía oral antes del viaje. No extrapolarla a té de jengibre fresco, infusiones filtradas ni a náuseas de otras causas."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

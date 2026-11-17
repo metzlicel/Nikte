@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "ginseng",
+  "guides": [
+    {
+      "id": "ginseng-fatigue-white-root-decoction",
+      "plantId": "ginseng",
+      "plantName": "Ginseng",
+      "scientificName": "Panax ginseng C.A.Mey.",
+      "symptomIds": [
+        "fatigue-weakness"
+      ],
+      "symptomLabels": [
+        "Cansancio y debilidad leves"
+      ],
+      "preparationId": "decoction",
+      "title": "Decocción de ginseng blanco",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Raíz seca troceada de ginseng blanco (Panax ginseng), apta para uso en infusión medicinal",
+          "amount": "1–2 g"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Olla pequeña con tapa, colador y báscula de precisión alimentaria",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Mide 1–2 g de raíz seca troceada de ginseng blanco."
+        },
+        {
+          "number": 2,
+          "instruction": "Coloca la raíz en una olla pequeña con 150 mL de agua fría."
+        },
+        {
+          "number": 3,
+          "instruction": "Lleva a ebullición y mantén a fuego suave de 15 a 30 minutos con tapa."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar hasta una temperatura segura antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la raíz al agua",
+        "explanation": "La cocción favorece la disolución y difusión de ginsenósidos (saponinas) y otros componentes de la raíz. No equivale a un extracto estandarizado ni al ginseng rojo procesado con vapor.",
+        "interactiveSteps": [
+          {
+            "title": "Raíz seca blanca",
+            "description": "Contiene saponinas triterpénicas llamadas ginsenósidos y otros componentes como polisacáridos."
+          },
+          {
+            "title": "Calentamiento suave",
+            "description": "El agua caliente penetra la raíz troceada y favorece la transferencia de sustancias solubles al líquido."
+          },
+          {
+            "title": "Decocción colada",
+            "description": "El líquido contiene una mezcla acuosa cuya concentración varía según la raíz y el proceso; no reproduce un extracto estandarizado."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo para adultos (18 años o más). Evitar en embarazo y lactancia. Puede causar insomnio; consultar antes de usar si se toman medicamentos, especialmente para diabetes o anticoagulantes. Acudir a valoración si el cansancio persiste más de 2 semanas o empeora.",
+      "references": [
+        {
+          "id": "EMA_ginseng_radix_monograph_2024",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Panax ginseng C.A.Mey., radix — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-panax-ginseng-camey-radix-revision-1_en.pdf",
+          "supports": [
+            "uso tradicional para síntomas de astenia, como fatiga y debilidad",
+            "ginseng blanco: 1–2 g de raíz troceada en 150 mL de agua como decocción",
+            "posología tradicional de 2–3 tomas diarias",
+            "restricción a adultos, embarazo/lactancia, consultar por persistencia de síntomas"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_herbal_teas_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "decocción: material vegetal en agua fría que se lleva a ebullición",
+            "cocción suave de 15–30 minutos como regla general cuando no se especifica un tiempo distinto"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_NCCIH_asian_ginseng",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Asian Ginseng: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/asian-ginseng",
+          "supports": [
+            "posible beneficio pequeño sobre fatiga general en algunos estudios, con resultados heterogéneos",
+            "insomnio como efecto adverso",
+            "posibles interacciones y precauciones en diabetes",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (18 años o más)"
+      },
+      "dosage": {
+        "population": "Adultos y personas mayores",
+        "herbalMaterial": "1–2 g de raíz seca troceada de ginseng blanco",
+        "waterVolume": "150 mL",
+        "steepingMinutes": null,
+        "decoctionMinutes": "15–30",
+        "frequency": "La EMA recoge 2–3 veces al día como uso tradicional, no prescripción personalizada.",
+        "note": "La EMA documenta materia prima y volumen para decocción. Los 15–30 minutos proceden de la guía general EMA para decocciones, no de un ensayo específico con Panax ginseng. No sustituir ginseng rojo ni extractos por la misma cantidad."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

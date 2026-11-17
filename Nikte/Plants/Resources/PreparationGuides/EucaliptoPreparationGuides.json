@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "eucalyptus",
+  "guides": [
+    {
+      "id": "eucalyptus-cold-cough-infusion",
+      "plantId": "eucalyptus",
+      "plantName": "Eucalipto",
+      "scientificName": "Eucalyptus globulus Labill.",
+      "symptomIds": [
+        "cough-associated-with-cold"
+      ],
+      "symptomLabels": [
+        "Tos asociada al resfriado"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de hojas de eucalipto",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Hojas secas troceadas de Eucalyptus globulus, calidad para infusión",
+          "amount": "1.5–3 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca entre 1.5 y 3 g de hojas secas troceadas en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar de 10 a 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la hoja al agua",
+        "explanation": "El agua caliente extrae sustancias hidrosolubles de las hojas y parte de los compuestos aromáticos. El 1,8-cineol es volátil y se concentra más en el aceite esencial; la infusión no equivale a ese aceite.",
+        "interactiveSteps": [
+          {
+            "title": "Hojas secas",
+            "description": "Contienen compuestos polares y terpenos aromáticos, como 1,8-cineol."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "Favorece la disolución y difusión; una fracción de los volátiles puede evaporarse."
+          },
+          {
+            "title": "Infusión colada",
+            "description": "El líquido contiene una mezcla acuosa distinta del aceite esencial concentrado."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso tradicional para adultos y adolescentes desde los 12 años. Evitar si hay alergia al eucalipto, embarazo o lactancia. No agregar aceite esencial ni ingerirlo: puede causar intoxicación. Consultar si hay falta de aire, fiebre, flema purulenta o si la tos dura más de una semana.",
+      "references": [
+        {
+          "id": "EMA_eucalyptus_leaf_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Community herbal monograph on Eucalyptus globulus Labill., folium",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-eucalyptus-globulus-labill-folium_en.pdf",
+          "supports": [
+            "Uso tradicional para tos asociada al resfriado",
+            "Infusión oral de 1.5–3 g en 150 mL de agua hirviendo en adultos y adolescentes desde 12 años",
+            "Contraindicaciones y señales de alerta"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_eucalyptus_leaf_assessment",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Assessment report on Eucalyptus globulus Labill., folium",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-eucalyptus-globulus-labill-folium_en.pdf",
+          "supports": [
+            "Tiempo de reposo tradicional de 10–15 minutos",
+            "Variabilidad de cantidades y composición",
+            "Distinción de hojas e investigaciones sobre aceite esencial"
+          ],
+          "sourceType": "official_assessment_report"
+        },
+        {
+          "id": "EMA_eucalyptus_leaf_public",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Eucalypti folium — Summary for the public",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-folium",
+          "supports": [
+            "El uso contra tos del resfriado se basa en tradición y no en ensayos clínicos concluyentes",
+            "Uso a partir de 12 años"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "NIH_MedlinePlus_eucalyptus_oil_overdose",
+          "organization": "NIH/National Library of Medicine — MedlinePlus",
+          "title": "Sobredosis de aceite de eucalipto",
+          "url": "https://medlineplus.gov/spanish/ency/article/002646.htm",
+          "supports": [
+            "Toxicidad por ingestión de aceite esencial concentrado",
+            "Precaución de no sustituir infusión con aceite esencial"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos y adolescentes de 12 años o más"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes de 12 años o más",
+        "herbalMaterial": "1.5–3 g",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "10–15",
+        "frequency": "Hasta 4 veces al día (monografía EMA; no mostrar como recomendación individual)",
+        "note": "Uso medicinal tradicional de la hoja; no equivale a aceite esencial ni eficacia clínica comprobada."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

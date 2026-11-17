@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "peppermint",
+  "guides": [
+    {
+      "id": "peppermint-digestive-infusion",
+      "plantId": "peppermint",
+      "plantName": "Menta",
+      "scientificName": "Mentha × piperita L.",
+      "symptomIds": [
+        "mild-digestive-discomfort"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de menta",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Hojas secas de menta piperita aptas para infusión",
+          "amount": "1.5–3 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 1.5–3 g de hojas secas de menta en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo sobre las hojas."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar entre 5 y 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la hoja al agua",
+        "explanation": "El agua caliente extrae compuestos polares, como el ácido rosmarínico, y parte de las sustancias aromáticas. La infusión no tiene la misma concentración de mentol que el aceite esencial.",
+        "interactiveSteps": [
+          {
+            "title": "Hojas",
+            "description": "Contienen compuestos fenólicos y aceite esencial."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "Favorece la disolución y difusión de sustancias extraíbles."
+          },
+          {
+            "title": "Infusión",
+            "description": "Algunos compuestos pasan al agua; otros quedan en las hojas o se volatilizan."
+          }
+        ]
+      },
+      "displaySafetyNote": "Evitar si hay alergia a la menta o al mentol o si se padece reflujo/acidez, pues puede empeorarlos. Consultar ante problemas biliares, embarazo, lactancia o síntomas persistentes. No ingerir aceite esencial como sustituto de la infusión.",
+      "references": [
+        {
+          "id": "EMA_peppermint_leaf_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Mentha x piperita L., folium",
+          "url": "https://www.ema.europa.eu/system/files/documents/herbal-monograph/wc500222195_en.pdf",
+          "supports": [
+            "uso tradicional para dispepsia y flatulencia",
+            "1.5–3 g de hoja seca en 150 mL de agua para adultos",
+            "3 veces al día en monografía",
+            "reflujo, hipersensibilidad, afecciones biliares y embarazo/lactancia"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_general_herbal_tea_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "infusión con agua hirviendo",
+            "tiempo general de reposo de 5–15 minutos"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_peppermint_oil",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Peppermint Oil: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/peppermint-oil",
+          "supports": [
+            "investigación limitada sobre hojas",
+            "seguridad general de té de menta",
+            "diferencia entre infusión y aceite de menta",
+            "precauciones por efectos adversos"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PEPPERMINT_PHYTOCHEMISTRY",
+          "organization": "PubMed Central",
+          "title": "Physiologic Effects and Safety of Peppermint Oil and Its Efficacy in Irritable Bowel Syndrome and Other Functional Disorders",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5814329/",
+          "supports": [
+            "distinción entre aceite y hojas",
+            "constituyentes del aceite esencial"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Molestias digestivas leves (gases e indigestión)"
+      ],
+      "targetPopulation": {
+        "display": "Adultos (cantidades de esta guía)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": "1.5–3 g",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "3 veces al día (monografía EMA; no mostrar como recomendación personalizada)",
+        "note": "Cantidad y volumen de la monografía EMA para adultos. Tiempo de reposo de la guía general EMA para infusiones. Uso digestivo tradicional, no eficacia clínica probada del té."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

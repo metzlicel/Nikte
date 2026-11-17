@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "aloe_vera",
+  "guides": [
+    {
+      "id": "aloe-vera-minor-superficial-burn-topical-gel",
+      "plantId": "aloe_vera",
+      "plantName": "Aloe vera",
+      "scientificName": "Aloe vera (L.) Burm.f. (sin. Aloe barbadensis Mill.)",
+      "symptomIds": [
+        "minor-superficial-burn"
+      ],
+      "preparationId": "purified-inner-leaf-gel-topical",
+      "title": "Gel de aloe vera para quemaduras superficiales leves",
+      "administrationRoute": "topical",
+      "ingredients": [
+        {
+          "name": "Gel de aloe vera purificado, formulado para aplicación cutánea y siguiendo las instrucciones del envase",
+          "amount": "Cantidad suficiente para una capa fina"
+        },
+        {
+          "name": "Agua corriente fresca (no helada)",
+          "amount": "Para enfriar la zona"
+        },
+        {
+          "name": "Jabón suave, si es necesario, y toalla limpia",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Enfría de inmediato la quemadura superficial con agua corriente fresca durante 10–15 minutos. No uses hielo."
+        },
+        {
+          "number": 2,
+          "instruction": "Limpia suavemente la zona con agua y jabón suave si es necesario y seca sin frotar."
+        },
+        {
+          "number": 3,
+          "instruction": "Aplica una capa fina de gel de aloe vera de uso tópico sobre la piel enfriada, siguiendo las indicaciones del producto."
+        },
+        {
+          "number": 4,
+          "instruction": "Protege la zona de la fricción y el sol. No revientes ampollas; consulta si la quemadura no es claramente superficial."
+        }
+      ],
+      "chemistry": {
+        "title": "Del gel a la piel",
+        "explanation": "El gel contiene agua y polisacáridos, como el acemanano. Sus grupos –OH pueden formar puentes de hidrógeno con el agua y contribuir a mantener húmeda la superficie cutánea.",
+        "interactiveSteps": [
+          {
+            "title": "Gel purificado",
+            "description": "Contiene agua y polisacáridos del interior de la hoja; se diferencia del látex amarillo."
+          },
+          {
+            "title": "Capa fina",
+            "description": "El gel entra en contacto con la superficie de la piel ya enfriada."
+          },
+          {
+            "title": "Retención de humedad",
+            "description": "Los grupos hidroxilo de los polisacáridos interactúan con el agua por puentes de hidrógeno."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo para quemaduras pequeñas y superficiales. No aplicar gel casero ni látex amarillo, ni ingerirlo. Suspender si provoca ardor, picor o sarpullido. Buscar atención si hay ampollas extensas, piel abierta, quemadura profunda o grande, o afectación de cara, manos, pies, genitales o articulaciones.",
+      "references": [
+        {
+          "id": "NIH_NCCIH_aloe_vera",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Aloe Vera: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/aloe-vera",
+          "supports": [
+            "diferencia entre gel interno y látex de aloe",
+            "estudios clínicos sobre aloe tópico y quemaduras",
+            "posibles reacciones cutáneas",
+            "riesgos del látex por vía oral"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "NIH_MedlinePlus_minor_burn_care",
+          "organization": "NIH — MedlinePlus (National Library of Medicine)",
+          "title": "Atención postratamiento para quemaduras leves",
+          "url": "https://medlineplus.gov/spanish/ency/patientinstructions/000662.htm",
+          "supports": [
+            "enfriar con agua fresca antes de aplicar productos",
+            "limpiar suavemente",
+            "capa fina de aloe tópico en quemaduras leves",
+            "signos que requieren atención médica"
+          ],
+          "sourceType": "official_patient_guidance"
+        },
+        {
+          "id": "NIH_MedlinePlus_burns_magazine",
+          "organization": "NIH — MedlinePlus Magazine",
+          "title": "Cuando calentarse sale mal: cómo prevenir y tratar las quemaduras",
+          "url": "https://magazine.medlineplus.gov/es/article/burns-how-to-treat-and-prevent",
+          "supports": [
+            "recomendación de gel de aloe tópico en quemaduras de primer grado",
+            "evitar hielo",
+            "evitar sol y calor directo"
+          ],
+          "sourceType": "official_patient_guidance"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Quemaduras superficiales leves"
+      ],
+      "targetPopulation": {
+        "display": "Uso tópico en piel intacta con quemadura superficial pequeña"
+      },
+      "dosage": {
+        "population": "Personas con quemaduras superficiales pequeñas; seguir instrucciones del producto",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "No se establece una cantidad ni frecuencia exacta de gel: aplicar una capa fina de formulación comercial según etiqueta. El enfriamiento inicial es una medida de primeros auxilios, no una extracción vegetal."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

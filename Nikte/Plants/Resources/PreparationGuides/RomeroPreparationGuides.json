@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "rosemary",
+  "guides": [
+    {
+      "id": "rosemary-mild-digestive-infusion",
+      "plantId": "rosemary",
+      "plantName": "Romero",
+      "scientificName": "Rosmarinus officinalis L. (sinónimo actual: Salvia rosmarinus Spenn.)",
+      "symptomIds": [
+        "mild-digestive-discomfort"
+      ],
+      "symptomLabels": [
+        "Molestias digestivas leves: indigestión y espasmos leves"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de romero",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Hojas secas troceadas de romero, aptas para infusión",
+          "amount": "1–2 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150–250 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 1–2 g de hojas secas de romero en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150–250 mL de agua hirviendo."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar de 5 a 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar hasta una temperatura segura antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la hoja al agua",
+        "explanation": "El agua caliente disuelve y extrae compuestos polares, como el ácido rosmarínico. La infusión contiene una mezcla diferente del aceite esencial, que concentra terpenos volátiles como 1,8-cineol y alcanfor.",
+        "interactiveSteps": [
+          {
+            "title": "Hojas secas",
+            "description": "Contienen ácidos fenólicos y compuestos aromáticos."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "La solubilidad y la difusión permiten extraer componentes polares hacia el agua."
+          },
+          {
+            "title": "Infusión colada",
+            "description": "Se retiran los sólidos; el líquido no equivale a un aceite esencial concentrado."
+          }
+        ]
+      },
+      "displaySafetyNote": "Para adultos y adolescentes de 12 años o más. Evitar si hay alergia al romero; no se recomienda durante embarazo o lactancia. Ante cálculos biliares, obstrucción de vías biliares o enfermedad hepática, consultar antes de usar. Consultar si los síntomas empeoran o duran más de dos semanas. No ingerir aceite esencial como sustituto de esta infusión.",
+      "references": [
+        {
+          "id": "EMA_rosemary_leaf_monograph_2024",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Rosmarinus officinalis L., folium — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-rosmarinus-officinalis-l-folium-revision-1_en.pdf",
+          "supports": [
+            "Uso tradicional para dispepsia y trastornos espasmódicos gastrointestinales leves",
+            "1–2 g de hojas secas en 150–250 mL de agua hirviendo, 2–3 veces al día",
+            "Población de 12 años o más, precauciones y duración de síntomas"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_glossary_herbal_teas",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "Preparación mediante agua hirviendo",
+            "Reposo habitual de 5–15 minutos cuando no se especifica otro tiempo"
+          ],
+          "sourceType": "official_preparation_guideline"
+        },
+        {
+          "id": "NIH_PubMed_rosemary_tea_2017",
+          "organization": "NIH/National Library of Medicine — PubMed",
+          "title": "A Comprehensive Characterisation of Rosemary Tea Obtained from Rosmarinus officinalis L.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28895237/",
+          "supports": [
+            "Identificación de ácido rosmarínico y otros polifenoles en infusión de romero"
+          ],
+          "sourceType": "peer_reviewed_article_indexed"
+        },
+        {
+          "id": "NIH_PMC_rosemary_infusions_2021",
+          "organization": "NIH/National Library of Medicine — PubMed Central",
+          "title": "Comprehensive Phenolic and Free Amino Acid Analysis of Rosemary Infusions",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8004834/",
+          "supports": [
+            "Perfil de compuestos fenólicos en infusiones de hojas de romero",
+            "Variabilidad de extracción de compuestos en agua"
+          ],
+          "sourceType": "peer_reviewed_article_indexed"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos y adolescentes de 12 años o más"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes de 12 años o más",
+        "herbalMaterial": "1–2 g",
+        "waterVolume": "150–250 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "2–3 veces al día (monografía EMA; no mostrar como recomendación individual)",
+        "note": "Uso tradicional: las cantidades corresponden a la monografía EMA; el tiempo de reposo procede de la guía general de infusiones. No se trata de eficacia clínica demostrada."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

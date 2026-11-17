@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "chamomile",
+  "guides": [
+    {
+      "id": "chamomile-digestive-infusion",
+      "plantId": "chamomile",
+      "plantName": "Manzanilla",
+      "scientificName": "Matricaria chamomilla L.",
+      "symptomIds": [
+        "mild-digestive-discomfort"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de manzanilla",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Flores secas de manzanilla para infusión",
+          "amount": "1.5–4 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 1.5–4 g de flores secas en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo sobre las flores."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar entre 5 y 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la flor al agua",
+        "explanation": "El agua caliente disuelve y extrae compuestos polares, como la apigenina-7-O-glucósido. La infusión tiene una composición distinta del aceite esencial.",
+        "interactiveSteps": [
+          {
+            "title": "Flores",
+            "description": "Contienen flavonoides y otros compuestos."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "Facilita la disolución y difusión."
+          },
+          {
+            "title": "Infusión",
+            "description": "Los compuestos solubles pasan al agua."
+          }
+        ]
+      },
+      "displaySafetyNote": "Evitar si hay alergia a manzanilla u otras Asteraceae. Consultar si se toman medicamentos, durante el embarazo o lactancia, o si las molestias persisten o empeoran.",
+      "references": [
+        {
+          "id": "EMA_matricaria_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Matricaria recutita L., flos",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-matricaria-recutita-l-flos-first-version_en.pdf",
+          "supports": [
+            "uso tradicional digestivo",
+            "1.5–4 g",
+            "150 mL",
+            "3–4 veces al día",
+            "duración y contraindicaciones"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_general_herbal_tea_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "agua hirviendo",
+            "definición de infusión",
+            "intervalo general de 5–15 minutos"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_chamomile",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Chamomile: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/chamomile",
+          "supports": [
+            "límites de evidencia clínica",
+            "alergias",
+            "interacciones",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "CHAMOMILE_FLAVONOIDS",
+          "organization": "PubMed / Molecular Cancer Pharmacology",
+          "title": "Extraction, Characterization, Stability and Biological Activity of Flavonoids Isolated from Chamomile Flowers",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20098626/",
+          "supports": [
+            "apigenina-7-O-glucósido en extractos",
+            "dependencia de solvente y almacenamiento"
+          ],
+          "sourceType": "peer_reviewed_study"
+        },
+        {
+          "id": "CHAMOMILE_PHYTOCHEMISTRY",
+          "organization": "PubMed Central / Molecules",
+          "title": "Chamomile: A Review of Its Traditional Uses, Chemical Constituents, Pharmacological Activities and Quality Control Studies",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9822300/",
+          "supports": [
+            "compuestos químicos de manzanilla",
+            "variación según extracción"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Molestias digestivas leves"
+      ],
+      "targetPopulation": {
+        "display": "Adultos y adolescentes mayores de 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes mayores de 12 años",
+        "herbalMaterial": "1.5–4 g",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "3–4 veces al día (monografía EMA; no mostrar como recomendación personalizada)",
+        "note": "Tiempo de infusión de guía general EMA; cantidades y frecuencia de la monografía de manzanilla."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

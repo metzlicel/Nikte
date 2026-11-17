@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "lavender",
+  "guides": [
+    {
+      "id": "lavender-mild-stress-infusion",
+      "plantId": "lavender",
+      "plantName": "Lavanda",
+      "scientificName": "Lavandula angustifolia Mill.",
+      "symptomIds": [
+        "mild-stress",
+        "occasional-sleep-difficulty"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de lavanda",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Flores secas de Lavandula angustifolia aptas para infusión",
+          "amount": "1–2 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 1–2 g de flores secas de lavanda en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo sobre las flores."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar entre 5 y 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "De la flor al agua",
+        "explanation": "El agua caliente extrae sustancias polares, como compuestos fenólicos, y parte de los aromas volátiles, como linalool. La infusión no equivale al aceite esencial concentrado.",
+        "interactiveSteps": [
+          {
+            "title": "Flores secas",
+            "description": "Contienen compuestos polares y terpenos aromáticos."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "Favorece la disolución y difusión; algunos compuestos volátiles pueden evaporarse."
+          },
+          {
+            "title": "Infusión",
+            "description": "Se separa el líquido de las flores; su composición difiere del aceite esencial."
+          }
+        ]
+      },
+      "displaySafetyNote": "Para adultos y adolescentes de 12 años o más. Evitar si hay alergia a lavanda. No recomendada durante embarazo o lactancia por falta de datos. Puede causar somnolencia: evitar conducir si afecta el estado de alerta y consultar si se usan sedantes. Si los síntomas persisten o empeoran, consultar. No ingerir aceite esencial en lugar de la infusión.",
+      "references": [
+        {
+          "id": "EMA_lavender_flower_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Community herbal monograph on Lavandula angustifolia P. Mill., flos",
+          "url": "https://www.ema.europa.eu/system/files/documents/herbal-monograph/wc500102064_en.pdf",
+          "supports": [
+            "uso tradicional en estrés mental leve, agotamiento y como ayuda para dormir",
+            "1–2 g en 150 mL de agua",
+            "tres veces al día en la monografía",
+            "restricciones menores de 12 años, embarazo/lactancia, hipersensibilidad y posible afectación al conducir"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_general_herbal_tea_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "preparación de infusiones vertiendo agua hirviendo",
+            "reposo habitual de 5–15 minutos si no se indica otro tiempo"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_NCCIH_lavender",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Lavender: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/lavender",
+          "supports": [
+            "los beneficios para ansiedad y sueño siguen sujetos a limitaciones de la evidencia",
+            "seguridad, somnolencia potencial, posibles interacciones con sedantes y falta de datos en embarazo/lactancia",
+            "diferencia entre productos orales, infusión y aromaterapia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "EMA_lavender_assessment_report",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Assessment report on Lavandula angustifolia Miller, aetheroleum and flos",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-lavandula-angustifolia-miller-aetheroleum-and-lavandula-angustifolia-miller-flos_en.pdf",
+          "supports": [
+            "presencia de terpenos en el aceite de lavanda",
+            "distinción de preparaciones de flores y aceite esencial"
+          ],
+          "sourceType": "official_assessment_report"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Estrés leve",
+        "Dificultad ocasional para dormir"
+      ],
+      "targetPopulation": {
+        "display": "Adultos y adolescentes a partir de 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes a partir de 12 años",
+        "herbalMaterial": "1–2 g",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "3 veces al día (monografía EMA; no mostrar como recomendación personalizada)",
+        "note": "Cantidad y volumen de la monografía EMA para la flor; tiempo de reposo indicado en la guía general de infusiones de EMA. Uso tradicional, no eficacia clínica confirmada para insomnio o trastornos de ansiedad."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

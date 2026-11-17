@@ -80,6 +80,16 @@ private let ailmentOptions: [AilmentOption] = [
                 id: "menta",
                 plantName: "Menta",
                 description: "Algunas preparaciones se estudian para síntomas digestivos."
+            ),
+            PlantMatch(
+                id: "romero",
+                plantName: "Romero",
+                description: "Infusión de hojas para molestias digestivas leves, de uso tradicional."
+            ),
+            PlantMatch(
+                id: "curcuma",
+                plantName: "Cúrcuma",
+                description: "Infusión de rizoma seco para molestias digestivas leves, de uso tradicional."
             )
         ]
     ),
@@ -97,6 +107,11 @@ private let ailmentOptions: [AilmentOption] = [
                 id: "manzanilla",
                 plantName: "Manzanilla",
                 description: "Uso tradicional para molestias gastrointestinales leves."
+            ),
+            PlantMatch(
+                id: "curcuma",
+                plantName: "Cúrcuma",
+                description: "Infusión de rizoma seco para gases, de uso tradicional."
             )
         ]
     ),
@@ -128,6 +143,83 @@ private let ailmentOptions: [AilmentOption] = [
                 description: "Los gingeroles y shogaoles se investigan por su actividad antiemética."
             )
         ]
+    ),
+
+    AilmentOption(
+        id: "nauseas_movimiento",
+        name: "Náuseas por movimiento",
+        matches: [
+            PlantMatch(
+                id: "jengibre",
+                plantName: "Jengibre",
+                description: "Preparación de rizoma seco pulverizado para náuseas por movimiento."
+            )
+        ]
+    ),
+
+    AilmentOption(
+        id: "quemaduras_superficiales_leves",
+        name: "Quemaduras superficiales leves",
+        matches: [
+            PlantMatch(
+                id: "aloe_vera",
+                plantName: "Aloe Vera",
+                description: "Gel interno purificado, formulado para aplicación cutánea."
+            )
+        ]
+    ),
+
+    AilmentOption(
+        id: "estres_leve",
+        name: "Estrés leve",
+        matches: [
+            PlantMatch(
+                id: "lavanda",
+                plantName: "Lavanda",
+                description: "Infusión de flores para estrés leve, de uso tradicional."
+            )
+        ]
+    ),
+
+    AilmentOption(
+        id: "dificultad_ocasional_dormir",
+        name: "Dificultad ocasional para dormir",
+        matches: [
+            PlantMatch(
+                id: "lavanda",
+                plantName: "Lavanda",
+                description: "Infusión de flores como ayuda tradicional para dormir."
+            ),
+            PlantMatch(
+                id: "valeriana",
+                plantName: "Valeriana",
+                description: "Infusión de raíz como ayuda tradicional para dormir."
+            )
+        ]
+    ),
+
+    AilmentOption(
+        id: "tos_resfriado",
+        name: "Tos asociada al resfriado",
+        matches: [
+            PlantMatch(
+                id: "eucalipto",
+                plantName: "Eucalipto",
+                description: "Infusión de hojas para tos asociada al resfriado, de uso tradicional."
+            )
+        ]
+    ),
+
+    AilmentOption(
+        id: "cansancio_debilidad_leves",
+        name: "Cansancio y debilidad leves",
+        matches: [
+            PlantMatch(
+                id: "ginseng",
+                plantName: "Ginseng",
+                description: "Decocción de ginseng blanco para cansancio y debilidad leves, de uso tradicional."
+            )
+        ]
     )
 ]
 
@@ -147,7 +239,13 @@ struct AilmentView: View {
     private let frequentIDs = [
         "insomnio",
         "ansiedad",
+        "estres_leve",
+        "dificultad_ocasional_dormir",
+        "tos_resfriado",
+        "cansancio_debilidad_leves",
         "nauseas",
+        "nauseas_movimiento",
+        "quemaduras_superficiales_leves",
         "cabeza",
         "estomago",
         "gases"
@@ -688,7 +786,11 @@ struct AilmentView: View {
 
                         NavigationLink {
 
-                            plantDestination(plant)
+                            if let request = PreparationGuideRequest.forAilment(plantMatchID: match.id, ailmentID: ailment.id) {
+                                PreparationGuideView(request: request)
+                            } else {
+                                plantDestination(plant)
+                            }
 
                         } label: {
 
@@ -733,6 +835,18 @@ struct AilmentView: View {
 
         case "Eucalipto":
             EucalyptusDetailView()
+
+        case "Romero":
+            RosemaryDetailView()
+
+        case "Cúrcuma":
+            TurmericDetailView()
+
+        case "Valeriana":
+            ValerianDetailView()
+
+        case "Ginseng":
+            GinsengDetailView()
 
         default:
             PlaceholderPlantView(plant: plant)

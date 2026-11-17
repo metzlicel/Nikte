@@ -1,0 +1,1026 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar únicamente Romero en Nikte, conservando las 4 secciones y la interactividad de extracciones.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Reutilizar modelos Codable, vistas de mecanismos, estructuras moleculares, selección de presentaciones y explorador genérico existentes.",
+    "scientificIntegrity": "Diferenciar uso tradicional de EMA, evidencia experimental de mecanismos y estudios clínicos preliminares. No afirmar que el romero mejora la memoria o circulación de forma establecida.",
+    "extractionUI": "Usar section4.items[*].extractionExperience y sus 3 pasos; visualType nuevo debe tener fallback visual existente.",
+    "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
+    "featuredChemistry": "Oxidación del ácido carnósico a diferentes productos oxidados, entre ellos carnosol; reacción de transformación química no equiparable a infusión o destilación."
+  },
+  "plant": {
+    "id": "rosemary",
+    "commonName": "Romero",
+    "scientificName": "Rosmarinus officinalis L.",
+    "searchAlias": [
+      "Salvia rosmarinus Spenn.",
+      "romero",
+      "rosemary"
+    ],
+    "family": "Lamiaceae",
+    "usedParts": [
+      "Hojas frescas o secas",
+      "Sumidades floridas para aceite esencial en ciertos procesos"
+    ],
+    "summary": "Planta aromática de la familia Lamiaceae. Sus hojas contienen compuestos fenólicos como ácido rosmarínico y diterpenos como ácido carnósico y carnosol; su aceite esencial contiene sustancias volátiles como 1,8-cineol y alcanfor. La composición depende de la preparación.",
+    "section1": {
+      "id": "properties",
+      "title": "01 · Propiedades",
+      "items": [
+        {
+          "id": "digestive",
+          "title": "Digestiva y antiespasmódica (uso tradicional)",
+          "description": "La EMA reconoce el uso tradicional de hojas de romero para el alivio sintomático de dispepsia y espasmos gastrointestinales leves.",
+          "evidenceContext": "La EMA indica que se basa en uso prolongado, no en ensayos clínicos concluyentes.",
+          "relatedCompoundIds": [
+            "rosmarinic_acid"
+          ],
+          "relatedPreparationIds": [
+            "infusion",
+            "dried_leaves"
+          ],
+          "sourceIds": [
+            "ema_leaf"
+          ]
+        },
+        {
+          "id": "muscle",
+          "title": "Molestias musculares y articulares leves (uso tradicional)",
+          "description": "Preparaciones tópicas farmacéuticas con aceite esencial, o baños con hojas, se usan tradicionalmente para molestias leves.",
+          "evidenceContext": "No equivale a aplicar aceite esencial puro ni a afirmar tratamiento del dolor crónico.",
+          "relatedCompoundIds": [
+            "cineole",
+            "camphor"
+          ],
+          "relatedPreparationIds": [
+            "topical",
+            "bath"
+          ],
+          "sourceIds": [
+            "ema_leaf",
+            "ema_oil"
+          ]
+        },
+        {
+          "id": "antioxidant",
+          "title": "Antioxidante experimental",
+          "description": "Ácido carnósico, carnosol y ácido rosmarínico pueden participar en protección frente a oxidación en ensayos químicos y biológicos.",
+          "evidenceContext": "Los resultados celulares no demuestran que comer romero reduzca enfermedades relacionadas con estrés oxidativo.",
+          "relatedCompoundIds": [
+            "carnosic_acid",
+            "carnosol",
+            "rosmarinic_acid"
+          ],
+          "relatedPreparationIds": [
+            "hydroalcoholic",
+            "lipophilic",
+            "infusion"
+          ],
+          "sourceIds": [
+            "carnosic_oxidation",
+            "rosemary_antioxidant"
+          ]
+        },
+        {
+          "id": "inflammation",
+          "title": "Antiinflamatoria experimental",
+          "description": "Diterpenos fenólicos de romero modulan vías intracelulares relacionadas con inflamación, incluidos NF-κB y Nrf2.",
+          "evidenceContext": "Principalmente estudios preclínicos; el aceite y el té no contienen cantidades equivalentes de estos diterpenos.",
+          "relatedCompoundIds": [
+            "carnosic_acid",
+            "carnosol"
+          ],
+          "relatedPreparationIds": [
+            "lipophilic",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "antiinflammatory_review"
+          ]
+        },
+        {
+          "id": "cognition",
+          "title": "Memoria y atención: investigación preliminar",
+          "description": "Se ha estudiado la relación entre exposición al aroma de romero, 1,8-cineol absorbido y resultados de tareas cognitivas.",
+          "evidenceContext": "No está establecido que infusiones, aromaterapia o condimento mejoren de forma consistente la memoria.",
+          "relatedCompoundIds": [
+            "cineole"
+          ],
+          "relatedPreparationIds": [
+            "aroma"
+          ],
+          "sourceIds": [
+            "cognition"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "02 · Composición química",
+      "items": [
+        {
+          "id": "carnosic_acid",
+          "name": "Ácido carnósico",
+          "molecularFormula": "C₂₀H₂₈O₄",
+          "chemicalClass": "Diterpeno fenólico",
+          "functionalGroups": [
+            "fenoles (catecol)",
+            "ácido carboxílico"
+          ],
+          "description": "Antioxidante lipofílico que puede oxidarse a distintos derivados; su oxidación y reactividad redox contribuyen a actividad protectora experimental.",
+          "associatedProperties": [
+            "antioxidante experimental",
+            "señalización Nrf2"
+          ],
+          "distribution": "Principalmente en hojas y extractos menos polares; no es componente característico del aceite esencial destilado.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "carnosic_oxidation",
+            "keap_nrf2"
+          ]
+        },
+        {
+          "id": "carnosol",
+          "name": "Carnosol",
+          "molecularFormula": "C₂₀H₂₆O₄",
+          "chemicalClass": "Diterpeno fenólico con lactona",
+          "functionalGroups": [
+            "fenoles",
+            "lactona (éster cíclico)"
+          ],
+          "description": "Producto oxidado relacionado con ácido carnósico; presenta actividad antioxidante e interacción con múltiples rutas inflamatorias experimentales.",
+          "associatedProperties": [
+            "antioxidante experimental",
+            "antiinflamatoria experimental"
+          ],
+          "distribution": "Hojas y extractos de solventes orgánicos; no equivalente a fracción volátil del aceite esencial.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "carnosic_oxidation",
+            "antiinflammatory_review"
+          ]
+        },
+        {
+          "id": "rosmarinic_acid",
+          "name": "Ácido rosmarínico",
+          "molecularFormula": "C₁₈H₁₆O₈",
+          "chemicalClass": "Ácido fenólico (éster de ácidos hidroxicinámicos)",
+          "functionalGroups": [
+            "hidroxilos fenólicos",
+            "éster",
+            "ácido carboxílico"
+          ],
+          "description": "Sus grupos fenólicos participan en transferencia de hidrógeno/electrones; su polaridad favorece extracción en agua y mezclas hidroalcohólicas.",
+          "associatedProperties": [
+            "antioxidante experimental"
+          ],
+          "distribution": "Hojas, infusión y extractos polares, en cantidades variables.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "ema_report",
+            "rosemary_antioxidant"
+          ]
+        },
+        {
+          "id": "cineole",
+          "name": "1,8-cineol (eucaliptol)",
+          "molecularFormula": "C₁₀H₁₈O",
+          "chemicalClass": "Éter cíclico monoterpénico",
+          "functionalGroups": [
+            "éter cíclico"
+          ],
+          "description": "Constituyente aromático volátil de determinados quimiotipos de romero; estudiado en investigaciones sobre aroma y cognición.",
+          "associatedProperties": [
+            "aroma",
+            "investigación de atención"
+          ],
+          "distribution": "Fracción volátil de hojas, aceite esencial y exposición aromática.",
+          "pubchemCID": 2758,
+          "structureImage": null,
+          "sourceIds": [
+            "ema_report",
+            "cognition"
+          ]
+        },
+        {
+          "id": "camphor",
+          "name": "Alcanfor",
+          "molecularFormula": "C₁₀H₁₆O",
+          "chemicalClass": "Cetona monoterpénica",
+          "functionalGroups": [
+            "cetona C=O"
+          ],
+          "description": "Componente aromático de ciertos aceites de romero; útil para explicar grupos carbonilo y seguridad de productos concentrados.",
+          "associatedProperties": [
+            "aroma",
+            "uso tópico tradicional del aceite completo"
+          ],
+          "distribution": "Fracción volátil; la proporción depende del quimiotipo.",
+          "pubchemCID": 2537,
+          "structureImage": null,
+          "sourceIds": [
+            "ema_report",
+            "ema_oil"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "03 · Reacciones y mecanismos",
+      "items": [
+        {
+          "id": "redox",
+          "title": "Antioxidación: transferencia de hidrógeno",
+          "compoundIds": [
+            "carnosic_acid",
+            "rosmarinic_acid"
+          ],
+          "explanation": "Los grupos fenólicos pueden ceder hidrógeno a radicales: ArOH + R• → ArO• + RH. Es una reacción modelo de química antioxidante; el mecanismo biológico real es más complejo.",
+          "steps": [
+            {
+              "title": "Fenol (ArOH)",
+              "detail": "Los antioxidantes contienen grupos –OH fenólicos."
+            },
+            {
+              "title": "Radical R•",
+              "detail": "Especie reactiva con electrón desapareado."
+            },
+            {
+              "title": "Transferencia",
+              "detail": "Un hidrógeno puede transferirse al radical."
+            },
+            {
+              "title": "Producto",
+              "detail": "El radical derivado del fenol puede estabilizarse por resonancia."
+            }
+          ],
+          "plainLanguage": "Los grupos fenólicos del romero pueden intervenir en reacciones de oxidación-reducción observadas en laboratorio.",
+          "sourceIds": [
+            "rosemary_antioxidant",
+            "carnosic_oxidation"
+          ]
+        },
+        {
+          "id": "nrf2",
+          "title": "Respuesta celular antioxidante: KEAP1/Nrf2",
+          "compoundIds": [
+            "carnosic_acid"
+          ],
+          "explanation": "En modelos celulares, productos electrofílicos derivados de oxidación del ácido carnósico pueden reaccionar con residuos cisteína de KEAP1 y facilitar señalización Nrf2. No significa que la molécula original se una a KEAP1 sin transformación.",
+          "steps": [
+            {
+              "title": "Estrés oxidativo",
+              "detail": "Se producen señales oxidativas celulares."
+            },
+            {
+              "title": "Oxidación de ácido carnósico",
+              "detail": "Se pueden formar especies electrofílicas reactivas."
+            },
+            {
+              "title": "Interacción con KEAP1",
+              "detail": "Derivados pueden modificar residuos cisteína de KEAP1."
+            },
+            {
+              "title": "Activación de Nrf2",
+              "detail": "Se favorece expresión de determinados genes de defensa antioxidante."
+            }
+          ],
+          "plainLanguage": "Se estudia cómo derivados del ácido carnósico activan defensas antioxidantes celulares.",
+          "sourceIds": [
+            "keap_nrf2"
+          ]
+        },
+        {
+          "id": "inflammatory",
+          "title": "Modulación de señales inflamatorias",
+          "compoundIds": [
+            "carnosic_acid",
+            "carnosol"
+          ],
+          "explanation": "Los diterpenos fenólicos de romero modulan, en modelos experimentales, vías como NF-κB, MAPK y NLRP3; los efectos varían con modelo y concentración.",
+          "steps": [
+            {
+              "title": "Estímulo inflamatorio",
+              "detail": "Las células activan rutas de señalización."
+            },
+            {
+              "title": "NF-κB y otras rutas",
+              "detail": "Participan en expresión de citocinas y mediadores."
+            },
+            {
+              "title": "Exposición a diterpenos",
+              "detail": "En ciertos modelos se modifican estas señales."
+            },
+            {
+              "title": "Respuesta experimental",
+              "detail": "Pueden reducirse marcadores inflamatorios específicos."
+            }
+          ],
+          "plainLanguage": "Algunos compuestos del romero pueden modificar señales celulares inflamatorias en experimentos.",
+          "sourceIds": [
+            "antiinflammatory_review"
+          ]
+        },
+        {
+          "id": "digestive",
+          "title": "Actividad digestiva tradicional y mecanismo propuesto",
+          "compoundIds": [
+            "rosmarinic_acid"
+          ],
+          "explanation": "La EMA reconoce el uso tradicional de hojas para dispepsia y espasmos leves. No hay mecanismo molecular único confirmado en humanos; no atribuir bloqueo de canales de calcio al ácido rosmarínico sin evidencia específica.",
+          "steps": [
+            {
+              "title": "Hoja de romero",
+              "detail": "Contiene mezcla de sustancias polares y aromáticas."
+            },
+            {
+              "title": "Infusión",
+              "detail": "Extrae distintas moléculas según solubilidad."
+            },
+            {
+              "title": "Músculo liso",
+              "detail": "La contracción gastrointestinal depende de compleja señalización."
+            },
+            {
+              "title": "Uso tradicional",
+              "detail": "No equivale a identificar un receptor terapéutico probado."
+            }
+          ],
+          "plainLanguage": "Las hojas se emplean tradicionalmente para molestias digestivas leves; se investiga el papel de sus componentes.",
+          "sourceIds": [
+            "ema_leaf"
+          ]
+        },
+        {
+          "id": "aroma",
+          "title": "Aroma y tareas cognitivas: investigación",
+          "compoundIds": [
+            "cineole"
+          ],
+          "explanation": "Se ha descrito una asociación entre concentración plasmática de 1,8-cineol tras exposición aromática y desempeño en tareas cognitivas. No demuestra causalidad ni indica mecanismo nervioso establecido.",
+          "steps": [
+            {
+              "title": "Aceite esencial",
+              "detail": "Contiene 1,8-cineol según quimiotipo."
+            },
+            {
+              "title": "Exposición aromática",
+              "detail": "El sujeto percibe volátiles y puede absorber una fracción."
+            },
+            {
+              "title": "Estudio de tareas",
+              "detail": "Se comparan concentraciones y desempeño."
+            },
+            {
+              "title": "Interpretación",
+              "detail": "Una correlación no prueba mejora sostenida de memoria."
+            }
+          ],
+          "plainLanguage": "El olor de romero se investiga por su posible relación con atención; su beneficio no está confirmado.",
+          "sourceIds": [
+            "cognition"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "id": "carnosic_oxidation",
+        "title": "¿Por qué cambia el ácido carnósico al oxidarse?",
+        "reactionType": "oxidación multietapa / productos oxidados",
+        "reactants": [
+          "Ácido carnósico",
+          "Especies oxidantes (según condiciones)"
+        ],
+        "products": [
+          "Derivados oxidados, incluido carnosol"
+        ],
+        "equation": "Ácido carnósico → derivados oxidados (entre ellos carnosol)",
+        "description": "Es una familia de transformaciones por oxidación; NO es una reacción única balanceada ni ocurre necesariamente al hervir romero. El ácido carnósico y carnosol pueden participar en protección de lípidos por mecanismos distintos.",
+        "interactiveSteps": [
+          {
+            "index": 1,
+            "title": "Molécula inicial",
+            "detail": "El ácido carnósico posee un sistema fenólico tipo catecol."
+          },
+          {
+            "index": 2,
+            "title": "Oxidación",
+            "detail": "Su estructura puede reaccionar con especies oxidantes y sufrir transformaciones."
+          },
+          {
+            "index": 3,
+            "title": "Derivados",
+            "detail": "Entre los productos observados está carnosol; otros productos también se forman."
+          }
+        ],
+        "compoundIds": [
+          "carnosic_acid",
+          "carnosol"
+        ],
+        "sourceIds": [
+          "carnosic_oxidation",
+          "rosemary_antioxidant"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "04 · Extracciones y presentaciones",
+      "items": [
+        {
+          "id": "fresh_leaves",
+          "title": "Hojas frescas",
+          "extractionMethod": "Materia vegetal, sin extracción",
+          "description": "Hojas con sustancias fenólicas y glándulas de componentes volátiles.",
+          "highlightCompoundIds": [
+            "carnosic_acid",
+            "rosmarinic_acid",
+            "cineole"
+          ],
+          "warning": "El contenido varía por quimiotipo, clima, cosecha y almacenamiento.",
+          "extractionExperience": {
+            "heading": "Hojas frescas",
+            "processTitle": "Materia vegetal, sin extracción",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Hoja intacta",
+                "detail": "Contiene fracciones químicas polares y lipofílicas."
+              },
+              {
+                "index": 2,
+                "title": "Trituración",
+                "detail": "Aumenta área superficial y libera aroma."
+              },
+              {
+                "index": 3,
+                "title": "Uso culinario",
+                "detail": "Se ingiere la matriz vegetal, no un extracto purificado."
+              }
+            ],
+            "chemicalPrinciples": [
+              "estructura vegetal",
+              "volatilidad",
+              "área superficial"
+            ],
+            "focusCompoundIds": [
+              "carnosic_acid",
+              "rosmarinic_acid",
+              "cineole"
+            ],
+            "visualType": "leaf_glands",
+            "comparisonNote": "Hojas no equivalen a aceite esencial destilado.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_report"
+            ]
+          }
+        },
+        {
+          "id": "dried_leaves",
+          "title": "Hojas secas",
+          "extractionMethod": "Deshidratación, sin extracción selectiva",
+          "description": "La pérdida de agua modifica la matriz; parte de los volátiles puede perderse y algunos componentes oxidarse.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "carnosic_acid",
+            "cineole"
+          ],
+          "warning": "Secado no garantiza concentración fija de principios activos.",
+          "extractionExperience": {
+            "heading": "Hojas secas",
+            "processTitle": "Deshidratación, sin extracción selectiva",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Cosecha",
+                "detail": "Se recolectan hojas."
+              },
+              {
+                "index": 2,
+                "title": "Secado",
+                "detail": "Disminuye el agua y puede perderse aroma."
+              },
+              {
+                "index": 3,
+                "title": "Hojas secas",
+                "detail": "Conservan compuestos variables para infusión o cocina."
+              }
+            ],
+            "chemicalPrinciples": [
+              "evaporación de agua",
+              "volatilidad",
+              "estabilidad química"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "carnosic_acid",
+              "cineole"
+            ],
+            "visualType": "drying",
+            "comparisonNote": "Secar es distinto de extraer con solventes.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_leaf",
+              "rosemary_antioxidant"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión acuosa",
+          "extractionMethod": "Extracción sólido-líquido con agua caliente",
+          "description": "El agua favorece solutos polares como ácido rosmarínico, no concentra de la misma forma los diterpenos lipofílicos o aceite esencial.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "cineole"
+          ],
+          "warning": "La EMA reconoce uso tradicional para dispepsia leve; no garantiza mejora de memoria.",
+          "extractionExperience": {
+            "heading": "Infusión acuosa",
+            "processTitle": "Extracción sólido-líquido con agua caliente",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Agua y hojas",
+                "detail": "El agua caliente humedece las hojas."
+              },
+              {
+                "index": 2,
+                "title": "Difusión",
+                "detail": "Moléculas relativamente polares migran al líquido."
+              },
+              {
+                "index": 3,
+                "title": "Infusión",
+                "detail": "Se separa la matriz vegetal; algunos volátiles pueden perderse."
+              }
+            ],
+            "chemicalPrinciples": [
+              "polaridad",
+              "puentes de hidrógeno",
+              "difusión",
+              "volatilidad"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "cineole"
+            ],
+            "visualType": "hot_water_diffusion",
+            "comparisonNote": "Comparada con destilación, la infusión contiene más compuestos solubles en agua y menos fracción de terpenos volátiles.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_leaf",
+              "ema_report"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial",
+          "extractionMethod": "Destilación por arrastre de vapor",
+          "description": "El vapor transporta sustancias volátiles como 1,8-cineol y alcanfor; se condensa y separa fase oleosa. Los diterpenos fenólicos no son componentes principales del destilado.",
+          "highlightCompoundIds": [
+            "cineole",
+            "camphor"
+          ],
+          "warning": "Aceite concentrado; no ingerir ni aplicar directamente sin formulación apropiada.",
+          "extractionExperience": {
+            "heading": "Aceite esencial",
+            "processTitle": "Destilación por arrastre de vapor",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Paso de vapor",
+                "detail": "El vapor arrastra compuestos aromáticos volátiles."
+              },
+              {
+                "index": 2,
+                "title": "Condensación",
+                "detail": "El vapor se enfría y pasa a líquido."
+              },
+              {
+                "index": 3,
+                "title": "Separación",
+                "detail": "Se recupera una fracción oleosa rica en monoterpenos."
+              }
+            ],
+            "chemicalPrinciples": [
+              "volatilidad",
+              "condensación",
+              "inmiscibilidad parcial"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "camphor"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "Aceite esencial ≠ extracto rico en ácido carnósico.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_oil",
+              "ema_report"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción con agua y etanol",
+          "description": "Una mezcla de disolventes puede extraer compuestos de polaridades diversas; las proporciones afectan la recuperación de ácidos fenólicos y diterpenos.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "carnosic_acid",
+            "carnosol"
+          ],
+          "warning": "No todos los extractos hidroalcohólicos están estudiados clínicamente; no extrapolar dosificación.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Extracción con agua y etanol",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Maceración",
+                "detail": "Las hojas se ponen en contacto con agua/etanol."
+              },
+              {
+                "index": 2,
+                "title": "Solubilización",
+                "detail": "La mezcla facilita disolución de distintos compuestos."
+              },
+              {
+                "index": 3,
+                "title": "Filtrado",
+                "detail": "Se separa el extracto líquido del material sólido."
+              }
+            ],
+            "chemicalPrinciples": [
+              "polaridad",
+              "solubilidad diferencial",
+              "difusión"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "carnosic_acid",
+              "carnosol"
+            ],
+            "visualType": "solvent_extraction",
+            "comparisonNote": "El porcentaje de etanol cambia el perfil: no presentar rendimiento sin datos experimentales.",
+            "isExtraction": true,
+            "sourceIds": [
+              "rosemary_antioxidant",
+              "ema_report"
+            ]
+          }
+        },
+        {
+          "id": "lipophilic",
+          "title": "Extracto lipofílico antioxidante",
+          "extractionMethod": "Extracción con solventes menos polares",
+          "description": "Puede enriquecer diterpenos como ácido carnósico y carnosol. Es distinto del aceite esencial obtenido por vapor.",
+          "highlightCompoundIds": [
+            "carnosic_acid",
+            "carnosol"
+          ],
+          "warning": "Producto de investigación o formulación; no equiparar a cápsulas caseras ni recomendar ingestión.",
+          "extractionExperience": {
+            "heading": "Extracto lipofílico antioxidante",
+            "processTitle": "Extracción con solventes menos polares",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Selección del medio",
+                "detail": "Se emplean solventes/procesos adecuados a compuestos menos polares."
+              },
+              {
+                "index": 2,
+                "title": "Extracción",
+                "detail": "Se favorece transferencia de diterpenos lipofílicos."
+              },
+              {
+                "index": 3,
+                "title": "Concentración controlada",
+                "detail": "Se separan solventes bajo condiciones de proceso."
+              }
+            ],
+            "chemicalPrinciples": [
+              "lipofilia",
+              "partición",
+              "solubilidad"
+            ],
+            "focusCompoundIds": [
+              "carnosic_acid",
+              "carnosol"
+            ],
+            "visualType": "lipophilic_extraction",
+            "comparisonNote": "Un extracto lipofílico puede ser rico en ácido carnósico mientras un aceite esencial es rico en volátiles.",
+            "isExtraction": true,
+            "sourceIds": [
+              "rosemary_antioxidant",
+              "carnosic_oxidation"
+            ]
+          }
+        },
+        {
+          "id": "topical",
+          "title": "Producto tópico formulado",
+          "extractionMethod": "Formulación: no extracción",
+          "description": "Preparación semisólida farmacéutica que incorpora aceite esencial en base apropiada, para uso tradicional en molestias musculares y articulares leves.",
+          "highlightCompoundIds": [
+            "cineole",
+            "camphor"
+          ],
+          "warning": "No aplicar concentrado puro; evitar piel lesionada y respetar indicaciones y restricciones de edad del producto.",
+          "extractionExperience": {
+            "heading": "Producto tópico formulado",
+            "processTitle": "Formulación: no extracción",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Aceite caracterizado",
+                "detail": "Se utiliza aceite esencial de calidad controlada."
+              },
+              {
+                "index": 2,
+                "title": "Incorporación",
+                "detail": "Se formula en un vehículo tópico apropiado."
+              },
+              {
+                "index": 3,
+                "title": "Aplicación",
+                "detail": "Se emplea según ficha del producto, no como aceite puro."
+              }
+            ],
+            "chemicalPrinciples": [
+              "formulación",
+              "dispersión",
+              "concentración"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "camphor"
+            ],
+            "visualType": "topical_formulation",
+            "comparisonNote": "La formulación altera exposición cutánea, no transforma obligatoriamente cineol en otra sustancia.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_oil"
+            ]
+          }
+        },
+        {
+          "id": "bath",
+          "title": "Baño con preparación de hoja",
+          "extractionMethod": "Extracción acuosa y dilución en baño",
+          "description": "La EMA describe uso tradicional de hojas en preparaciones para baño para molestias musculares/articulares leves.",
+          "highlightCompoundIds": [
+            "rosmarinic_acid",
+            "cineole"
+          ],
+          "warning": "No aplicar sobre piel irritada o lesionada; atención a advertencias de la EMA.",
+          "extractionExperience": {
+            "heading": "Baño con preparación de hoja",
+            "processTitle": "Extracción acuosa y dilución en baño",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Preparación",
+                "detail": "Hojas entran en contacto con agua."
+              },
+              {
+                "index": 2,
+                "title": "Distribución",
+                "detail": "Componentes solubles se incorporan al agua del baño."
+              },
+              {
+                "index": 3,
+                "title": "Uso externo",
+                "detail": "Exposición superficial variable según preparación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "disolución",
+              "dilución",
+              "difusión"
+            ],
+            "focusCompoundIds": [
+              "rosmarinic_acid",
+              "cineole"
+            ],
+            "visualType": "bath_preparation",
+            "comparisonNote": "Un baño de hojas no equivale a la aplicación de aceite esencial sin diluir.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_leaf"
+            ]
+          }
+        },
+        {
+          "id": "aroma",
+          "title": "Exposición al aroma",
+          "extractionMethod": "Volatilización e inhalación: no extracción",
+          "description": "La inhalación permite percibir componentes volátiles; se ha estudiado asociación entre 1,8-cineol y tareas cognitivas, sin beneficio clínico establecido.",
+          "highlightCompoundIds": [
+            "cineole",
+            "camphor"
+          ],
+          "warning": "Evitar exposición excesiva; no presentar como tratamiento de fatiga o trastornos cognitivos.",
+          "extractionExperience": {
+            "heading": "Exposición al aroma",
+            "processTitle": "Volatilización e inhalación: no extracción",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Evaporación",
+                "detail": "Una fracción volátil pasa al aire."
+              },
+              {
+                "index": 2,
+                "title": "Percepción",
+                "detail": "Moléculas aromáticas alcanzan el sistema olfativo."
+              },
+              {
+                "index": 3,
+                "title": "Investigación",
+                "detail": "Algunos estudios observan asociaciones, no eficacia definitiva."
+              }
+            ],
+            "chemicalPrinciples": [
+              "volatilidad",
+              "transporte de vapor",
+              "percepción olfativa"
+            ],
+            "focusCompoundIds": [
+              "cineole",
+              "camphor"
+            ],
+            "visualType": "aroma_release",
+            "comparisonNote": "Inhalar aroma no equivale a extraer ácido carnósico ni a consumir infusión.",
+            "isExtraction": false,
+            "sourceIds": [
+              "cognition",
+              "ema_oil"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Información educativa. Según EMA, evitar preparaciones medicinales de hoja durante embarazo y lactancia, en menores de 12 años, con alergia al romero, obstrucción biliar, colecistitis, cálculos biliares o enfermedad hepática; no aplicar sobre piel dañada. Revisar indicaciones específicas de productos de aceite esencial y no ingerir aceite concentrado. Uso culinario habitual no equivale a preparados medicinales.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "digestive",
+        "compoundIds": [
+          "rosmarinic_acid"
+        ],
+        "mechanismIds": [
+          "digestive"
+        ],
+        "preparationIds": [
+          "infusion",
+          "dried_leaves"
+        ],
+        "note": "Uso tradicional EMA, no mecanismo molecular confirmado."
+      },
+      {
+        "propertyId": "muscle",
+        "compoundIds": [
+          "cineole",
+          "camphor"
+        ],
+        "mechanismIds": [
+          "inflammatory"
+        ],
+        "preparationIds": [
+          "topical",
+          "bath"
+        ],
+        "note": "Uso tradicional del producto completo; mecanismos experimentales no prueban causalidad clínica."
+      },
+      {
+        "propertyId": "antioxidant",
+        "compoundIds": [
+          "carnosic_acid",
+          "carnosol",
+          "rosmarinic_acid"
+        ],
+        "mechanismIds": [
+          "redox",
+          "nrf2"
+        ],
+        "preparationIds": [
+          "lipophilic",
+          "hydroalcoholic",
+          "infusion"
+        ],
+        "note": "La fracción química cambia entre preparaciones."
+      },
+      {
+        "propertyId": "inflammation",
+        "compoundIds": [
+          "carnosic_acid",
+          "carnosol"
+        ],
+        "mechanismIds": [
+          "inflammatory",
+          "nrf2"
+        ],
+        "preparationIds": [
+          "lipophilic",
+          "hydroalcoholic"
+        ],
+        "note": "Resultados preclínicos; no equivaler dosis experimentales a una infusión."
+      },
+      {
+        "propertyId": "cognition",
+        "compoundIds": [
+          "cineole"
+        ],
+        "mechanismIds": [
+          "aroma"
+        ],
+        "preparationIds": [
+          "aroma"
+        ],
+        "note": "Asociación exploratoria; sin efecto sobre memoria clínicamente establecido."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "ema_leaf",
+      "organization": "EMA / HMPC",
+      "title": "Rosmarini folium: resumen y monografía de hoja de romero",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-folium",
+      "relevance": "Usos tradicionales digestivos, baños y seguridad; actualización 2026."
+    },
+    {
+      "id": "ema_oil",
+      "organization": "EMA / HMPC",
+      "title": "Rosmarini aetheroleum: monografía de aceite esencial",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-aetheroleum",
+      "relevance": "Uso tópico tradicional, indicaciones y precauciones."
+    },
+    {
+      "id": "ema_report",
+      "organization": "EMA / HMPC",
+      "title": "Assessment report on rosemary leaf and oil (Revision 1)",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rosmarinus-officinalis-l-aetheroleum-rosmarinus-officinalis-l-folium-revision-1_en.pdf",
+      "relevance": "Composición de hojas, aceite y nomenclatura botánica."
+    },
+    {
+      "id": "rosemary_antioxidant",
+      "organization": "NIH / PubMed Central",
+      "title": "Antioxidant and Antimicrobial Properties of Rosemary: A Review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6165352/",
+      "relevance": "Fitoquímica, extractos, antioxidantes fenólicos."
+    },
+    {
+      "id": "carnosic_oxidation",
+      "organization": "NIH / PubMed Central",
+      "title": "Carnosic Acid and Carnosol, Two Major Antioxidants of Rosemary, Act through Different Mechanisms",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5664485/",
+      "relevance": "Oxidación de ácido carnósico y actividad antioxidante del carnosol."
+    },
+    {
+      "id": "antiinflammatory_review",
+      "organization": "NIH / PubMed / PMC",
+      "title": "Anti-Inflammatory Therapeutic Mechanisms of Natural Products: Insight from Rosemary Diterpenes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9953345/",
+      "relevance": "Modulación experimental de NF-κB, MAPK, Nrf2 y NLRP3."
+    },
+    {
+      "id": "keap_nrf2",
+      "organization": "NIH / PubMed Central",
+      "title": "Carnosic acid protects neurons through Keap1/Nrf2 pathway",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4566957/",
+      "relevance": "Mecanismo electrofílico experimental de unión a cisteínas KEAP1."
+    },
+    {
+      "id": "cognition",
+      "organization": "NIH / PubMed",
+      "title": "Plasma 1,8-cineole correlates with cognitive performance following exposure to rosemary essential oil aroma",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23983963/",
+      "relevance": "Asociación en estudio humano pequeño; no causalidad ni efecto clínico establecido."
+    },
+    {
+      "id": "egypt_monograph",
+      "organization": "Egyptian Drug Authority",
+      "title": "Egyptian Herbal Monograph, 4th edition, Salvia rosmarinus",
+      "url": "https://edaegypt.gov.eg/media/1s4ljznu/egyprian-herbal-monograph-2025_4th-edition.pdf",
+      "relevance": "Nomenclatura, clasificación y constituyentes principales."
+    }
+  ]
+}

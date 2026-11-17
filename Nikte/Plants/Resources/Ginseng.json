@@ -1,0 +1,1030 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plantTechnicalSheet",
+  "integrationNotes": {
+    "goal": "Integrar únicamente Ginseng en Nikte reutilizando las cuatro secciones y los exploradores existentes.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Esquema Nikte 1.1; reutilizar modelos Codable, section3.featuredChemistry y section4.items[*].extractionExperience para mecanismos y extracciones interactivas.",
+    "scientificIntegrity": "No inferir aumento de inmunidad, memoria o energía garantizados a partir de modelos celulares. Distinguir el uso tradicional de fatiga de los ensayos clínicos; diferenciar extractos, raíz, ginseng blanco y rojo.",
+    "extractionUI": "Para cada preparación mostrar pasos, compuestos, principios químicos, comparación. El vapor para obtener ginseng rojo es PROCESAMIENTO, no destilación de aceite esencial.",
+    "safetyUI": "Advertencias integradas sobre insomnio, glucemia, anticoagulantes y medicación; fuentes internas sin quinta sección.",
+    "structureNote": "Los ginsenósidos son saponinas triterpénicas glucosiladas; los polisacáridos son mezclas de polímeros sin fórmula molecular única. No representar Rb1 -> Rg3 como conversión cuantitativa inevitable."
+  },
+  "plant": {
+    "id": "ginseng",
+    "commonName": "Ginseng asiático",
+    "scientificName": "Panax ginseng C.A.Mey.",
+    "searchAlias": [
+      "Panax ginseng",
+      "ginseng asiático",
+      "ginseng rojo",
+      "ginseng blanco"
+    ],
+    "family": "Araliaceae",
+    "usedParts": [
+      "raíz"
+    ],
+    "summary": "Raíz con ginsenósidos (saponinas triterpénicas) y polisacáridos. El procesamiento al vapor modifica sus perfiles químicos. Se utiliza tradicionalmente para fatiga y debilidad, pero los resultados clínicos varían entre formulaciones y estudios.",
+    "section1": {
+      "id": "properties",
+      "title": "01 · Propiedades",
+      "items": [
+        {
+          "id": "fatigue",
+          "title": "Fatiga y sensación de debilidad",
+          "description": "La raíz se utiliza tradicionalmente para fatiga y debilidad. Algunas investigaciones clínicas sugieren un beneficio pequeño para fatiga general, con resultados inconsistentes.",
+          "evidenceContext": "La EMA reconoce uso tradicional; NCCIH destaca la incertidumbre de la eficacia clínica y la variabilidad entre preparados.",
+          "relatedCompoundIds": [
+            "rg1",
+            "rb1",
+            "re"
+          ],
+          "relatedPreparationIds": [
+            "white_root",
+            "red_root",
+            "standardized_extract"
+          ],
+          "sourceIds": [
+            "nih_nccih",
+            "ema_ginseng"
+          ]
+        },
+        {
+          "id": "cognition",
+          "title": "Atención y función cognitiva investigadas",
+          "description": "Se estudian posibles cambios en atención y algunas funciones cognitivas con preparados de ginseng, pero no está demostrado que mejore de forma generalizada la memoria.",
+          "evidenceContext": "Ensayos humanos pequeños y heterogéneos; mecanismos neuronales principalmente preclínicos.",
+          "relatedCompoundIds": [
+            "rg1",
+            "rb1"
+          ],
+          "relatedPreparationIds": [
+            "standardized_extract"
+          ],
+          "sourceIds": [
+            "nih_nccih"
+          ]
+        },
+        {
+          "id": "immune",
+          "title": "Actividad inmunomoduladora investigada",
+          "description": "Polisacáridos y ginsenósidos pueden influir en células inmunitarias y señales inflamatorias en modelos experimentales.",
+          "evidenceContext": "No significa que cualquier té o cápsula fortalezca las defensas ni que prevenga infecciones.",
+          "relatedCompoundIds": [
+            "polysaccharides",
+            "rb1"
+          ],
+          "relatedPreparationIds": [
+            "aqueous_decoction",
+            "polysaccharide_fraction"
+          ],
+          "sourceIds": [
+            "review_polysaccharides",
+            "nih_nccih",
+            "clinical_polysaccharides"
+          ]
+        },
+        {
+          "id": "metabolic",
+          "title": "Metabolismo y glucemia investigados",
+          "description": "Se han estudiado efectos sobre la señalización energética celular y variables de metabolismo glucídico.",
+          "evidenceContext": "La evidencia sobre control de glucosa en personas con diabetes es conflictiva; posibles interacciones con tratamiento hipoglucemiante.",
+          "relatedCompoundIds": [
+            "rg1",
+            "rb1",
+            "re"
+          ],
+          "relatedPreparationIds": [
+            "standardized_extract"
+          ],
+          "sourceIds": [
+            "nih_nccih"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "02 · Composición química",
+      "items": [
+        {
+          "id": "rg1",
+          "name": "Ginsenósido Rg1",
+          "molecularFormula": "C₄₂H₇₂O₁₄",
+          "chemicalClass": "Saponina triterpénica de tipo protopanaxatriol",
+          "functionalGroups": [
+            "enlaces O-glucosídicos",
+            "grupos hidroxilo –OH",
+            "alqueno C=C"
+          ],
+          "description": "Ginsenósido glucosilado investigado por su participación en señalización celular y mecanismos neuroprotectores en modelos experimentales.",
+          "associatedProperties": [
+            "función cognitiva experimental",
+            "señalización metabólica"
+          ],
+          "distribution": "Raíz fresca, blanca y roja; las proporciones cambian con el procesamiento.",
+          "pubchemCID": 441923,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_rg1",
+            "review_processing"
+          ]
+        },
+        {
+          "id": "rb1",
+          "name": "Ginsenósido Rb1",
+          "molecularFormula": "C₅₄H₉₂O₂₃",
+          "chemicalClass": "Saponina triterpénica de tipo protopanaxadiol",
+          "functionalGroups": [
+            "múltiples enlaces O-glucosídicos",
+            "grupos hidroxilo –OH"
+          ],
+          "description": "Molécula con varias unidades de azúcar; puede originar productos con menos grupos glucosilo durante procesamiento térmico.",
+          "associatedProperties": [
+            "transformaciones térmicas",
+            "señalización celular experimental"
+          ],
+          "distribution": "Raíz y extractos; la temperatura altera el perfil relativo.",
+          "pubchemCID": 9898279,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_rb1",
+            "review_processing"
+          ]
+        },
+        {
+          "id": "rd",
+          "name": "Ginsenósido Rd",
+          "molecularFormula": "C₄₈H₈₂O₁₈",
+          "chemicalClass": "Saponina triterpénica glucosilada",
+          "functionalGroups": [
+            "enlaces O-glucosídicos",
+            "grupos hidroxilo –OH"
+          ],
+          "description": "Intermediario químicamente relacionado con Rb1 y Rg3; puede perder una unidad de glucosa por hidrólisis.",
+          "associatedProperties": [
+            "procesamiento por calor"
+          ],
+          "distribution": "Raíz y fracciones de ginsenósidos.",
+          "pubchemCID": 11679800,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_rd",
+            "review_reactions"
+          ]
+        },
+        {
+          "id": "rg3",
+          "name": "Ginsenósido Rg3 (20S)",
+          "molecularFormula": "C₄₂H₇₂O₁₃",
+          "chemicalClass": "Saponina triterpénica menos glucosilada",
+          "functionalGroups": [
+            "enlaces O-glucosídicos",
+            "grupos hidroxilo –OH"
+          ],
+          "description": "Puede formarse a partir de otros ginsenósidos durante calentamiento húmedo. Existen epímeros 20S y 20R, con estereoquímica distinta.",
+          "associatedProperties": [
+            "transformaciones químicas por vapor"
+          ],
+          "distribution": "Habitualmente más representado en determinados ginsengs rojos procesados que en raíces sin vapor.",
+          "pubchemCID": 9918693,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_rg3",
+            "review_processing",
+            "experiment_steaming"
+          ]
+        },
+        {
+          "id": "re",
+          "name": "Ginsenósido Re",
+          "molecularFormula": "C₄₈H₈₂O₁₈",
+          "chemicalClass": "Saponina triterpénica de tipo protopanaxatriol",
+          "functionalGroups": [
+            "enlaces glucosídicos",
+            "grupos hidroxilo –OH"
+          ],
+          "description": "Ginsenósido con unidades de glucosa y ramnosa. Puede experimentar transformaciones de glucósidos con procesamiento; sus efectos farmacológicos se investigan experimentalmente.",
+          "associatedProperties": [
+            "actividad farmacológica preclínica"
+          ],
+          "distribution": "Raíz y extractos, con perfil dependiente del procesado.",
+          "pubchemCID": 441921,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_re",
+            "review_processing"
+          ]
+        },
+        {
+          "id": "polysaccharides",
+          "name": "Polisacáridos del ginseng",
+          "molecularFormula": null,
+          "chemicalClass": "Mezcla de macromoléculas glucídicas",
+          "functionalGroups": [
+            "enlaces glucosídicos",
+            "grupos hidroxilo –OH",
+            "grupos carboxilo en algunas fracciones"
+          ],
+          "description": "Mezcla de polímeros con cadenas y masas moleculares variables; algunas fracciones purificadas se investigan por actividad sobre macrófagos y otras células. No existe una fórmula molecular única.",
+          "associatedProperties": [
+            "inmunomodulación experimental"
+          ],
+          "distribution": "Fracciones hidrosolubles de la raíz; no equivalen a la fracción de ginsenósidos.",
+          "pubchemCID": null,
+          "structureImage": null,
+          "sourceIds": [
+            "review_polysaccharides",
+            "clinical_polysaccharides"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "03 · Reacciones y mecanismos",
+      "items": [
+        {
+          "id": "fatigue_pathways",
+          "title": "Señalización energética y fatiga",
+          "compoundIds": [
+            "rg1",
+            "rb1",
+            "re"
+          ],
+          "explanation": "En estudios preclínicos, determinados ginsenósidos modulan rutas como AMPK y factores relacionados con la función mitocondrial. No se ha establecido que ese mecanismo explique un efecto clínico uniforme sobre la fatiga.",
+          "steps": [
+            {
+              "title": "Metabolismo energético",
+              "detail": "Las células detectan su disponibilidad energética por rutas reguladoras."
+            },
+            {
+              "title": "Ginsenósidos en modelos experimentales",
+              "detail": "Algunos pueden modificar señalización AMPK o respuestas metabólicas."
+            },
+            {
+              "title": "Cambios celulares",
+              "detail": "Se estudian parámetros mitocondriales y metabolismo de nutrientes."
+            },
+            {
+              "title": "Pregunta clínica",
+              "detail": "La disminución de fatiga en personas requiere ensayos de formulaciones concretas."
+            }
+          ],
+          "plainLanguage": "Se investigan moléculas que pueden modificar cómo las células regulan su energía, pero eso no garantiza sentir más energía.",
+          "sourceIds": [
+            "nih_nccih"
+          ]
+        },
+        {
+          "id": "immune_cells",
+          "title": "Modulación de células inmunitarias",
+          "compoundIds": [
+            "polysaccharides",
+            "rb1"
+          ],
+          "explanation": "Fracciones específicas de polisacáridos modifican respuestas de macrófagos y células dendríticas en experimentos; las respuestas pueden ser activadoras o reguladoras según la preparación.",
+          "steps": [
+            {
+              "title": "Polisacárido aislado",
+              "detail": "La fracción química tiene masa y estructura variables."
+            },
+            {
+              "title": "Interacción celular",
+              "detail": "Se investigan receptores de reconocimiento y vías de señalización."
+            },
+            {
+              "title": "Cambios en respuestas",
+              "detail": "Se modifican mediadores, fagocitosis u otros indicadores en ciertos ensayos."
+            },
+            {
+              "title": "Alcance limitado",
+              "detail": "No se deduce protección frente a enfermedades al beber una decocción."
+            }
+          ],
+          "plainLanguage": "Algunas cadenas de azúcares del ginseng pueden modificar la actividad de células de defensa en condiciones de laboratorio.",
+          "sourceIds": [
+            "review_polysaccharides",
+            "clinical_polysaccharides"
+          ]
+        },
+        {
+          "id": "cognition_pathways",
+          "title": "Neuroprotección y función cognitiva investigadas",
+          "compoundIds": [
+            "rg1",
+            "rb1"
+          ],
+          "explanation": "Algunos ginsenósidos han sido investigados por cambios en señalización neuronal y estrés oxidativo en modelos animales o celulares; los resultados no permiten atribuir mejoría consistente de memoria en humanos.",
+          "steps": [
+            {
+              "title": "Compuestos específicos",
+              "detail": "Se analizan ginsenósidos aislados o preparados definidos."
+            },
+            {
+              "title": "Modelos neuronales",
+              "detail": "Se observan rutas de respuesta a estrés y plasticidad celular."
+            },
+            {
+              "title": "Mediciones experimentales",
+              "detail": "Se evalúan marcadores y tareas específicas."
+            },
+            {
+              "title": "Traducción clínica",
+              "detail": "No sustituye pruebas humanas de calidad."
+            }
+          ],
+          "plainLanguage": "Los ginsenósidos se investigan por sus efectos en neuronas; la mejoría de memoria no está demostrada de forma general.",
+          "sourceIds": [
+            "nih_nccih"
+          ]
+        },
+        {
+          "id": "glycemia_signaling",
+          "title": "Metabolismo de glucosa investigado",
+          "compoundIds": [
+            "rg1",
+            "re",
+            "rb1"
+          ],
+          "explanation": "Se han estudiado rutas de señalización que influyen en utilización de glucosa; las revisiones clínicas presentan conclusiones inconsistentes respecto del control glucémico.",
+          "steps": [
+            {
+              "title": "Señalización metabólica",
+              "detail": "La captación y producción de glucosa dependen de numerosas rutas."
+            },
+            {
+              "title": "Extractos y ginsenósidos",
+              "detail": "Se evalúan en experimentos y ensayos con preparaciones distintas."
+            },
+            {
+              "title": "Cambios observados",
+              "detail": "Algunos marcadores pueden cambiar, sin establecer efecto constante."
+            },
+            {
+              "title": "Seguridad",
+              "detail": "Puede haber interacción con tratamientos que reducen la glucosa."
+            }
+          ],
+          "plainLanguage": "No se puede recomendar ginseng como sustituto de un tratamiento para la diabetes.",
+          "sourceIds": [
+            "nih_nccih",
+            "nih_interactions"
+          ]
+        },
+        {
+          "id": "processing_reactions",
+          "title": "Transformaciones por vapor",
+          "compoundIds": [
+            "rb1",
+            "rd",
+            "rg3"
+          ],
+          "explanation": "El vapor y el calor favorecen pérdidas de unidades glucosídicas (hidrólisis), modificaciones de grupos malonilo y otras transformaciones. Una ruta documentada es Rb1 → Rd → Rg3, pero no ocurre de forma exclusiva ni con conversión completa.",
+          "steps": [
+            {
+              "title": "Ginsenósido inicial",
+              "detail": "Rb1 tiene varias unidades de glucosa unidas por enlaces glucosídicos."
+            },
+            {
+              "title": "Hidrólisis",
+              "detail": "El agua y el calor pueden facilitar la ruptura de enlaces glucosídicos."
+            },
+            {
+              "title": "Ginsenósidos derivados",
+              "detail": "Aparecen especies con menos azúcares, como Rd y Rg3."
+            },
+            {
+              "title": "Perfil final",
+              "detail": "Depende de temperatura, tiempo, humedad y material inicial."
+            }
+          ],
+          "plainLanguage": "Calentar con vapor puede cambiar químicamente las moléculas del ginseng al quitarles algunos azúcares.",
+          "sourceIds": [
+            "review_reactions",
+            "experiment_steaming",
+            "review_processing"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "id": "red_ginseng_glycoside_hydrolysis",
+        "title": "¿Por qué el ginseng rojo es químicamente distinto del blanco?",
+        "reactionType": "hidrólisis escalonada de enlaces O-glucosídicos durante procesamiento con vapor",
+        "reactants": [
+          "Ginsenósido Rb1",
+          "Agua (en condiciones de procesamiento)"
+        ],
+        "products": [
+          "Ginsenósido Rd",
+          "Ginsenósido Rg3 y otras especies según condiciones",
+          "Unidades de glucosa liberadas"
+        ],
+        "equation": "Rb1 → Rd → Rg3 (esquema de transformaciones; cada hidrólisis puede liberar glucosa)",
+        "description": "El procesamiento con vapor puede producir desglucosilación, epimerización, deshidratación y otras reacciones. Rb1 → Rd → Rg3 es una ruta ilustrativa de pérdida secuencial de azúcares, no conversión exclusiva ni resultado garantizado. Las fórmulas de Rb1, Rd y Rg3 son, respectivamente, C₅₄H₉₂O₂₃, C₄₈H₈₂O₁₈ y C₄₂H₇₂O₁₃.",
+        "interactiveSteps": [
+          {
+            "index": 1,
+            "title": "Identifica los azúcares",
+            "detail": "Resalta las unidades de glucosa en Rb1 y sus enlaces O-glucosídicos."
+          },
+          {
+            "index": 2,
+            "title": "Aplica vapor y calor",
+            "detail": "Describe ruptura de ciertos enlaces glucosídicos por hidrólisis; no simular porcentajes."
+          },
+          {
+            "index": 3,
+            "title": "Compara moléculas",
+            "detail": "Visualiza Rb1, Rd y 20(S)-Rg3 y las diferencias en número de unidades de glucosa."
+          },
+          {
+            "index": 4,
+            "title": "Compara blanco vs rojo",
+            "detail": "El secado y la cocción al vapor producen perfiles químicos diferentes; explicar sin prometer más eficacia."
+          }
+        ],
+        "compoundIds": [
+          "rb1",
+          "rd",
+          "rg3"
+        ],
+        "sourceIds": [
+          "review_reactions",
+          "experiment_steaming",
+          "review_processing",
+          "pubchem_rb1",
+          "pubchem_rd",
+          "pubchem_rg3"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "04 · Extracciones",
+      "items": [
+        {
+          "id": "fresh_root",
+          "title": "Raíz fresca",
+          "extractionMethod": "Materia prima vegetal sin extracción",
+          "description": "Raíz con agua, polisacáridos y ginsenósidos; se utiliza como punto de partida del procesamiento.",
+          "highlightCompoundIds": [
+            "rg1",
+            "rb1",
+            "polysaccharides"
+          ],
+          "warning": "La materia prima cruda no constituye una dosis controlada.",
+          "extractionExperience": {
+            "heading": "Raíz fresca",
+            "processTitle": "Explorar la raíz",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Observa la raíz",
+                "detail": "Identifica la matriz vegetal con agua y múltiples metabolitos."
+              },
+              {
+                "index": 2,
+                "title": "Corta o tritura",
+                "detail": "Aumenta el área expuesta sin separar sustancias de forma selectiva."
+              },
+              {
+                "index": 3,
+                "title": "Compara destinos",
+                "detail": "Puede secarse, cocinarse al vapor o someterse a extracción."
+              }
+            ],
+            "chemicalPrinciples": [
+              "matriz vegetal",
+              "área superficial",
+              "composición variable"
+            ],
+            "focusCompoundIds": [
+              "rg1",
+              "rb1",
+              "polysaccharides"
+            ],
+            "visualType": "root_cut",
+            "comparisonNote": "La raíz fresca no es equivalente al ginseng blanco seco o al rojo tratado con vapor.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_ginseng"
+            ]
+          }
+        },
+        {
+          "id": "white_root",
+          "title": "Ginseng blanco (raíz seca)",
+          "extractionMethod": "Secado, no extracción selectiva",
+          "description": "Raíz deshidratada, generalmente sin tratamiento previo con vapor. Conserva una mezcla de ginsenósidos cuya composición depende del secado.",
+          "highlightCompoundIds": [
+            "rg1",
+            "rb1",
+            "re"
+          ],
+          "warning": "No asumir equivalencia de concentración con la raíz fresca.",
+          "extractionExperience": {
+            "heading": "Ginseng blanco (raíz seca)",
+            "processTitle": "Secado de raíz",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz fresca",
+                "detail": "La matriz contiene agua y metabolitos."
+              },
+              {
+                "index": 2,
+                "title": "Deshidratación",
+                "detail": "La pérdida de agua facilita conservación; pueden darse cambios menores de compuestos."
+              },
+              {
+                "index": 3,
+                "title": "Raíz blanca",
+                "detail": "Material seco para polvo, té o extracción."
+              }
+            ],
+            "chemicalPrinciples": [
+              "evaporación de agua",
+              "estabilidad química",
+              "conservación"
+            ],
+            "focusCompoundIds": [
+              "rg1",
+              "rb1",
+              "re"
+            ],
+            "visualType": "drying",
+            "comparisonNote": "Secar no produce necesariamente el mismo perfil de ginsenósidos que cocinar al vapor.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_ginseng",
+              "review_processing"
+            ]
+          }
+        },
+        {
+          "id": "red_root",
+          "title": "Ginseng rojo (raíz tratada con vapor)",
+          "extractionMethod": "Tratamiento térmico húmedo y secado; procesamiento químico, no extracción",
+          "description": "El vapor y el calor pueden modificar ginsenósidos por hidrólisis de enlaces glucosídicos, deshidratación y otras reacciones.",
+          "highlightCompoundIds": [
+            "rb1",
+            "rd",
+            "rg3"
+          ],
+          "warning": "La composición depende de temperatura y duración; no atribuir mayor eficacia clínica automáticamente.",
+          "extractionExperience": {
+            "heading": "Ginseng rojo (raíz tratada con vapor)",
+            "processTitle": "Del ginseng fresco al rojo",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz fresca",
+                "detail": "Contiene ginsenósidos con varios azúcares."
+              },
+              {
+                "index": 2,
+                "title": "Calentamiento con vapor",
+                "detail": "Pueden ocurrir pérdidas de unidades glucosídicas y otras transformaciones."
+              },
+              {
+                "index": 3,
+                "title": "Secado",
+                "detail": "Se obtiene raíz roja con perfil químico diferente."
+              }
+            ],
+            "chemicalPrinciples": [
+              "hidrólisis de enlaces glucosídicos",
+              "procesamiento térmico",
+              "deshidratación"
+            ],
+            "focusCompoundIds": [
+              "rb1",
+              "rd",
+              "rg3"
+            ],
+            "visualType": "steaming",
+            "comparisonNote": "Rb1 → Rd → Rg3 es un ejemplo de ruta, no una conversión completa en todas las preparaciones.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_ginseng",
+              "review_processing",
+              "experiment_steaming"
+            ]
+          }
+        },
+        {
+          "id": "aqueous_decoction",
+          "title": "Decocción de raíz",
+          "extractionMethod": "Extracción acuosa por calentamiento",
+          "description": "El agua caliente extrae cantidades variables de polisacáridos y ginsenósidos. No es idéntica a un extracto estandarizado.",
+          "highlightCompoundIds": [
+            "polysaccharides",
+            "rg1",
+            "rb1"
+          ],
+          "warning": "No prometer efecto inmunológico ni energizante a partir de la decocción.",
+          "extractionExperience": {
+            "heading": "Decocción de raíz",
+            "processTitle": "Extracción en agua",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Fragmenta la raíz",
+                "detail": "Amplía la superficie de contacto."
+              },
+              {
+                "index": 2,
+                "title": "Calienta en agua",
+                "detail": "Componentes solubles difunden a la fase acuosa."
+              },
+              {
+                "index": 3,
+                "title": "Separa material",
+                "detail": "La decocción contiene una mezcla variable."
+              }
+            ],
+            "chemicalPrinciples": [
+              "solubilidad",
+              "difusión",
+              "temperatura"
+            ],
+            "focusCompoundIds": [
+              "polysaccharides",
+              "rg1",
+              "rb1"
+            ],
+            "visualType": "decoction",
+            "comparisonNote": "La decocción difiere del aceite esencial y de cápsulas con ginsenósidos cuantificados.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_ginseng",
+              "review_polysaccharides"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión de raíz cortada",
+          "extractionMethod": "Contacto de raíz fragmentada con agua caliente",
+          "description": "El agua extrae componentes según tiempo, tamaño de partícula y polaridad; una infusión breve puede diferir de una decocción.",
+          "highlightCompoundIds": [
+            "rg1",
+            "re",
+            "polysaccharides"
+          ],
+          "warning": "No inferir dosis ni concentración a partir del color del líquido.",
+          "extractionExperience": {
+            "heading": "Infusión de raíz cortada",
+            "processTitle": "Infusión acuosa",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz fragmentada",
+                "detail": "Aumenta el contacto del agua con el tejido."
+              },
+              {
+                "index": 2,
+                "title": "Agua caliente",
+                "detail": "Se disuelven constituyentes hidrosolubles."
+              },
+              {
+                "index": 3,
+                "title": "Filtra",
+                "detail": "Se retira el residuo sólido y queda una mezcla no estandarizada."
+              }
+            ],
+            "chemicalPrinciples": [
+              "polaridad",
+              "disolución",
+              "difusión"
+            ],
+            "focusCompoundIds": [
+              "rg1",
+              "re",
+              "polysaccharides"
+            ],
+            "visualType": "infusion",
+            "comparisonNote": "La duración y temperatura alteran lo recuperado; no garantiza extraer todos los ginsenósidos.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_ginseng"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción con mezcla agua-etanol",
+          "description": "La composición del solvente permite recuperar mezclas de saponinas y otros compuestos con distinta solubilidad.",
+          "highlightCompoundIds": [
+            "rb1",
+            "rg1",
+            "re",
+            "rg3"
+          ],
+          "warning": "No asumir concentración o composición universal; dependen del método.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Mezcla de disolventes",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal",
+                "detail": "Se prepara raíz blanca o roja molida."
+              },
+              {
+                "index": 2,
+                "title": "Agua + etanol",
+                "detail": "Los metabolitos se disuelven de manera diferencial."
+              },
+              {
+                "index": 3,
+                "title": "Filtrado y concentración",
+                "detail": "Se elimina parte del disolvente para obtener un extracto."
+              }
+            ],
+            "chemicalPrinciples": [
+              "solubilidad diferencial",
+              "polaridad",
+              "filtración"
+            ],
+            "focusCompoundIds": [
+              "rb1",
+              "rg1",
+              "re",
+              "rg3"
+            ],
+            "visualType": "hydroalcoholic",
+            "comparisonNote": "Un extracto hidroalcohólico no es químicamente idéntico a un té.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_ginseng"
+            ]
+          }
+        },
+        {
+          "id": "standardized_extract",
+          "title": "Extracto estandarizado en cápsulas",
+          "extractionMethod": "Extracción y formulación farmacéutica",
+          "description": "El extracto puede cuantificarse respecto de un conjunto definido de ginsenósidos; cápsulas permiten reproducibilidad relativa de composición.",
+          "highlightCompoundIds": [
+            "rg1",
+            "rb1",
+            "re",
+            "rg3"
+          ],
+          "warning": "Puede causar insomnio e interaccionar con medicamentos; la estandarización no demuestra eficacia de cualquier indicación.",
+          "extractionExperience": {
+            "heading": "Extracto estandarizado en cápsulas",
+            "processTitle": "Estandarización y cápsula",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Extrae",
+                "detail": "Recupera sustancias de la raíz con un solvente controlado."
+              },
+              {
+                "index": 2,
+                "title": "Analiza",
+                "detail": "Mide marcadores químicos para cumplir una especificación."
+              },
+              {
+                "index": 3,
+                "title": "Formula",
+                "detail": "Incorpora el extracto a cápsulas u otras formas."
+              }
+            ],
+            "chemicalPrinciples": [
+              "estandarización analítica",
+              "concentración",
+              "formulación"
+            ],
+            "focusCompoundIds": [
+              "rg1",
+              "rb1",
+              "re",
+              "rg3"
+            ],
+            "visualType": "capsule",
+            "comparisonNote": "La cantidad de extracto y la cantidad de ginsenósidos no son la misma medición.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_ginseng",
+              "nih_nccih"
+            ]
+          }
+        },
+        {
+          "id": "polysaccharide_fraction",
+          "title": "Fracción de polisacáridos",
+          "extractionMethod": "Extracción acuosa y purificación de macromoléculas",
+          "description": "Procedimientos de laboratorio pueden aislar fracciones ricas en polisacáridos, distintas de las de saponinas.",
+          "highlightCompoundIds": [
+            "polysaccharides"
+          ],
+          "warning": "Actividad inmunitaria observada con fracciones aisladas no demuestra beneficio de una preparación casera.",
+          "extractionExperience": {
+            "heading": "Fracción de polisacáridos",
+            "processTitle": "Separación de macromoléculas",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Extrae con agua",
+                "detail": "Se recuperan polímeros hidrosolubles."
+              },
+              {
+                "index": 2,
+                "title": "Fracciona",
+                "detail": "Se aplican técnicas de precipitación o separación apropiadas."
+              },
+              {
+                "index": 3,
+                "title": "Caracteriza",
+                "detail": "Se analiza composición, masa molecular y actividad en laboratorio."
+              }
+            ],
+            "chemicalPrinciples": [
+              "solubilidad de polímeros",
+              "precipitación/fraccionamiento",
+              "caracterización"
+            ],
+            "focusCompoundIds": [
+              "polysaccharides"
+            ],
+            "visualType": "polymer_extraction",
+            "comparisonNote": "Los polisacáridos no poseen estructura o fórmula molecular única como los ginsenósidos.",
+            "isExtraction": true,
+            "sourceIds": [
+              "review_polysaccharides",
+              "clinical_polysaccharides"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Contenido educativo. El ginseng puede causar insomnio y alterar la glucemia; puede interactuar con medicamentos, incluidos anticoagulantes y tratamientos para diabetes. Evitar uso sin orientación profesional durante embarazo y lactancia; precaución en menores. No sustituye tratamientos médicos ni garantiza mejoría de fatiga, memoria o inmunidad (NIH/NCCIH).",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "fatigue",
+        "compoundIds": [
+          "rg1",
+          "rb1",
+          "re"
+        ],
+        "mechanismIds": [
+          "fatigue_pathways"
+        ],
+        "preparationIds": [
+          "white_root",
+          "red_root",
+          "standardized_extract"
+        ],
+        "note": "Uso tradicional y posible beneficio pequeño en algunos estudios; no garantizar un efecto estimulante."
+      },
+      {
+        "propertyId": "cognition",
+        "compoundIds": [
+          "rg1",
+          "rb1"
+        ],
+        "mechanismIds": [
+          "cognition_pathways"
+        ],
+        "preparationIds": [
+          "standardized_extract"
+        ],
+        "note": "Mecanismos preclínicos no equivalen a memoria mejorada en humanos."
+      },
+      {
+        "propertyId": "immune",
+        "compoundIds": [
+          "polysaccharides"
+        ],
+        "mechanismIds": [
+          "immune_cells"
+        ],
+        "preparationIds": [
+          "aqueous_decoction",
+          "polysaccharide_fraction"
+        ],
+        "note": "Ensayos sobre fracciones específicas no justifican afirmaciones genéricas de fortalecimiento inmunológico."
+      },
+      {
+        "propertyId": "metabolic",
+        "compoundIds": [
+          "rg1",
+          "rb1",
+          "re"
+        ],
+        "mechanismIds": [
+          "glycemia_signaling"
+        ],
+        "preparationIds": [
+          "standardized_extract"
+        ],
+        "note": "No sustituir terapia antidiabética; vigilar interacciones."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_nccih",
+      "organization": "NIH / NCCIH",
+      "title": "Asian Ginseng: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/asian-ginseng",
+      "relevance": "Usos investigados, fatiga, cognición, glucemia, seguridad e interacciones."
+    },
+    {
+      "id": "nih_interactions",
+      "organization": "NIH / NCCIH",
+      "title": "Herb-Drug Interactions: What the Science Says",
+      "url": "https://www.nccih.nih.gov/health/providers/digest/herb-drug-interactions-science",
+      "relevance": "Interacciones potenciales con medicamentos."
+    },
+    {
+      "id": "ema_ginseng",
+      "organization": "EMA / HMPC",
+      "title": "Ginseng radix — European Union herbal monograph",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/ginseng-radix",
+      "relevance": "Raíz, ginseng blanco y rojo, usos tradicionales y presentaciones."
+    },
+    {
+      "id": "review_processing",
+      "organization": "NIH / PubMed Central",
+      "title": "Diversity of Ginsenoside Profiles Produced by Various Processing Technologies",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7582514/",
+      "relevance": "Cambios de ginsenósidos en ginseng blanco y rojo."
+    },
+    {
+      "id": "review_reactions",
+      "organization": "NIH / PubMed Central",
+      "title": "Saponins of ginseng products: a review of their transformation in processing",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10175582/",
+      "relevance": "Desglucosilación, deshidratación y reacciones térmicas."
+    },
+    {
+      "id": "experiment_steaming",
+      "organization": "NIH / PubMed Central",
+      "title": "In situ analysis of chemical components induced by steaming between fresh ginseng, steamed ginseng, and red ginseng",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5489774/",
+      "relevance": "Cambios experimentales de metabolitos durante el procesamiento."
+    },
+    {
+      "id": "review_polysaccharides",
+      "organization": "NIH / PubMed Central",
+      "title": "A review of the immunomodulatory activities of polysaccharides isolated from Panax species",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8753523/",
+      "relevance": "Polisacáridos y mecanismos inmunitarios preclínicos."
+    },
+    {
+      "id": "clinical_polysaccharides",
+      "organization": "NIH / PubMed Central",
+      "title": "A 14-week randomized placebo-controlled trial of ginseng polysaccharide Y-75",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4196019/",
+      "relevance": "Ensayo pequeño de un polisacárido específico; no extrapolar a todo producto."
+    },
+    {
+      "id": "pubchem_rg1",
+      "organization": "NIH / PubChem",
+      "title": "Ginsenoside Rg1",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/441923",
+      "relevance": "Fórmula y estructura Rg1."
+    },
+    {
+      "id": "pubchem_rb1",
+      "organization": "NIH / PubChem",
+      "title": "Ginsenoside Rb1",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/9898279",
+      "relevance": "Fórmula y estructura Rb1."
+    },
+    {
+      "id": "pubchem_rd",
+      "organization": "NIH / PubChem",
+      "title": "Ginsenoside Rd",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/11679800",
+      "relevance": "Estructura Rd, relación con Rg3."
+    },
+    {
+      "id": "pubchem_rg3",
+      "organization": "NIH / PubChem",
+      "title": "Ginsenoside Rg3 (20S)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/9918693",
+      "relevance": "Fórmula e isomería de Rg3."
+    },
+    {
+      "id": "pubchem_re",
+      "organization": "NIH / PubChem",
+      "title": "Ginsenoside Re",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/441921",
+      "relevance": "Fórmula y estructura Re."
+    }
+  ]
+}

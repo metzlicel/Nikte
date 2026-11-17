@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0",
+  "language": "es-MX",
+  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
+  "lastReviewed": "2026-11-16",
+  "plantId": "turmeric",
+  "guides": [
+    {
+      "id": "turmeric-mild-digestive-infusion",
+      "plantId": "turmeric",
+      "plantName": "Cúrcuma",
+      "scientificName": "Curcuma longa L.",
+      "symptomIds": [
+        "mild-digestive-discomfort"
+      ],
+      "symptomLabels": [
+        "Molestias digestivas leves: pesadez, digestión lenta y gases"
+      ],
+      "preparationId": "infusion",
+      "title": "Infusión de cúrcuma",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Rizoma seco de cúrcuma, troceado y apto para infusión",
+          "amount": "0.5–1 g"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "150 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 0.5–1 g de rizoma seco troceado en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Vierte 150 mL de agua hirviendo."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar entre 5 y 15 minutos."
+        },
+        {
+          "number": 4,
+          "instruction": "Cuela y deja enfriar antes de beber."
+        }
+      ],
+      "chemistry": {
+        "title": "Del rizoma al agua",
+        "explanation": "El agua caliente extrae parte de los compuestos solubles del rizoma. La curcumina tiene muy baja solubilidad en agua, por lo que esta infusión no equivale a un extracto concentrado de curcuminoides.",
+        "interactiveSteps": [
+          {
+            "title": "Rizoma troceado",
+            "description": "Contiene curcuminoides y otras sustancias de distintas polaridades."
+          },
+          {
+            "title": "Agua caliente",
+            "description": "La temperatura favorece la difusión y la disolución de los compuestos compatibles con el agua."
+          },
+          {
+            "title": "Infusión colada",
+            "description": "Se separa el material sólido; la cantidad de curcumina disuelta es limitada."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos (18 años o más). Evitar durante embarazo y lactancia, si hay alergia a la cúrcuma o enfermedad hepática, cálculos biliares, obstrucción de vías biliares u otros problemas biliares. Suspender si empeoran las molestias y consultar si persisten más de dos semanas. No sustituir con suplementos concentrados o con piperina: algunos se han asociado con lesión hepática.",
+      "references": [
+        {
+          "id": "EMA_turmeric_monograph_2018",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Curcuma longa L., rhizoma — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-curcuma-longa-l-rhizoma-revision-1_en.pdf",
+          "supports": [
+            "Indicación tradicional para pesadez, digestión lenta y flatulencia",
+            "0.5–1 g de rizoma troceado en 150 mL de agua hirviendo, 2–3 veces al día para adultos",
+            "Restricciones: menores de 18 años, embarazo y lactancia, patologías hepatobiliares",
+            "Consultar si los síntomas persisten más de dos semanas"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_glossary_herbal_teas",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "Preparación por infusión con agua hirviendo",
+            "Reposo habitual de 5–15 minutos cuando no se indica uno específico"
+          ],
+          "sourceType": "official_preparation_guideline"
+        },
+        {
+          "id": "NIH_NCCIH_turmeric_2025",
+          "organization": "NIH — National Center for Complementary and Integrative Health",
+          "title": "Turmeric: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/turmeric",
+          "supports": [
+            "Evidencia clínica no concluyente para numerosos usos",
+            "Posibles molestias digestivas y precauciones con suplementos",
+            "Lesión hepática notificada con algunas formulaciones de curcumina de mayor biodisponibilidad"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "NIH_PMC_curcumin_chemistry",
+          "organization": "NIH — PubMed Central",
+          "title": "The Essential Medicinal Chemistry of Curcumin",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5346970/",
+          "supports": [
+            "Baja solubilidad acuosa de la curcumina",
+            "Limitaciones fisicoquímicas y farmacológicas de la curcumina"
+          ],
+          "sourceType": "peer_reviewed_article"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos de 18 años o más"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": "0.5–1 g de rizoma seco troceado",
+        "waterVolume": "150 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "2–3 veces al día (monografía EMA; no mostrar como recomendación individual)",
+        "note": "Uso tradicional documentado por EMA; el reposo procede del glosario general. La infusión no ha demostrado por sí sola eficacia clínica para la dispepsia."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    }
+  ]
+}

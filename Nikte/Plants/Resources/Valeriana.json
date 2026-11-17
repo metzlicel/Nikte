@@ -1,0 +1,929 @@
+{
+  "schemaVersion": "1.1",
+  "language": "es-MX",
+  "project": "Nikte",
+  "documentType": "plant_technical_profile",
+  "integrationNotes": {
+    "goal": "Integrar únicamente Valeriana en Nikte reutilizando los componentes interactivos de las fichas anteriores.",
+    "sectionOrder": [
+      "properties",
+      "compounds",
+      "mechanisms",
+      "preparations"
+    ],
+    "implementation": "Conservar el esquema 1.1; reutilizar modelos Codable, diagramas de mecanismos, featuredChemistry y section4.items[*].extractionExperience. Fallback a secuencia genérica si no hay visualType específico.",
+    "scientificIntegrity": "Diferenciar estudios con ácido valerénico aislado, extractos etanólicos de composición definida, infusiones y usos tradicionales; las pruebas clínicas para insomnio crónico son inconsistentes (NIH).",
+    "extractionUI": "Mostrar tres etapas por preparación, su fundamento fisicoquímico y comparación. Secado, cápsulas y almacenamiento no son extracciones selectivas.",
+    "safetyUI": "Mantener advertencias visibles dentro de las presentaciones y nota de seguridad, sin quinta sección bibliográfica.",
+    "structureNote": "PubChem CID para las moléculas pequeñas; no generar reacciones estequiométricas falsas para degradación compleja de valepotriatos."
+  },
+  "plant": {
+    "id": "valerian",
+    "commonName": "Valeriana",
+    "scientificName": "Valeriana officinalis L.",
+    "searchAlias": [
+      "Valeriana",
+      "Raíz de valeriana",
+      "Valerian root"
+    ],
+    "family": "Caprifoliaceae (subfamilia Valerianoideae; tradicionalmente Valerianaceae)",
+    "usedParts": [
+      "Raíces",
+      "Rizomas y estolones subterráneos"
+    ],
+    "summary": "Las partes subterráneas de la valeriana contienen ácidos sesquiterpénicos, componentes volátiles y valepotriatos inestables. Se utilizan en preparaciones tradicionales para tensión nerviosa leve y sueño; los mecanismos experimentales no equivalen a eficacia clínica demostrada para insomnio crónico.",
+    "section1": {
+      "id": "properties",
+      "title": "01 · Propiedades",
+      "items": [
+        {
+          "id": "mild_tension",
+          "title": "Alivio de tensión nerviosa leve",
+          "description": "Determinadas preparaciones de raíz se emplean para molestias relacionadas con tensión nerviosa leve; la EMA reconoce el uso bien establecido de extractos secos etanólicos específicos.",
+          "evidenceContext": "La conclusión de la EMA se aplica a preparados concretos; no se traslada automáticamente a una infusión, a cualquier suplemento ni a ácido valerénico aislado.",
+          "relatedCompoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid"
+          ],
+          "relatedPreparationIds": [
+            "ethanolic_dry",
+            "hydroalcoholic"
+          ],
+          "sourceIds": [
+            "ema_valerian",
+            "nih_nccih"
+          ]
+        },
+        {
+          "id": "sleep",
+          "title": "Ayuda para conciliar el sueño",
+          "description": "Se usa tradicionalmente como ayuda para dormir; determinados extractos etanólicos han sido evaluados por la EMA para trastornos del sueño.",
+          "evidenceContext": "NIH/NCCIH informa resultados clínicos inconsistentes y señala que no hay evidencia suficiente para recomendar valeriana contra insomnio crónico.",
+          "relatedCompoundIds": [
+            "valerenic_acid"
+          ],
+          "relatedPreparationIds": [
+            "ethanolic_dry",
+            "infusion",
+            "powder"
+          ],
+          "sourceIds": [
+            "nih_nccih",
+            "nih_ods",
+            "ema_valerian"
+          ]
+        },
+        {
+          "id": "gaba",
+          "title": "Modulación GABAérgica experimental",
+          "description": "El ácido valerénico modifica la actividad de subtipos de receptores GABA-A en ensayos farmacológicos.",
+          "evidenceContext": "Mecanismo celular: no permite deducir qué dosis oral produce el mismo efecto en una persona.",
+          "relatedCompoundIds": [
+            "valerenic_acid"
+          ],
+          "relatedPreparationIds": [
+            "hydroalcoholic",
+            "ethanolic_dry"
+          ],
+          "sourceIds": [
+            "pubmed_gaba",
+            "pubmed_extract"
+          ]
+        },
+        {
+          "id": "aroma",
+          "title": "Componentes aromáticos",
+          "description": "La raíz contiene una fracción aromática de monoterpenos y sesquiterpenos que contribuye a su olor característico.",
+          "evidenceContext": "La presencia y olor de estos volátiles no demuestra por sí sola eficacia como sedante.",
+          "relatedCompoundIds": [
+            "bornyl_acetate",
+            "valerenal"
+          ],
+          "relatedPreparationIds": [
+            "essential_oil",
+            "dried_root"
+          ],
+          "sourceIds": [
+            "ema_assessment"
+          ]
+        }
+      ]
+    },
+    "section2": {
+      "id": "compounds",
+      "title": "02 · Composición química",
+      "items": [
+        {
+          "id": "valerenic_acid",
+          "name": "Ácido valerénico",
+          "molecularFormula": "C₁₅H₂₂O₂",
+          "chemicalClass": "Ácido sesquiterpénico",
+          "functionalGroups": [
+            "ácido carboxílico –COOH",
+            "dobles enlaces C=C"
+          ],
+          "description": "Ácido sesquiterpénico estudiado como modulador alostérico de receptores GABA-A con subunidades β2/β3. Su efecto depende de la concentración y del receptor.",
+          "associatedProperties": [
+            "modulación GABA-A experimental"
+          ],
+          "distribution": "Raíz y determinados extractos; el contenido varía según materia prima y disolvente.",
+          "pubchemCID": 6440940,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_valerenic",
+            "pubmed_gaba",
+            "ema_assessment"
+          ]
+        },
+        {
+          "id": "acetoxyvalerenic_acid",
+          "name": "Ácido acetoxivalerénico",
+          "molecularFormula": "C₁₇H₂₄O₄",
+          "chemicalClass": "Ácido sesquiterpénico acetoxilado",
+          "functionalGroups": [
+            "ácido carboxílico –COOH",
+            "éster acetato –O–C(=O)–CH₃"
+          ],
+          "description": "Derivado del grupo de ácidos valerénicos utilizado en caracterización fitoquímica; no tiene la misma actividad que el ácido valerénico por definición.",
+          "associatedProperties": [
+            "marcador fitoquímico"
+          ],
+          "distribution": "Raíz; medido junto a ácidos sesquiterpénicos en extractos.",
+          "pubchemCID": 91864465,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_acetoxy",
+            "ema_assessment"
+          ]
+        },
+        {
+          "id": "valtrate",
+          "name": "Valtrato",
+          "molecularFormula": "C₂₂H₃₀O₈",
+          "chemicalClass": "Valepotriato (éster iridoide)",
+          "functionalGroups": [
+            "grupos éster",
+            "grupo epóxido",
+            "sistema heterocíclico"
+          ],
+          "description": "Valepotriato químicamente inestable; puede degradarse y dar productos como baldrinal y homobaldrinal. No se presenta como sedante clínicamente demostrado.",
+          "associatedProperties": [
+            "estabilidad química y procesamiento"
+          ],
+          "distribution": "Raíz, sobre todo en material no sometido a almacenamiento o procesamiento prolongado; cantidad variable.",
+          "pubchemCID": 442436,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_valtrate",
+            "ema_assessment",
+            "nih_ods"
+          ]
+        },
+        {
+          "id": "bornyl_acetate",
+          "name": "Acetato de bornilo",
+          "molecularFormula": "C₁₂H₂₀O₂",
+          "chemicalClass": "Éster monoterpénico",
+          "functionalGroups": [
+            "grupo éster –COO–"
+          ],
+          "description": "Componente volátil de la fracción de aceite esencial. Enseña la diferencia entre extracción por vapor y disolución de compuestos no volátiles.",
+          "associatedProperties": [
+            "aroma"
+          ],
+          "distribution": "Aceite esencial de las partes subterráneas; no constituye marcador de actividad clínica sedante.",
+          "pubchemCID": 93009,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_bornyl",
+            "ema_assessment"
+          ]
+        },
+        {
+          "id": "valerenal",
+          "name": "Valerenal",
+          "molecularFormula": "C₁₅H₂₂O",
+          "chemicalClass": "Aldehído sesquiterpénico",
+          "functionalGroups": [
+            "grupo aldehído –CHO",
+            "dobles enlaces C=C"
+          ],
+          "description": "Constituyente de la fracción aromática, de estructura distinta al ácido valerénico debido a su grupo aldehído.",
+          "associatedProperties": [
+            "perfil aromático"
+          ],
+          "distribution": "Componente volátil documentado en aceite esencial de valeriana.",
+          "pubchemCID": 6440942,
+          "structureImage": null,
+          "sourceIds": [
+            "pubchem_valerenal",
+            "ema_assessment"
+          ]
+        }
+      ]
+    },
+    "section3": {
+      "id": "mechanisms",
+      "title": "03 · Reacciones y mecanismos",
+      "items": [
+        {
+          "id": "gaba_a",
+          "title": "Modulación alostérica de receptores GABA-A",
+          "compoundIds": [
+            "valerenic_acid"
+          ],
+          "explanation": "En sistemas experimentales el ácido valerénico potencia corrientes de cloruro evocadas por GABA en receptores con subunidades β2 o β3. A concentraciones elevadas se han descrito efectos inhibidores; no es un agonista idéntico a GABA ni una benzodiacepina.",
+          "steps": [
+            {
+              "title": "GABA se une al receptor",
+              "detail": "El neurotransmisor participa en la apertura del canal GABA-A."
+            },
+            {
+              "title": "Ácido valerénico interactúa alostéricamente",
+              "detail": "Puede modificar la respuesta en subtipos que contienen β2 o β3."
+            },
+            {
+              "title": "Cambia la corriente de Cl⁻",
+              "detail": "La respuesta a GABA puede potenciarse en las condiciones estudiadas."
+            },
+            {
+              "title": "Posible contribución a efectos nerviosos",
+              "detail": "El mecanismo celular no asegura el resultado clínico de una infusión."
+            }
+          ],
+          "plainLanguage": "El ácido valerénico puede hacer que determinados receptores respondan de forma diferente al neurotransmisor GABA; su efecto se estudió principalmente en laboratorio.",
+          "sourceIds": [
+            "pubmed_gaba",
+            "pubmed_extract"
+          ]
+        },
+        {
+          "id": "formulation",
+          "title": "Por qué el disolvente cambia el extracto",
+          "compoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid",
+            "valtrate"
+          ],
+          "explanation": "Diferentes proporciones de agua y etanol seleccionan sustancias según solubilidad y afinidad por el medio. Los extractos no son químicamente equivalentes y sus resultados clínicos no deben intercambiarse.",
+          "steps": [
+            {
+              "title": "Material vegetal",
+              "detail": "La raíz contiene ácidos sesquiterpénicos, volátiles y valepotriatos."
+            },
+            {
+              "title": "Selección del disolvente",
+              "detail": "Agua y etanol poseen propiedades de polaridad diferentes."
+            },
+            {
+              "title": "Disolución y difusión",
+              "detail": "Los compuestos se transfieren en proporciones distintas al líquido."
+            },
+            {
+              "title": "Extracto resultante",
+              "detail": "Su perfil depende de solvente, tiempo y estandarización."
+            }
+          ],
+          "plainLanguage": "Cambiar el disolvente cambia qué moléculas llegan a la preparación.",
+          "sourceIds": [
+            "ema_valerian",
+            "pubmed_extract",
+            "ema_assessment"
+          ]
+        },
+        {
+          "id": "degradation",
+          "title": "Degradación de valepotriatos",
+          "compoundIds": [
+            "valtrate"
+          ],
+          "explanation": "Valtrato y otros valepotriatos son inestables; durante almacenamiento o procesamiento pueden originar diversos productos de degradación, entre ellos baldrinales. No se trata de una sola reacción balanceada ni de una mejora medicinal causada por el calor.",
+          "steps": [
+            {
+              "title": "Valepotriatos iniciales",
+              "detail": "Se encuentran en proporciones variables en la raíz."
+            },
+            {
+              "title": "Condiciones de procesamiento",
+              "detail": "Tiempo, humedad, temperatura y almacenamiento pueden afectar su estabilidad."
+            },
+            {
+              "title": "Transformaciones químicas múltiples",
+              "detail": "Se producen compuestos de degradación, incluidos baldrinal y homobaldrinal."
+            },
+            {
+              "title": "Cambio en composición",
+              "detail": "Una preparación vieja no tiene necesariamente el mismo perfil que la raíz fresca."
+            }
+          ],
+          "plainLanguage": "Algunas moléculas de valeriana se descomponen con el tiempo, de modo que almacenar o procesar la planta puede cambiar sus componentes.",
+          "sourceIds": [
+            "ema_assessment",
+            "nih_ods"
+          ]
+        },
+        {
+          "id": "volatile",
+          "title": "Destilación del aceite esencial",
+          "compoundIds": [
+            "bornyl_acetate",
+            "valerenal"
+          ],
+          "explanation": "La destilación con vapor transporta moléculas relativamente volátiles, luego se condensan y se separan fases; el proceso es principalmente físico y no recupera selectivamente todos los ácidos sesquiterpénicos de los extractos hidroalcohólicos.",
+          "steps": [
+            {
+              "title": "Calentamiento con vapor",
+              "detail": "Los volátiles pasan a una fase de vapor mezclada con agua."
+            },
+            {
+              "title": "Condensación",
+              "detail": "El vapor se enfría y vuelve a líquido."
+            },
+            {
+              "title": "Separación",
+              "detail": "Se recupera una fracción aromática de composición variable."
+            }
+          ],
+          "plainLanguage": "La destilación separa moléculas que pueden viajar con vapor; no convierte automáticamente la raíz en un sedante más fuerte.",
+          "sourceIds": [
+            "ema_assessment"
+          ]
+        }
+      ],
+      "featuredChemistry": {
+        "id": "valepotriate_instability",
+        "title": "¿Por qué cambia la química de la raíz al almacenarse?",
+        "reactionType": "degradación química multietapa de valepotriatos; no ecuación elemental única",
+        "reactants": [
+          "Valtrato y otros valepotriatos"
+        ],
+        "products": [
+          "Mezcla de productos de degradación, incluidos baldrinal y homobaldrinal"
+        ],
+        "equation": "Valepotriatos → productos de degradación (esquema, no balance estequiométrico)",
+        "description": "Los valepotriatos tienen enlaces y grupos funcionales sensibles a la degradación. Las transformaciones pueden depender de almacenamiento, agua, temperatura y condiciones del extracto. No atribuir automáticamente a baldrinal un efecto ansiolítico ni asumir transformación exclusiva de valtrato a baldrinal.",
+        "interactiveSteps": [
+          {
+            "index": 1,
+            "title": "Identifica un valepotriato",
+            "detail": "Resalta el valtrato y sus grupos éster y epóxido."
+          },
+          {
+            "index": 2,
+            "title": "Cambia las condiciones",
+            "detail": "Explora cómo temperatura, humedad y tiempo pueden afectar estabilidad, sin porcentajes simulados."
+          },
+          {
+            "index": 3,
+            "title": "Observa la degradación",
+            "detail": "Representa productos múltiples como baldrinales; no fingir que hay un solo producto."
+          },
+          {
+            "index": 4,
+            "title": "Compara muestras",
+            "detail": "Explica por qué raíz fresca, seca y extracto pueden tener perfiles químicos diferentes."
+          }
+        ],
+        "compoundIds": [
+          "valtrate"
+        ],
+        "sourceIds": [
+          "ema_assessment",
+          "nih_ods"
+        ]
+      }
+    },
+    "section4": {
+      "id": "preparations",
+      "title": "04 · Extracciones",
+      "items": [
+        {
+          "id": "fresh_root",
+          "title": "Raíz y rizoma frescos",
+          "extractionMethod": "Materia prima vegetal (sin extracción)",
+          "description": "Tejido subterráneo fresco con contenido variable de agua y metabolitos.",
+          "highlightCompoundIds": [
+            "valtrate",
+            "valerenic_acid"
+          ],
+          "warning": "La raíz sin procesar no es una dosis estandarizada. No consumir sin orientación apropiada.",
+          "extractionExperience": {
+            "heading": "Raíz y rizoma frescos",
+            "processTitle": "Explora la raíz fresca",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Parte subterránea",
+                "detail": "Raíz y rizomas contienen múltiples familias químicas."
+              },
+              {
+                "index": 2,
+                "title": "Corte",
+                "detail": "Aumenta el área de contacto y expone tejidos."
+              },
+              {
+                "index": 3,
+                "title": "Uso como materia prima",
+                "detail": "La composición aún depende de condiciones posteriores."
+              }
+            ],
+            "chemicalPrinciples": [
+              "matriz vegetal",
+              "área de contacto",
+              "variabilidad fitoquímica"
+            ],
+            "focusCompoundIds": [
+              "valtrate",
+              "valerenic_acid"
+            ],
+            "visualType": "root_cut",
+            "comparisonNote": "Cortar la raíz no equivale a extraer ni a estandarizar ácidos valerénicos.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_valerian",
+              "ema_assessment"
+            ]
+          }
+        },
+        {
+          "id": "dried_root",
+          "title": "Raíz seca troceada",
+          "extractionMethod": "Secado y fragmentación (no extracción selectiva)",
+          "description": "Pérdida de agua y alteraciones posibles en sustancias inestables.",
+          "highlightCompoundIds": [
+            "valtrate",
+            "valerenic_acid"
+          ],
+          "warning": "No asumir que la composición de raíz seca coincide exactamente con la fresca.",
+          "extractionExperience": {
+            "heading": "Raíz seca troceada",
+            "processTitle": "Secado y conservación",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz con agua",
+                "detail": "El tejido contiene humedad y compuestos de distinta estabilidad."
+              },
+              {
+                "index": 2,
+                "title": "Secado",
+                "detail": "Disminuye agua; temperatura y tiempo pueden cambiar el perfil."
+              },
+              {
+                "index": 3,
+                "title": "Material seco",
+                "detail": "Se utiliza para infusión o posteriores extracciones."
+              }
+            ],
+            "chemicalPrinciples": [
+              "evaporación del agua",
+              "estabilidad de valepotriatos",
+              "conservación"
+            ],
+            "focusCompoundIds": [
+              "valtrate",
+              "valerenic_acid"
+            ],
+            "visualType": "drying",
+            "comparisonNote": "El secado retira agua; no recupera por sí mismo un extracto ni garantiza convertir moléculas en otras en una proporción específica.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_assessment",
+              "ema_valerian"
+            ]
+          }
+        },
+        {
+          "id": "infusion",
+          "title": "Infusión acuosa de raíz",
+          "extractionMethod": "Extracción con agua caliente",
+          "description": "El agua extrae sustancias suficientemente hidrosolubles; su composición no es idéntica a la de extractos etanólicos secos.",
+          "highlightCompoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid"
+          ],
+          "warning": "Uso tradicional, no equivale a los preparados específicos con eficacia reconocida por EMA. Precaución con somnolencia y medicamentos sedantes.",
+          "extractionExperience": {
+            "heading": "Infusión acuosa de raíz",
+            "processTitle": "Difusión en agua",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz troceada",
+                "detail": "Mayor superficie accesible al agua."
+              },
+              {
+                "index": 2,
+                "title": "Contacto con agua caliente",
+                "detail": "Se disuelven y difunden ciertos componentes según polaridad."
+              },
+              {
+                "index": 3,
+                "title": "Separación del líquido",
+                "detail": "Se obtiene una infusión de composición variable."
+              }
+            ],
+            "chemicalPrinciples": [
+              "solubilidad en agua",
+              "temperatura",
+              "difusión"
+            ],
+            "focusCompoundIds": [
+              "valerenic_acid",
+              "acetoxyvalerenic_acid"
+            ],
+            "visualType": "infusion",
+            "comparisonNote": "La infusión no garantiza el mismo contenido de ácidos sesquiterpénicos que una extracción hidroalcohólica.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_valerian",
+              "pubmed_extract",
+              "nih_nccih"
+            ]
+          }
+        },
+        {
+          "id": "hydroalcoholic",
+          "title": "Extracto hidroalcohólico",
+          "extractionMethod": "Extracción mediante mezcla de agua y etanol",
+          "description": "Mezclas de disolventes permiten recuperar perfiles de metabolitos distintos; pueden analizarse ácidos valerénicos como marcadores.",
+          "highlightCompoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid",
+            "valtrate"
+          ],
+          "warning": "Un extracto hidroalcohólico cualquiera no equivale a un medicamento con especificaciones de fabricación y dosis.",
+          "extractionExperience": {
+            "heading": "Extracto hidroalcohólico",
+            "processTitle": "Extracción con mezcla de solventes",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Material triturado",
+                "detail": "Se expone la raíz al disolvente."
+              },
+              {
+                "index": 2,
+                "title": "Extracción",
+                "detail": "Agua y etanol solubilizan componentes según sus propiedades."
+              },
+              {
+                "index": 3,
+                "title": "Separación",
+                "detail": "Se obtiene un extracto líquido de composición dependiente de la formulación."
+              }
+            ],
+            "chemicalPrinciples": [
+              "polaridad",
+              "solubilidad diferencial",
+              "filtración"
+            ],
+            "focusCompoundIds": [
+              "valerenic_acid",
+              "acetoxyvalerenic_acid",
+              "valtrate"
+            ],
+            "visualType": "hydroalcoholic",
+            "comparisonNote": "La proporción agua/etanol determina diferencias químicas relevantes entre productos.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_valerian",
+              "pubmed_extract",
+              "ema_assessment"
+            ]
+          }
+        },
+        {
+          "id": "ethanolic_dry",
+          "title": "Extracto etanólico seco estandarizado",
+          "extractionMethod": "Extracción etanólica y secado industrial",
+          "description": "Determinados extractos secos de raíz elaborados con etanol 40–70 % son reconocidos por la EMA para usos específicos relacionados con tensión nerviosa leve y sueño.",
+          "highlightCompoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid"
+          ],
+          "warning": "La evidencia se limita a preparados conformes con especificaciones; no extrapolarla a suplementos no equivalentes.",
+          "extractionExperience": {
+            "heading": "Extracto etanólico seco estandarizado",
+            "processTitle": "Del extracto al preparado",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Extracción controlada",
+                "detail": "Se utiliza un disolvente etanólico de composición definida."
+              },
+              {
+                "index": 2,
+                "title": "Concentración y secado",
+                "detail": "Se elimina el disolvente según el proceso farmacéutico."
+              },
+              {
+                "index": 3,
+                "title": "Control de calidad",
+                "detail": "El extracto final se caracteriza y formula para administración definida."
+              }
+            ],
+            "chemicalPrinciples": [
+              "extracción selectiva",
+              "eliminación de disolvente",
+              "estandarización"
+            ],
+            "focusCompoundIds": [
+              "valerenic_acid",
+              "acetoxyvalerenic_acid"
+            ],
+            "visualType": "standardized_extract",
+            "comparisonNote": "Controlar identidad, disolvente, DER y composición es diferente de preparar té casero.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_valerian",
+              "nih_ods"
+            ]
+          }
+        },
+        {
+          "id": "powder",
+          "title": "Raíz seca en polvo o cápsula",
+          "extractionMethod": "Molienda y encapsulado (no extracción)",
+          "description": "El polvo de la raíz incluye la matriz vegetal molida; no es químicamente idéntico a un extracto seco.",
+          "highlightCompoundIds": [
+            "valerenic_acid",
+            "valtrate"
+          ],
+          "warning": "La masa de polvo no informa por sí sola el contenido de un compuesto específico. Evitar combinaciones con sedantes sin consejo profesional.",
+          "extractionExperience": {
+            "heading": "Raíz seca en polvo o cápsula",
+            "processTitle": "Molienda de la raíz",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Raíz seca",
+                "detail": "Material vegetal con componentes de distinta polaridad."
+              },
+              {
+                "index": 2,
+                "title": "Molienda",
+                "detail": "Se reduce el tamaño de partícula."
+              },
+              {
+                "index": 3,
+                "title": "Encapsulación",
+                "detail": "Se presenta la raíz pulverizada, sin aislamiento selectivo."
+              }
+            ],
+            "chemicalPrinciples": [
+              "tamaño de partícula",
+              "superficie específica",
+              "formulación"
+            ],
+            "focusCompoundIds": [
+              "valerenic_acid",
+              "valtrate"
+            ],
+            "visualType": "powder",
+            "comparisonNote": "Cápsula de polvo de raíz ≠ cápsula con extracto estandarizado.",
+            "isExtraction": false,
+            "sourceIds": [
+              "ema_valerian",
+              "nih_ods"
+            ]
+          }
+        },
+        {
+          "id": "essential_oil",
+          "title": "Aceite esencial",
+          "extractionMethod": "Destilación por arrastre de vapor",
+          "description": "Destilación de componentes aromáticos relativamente volátiles, con presencia de ésteres monoterpénicos y sesquiterpenos.",
+          "highlightCompoundIds": [
+            "bornyl_acetate",
+            "valerenal"
+          ],
+          "warning": "El aceite esencial concentrado no debe ingerirse como equivalente del té o de medicamentos de raíz.",
+          "extractionExperience": {
+            "heading": "Aceite esencial",
+            "processTitle": "Separación por vapor",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Materia vegetal y vapor",
+                "detail": "Los compuestos volátiles pasan a vapor."
+              },
+              {
+                "index": 2,
+                "title": "Condensación",
+                "detail": "Se enfría la corriente vaporizada."
+              },
+              {
+                "index": 3,
+                "title": "Separación de fases",
+                "detail": "Se recupera una fracción aromática concentrada."
+              }
+            ],
+            "chemicalPrinciples": [
+              "volatilidad",
+              "condensación",
+              "miscibilidad"
+            ],
+            "focusCompoundIds": [
+              "bornyl_acetate",
+              "valerenal"
+            ],
+            "visualType": "steam_distillation",
+            "comparisonNote": "El aceite esencial no equivale químicamente a extractos de raíz ricos en ácidos valerénicos.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_assessment",
+              "ema_valerian"
+            ]
+          }
+        },
+        {
+          "id": "aqueous_extract",
+          "title": "Extracto acuoso seco",
+          "extractionMethod": "Extracción acuosa y eliminación industrial del agua",
+          "description": "Extracto a base de agua que puede concentrarse y secarse; la EMA lo describe dentro de determinadas preparaciones de uso tradicional.",
+          "highlightCompoundIds": [
+            "valerenic_acid",
+            "acetoxyvalerenic_acid"
+          ],
+          "warning": "No asignar los mismos resultados clínicos de extractos etanólicos específicos al extracto acuoso.",
+          "extractionExperience": {
+            "heading": "Extracto acuoso seco",
+            "processTitle": "Concentración del extracto acuoso",
+            "steps": [
+              {
+                "index": 1,
+                "title": "Extracción acuosa",
+                "detail": "Ciertos constituyentes pasan al agua."
+              },
+              {
+                "index": 2,
+                "title": "Separación",
+                "detail": "Se filtra o separa la matriz sólida."
+              },
+              {
+                "index": 3,
+                "title": "Concentración",
+                "detail": "Se retira agua y se obtiene una preparación más concentrada."
+              }
+            ],
+            "chemicalPrinciples": [
+              "extracción acuosa",
+              "filtración",
+              "evaporación"
+            ],
+            "focusCompoundIds": [
+              "valerenic_acid",
+              "acetoxyvalerenic_acid"
+            ],
+            "visualType": "aqueous_extract",
+            "comparisonNote": "Aumentar concentración no modifica el origen químico de los compuestos ni demuestra equivalencia farmacológica.",
+            "isExtraction": true,
+            "sourceIds": [
+              "ema_valerian"
+            ]
+          }
+        }
+      ]
+    },
+    "safetyNote": "Contenido educativo. NIH/NCCIH: eficacia para insomnio crónico no establecida; posible somnolencia, dolor de cabeza, malestar gastrointestinal y sueños vívidos. Evitar combinación sin orientación profesional con alcohol, sedantes u otros depresores del sistema nervioso; no conducir si produce somnolencia. EMA desaconseja preparados medicinales de valeriana en menores de 12 años, embarazo y lactancia. La seguridad a largo plazo no está establecida.",
+    "propertyCompoundMechanismPreparation": [
+      {
+        "propertyId": "mild_tension",
+        "compoundIds": [
+          "valerenic_acid"
+        ],
+        "mechanismIds": [
+          "gaba_a"
+        ],
+        "preparationIds": [
+          "ethanolic_dry"
+        ],
+        "note": "Uso de formulaciones específicas reconocido por EMA; mecanismo experimental no explica necesariamente toda la respuesta clínica."
+      },
+      {
+        "propertyId": "sleep",
+        "compoundIds": [
+          "valerenic_acid"
+        ],
+        "mechanismIds": [
+          "gaba_a"
+        ],
+        "preparationIds": [
+          "ethanolic_dry",
+          "infusion"
+        ],
+        "note": "Separar evaluación EMA de extractos específicos de evidencia inconsistente NIH para insomnio crónico y uso tradicional de infusión."
+      },
+      {
+        "propertyId": "gaba",
+        "compoundIds": [
+          "valerenic_acid",
+          "acetoxyvalerenic_acid"
+        ],
+        "mechanismIds": [
+          "gaba_a",
+          "formulation"
+        ],
+        "preparationIds": [
+          "hydroalcoholic",
+          "ethanolic_dry"
+        ],
+        "note": "Actividad demostrada in vitro de compuesto aislado, no equivalencia clínica."
+      },
+      {
+        "propertyId": "aroma",
+        "compoundIds": [
+          "bornyl_acetate",
+          "valerenal"
+        ],
+        "mechanismIds": [
+          "volatile"
+        ],
+        "preparationIds": [
+          "essential_oil"
+        ],
+        "note": "Olor no demuestra efecto clínico."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "nih_nccih",
+      "organization": "NIH / NCCIH",
+      "title": "Valerian: Usefulness and Safety",
+      "url": "https://www.nccih.nih.gov/health/valerian",
+      "relevance": "Eficacia clínica limitada, insomnio crónico y seguridad."
+    },
+    {
+      "id": "nih_ods",
+      "organization": "NIH / Office of Dietary Supplements",
+      "title": "Valerian — Health Professional Fact Sheet",
+      "url": "https://ods.od.nih.gov/factsheets/Valerian-HealthProfessional/",
+      "relevance": "Composición, inconsistencias clínicas e interacciones potenciales."
+    },
+    {
+      "id": "ema_valerian",
+      "organization": "EMA / HMPC",
+      "title": "Valerianae radix",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/valerianae-radix",
+      "relevance": "Usos autorizados para extractos etanólicos específicos y usos tradicionales de otras preparaciones."
+    },
+    {
+      "id": "ema_assessment",
+      "organization": "EMA / HMPC",
+      "title": "Assessment report on Valeriana officinalis L., radix and aetheroleum",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-valeriana-officinalis-l-radix-and-valeriana-officinalis-l-aetheroleum_en.pdf",
+      "relevance": "Perfil fitoquímico y transformación de valepotriatos."
+    },
+    {
+      "id": "pubmed_gaba",
+      "organization": "PubMed / Neuropharmacology",
+      "title": "Valerenic acid potentiates and inhibits GABA(A) receptors: molecular mechanism and subunit specificity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17585957/",
+      "relevance": "Modulación alostérica dependiente de subunidades β2/β3; concentración dependiente."
+    },
+    {
+      "id": "pubmed_extract",
+      "organization": "PubMed",
+      "title": "Modulation of GABAA receptors by valerian extracts is related to the content of valerenic acid",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18095218/",
+      "relevance": "Extractos de distinta polaridad y su contenido en ácidos sesquiterpénicos."
+    },
+    {
+      "id": "pubchem_valerenic",
+      "organization": "NIH / PubChem",
+      "title": "Valerenic acid",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/6440940",
+      "relevance": "Estructura, fórmula y función carboxilo."
+    },
+    {
+      "id": "pubchem_acetoxy",
+      "organization": "NIH / PubChem",
+      "title": "Acetoxyvalerenic Acid",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/91864465",
+      "relevance": "Estructura y grupo éster del derivado acetoxilado."
+    },
+    {
+      "id": "pubchem_valtrate",
+      "organization": "NIH / PubChem",
+      "title": "Valtrate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/442436",
+      "relevance": "Estructura y fórmula de un valepotriato."
+    },
+    {
+      "id": "pubchem_bornyl",
+      "organization": "NIH / PubChem",
+      "title": "Bornyl acetate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/93009",
+      "relevance": "Éster monoterpénico del aceite esencial."
+    },
+    {
+      "id": "pubchem_valerenal",
+      "organization": "NIH / PubChem",
+      "title": "Valerenal",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/6440942",
+      "relevance": "Sesquiterpeno con grupo aldehído."
+    }
+  ]
+}
