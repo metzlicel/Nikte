@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-18",
   "plantId": "lavender",
   "guides": [
     {
@@ -50,20 +50,20 @@
         }
       ],
       "chemistry": {
-        "title": "De la flor al agua",
-        "explanation": "El agua caliente extrae sustancias polares, como compuestos fenólicos, y parte de los aromas volátiles, como linalool. La infusión no equivale al aceite esencial concentrado.",
+        "title": "¿Cómo podría favorecer la relajación?",
+        "explanation": "El linalool y otros terpenos de la lavanda se investigan por su efecto sobre la excitabilidad neuronal. Sin embargo, la cantidad presente en una infusión es variable y no se ha demostrado que esta preparación trate el insomnio.",
         "interactiveSteps": [
           {
-            "title": "Flores secas",
-            "description": "Contienen compuestos polares y terpenos aromáticos."
+            "title": "Tensión y alerta",
+            "description": "La actividad de circuitos neuronales participa en la respuesta al estrés y en el sueño."
           },
           {
-            "title": "Agua caliente",
-            "description": "Favorece la disolución y difusión; algunos compuestos volátiles pueden evaporarse."
+            "title": "Terpenos de lavanda",
+            "description": "El linalool se investiga por su capacidad de modular la señalización neuronal, principalmente en modelos experimentales."
           },
           {
-            "title": "Infusión",
-            "description": "Se separa el líquido de las flores; su composición difiere del aceite esencial."
+            "title": "Relajación potencial",
+            "description": "Podría contribuir a una sensación de calma; no se ha establecido un efecto clínico específico para esta infusión."
           }
         ]
       },
@@ -146,7 +146,247 @@
         "showDetailedMechanisms": false,
         "showDosageFrequency": false,
         "showSafetyFooter": true
-      }
+      },
+      "guidanceScope": "Infusión tradicional para estrés mental leve y ayuda al sueño; no equivalente al aceite oral estandarizado de ensayos clínicos."
+    },
+    {
+      "plantId": "lavender",
+      "plantName": "Lavanda",
+      "scientificName": "Lavandula angustifolia Mill.",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "reviewStatus": "source_checked",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "id": "lavender-standardized-oil-anxiety",
+      "symptomIds": [
+        "mild-anxiety-symptoms",
+        "mild-stress"
+      ],
+      "symptomLabels": [
+        "Síntomas leves de ansiedad y tensión nerviosa"
+      ],
+      "preparationId": "standard_oral",
+      "title": "Cápsulas de aceite de lavanda estandarizado",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Producto comercial oral estandarizado de aceite de Lavandula angustifolia (por ejemplo, formulación estudiada Silexan)",
+          "amount": "Según presentación y prospecto"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "Cantidad suficiente para tragar la cápsula"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Verifica que sea una formulación autorizada para vía oral y que indique Lavandula angustifolia y cantidad por cápsula."
+        },
+        {
+          "number": 2,
+          "instruction": "Consulta con personal de salud si es adecuada para ti, sobre todo si tomas medicamentos."
+        },
+        {
+          "number": 3,
+          "instruction": "Toma únicamente la cantidad y durante el periodo indicados en el prospecto del producto."
+        },
+        {
+          "number": 4,
+          "instruction": "Si la ansiedad persiste, aumenta o interfiere con tu vida diaria, solicita una valoración profesional."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría disminuir la ansiedad?",
+        "explanation": "El aceite de lavanda estandarizado contiene linalool y acetato de linalilo. En experimentos, la formulación completa puede modular canales neuronales de Ca²⁺ dependientes de voltaje, alterando la liberación de neurotransmisores; se investiga su posible contribución a la reducción de síntomas de ansiedad.",
+        "interactiveSteps": [
+          {
+            "title": "Señalización neuronal",
+            "description": "Los canales de Ca²⁺ participan en la liberación de neurotransmisores."
+          },
+          {
+            "title": "Aceite estandarizado",
+            "description": "En modelos experimentales modula determinados canales de Ca²⁺ dependientes de voltaje."
+          },
+          {
+            "title": "Posible menor excitabilidad",
+            "description": "Podría contribuir al efecto ansiolítico observado en ensayos con esa formulación específica."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo para adultos en esta guía. No ingerir aceite esencial puro ni elaborar cápsulas caseras; el aceite de aromaterapia no es un producto oral. Puede causar náuseas, eructos o cefalea y podría interactuar con sedantes. Consultar durante embarazo, lactancia o uso de medicamentos. No sustituye el tratamiento de trastornos de ansiedad.",
+      "targetPopulation": {
+        "display": "Adultos (formulaciones y ensayos clínicos específicos)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "Ensayos con la formulación específica Silexan utilizaron 80 mg diarios y algunos 160 mg; estas cantidades son datos de investigación y no una recomendación para otros aceites o marcas. Seguir prospecto y orientación profesional."
+      },
+      "references": [
+        {
+          "id": "NIH_NCCIH_lavender",
+          "organization": "NIH/NCCIH",
+          "title": "Lavender: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/lavender",
+          "supports": [
+            "estudios limitados con preparaciones orales estandarizadas para ansiedad",
+            "precauciones de seguridad"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "Silexan_RCT_2014",
+          "organization": "PubMed",
+          "title": "Lavender oil preparation Silexan in generalized anxiety disorder: randomized trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24456909/",
+          "supports": [
+            "ensayo clínico con formulación oral específica y dosis controladas"
+          ],
+          "sourceType": "clinical_trial"
+        },
+        {
+          "id": "Lavender_calcium_channels_2013",
+          "organization": "PubMed",
+          "title": "Lavender oil-potent anxiolytic properties via modulating voltage dependent calcium channels",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23637742/",
+          "supports": [
+            "modulación experimental de canales neuronales de calcio por aceite de lavanda"
+          ],
+          "sourceType": "mechanistic_research"
+        }
+      ],
+      "guidanceScope": "Uso de formulación comercial estandarizada, no receta casera. La evidencia clínica no se extiende a aceite esencial genérico ni a la infusión."
+    },
+    {
+      "plantId": "lavender",
+      "plantName": "Lavanda",
+      "scientificName": "Lavandula angustifolia Mill.",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "reviewStatus": "source_checked",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "id": "lavender-bath-mild-stress",
+      "symptomIds": [
+        "mild-stress",
+        "mild-exhaustion",
+        "occasional-sleep-difficulty"
+      ],
+      "symptomLabels": [
+        "Estrés leve y agotamiento",
+        "Dificultad ocasional para dormir"
+      ],
+      "preparationId": "lavender-bath-product",
+      "title": "Baño relajante con producto de lavanda",
+      "administrationRoute": "bath",
+      "ingredients": [
+        {
+          "name": "Producto de baño comercial formulado con aceite de Lavandula angustifolia",
+          "amount": "Según etiqueta del fabricante"
+        },
+        {
+          "name": "Agua templada para baño",
+          "amount": "Cantidad habitual de la bañera"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Comprueba que el producto indique uso para baño y que no tengas sensibilidad a sus ingredientes."
+        },
+        {
+          "number": 2,
+          "instruction": "Prepara agua templada, no demasiado caliente."
+        },
+        {
+          "number": 3,
+          "instruction": "Añade el producto formulado siguiendo exactamente su etiqueta; no añadas aceite esencial puro al agua."
+        },
+        {
+          "number": 4,
+          "instruction": "Disfruta del baño con precaución y sal si sientes mareo, irritación o malestar."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría favorecer una sensación de calma?",
+        "explanation": "El linalool y el acetato de linalilo son terpenos aromáticos del aceite de lavanda. Su olor activa receptores olfativos y circuitos cerebrales asociados a la percepción de aromas y emociones; no se ha establecido que un baño con lavanda produzca por sí mismo un efecto ansiolítico específico.",
+        "interactiveSteps": [
+          {
+            "title": "Moléculas aromáticas",
+            "description": "Linalool y acetato de linalilo pueden llegar al epitelio olfativo."
+          },
+          {
+            "title": "Receptores olfativos",
+            "description": "La unión de odorantes activa señales nerviosas que el cerebro interpreta como aroma."
+          },
+          {
+            "title": "Respuesta subjetiva",
+            "description": "El entorno y el aroma podrían favorecer la relajación; la eficacia específica es incierta."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso externo; no beber el agua del baño ni aplicar aceite esencial puro sobre la piel. Evitar baños completos ante heridas abiertas, problemas cutáneos importantes, fiebre alta, infecciones graves o problemas cardíacos y circulatorios severos. Puede causar alergia o irritación. Consultar durante embarazo o lactancia; no usar en niños sin indicación del producto.",
+      "targetPopulation": {
+        "display": "Adultos y mayores de 12 años, según producto y monografía EMA"
+      },
+      "dosage": {
+        "population": "Según autorización del producto",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "No se propone cantidad de gotas de aceite puro ni duración universal del baño. Se requiere un preparado formulado y sus indicaciones."
+      },
+      "references": [
+        {
+          "id": "EMA_lavender_oil",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Lavandulae aetheroleum — herbal medicinal product",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/lavandulae-aetheroleum",
+          "supports": [
+            "uso tradicional como aditivo de baño para estrés leve y ayuda al sueño",
+            "contraindicaciones para baño completo"
+          ],
+          "sourceType": "official_monograph_summary"
+        },
+        {
+          "id": "NIH_NCCIH_lavender",
+          "organization": "NIH/NCCIH",
+          "title": "Lavender: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/lavender",
+          "supports": [
+            "incertidumbre de eficacia de aromaterapia",
+            "irritación cutánea y precauciones"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "guidanceScope": "Guía para producto de baño formulado. No receta casera para mezclar aceite esencial puro con agua."
     }
   ]
 }

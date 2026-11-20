@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-19",
   "plantId": "valerian",
   "guides": [
     {
@@ -52,24 +52,24 @@
         }
       ],
       "chemistry": {
-        "title": "De la raíz al agua",
-        "explanation": "El agua caliente extrae una mezcla de sustancias solubles de la raíz. El ácido valerénico, estudiado por su interacción con receptores GABA-A, es relativamente lipofílico: la infusión no equivale a un extracto estandarizado.",
+        "title": "¿Cómo podría favorecer el sueño?",
+        "explanation": "El ácido valerénico puede modular receptores GABA-A en estudios de laboratorio. El GABA es un neurotransmisor inhibidor que disminuye la excitabilidad de ciertas neuronas; esto constituye una hipótesis para la acción sedante de algunas preparaciones de valeriana. No se ha establecido que la infusión aporte la misma exposición que un extracto estandarizado.",
         "interactiveSteps": [
           {
-            "title": "Raíz seca",
-            "description": "Contiene diversos metabolitos, incluidos ácidos sesquiterpénicos como el ácido valerénico."
+            "title": "Ácido valerénico",
+            "description": "Un componente de la raíz estudiado en modelos farmacológicos; su concentración en la infusión es variable."
           },
           {
-            "title": "Agua caliente",
-            "description": "Favorece la disolución y difusión de sustancias hacia el agua; no todos los compuestos se extraen por igual."
+            "title": "Receptor GABA-A",
+            "description": "En experimentos, el ácido valerénico modula receptores activados por GABA, relacionados con la inhibición neuronal."
           },
           {
-            "title": "Infusión colada",
-            "description": "El líquido contiene una mezcla acuosa con composición distinta de la de los extractos concentrados."
+            "title": "Menor excitabilidad",
+            "description": "La señalización inhibitoria podría favorecer la relajación; la evidencia clínica de la infusión sobre el sueño es limitada."
           }
         ]
       },
-      "displaySafetyNote": "Uso tradicional para adultos y adolescentes a partir de 12 años. Puede causar somnolencia: no combinar con alcohol ni sedantes y evitar conducir si afecta el estado de alerta. Evitar durante embarazo y lactancia por falta de datos. Consultar si las dificultades para dormir persisten o empeoran; no es tratamiento demostrado del insomnio crónico.",
+      "displaySafetyNote": "Uso tradicional para mayores de 12 años. Puede causar somnolencia; evitar conducir, alcohol y combinarla con sedantes sin consulta profesional. No utilizar durante embarazo o lactancia. Si los problemas de sueño persisten o empeoran tras dos semanas, consultar a un profesional; no es tratamiento del insomnio crónico.",
       "references": [
         {
           "id": "EMA_valerian_root_final_monograph",
@@ -118,6 +118,17 @@
             "no se extrapola la concentración del compuesto a una infusión"
           ],
           "sourceType": "peer_reviewed_research"
+        },
+        {
+          "id": "EMA_2025_summary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Valerian root: Assessment Report Summary for the Public (actualización 2026)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-summary/valerian-root-assessment-report-summary-public-arsp_en.pdf",
+          "supports": [
+            "diferencia entre extracto etanólico y uso tradicional",
+            "seguridad y limitaciones"
+          ],
+          "sourceType": "official_summary"
         }
       ],
       "reviewStatus": "source_checked",
@@ -132,6 +143,284 @@
         "steepingMinutes": "5–15",
         "frequency": "Para ayudar a dormir: una toma tradicional entre 30 y 60 minutos antes de acostarse (EMA); no mostrar como prescripción personalizada",
         "note": "La dosis y el volumen corresponden a la monografía EMA de uso tradicional. El reposo proviene de su guía general, no de un ensayo específico con valeriana. El NIH considera inconsistente la evidencia clínica sobre el sueño."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "valerian-melissa-mild-stress-tea",
+      "plantId": "valerian",
+      "plantName": "Valeriana",
+      "scientificName": "Valeriana officinalis L.",
+      "symptomIds": [
+        "mild-mental-stress",
+        "mild-nervous-tension",
+        "occasional-sleep-difficulty"
+      ],
+      "symptomLabels": [
+        "Estrés mental leve",
+        "Tensión nerviosa leve",
+        "Dificultad ocasional para conciliar el sueño"
+      ],
+      "preparationId": "commercial-herbal-tea-blend",
+      "title": "Infusión de valeriana y melisa",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Mezcla comercial para infusión de raíz de valeriana y hojas de melisa (ambas identificadas en la etiqueta)",
+          "amount": "1 porción indicada por el fabricante"
+        },
+        {
+          "name": "Agua potable hirviendo",
+          "amount": "Volumen indicado en el envase"
+        },
+        {
+          "name": "Taza y colador (si es necesario)",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Comprueba que la mezcla comercial indique Valeriana officinalis (raíz) y Melissa officinalis (hoja) y esté destinada a infusión."
+        },
+        {
+          "number": 2,
+          "instruction": "Coloca una porción según el envase en una taza y añade el volumen de agua hirviendo indicado."
+        },
+        {
+          "number": 3,
+          "instruction": "Tapa y deja reposar el tiempo indicado en el producto; cuela si corresponde."
+        },
+        {
+          "number": 4,
+          "instruction": "Deja enfriar antes de beber y respeta las indicaciones del envase. No añadas otras plantas sedantes por cuenta propia."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría disminuir la tensión nerviosa?",
+        "explanation": "En laboratorio, el ácido valerénico de valeriana puede modular receptores GABA-A, mientras que extractos de melisa presentan interacciones experimentales con la señalización relacionada con GABA. Ambas vías podrían influir sobre la excitabilidad neuronal. No se ha demostrado una sinergia clínica específica de esta mezcla ni una dosis activa universal.",
+        "interactiveSteps": [
+          {
+            "title": "Valeriana y melisa",
+            "description": "Contienen distintas sustancias investigadas por posibles efectos sobre la señalización nerviosa."
+          },
+          {
+            "title": "Sistema GABA",
+            "description": "El GABA participa en la inhibición de la actividad neuronal; diversos extractos se estudian por su interacción con este sistema."
+          },
+          {
+            "title": "Posible relajación",
+            "description": "Podrían contribuir al alivio tradicional de la tensión leve; la mezcla no cuenta con eficacia clínica confirmada."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo para mayores de 12 años. Uso tradicional; no se ha demostrado que la mezcla trate trastornos de ansiedad. Puede causar somnolencia: no conducir y evitar alcohol y sedantes. No usar durante embarazo o lactancia. Consultar si los síntomas persisten o empeoran después de dos semanas. Verificar alergias y la composición completa del producto.",
+      "references": [
+        {
+          "id": "EMA_species_sedativae",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Combination: Species sedativae — herbal teas",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/combination-species-sedativae",
+          "supports": [
+            "la EMA reconoce mezclas de hasta cuatro plantas incluyendo valeriana y melisa",
+            "uso tradicional para estrés mental leve y sueño",
+            "seguir instrucciones del producto"
+          ],
+          "sourceType": "official_monograph_summary"
+        },
+        {
+          "id": "EMA_valerian_monograph_2016",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Valeriana officinalis L., radix",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-valeriana-officinalis-l-radix_en.pdf",
+          "supports": [
+            "formas, indicaciones y advertencias de valeriana"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_valerian",
+          "organization": "NIH NCCIH",
+          "title": "Valerian: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/valerian",
+          "supports": [
+            "evidencia clínica mixta",
+            "precauciones"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PubMed_valerenic_GABAA",
+          "organization": "PubMed",
+          "title": "Valerenic acid potentiates and inhibits GABA(A) receptors: molecular mechanism and subunit specificity",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17585957/",
+          "supports": [
+            "mecanismo experimental de ácido valerénico sobre receptor GABA-A"
+          ],
+          "sourceType": "peer_reviewed_research"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos y adolescentes a partir de 12 años"
+      },
+      "dosage": {
+        "population": "Mayores de 12 años",
+        "herbalMaterial": "Porción indicada por fabricante; no se extrapola la dosis de valeriana sola a la combinación",
+        "waterVolume": "Según etiqueta",
+        "steepingMinutes": "Según etiqueta",
+        "frequency": "Según prospecto/etiqueta del producto específico",
+        "note": "La EMA valida clases específicas de mezclas secas para infusión, pero no cualquier receta o proporción arbitraria de valeriana y melisa. Evitar inventar gramos de la mezcla."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "valerian-standardized-extract-capsules",
+      "plantId": "valerian",
+      "plantName": "Valeriana",
+      "scientificName": "Valeriana officinalis L.",
+      "symptomIds": [
+        "mild-nervous-tension",
+        "occasional-sleep-difficulty",
+        "mild-mental-stress"
+      ],
+      "symptomLabels": [
+        "Tensión nerviosa leve",
+        "Dificultad ocasional para conciliar el sueño",
+        "Estrés mental leve"
+      ],
+      "preparationId": "standardized-ethanolic-dry-extract-capsules",
+      "title": "Cápsulas de extracto seco de valeriana",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Medicamento comercial con extracto seco etanólico de raíz de valeriana, indicado para uso oral",
+          "amount": "Presentación y dosis del prospecto"
+        },
+        {
+          "name": "Agua potable para ingerir la cápsula",
+          "amount": "Un vaso, si el prospecto lo permite"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Verifica que el producto especifique extracto seco de raíz de valeriana, concentración, tipo de extracto y autorización sanitaria aplicable."
+        },
+        {
+          "number": 2,
+          "instruction": "Lee el prospecto y confirma que esté indicado para tensión nerviosa leve o dificultades ocasionales de sueño."
+        },
+        {
+          "number": 3,
+          "instruction": "Toma la cantidad y en el horario indicados en el prospecto con agua; no abras ni alteres las cápsulas."
+        },
+        {
+          "number": 4,
+          "instruction": "No aumentes la dosis para buscar un efecto inmediato. Consulta si el malestar persiste o empeora."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo puede intervenir en la regulación del sueño?",
+        "explanation": "El ácido valerénico y otros constituyentes de extractos de valeriana se investigan por modular receptores GABA-A y la excitabilidad del sistema nervioso central. Algunos extractos secos etanólicos específicos cuentan con evidencia clínica para tensión nerviosa leve y trastornos del sueño, pero no todas las cápsulas o suplementos son equivalentes.",
+        "interactiveSteps": [
+          {
+            "title": "Componentes del extracto",
+            "description": "El extracto contiene una mezcla de sustancias, entre ellas ácidos sesquiterpénicos como el valerénico."
+          },
+          {
+            "title": "Modulación GABA-A",
+            "description": "El ácido valerénico puede afectar la respuesta del receptor GABA-A en modelos experimentales."
+          },
+          {
+            "title": "Respuesta nerviosa",
+            "description": "Una menor excitabilidad neuronal es una explicación plausible de la acción sedante; la respuesta depende de la formulación."
+          }
+        ]
+      },
+      "displaySafetyNote": "Mayores de 12 años; seguir únicamente el prospecto de un producto autorizado. Puede causar somnolencia y molestias gastrointestinales: evitar conducción, alcohol y combinar con otros sedantes sin asesoramiento. No usar en embarazo o lactancia. Consultar si los síntomas duran más de dos semanas; no sustituye la atención del insomnio crónico.",
+      "references": [
+        {
+          "id": "EMA_valerian_2026_overview",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Valerianae radix — información actualizada de la EMA",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/valerianae-radix",
+          "supports": [
+            "ensayos clínicos con extractos etanólicos secos específicos",
+            "diferenciación con preparados tradicionales",
+            "restricciones"
+          ],
+          "sourceType": "official_monograph_summary"
+        },
+        {
+          "id": "EMA_valerian_monograph_2016",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Valeriana officinalis L., radix",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-valeriana-officinalis-l-radix_en.pdf",
+          "supports": [
+            "formas, indicaciones y advertencias de valeriana"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_valerian",
+          "organization": "NIH NCCIH",
+          "title": "Valerian: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/valerian",
+          "supports": [
+            "evidencia clínica mixta",
+            "precauciones"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PubMed_valerenic_GABAA",
+          "organization": "PubMed",
+          "title": "Valerenic acid potentiates and inhibits GABA(A) receptors: molecular mechanism and subunit specificity",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17585957/",
+          "supports": [
+            "mecanismo experimental de ácido valerénico sobre receptor GABA-A"
+          ],
+          "sourceType": "peer_reviewed_research"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos y adolescentes a partir de 12 años"
+      },
+      "dosage": {
+        "population": "Mayores de 12 años",
+        "herbalMaterial": "Extracto seco etanólico comercial; cantidad de acuerdo con la formulación y prospecto",
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": "Según el prospecto del medicamento específico",
+        "note": "La monografía EMA documenta 400–600 mg por toma de un extracto seco de etanol 40–70 % (DER 3–7.4:1) para el uso bien establecido; estos valores no son intercambiables con raíz en polvo ni con cualquier suplemento. No mostrar dosis general en la receta."
       },
       "display": {
         "sections": [

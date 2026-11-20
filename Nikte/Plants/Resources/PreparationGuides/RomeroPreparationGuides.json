@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-19",
   "plantId": "rosemary",
   "guides": [
     {
@@ -52,20 +52,20 @@
         }
       ],
       "chemistry": {
-        "title": "De la hoja al agua",
-        "explanation": "El agua caliente disuelve y extrae compuestos polares, como el ácido rosmarínico. La infusión contiene una mezcla diferente del aceite esencial, que concentra terpenos volátiles como 1,8-cineol y alcanfor.",
+        "title": "¿Cómo podría aliviar las molestias digestivas?",
+        "explanation": "El romero se usa tradicionalmente para indigestión y espasmos leves. Algunos componentes de sus extractos presentan actividad espasmolítica experimental sobre músculo liso, pero no se ha establecido qué molécula o concentración explica el alivio con esta infusión.",
         "interactiveSteps": [
           {
-            "title": "Hojas secas",
-            "description": "Contienen ácidos fenólicos y compuestos aromáticos."
+            "title": "Espasmo digestivo",
+            "description": "Las contracciones del músculo liso pueden contribuir a la sensación de cólico o incomodidad."
           },
           {
-            "title": "Agua caliente",
-            "description": "La solubilidad y la difusión permiten extraer componentes polares hacia el agua."
+            "title": "Componentes del romero",
+            "description": "Extractos de la planta muestran actividad espasmolítica en ciertos ensayos preclínicos; no se atribuye el efecto a una molécula única."
           },
           {
-            "title": "Infusión colada",
-            "description": "Se retiran los sólidos; el líquido no equivale a un aceite esencial concentrado."
+            "title": "Posible alivio",
+            "description": "Podrían modular la contracción, pero el uso de la infusión se basa en la tradición, no en ensayos clínicos concluyentes."
           }
         ]
       },
@@ -141,6 +141,239 @@
         "showDetailedMechanisms": false,
         "showDosageFrequency": false,
         "showSafetyFooter": true
+      }
+    },
+    {
+      "plantId": "rosemary",
+      "plantName": "Romero",
+      "scientificName": "Rosmarinus officinalis L. (sinónimo actual: Salvia rosmarinus Spenn.)",
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "id": "rosemary-muscle-joint-bath",
+      "symptomIds": [
+        "mild-muscle-pain",
+        "mild-joint-pain",
+        "minor-peripheral-circulation-discomfort"
+      ],
+      "symptomLabels": [
+        "Dolor muscular leve",
+        "Molestias articulares leves",
+        "Sensación de piernas cansadas sin signos de alarma"
+      ],
+      "preparationId": "rosemary-leaf-bath",
+      "title": "Baño con hojas de romero",
+      "administrationRoute": "bath",
+      "ingredients": [
+        {
+          "name": "Hojas secas de romero para uso externo",
+          "amount": "50 g"
+        },
+        {
+          "name": "Agua potable para preparar una decocción",
+          "amount": "1 L"
+        },
+        {
+          "name": "Agua para una bañera a temperatura agradable",
+          "amount": "35–38 °C"
+        },
+        {
+          "name": "Olla, colador y bañera limpia",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 50 g de hojas secas en 1 L de agua y prepara una decocción; cuélala antes de añadirla al baño."
+        },
+        {
+          "number": 2,
+          "instruction": "Añade el líquido al agua de la bañera a 35–38 °C."
+        },
+        {
+          "number": 3,
+          "instruction": "Permanece en el baño durante 10–20 minutos; sal si te sientes mareado o incómodo."
+        },
+        {
+          "number": 4,
+          "instruction": "Seca la piel suavemente."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar músculos y articulaciones?",
+        "explanation": "Los diterpenos fenólicos del romero, como el ácido carnósico, pueden modular rutas inflamatorias en experimentos. El calor del baño también puede favorecer la sensación de relajación. No se ha demostrado que los compuestos del baño alcancen concentraciones analgésicas en tejidos.",
+        "interactiveSteps": [
+          {
+            "title": "Dolor o tensión leve",
+            "description": "La molestia puede involucrar sensibilidad muscular y señales inflamatorias."
+          },
+          {
+            "title": "Compuestos fenólicos del romero",
+            "description": "En estudios experimentales, algunos modulan NF-κB y procesos vinculados a la inflamación; no se ha verificado este efecto con el baño."
+          },
+          {
+            "title": "Alivio tradicional",
+            "description": "La EMA reconoce el baño como uso tradicional; el agua tibia también puede contribuir al confort."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso externo desde los 12 años. Evitar con alergia al romero, embarazo o lactancia; no aplicar a piel lesionada o irritada. Precaución con baños calientes si hay hipertensión o enfermedad cardiovascular. Dolor articular con fiebre, enrojecimiento o hinchazón, o una pierna súbitamente hinchada, caliente o dolorosa requiere atención médica. No añadir aceite esencial puro.",
+      "references": [
+        {
+          "id": "EMA_rosemary_leaf_monograph_bath",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "EU herbal monograph on Rosmarinus officinalis L., folium, Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-rosmarinus-officinalis-l-folium-revision-1_en.pdf",
+          "supports": [
+            "Baño con 50 g de hoja en decocción de 1 L o añadidos directamente",
+            "Baño a 35–38 °C durante 10–20 minutos",
+            "Uso tradicional para dolor muscular/articular leve y molestias circulatorias periféricas leves, mayores de 12 años"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_rosemary_leaf_public",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Rosmarini folium — herbal medicinal product",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-folium",
+          "supports": [
+            "Uso tradicional de baños de hoja para músculos, articulaciones y molestias circulatorias leves"
+          ],
+          "sourceType": "official_summary"
+        }
+      ],
+      "targetPopulation": {
+        "display": "Adultos y adolescentes desde 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes desde 12 años",
+        "herbalMaterial": "50 g de hojas secas",
+        "waterVolume": "1 L para decocción, añadida a baño completo",
+        "bathTemperature": "35–38 °C",
+        "bathDurationMinutes": "10–20",
+        "frequency": "2–3 veces por semana, hasta diario si es necesario según EMA; no mostrar como recomendación individual",
+        "note": "La monografía permite añadir también hojas directamente al baño; aquí se presenta la opción filtrada para reducir residuos vegetales. No indica tiempo específico de ebullición para la decocción: no se inventa."
+      }
+    },
+    {
+      "plantId": "rosemary",
+      "plantName": "Romero",
+      "scientificName": "Rosmarinus officinalis L. (sinónimo actual: Salvia rosmarinus Spenn.)",
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "id": "rosemary-local-muscle-pain-ointment",
+      "symptomIds": [
+        "mild-muscle-pain",
+        "mild-joint-pain"
+      ],
+      "symptomLabels": [
+        "Dolor muscular localizado leve",
+        "Molestias articulares leves"
+      ],
+      "preparationId": "rosemary-oil-commercial-ointment",
+      "title": "Crema o ungüento de romero",
+      "administrationRoute": "topical",
+      "ingredients": [
+        {
+          "name": "Crema o ungüento comercial para uso cutáneo con aceite de romero al 6–10 %",
+          "amount": "Según el prospecto"
+        },
+        {
+          "name": "Manos limpias",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Verifica que el producto esté indicado para uso cutáneo y contenga aceite de romero al 6–10 %."
+        },
+        {
+          "number": 2,
+          "instruction": "Aplica sobre piel intacta en la zona muscular o articular, siguiendo el prospecto."
+        },
+        {
+          "number": 3,
+          "instruction": "Lávate las manos después de aplicarlo y evita ojos y mucosas."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar las molestias musculares?",
+        "explanation": "El aceite esencial contiene 1,8-cineol, alcanfor y otros monoterpenos, investigados por sus efectos sobre la señalización inflamatoria y sensorial. Sin embargo, no se ha establecido que este ungüento actúe mediante una reacción concreta ni que alivie el dolor de manera clínicamente demostrada.",
+        "interactiveSteps": [
+          {
+            "title": "Molestia localizada",
+            "description": "Se perciben señales sensoriales y, a veces, inflamatorias en la región afectada."
+          },
+          {
+            "title": "Monoterpenos del romero",
+            "description": "Compuestos como el 1,8-cineol y el alcanfor han mostrado acciones biológicas en modelos experimentales."
+          },
+          {
+            "title": "Uso tópico tradicional",
+            "description": "La EMA admite preparados semisólidos al 6–10 % para adultos, pero no confirma el mecanismo ni la eficacia clínica."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos de 18 años o más. Utilizar únicamente crema o ungüento formulado, nunca aceite esencial sin diluir ni mezclas caseras. No aplicar sobre piel irritada o rota, ni cerca de ojos o mucosas. Evitar si hay alergia, embarazo o lactancia. Consultar ante dolor que empeora, inflamación articular, fiebre o síntomas persistentes.",
+      "references": [
+        {
+          "id": "EMA_rosemary_oil_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "EU herbal monograph on Rosmarinus officinalis L., aetheroleum, Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-rosmarinus-officinalis-l-aetheroleum-revision-1_en.pdf",
+          "supports": [
+            "Preparados semisólidos de aceite esencial al 6–10 % para adultos",
+            "Uso cutáneo tradicional en dolor muscular/articular leve y circulación periférica leve",
+            "No aplicar sobre piel irritada o lesionada"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_rosemary_oil_public",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Rosmarini aetheroleum — overview",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-aetheroleum",
+          "supports": [
+            "Uso tradicional, no eficacia clínica establecida"
+          ],
+          "sourceType": "official_summary"
+        }
+      ],
+      "targetPopulation": {
+        "display": "Solo adultos de 18 años o más"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "formulation": "Preparación semisólida con 6–10 % de aceite de romero",
+        "frequency": "2–3 veces al día según EMA y prospecto del producto; no mostrar como pauta personalizada",
+        "note": "No se propone formulación casera ni cantidad en gotas."
       }
     }
   ]

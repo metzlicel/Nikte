@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-19",
   "plantId": "turmeric",
   "guides": [
     {
@@ -52,20 +52,20 @@
         }
       ],
       "chemistry": {
-        "title": "Del rizoma al agua",
-        "explanation": "El agua caliente extrae parte de los compuestos solubles del rizoma. La curcumina tiene muy baja solubilidad en agua, por lo que esta infusión no equivale a un extracto concentrado de curcuminoides.",
+        "title": "¿Cómo podría aliviar la pesadez digestiva?",
+        "explanation": "La cúrcuma se usa tradicionalmente para pesadez y digestión lenta. Se han investigado efectos de sus componentes sobre la secreción biliar y señales digestivas, pero no se ha demostrado qué mecanismo explica el alivio con esta infusión, que contiene poca curcumina disuelta.",
         "interactiveSteps": [
           {
-            "title": "Rizoma troceado",
-            "description": "Contiene curcuminoides y otras sustancias de distintas polaridades."
+            "title": "Pesadez después de comer",
+            "description": "La sensación de llenura puede relacionarse con varios procesos digestivos."
           },
           {
-            "title": "Agua caliente",
-            "description": "La temperatura favorece la difusión y la disolución de los compuestos compatibles con el agua."
+            "title": "Compuestos del rizoma",
+            "description": "Componentes de la cúrcuma se estudian por su influencia en funciones digestivas y secreción biliar; la infusión extrae cantidades variables."
           },
           {
-            "title": "Infusión colada",
-            "description": "Se separa el material sólido; la cantidad de curcumina disuelta es limitada."
+            "title": "Uso tradicional",
+            "description": "La EMA documenta el uso para molestias digestivas leves, pero no confirma un mecanismo clínico específico de la infusión."
           }
         ]
       },
@@ -117,6 +117,16 @@
             "Limitaciones fisicoquímicas y farmacológicas de la curcumina"
           ],
           "sourceType": "peer_reviewed_article"
+        },
+        {
+          "id": "EMA_turmeric_overview",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Curcumae longae rhizoma — resumen de uso tradicional",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/curcumae-longae-rhizoma",
+          "supports": [
+            "Uso tradicional de la cúrcuma para molestias digestivas leves; no se ha demostrado mecanismo específico para la infusión"
+          ],
+          "sourceType": "official_agency_overview"
         }
       ],
       "reviewStatus": "source_checked",
@@ -145,6 +155,134 @@
         "showDosageFrequency": false,
         "showSafetyFooter": true
       }
+    },
+    {
+      "plantId": "turmeric",
+      "plantName": "Cúrcuma",
+      "scientificName": "Curcuma longa L.",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "id": "turmeric-digestive-powder-food",
+      "symptomIds": [
+        "mild-digestive-discomfort"
+      ],
+      "symptomLabels": [
+        "Pesadez, digestión lenta y gases leves"
+      ],
+      "preparationId": "powdered-rhizome-food",
+      "title": "Cúrcuma seca en polvo con alimentos",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Rizoma seco de cúrcuma molido de calidad alimentaria",
+          "amount": "Cantidad culinaria medida; la monografía EMA documenta 1.5–3 g diarios de rizoma pulverizado como uso medicinal tradicional para adultos, no como dosis de una porción"
+        },
+        {
+          "name": "Comida ya preparada (por ejemplo, verduras o arroz)",
+          "amount": null
+        },
+        {
+          "name": "Cuchara o balanza de cocina",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Selecciona cúrcuma molida apta para consumo y una comida ya preparada."
+        },
+        {
+          "number": 2,
+          "instruction": "Añade una cantidad culinaria pequeña de cúrcuma a la comida y mezcla."
+        },
+        {
+          "number": 3,
+          "instruction": "Consume como condimento alimentario; no intentes alcanzar una dosis medicinal calculándola con cucharaditas."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Por qué se investiga para la digestión?",
+        "explanation": "Los curcuminoides y otros constituyentes del rizoma se han estudiado por su influencia sobre funciones digestivas y vías relacionadas con la inflamación. Su baja solubilidad y absorción impiden asumir que una comida produzca un efecto medicinal concreto; el uso digestivo está reconocido como tradicional.",
+        "interactiveSteps": [
+          {
+            "title": "Malestar digestivo",
+            "description": "La pesadez y la digestión lenta tienen causas diversas."
+          },
+          {
+            "title": "Constituyentes de cúrcuma",
+            "description": "Curcuminoides y otros compuestos se investigan en modelos de fisiología digestiva; no hay un mecanismo clínico único confirmado."
+          },
+          {
+            "title": "Uso culinario",
+            "description": "Incorporar el polvo a alimentos no equivale a una dosis o efecto de extractos estandarizados."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso culinario, no tratamiento demostrado. Adultos: evitar uso medicinal en embarazo, lactancia, enfermedad hepática o problemas biliares; consultar ante dolor intenso, ictericia o síntomas persistentes. La cantidad de una cucharadita es variable y no sirve como medición fiable.",
+      "references": [
+        {
+          "id": "EMA_curcuma_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Curcuma longa L., rhizoma (revision 1)",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/curcumae-longae-rhizoma",
+          "supports": [
+            "Uso tradicional digestivo del rizoma en polvo, dosis total diaria 1.5–3 g para adultos",
+            "Contraindicaciones y precauciones hepatobiliares"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_turmeric_NCCIH",
+          "organization": "NIH/NCCIH",
+          "title": "Turmeric: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/turmeric",
+          "supports": [
+            "Evidencia clínica limitada en diversas indicaciones",
+            "Lesión hepática con ciertos suplementos, especialmente de mayor biodisponibilidad",
+            "Posibles interacciones y efectos gastrointestinales"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "curcumin_chemistry_pmc",
+          "organization": "PubMed Central",
+          "title": "The Essential Medicinal Chemistry of Curcumin",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5346970/",
+          "supports": [
+            "Baja solubilidad acuosa, variabilidad de formulaciones y efectos sobre interpretación de mecanismos"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "targetPopulation": {
+        "display": "Adultos; cantidades culinarias habituales no equivalen a un tratamiento"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": "EMA: 1.5–3 g diarios de rizoma seco pulverizado para uso medicinal tradicional (no una porción de comida)",
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "Receta culinaria educativa: no inferir cantidad por toma ni beneficio clínico de la mezcla alimentaria."
+      },
+      "guidanceScope": "culinary_preparation_not_medicinal_dosing"
     }
+  ],
+  "notesForEditors": [
+    "La guía culinaria es una adaptación educativa, no una forma de dosificación medicinal validada.",
+    "La sección química explica el malestar y la acción potencial del compuesto; no el proceso de extracción."
   ]
 }

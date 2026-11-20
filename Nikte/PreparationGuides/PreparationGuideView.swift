@@ -1,5 +1,49 @@
 import SwiftUI
 
+struct PreparationGuideSelectionView: View {
+    let plantId: String
+    let symptomId: String
+
+    private var guides: [PreparationGuide]? {
+        (try? PreparationGuideDocument.load(forPlantID: plantId))?.guides(forSymptomID: symptomId)
+    }
+
+    var body: some View {
+        ZStack {
+            BotanicalBackground().allowsHitTesting(false)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    SectionTitle(kicker: guides?.first?.plantName.uppercased() ?? "PREPARACIONES", title: "Elige una preparación")
+                    if let guides, !guides.isEmpty {
+                        ForEach(guides) { guide in
+                            NavigationLink {
+                                PreparationGuideView(request: .init(plantId: plantId, symptomId: symptomId, preparationId: guide.preparationId))
+                            } label: {
+                                PaperCard {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            Text(guide.title).font(.system(size: 18, design: .serif)).bold()
+                                            Text(guide.administrationRoute == "oral" ? "Vía oral" : guide.administrationRoute == "bath" ? "Baño · uso externo" : "Uso cutáneo")
+                                                .font(.system(size: 13))
+                                        }
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .foregroundStyle(Palette.olive)
+                                }
+                            }.buttonStyle(.plain)
+                        }
+                    } else {
+                        PaperCard { Text("No se pudieron cargar las preparaciones.").foregroundStyle(Palette.ink) }
+                    }
+                }.padding(20)
+            }
+        }
+        .navigationTitle("Preparaciones")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
 struct PreparationGuideView: View {
     let request: PreparationGuideRequest
 
@@ -32,9 +76,19 @@ private struct PreparationGuideContent: View {
 
     private var chemistrySymbols: [String] {
         switch guide.plantId {
-        case "zingiber_officinale": ["leaf", "circle.grid.3x3.fill", "drop"]
-        case "aloe_vera": ["drop", "hand.raised", "drop.fill"]
-        case "ginseng": ["leaf", "flame", "drop"]
+        case "chamomile":
+            guide.preparationId == "infusion"
+                ? ["leaf", "bolt", "waveform.path"]
+                : ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "peppermint": ["exclamationmark.circle", "bolt", "waveform.path"]
+        case "zingiber_officinale": ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "aloe_vera": ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "lavender": ["exclamationmark.circle", "bolt", "waveform.path"]
+        case "eucalyptus": ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "rosemary": ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "turmeric": ["exclamationmark.circle", "leaf", "waveform.path"]
+        case "valerian": ["leaf", "bolt", "waveform.path"]
+        case "ginseng": ["bolt", "leaf", "waveform.path"]
         default: ["leaf", "drop", "cup.and.saucer"]
         }
     }
@@ -54,6 +108,15 @@ private struct PreparationGuideContent: View {
             PaperCard {
                 Text("Ingredientes").font(.system(size: 21, design: .serif)).bold().foregroundStyle(Palette.olive)
                 ForEach(Array(guide.ingredients.enumerated()), id: \.offset) { _, ingredient in
+                    if let amount = ingredient.amount,
+                       (guide.plantId == "turmeric" && guide.preparationId == "powdered-rhizome-food") ||
+                       (guide.plantId == "ginseng" && amount.count > 40) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Label(ingredient.name, systemImage: "leaf").foregroundStyle(Palette.ink)
+                            Text(amount).fontWeight(.semibold).foregroundStyle(Palette.olive)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }.font(.system(size: 14, design: .serif))
+                    } else {
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "leaf").foregroundStyle(Palette.olive).accessibilityHidden(true)
                         Text(ingredient.name).foregroundStyle(Palette.ink)
@@ -65,6 +128,7 @@ private struct PreparationGuideContent: View {
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                     }.font(.system(size: 14, design: .serif))
+                    }
                 }
             }
 
@@ -89,7 +153,7 @@ private struct PreparationGuideContent: View {
                     .background(["turmeric", "valerian", "ginseng"].contains(guide.plantId) ? Palette.sage.opacity(0.25) : .clear, in: RoundedRectangle(cornerRadius: 12))
                 if guide.plantId == "aloe_vera" {
                     VStack(alignment: .leading, spacing: 8) {
-                        Label("Gel interno purificado · uso tópico", systemImage: "drop.fill")
+                        Label(guide.preparationId == "commercial-aloe-topical-cream" ? "Crema comercial con aloe · uso tópico" : "Gel interno purificado · uso tópico", systemImage: "drop.fill")
                             .foregroundStyle(Palette.olive)
                         Label("Látex amarillo · no aplicar ni ingerir", systemImage: "exclamationmark.triangle.fill")
                             .foregroundStyle(Palette.brown)
@@ -131,6 +195,9 @@ private struct PreparationGuideContent: View {
                 Label {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(guide.targetPopulation.display + ". " + guide.displaySafetyNote)
+                        if guide.plantId == "turmeric", guide.preparationId == "powdered-rhizome-food" {
+                            Text("No sustituir con suplementos concentrados o con piperina: algunos se han asociado con lesión hepática.")
+                        }
                         if guide.medicalReviewStatus == "not_clinically_reviewed" {
                             Text("Guía sin revisión clínica.")
                         }

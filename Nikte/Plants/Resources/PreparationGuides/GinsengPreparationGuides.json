@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-19",
   "plantId": "ginseng",
   "guides": [
     {
@@ -52,24 +52,24 @@
         }
       ],
       "chemistry": {
-        "title": "De la raíz al agua",
-        "explanation": "La cocción favorece la disolución y difusión de ginsenósidos (saponinas) y otros componentes de la raíz. No equivale a un extracto estandarizado ni al ginseng rojo procesado con vapor.",
+        "title": "¿Cómo podría influir en el cansancio?",
+        "explanation": "Los ginsenósidos, como Rg1 y Rb1, se estudian por su posible modulación del metabolismo energético mitocondrial y de las respuestas al estrés oxidativo. Estos resultados proceden principalmente de modelos experimentales: una decocción no tiene eficacia clínica ni concentración equivalentes a las de un extracto estudiado. La evidencia en humanos sobre la fatiga es limitada y heterogénea.",
         "interactiveSteps": [
           {
-            "title": "Raíz seca blanca",
-            "description": "Contiene saponinas triterpénicas llamadas ginsenósidos y otros componentes como polisacáridos."
+            "title": "Cansancio y estrés celular",
+            "description": "Las células consumen ATP y generan especies reactivas de oxígeno (ROS) durante el metabolismo; no todo cansancio se debe a estos procesos."
           },
           {
-            "title": "Calentamiento suave",
-            "description": "El agua caliente penetra la raíz troceada y favorece la transferencia de sustancias solubles al líquido."
+            "title": "Ginsenósidos y señalización",
+            "description": "En modelos experimentales, ginsenósidos como Rg1 y Rb1 pueden modular rutas relacionadas con la función mitocondrial y las defensas antioxidantes."
           },
           {
-            "title": "Decocción colada",
-            "description": "El líquido contiene una mezcla acuosa cuya concentración varía según la raíz y el proceso; no reproduce un extracto estandarizado."
+            "title": "Posible respuesta a la fatiga",
+            "description": "Estas acciones podrían contribuir a cambios en la resistencia al cansancio, pero no aseguran una mejoría clínica con esta receta."
           }
         ]
       },
-      "displaySafetyNote": "Solo para adultos (18 años o más). Evitar en embarazo y lactancia. Puede causar insomnio; consultar antes de usar si se toman medicamentos, especialmente para diabetes o anticoagulantes. Acudir a valoración si el cansancio persiste más de 2 semanas o empeora.",
+      "displaySafetyNote": "Solo adultos (18 años o más). Evitar durante embarazo o lactancia. Puede causar insomnio. Consultar antes de usar si se toman medicamentos, especialmente para diabetes o anticoagulantes, o si existen enfermedades autoinmunes. Si la fatiga persiste más de 2 semanas, empeora o es intensa, buscar valoración médica.",
       "references": [
         {
           "id": "EMA_ginseng_radix_monograph_2024",
@@ -107,6 +107,26 @@
             "embarazo y lactancia"
           ],
           "sourceType": "official_health_information"
+        },
+        {
+          "id": "REVIEW_ginseng_fatigue_2020",
+          "organization": "Revisión sistemática (PubMed Central)",
+          "title": "Clinical and Preclinical Systematic Review of Panax ginseng C. A. Mey and Its Compounds for Fatigue",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7379339/",
+          "supports": [
+            "mecanismos preclínicos de antioxidación y función mitocondrial; limitaciones al extrapolar a humanos"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "REVIEW_ginseng_fatigue_2020",
+          "organization": "Revisión sistemática (PubMed Central)",
+          "title": "Clinical and Preclinical Systematic Review of Panax ginseng C. A. Mey and Its Compounds for Fatigue",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7379339/",
+          "supports": [
+            "mecanismos preclínicos de antioxidación y función mitocondrial; limitaciones al extrapolar a humanos"
+          ],
+          "sourceType": "peer_reviewed_review"
         }
       ],
       "reviewStatus": "source_checked",
@@ -122,6 +142,264 @@
         "decoctionMinutes": "15–30",
         "frequency": "La EMA recoge 2–3 veces al día como uso tradicional, no prescripción personalizada.",
         "note": "La EMA documenta materia prima y volumen para decocción. Los 15–30 minutos proceden de la guía general EMA para decocciones, no de un ensayo específico con Panax ginseng. No sustituir ginseng rojo ni extractos por la misma cantidad."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "ginseng-fatigue-white-root-powder-food",
+      "plantId": "ginseng",
+      "plantName": "Ginseng",
+      "scientificName": "Panax ginseng C.A.Mey.",
+      "symptomIds": [
+        "fatigue-weakness"
+      ],
+      "symptomLabels": [
+        "Cansancio y debilidad leves"
+      ],
+      "preparationId": "powder-food",
+      "title": "Ginseng blanco en polvo con yogur o miel",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Raíz de ginseng blanco (Panax ginseng) en polvo, identificada y apta para uso oral",
+          "amount": "250–600 mg por porción (dentro del rango EMA; no equivale a dosis diaria)"
+        },
+        {
+          "name": "Yogur natural o compota sin azúcar, a elección",
+          "amount": "2–3 cucharadas"
+        },
+        {
+          "name": "Miel, opcional para sabor",
+          "amount": "1 cucharadita o al gusto"
+        },
+        {
+          "name": "Báscula de precisión que mida miligramos",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Verifica que el ingrediente sea raíz pulverizada de Panax ginseng blanco, no un extracto concentrado ni ginseng americano."
+        },
+        {
+          "number": 2,
+          "instruction": "Mide 250–600 mg de polvo con una báscula de precisión; no calcules la cantidad usando cucharaditas."
+        },
+        {
+          "number": 3,
+          "instruction": "Mezcla con el yogur o la compota. Añade miel solo si deseas endulzar."
+        },
+        {
+          "number": 4,
+          "instruction": "Consume la porción preparada siguiendo la pauta de un producto autorizado o de un profesional; no agregues otras preparaciones de ginseng a la vez."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Qué relación tienen los ginsenósidos con la energía?",
+        "explanation": "Los ginsenósidos Rg1 y Rb1 se investigan por su influencia sobre el metabolismo de energía celular y las defensas frente al estrés oxidativo. La evidencia más directa sobre estas rutas es preclínica; mezclar el polvo con miel o yogur no aumenta de forma comprobada la eficacia del ginseng.",
+        "interactiveSteps": [
+          {
+            "title": "Células y energía",
+            "description": "Las mitocondrias participan en la producción de ATP, la energía utilizable por las células."
+          },
+          {
+            "title": "Ginsenósidos",
+            "description": "En experimentos, algunos ginsenósidos modulan procesos vinculados con actividad mitocondrial y estrés oxidativo."
+          },
+          {
+            "title": "Fatiga: efecto incierto",
+            "description": "Estos mecanismos podrían ser relevantes para la fatiga, pero el beneficio clínico del polvo ingerido con alimentos sigue sin confirmarse."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos (18 años o más). Evitar durante embarazo o lactancia. Puede causar insomnio. Consultar antes de usar si se toman medicamentos, especialmente para diabetes o anticoagulantes, o si existen enfermedades autoinmunes. Si la fatiga persiste más de 2 semanas, empeora o es intensa, buscar valoración médica.",
+      "references": [
+        {
+          "id": "EMA_ginseng_radix_monograph_2024",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Panax ginseng C.A.Mey., radix — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-panax-ginseng-camey-radix-revision-1_en.pdf",
+          "supports": [
+            "uso tradicional para síntomas de fatiga/debilidad",
+            "ginseng blanco pulverizado: dosis individuales 250–1200 mg y diaria 600–2000 mg en adultos",
+            "la mezcla con alimentos es una presentación propuesta, no una fórmula estudiada por EMA"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_asian_ginseng",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Asian Ginseng: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/asian-ginseng",
+          "supports": [
+            "posible beneficio pequeño sobre fatiga general en algunos estudios, con resultados heterogéneos",
+            "insomnio como efecto adverso",
+            "posibles interacciones y precauciones en diabetes",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "REVIEW_ginseng_fatigue_2020",
+          "organization": "Revisión sistemática (PubMed Central)",
+          "title": "Clinical and Preclinical Systematic Review of Panax ginseng C. A. Mey and Its Compounds for Fatigue",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7379339/",
+          "supports": [
+            "mecanismos preclínicos de antioxidación y función mitocondrial; limitaciones al extrapolar a humanos"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (18 años o más)"
+      },
+      "dosage": {
+        "population": "Adultos y personas mayores",
+        "herbalMaterial": "250–600 mg de raíz de ginseng blanco en polvo por porción propuesta",
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": "La monografía EMA contempla 250–1200 mg por toma y 600–2000 mg al día para raíz blanca pulverizada; el rango por porción de esta guía no constituye una pauta personal de administración.",
+        "note": "El yogur, la compota y la miel son acompañamientos culinarios; no forman una preparación de eficacia clínica evaluada. Si no hay báscula de precisión, elegir un producto predosificado."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "ginseng-fatigue-standardized-dry-extract",
+      "plantId": "ginseng",
+      "plantName": "Ginseng",
+      "scientificName": "Panax ginseng C.A.Mey.",
+      "symptomIds": [
+        "fatigue-weakness"
+      ],
+      "symptomLabels": [
+        "Cansancio y debilidad leves"
+      ],
+      "preparationId": "standardized-oral-extract",
+      "title": "Cápsulas de extracto estandarizado de ginseng",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Producto oral comercial de Panax ginseng blanco con extracto seco DER 3–7:1 (etanol 40 %) y 4 % de ginsenósidos, claramente identificado",
+          "amount": "Formulación comercial predosificada; la EMA describe 40–200 mg/día para este extracto concreto"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "1 vaso"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Comprueba que el envase identifique Panax ginseng, el tipo de extracto, la relación droga-extracto (DER) y la estandarización."
+        },
+        {
+          "number": 2,
+          "instruction": "Verifica con un profesional que la formulación sea adecuada y sigue la dosis y duración de su prospecto; los extractos de distinta composición no son equivalentes."
+        },
+        {
+          "number": 3,
+          "instruction": "Ingiere la cápsula con agua de acuerdo con las instrucciones del producto."
+        },
+        {
+          "number": 4,
+          "instruction": "No combines con la decocción ni con polvo de ginseng; suspende el uso y consulta si aparecen efectos adversos."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podrían actuar los ginsenósidos del extracto?",
+        "explanation": "Extractos definidos de ginseng contienen ginsenósidos que se investigan por su posible influencia sobre la función mitocondrial y el estrés oxidativo. Algunos ensayos muestran beneficios pequeños sobre fatiga, pero los resultados no son consistentes y los efectos no son intercambiables entre formulaciones.",
+        "interactiveSteps": [
+          {
+            "title": "Fatiga y actividad celular",
+            "description": "El agotamiento es multifactorial y puede involucrar distintos procesos fisiológicos, no una sola molécula."
+          },
+          {
+            "title": "Ginsenósidos del extracto",
+            "description": "Compuestos como Rg1 y Rb1 muestran modulación de rutas de energía y antioxidación en estudios preclínicos."
+          },
+          {
+            "title": "Posible mejoría, no garantizada",
+            "description": "Ensayos con formulaciones específicas sugieren efectos pequeños sobre fatiga, pero no prueban que todo extracto funcione."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos (18 años o más). Evitar durante embarazo o lactancia. Puede causar insomnio. Consultar antes de usar si se toman medicamentos, especialmente para diabetes o anticoagulantes, o si existen enfermedades autoinmunes. Si la fatiga persiste más de 2 semanas, empeora o es intensa, buscar valoración médica.",
+      "references": [
+        {
+          "id": "EMA_ginseng_radix_monograph_2024",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Panax ginseng C.A.Mey., radix — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-panax-ginseng-camey-radix-revision-1_en.pdf",
+          "supports": [
+            "uso tradicional para síntomas de fatiga/debilidad",
+            "extracto seco ginseng blanco DER 3–7:1 etanol 40 %, estandarizado a 4 % ginsenósidos: 40–200 mg por dosis y día, para adultos",
+            "las dosis de extractos con otros DER/solventes no son intercambiables"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_asian_ginseng",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Asian Ginseng: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/asian-ginseng",
+          "supports": [
+            "posible beneficio pequeño sobre fatiga general en algunos estudios, con resultados heterogéneos",
+            "insomnio como efecto adverso",
+            "posibles interacciones y precauciones en diabetes",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "REVIEW_ginseng_fatigue_2020",
+          "organization": "Revisión sistemática (PubMed Central)",
+          "title": "Clinical and Preclinical Systematic Review of Panax ginseng C. A. Mey and Its Compounds for Fatigue",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7379339/",
+          "supports": [
+            "mecanismos preclínicos de antioxidación y función mitocondrial; limitaciones al extrapolar a humanos"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (18 años o más)"
+      },
+      "dosage": {
+        "population": "Adultos y personas mayores",
+        "herbalMaterial": "Extracto seco de raíz blanca DER 3–7:1, etanol 40 %, con 4 % de ginsenósidos",
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": "Para este extracto específico, la EMA documenta 40–200 mg diarios en 1–2 tomas, con situaciones particulares descritas en la monografía. Seguir la ficha técnica y criterio profesional; no extrapolar a otros extractos.",
+        "note": "La estandarización y DER son esenciales: los valores no son intercambiables con polvo, ginseng rojo ni extractos de otras características."
       },
       "display": {
         "sections": [

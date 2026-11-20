@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-18",
   "plantId": "aloe_vera",
   "guides": [
     {
@@ -49,20 +49,20 @@
         }
       ],
       "chemistry": {
-        "title": "Del gel a la piel",
-        "explanation": "El gel contiene agua y polisacáridos, como el acemanano. Sus grupos –OH pueden formar puentes de hidrógeno con el agua y contribuir a mantener húmeda la superficie cutánea.",
+        "title": "¿Cómo podría ayudar a reparar una quemadura leve?",
+        "explanation": "El acemanano, un polisacárido del gel, puede estimular en modelos experimentales la actividad de fibroblastos y señales relacionadas con la reparación, como KGF-1 y VEGF. El gel también ayuda a mantener húmeda la superficie; esto no sustituye el enfriamiento inicial.",
         "interactiveSteps": [
           {
-            "title": "Gel purificado",
-            "description": "Contiene agua y polisacáridos del interior de la hoja; se diferencia del látex amarillo."
+            "title": "Piel superficialmente lesionada",
+            "description": "La barrera cutánea se altera y comienza un proceso inflamatorio y de reparación."
           },
           {
-            "title": "Capa fina",
-            "description": "El gel entra en contacto con la superficie de la piel ya enfriada."
+            "title": "Acemanano y células reparadoras",
+            "description": "En estudios preclínicos, el acemanano favorece respuestas de fibroblastos y señales asociadas con reparación tisular."
           },
           {
-            "title": "Retención de humedad",
-            "description": "Los grupos hidroxilo de los polisacáridos interactúan con el agua por puentes de hidrógeno."
+            "title": "Entorno de reparación",
+            "description": "Una superficie protegida e hidratada puede favorecer la recuperación de quemaduras pequeñas."
           }
         ]
       },
@@ -105,6 +105,17 @@
             "evitar sol y calor directo"
           ],
           "sourceType": "official_patient_guidance"
+        },
+        {
+          "id": "PUBMED_aloe_wound_mechanisms_2024",
+          "organization": "PubMed — revisión científica",
+          "title": "Aloe vera and the Proliferative Phase of Cutaneous Wound Healing",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39566518/",
+          "supports": [
+            "mecanismos celulares propuestos de regeneración cutánea",
+            "proliferación y migración celulares; factores de crecimiento"
+          ],
+          "sourceType": "scientific_review"
         }
       ],
       "reviewStatus": "source_checked",
@@ -135,6 +146,139 @@
         "showDetailedMechanisms": false,
         "showDosageFrequency": false,
         "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "aloe-vera-mild-plaque-psoriasis-topical-cream",
+      "plantId": "aloe_vera",
+      "plantName": "Aloe vera",
+      "scientificName": "Aloe vera (L.) Burm.f. (sin. Aloe barbadensis Mill.)",
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "symptomIds": [
+        "mild-plaque-psoriasis",
+        "localized-psoriasis-plaques"
+      ],
+      "symptomLabels": [
+        "Placas de psoriasis leve",
+        "Resequedad y descamación por psoriasis diagnosticada"
+      ],
+      "preparationId": "commercial-aloe-topical-cream",
+      "title": "Crema con aloe vera para placas de psoriasis leve",
+      "administrationRoute": "topical",
+      "ingredients": [
+        {
+          "name": "Crema comercial con extracto de aloe vera apta para uso cutáneo",
+          "amount": "Cantidad según indicaciones del envase"
+        },
+        {
+          "name": "Agua y toalla limpia",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Utiliza esta guía solo si la psoriasis ya fue diagnosticada por un profesional."
+        },
+        {
+          "number": 2,
+          "instruction": "Limpia suavemente la piel y sécala sin frotar."
+        },
+        {
+          "number": 3,
+          "instruction": "Aplica una capa fina de crema con aloe conforme a su etiqueta, en piel sin infección ni heridas profundas."
+        },
+        {
+          "number": 4,
+          "instruction": "Continúa el tratamiento indicado por dermatología; suspende ante irritación y consulta si empeoran las placas."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría influir sobre la irritación de las placas?",
+        "explanation": "Los polisacáridos del gel ayudan a retener agua en la superficie. Otros componentes del aloe pueden modular mediadores inflamatorios en modelos experimentales. Los ensayos clínicos en psoriasis han sido contradictorios: el aloe no reemplaza el tratamiento habitual.",
+        "interactiveSteps": [
+          {
+            "title": "Placa inflamada y descamada",
+            "description": "En psoriasis existe inflamación inmunitaria y renovación acelerada de queratinocitos."
+          },
+          {
+            "title": "Componentes del aloe",
+            "description": "La matriz hidratante puede aliviar resequedad; se investigan efectos sobre mediadores inflamatorios."
+          },
+          {
+            "title": "Alivio complementario posible",
+            "description": "Algunas formulaciones se han estudiado como apoyo, pero los resultados clínicos son inconsistentes."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo como complemento para psoriasis leve diagnosticada. No sustituye corticoides u otros tratamientos indicados. No aplicar en placas infectadas o heridas abiertas. Suspender si causa ardor, sarpullido o empeoramiento.",
+      "references": [
+        {
+          "id": "NIH_NCCIH_aloe_vera",
+          "organization": "NIH — NCCIH",
+          "title": "Aloe Vera: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/aloe-vera",
+          "supports": [
+            "investigación limitada en psoriasis",
+            "seguridad del gel tópico"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PUBMED_aloe_psoriasis_trial_1996",
+          "organization": "PubMed — ensayo clínico",
+          "title": "Management of psoriasis with Aloe vera extract in a hydrophilic cream: a placebo-controlled, double-blind study",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8765459/",
+          "supports": [
+            "investigación positiva con crema específica de aloe"
+          ],
+          "sourceType": "clinical_trial"
+        },
+        {
+          "id": "PUBMED_aloe_psoriasis_trial_2005",
+          "organization": "PubMed — ensayo clínico",
+          "title": "A double-blind, placebo-controlled study of a commercial Aloe vera gel in the treatment of slight to moderate psoriasis vulgaris",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15857459/",
+          "supports": [
+            "resultado contradictorio con placebo en psoriasis"
+          ],
+          "sourceType": "clinical_trial"
+        },
+        {
+          "id": "PUBMED_plant_psoriasis_review",
+          "organization": "PubMed — revisión sistemática",
+          "title": "Plant extracts for the topical management of psoriasis: a systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23909714/",
+          "supports": [
+            "evidencia limitada y heterogénea"
+          ],
+          "sourceType": "systematic_review"
+        }
+      ],
+      "targetPopulation": {
+        "display": "Adultos con psoriasis leve diagnosticada; uso complementario"
+      },
+      "dosage": {
+        "population": "Seguir indicaciones del producto y dermatólogo",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "No hay dosis o concentración universalmente validada para todas las cremas comerciales de aloe."
       }
     }
   ]

@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-19",
   "plantId": "eucalyptus",
   "guides": [
     {
@@ -52,20 +52,20 @@
         }
       ],
       "chemistry": {
-        "title": "De la hoja al agua",
-        "explanation": "El agua caliente extrae sustancias hidrosolubles de las hojas y parte de los compuestos aromáticos. El 1,8-cineol es volátil y se concentra más en el aceite esencial; la infusión no equivale a ese aceite.",
+        "title": "¿Cómo podría aliviar la tos del resfriado?",
+        "explanation": "El 1,8-cineol presente en las hojas se ha investigado por modular señales inflamatorias y la producción de mucinas en vías respiratorias. Sin embargo, estos efectos se observaron sobre todo con cineol aislado o extractos experimentales; no se ha demostrado el mismo efecto con esta infusión.",
         "interactiveSteps": [
           {
-            "title": "Hojas secas",
-            "description": "Contienen compuestos polares y terpenos aromáticos, como 1,8-cineol."
+            "title": "Tos y mucosa irritada",
+            "description": "Durante el resfriado, la inflamación puede aumentar la sensibilidad de las vías respiratorias y alterar la secreción de moco."
           },
           {
-            "title": "Agua caliente",
-            "description": "Favorece la disolución y difusión; una fracción de los volátiles puede evaporarse."
+            "title": "1,8-cineol",
+            "description": "En estudios experimentales puede modular señales inflamatorias y procesos de secreción de mucinas."
           },
           {
-            "title": "Infusión colada",
-            "description": "El líquido contiene una mezcla acuosa distinta del aceite esencial concentrado."
+            "title": "Posible alivio",
+            "description": "Es un mecanismo plausible, pero la cantidad de cineol en la infusión es variable y no demuestra eficacia clínica."
           }
         ]
       },
@@ -130,6 +130,264 @@
         "steepingMinutes": "10–15",
         "frequency": "Hasta 4 veces al día (monografía EMA; no mostrar como recomendación individual)",
         "note": "Uso medicinal tradicional de la hoja; no equivale a aceite esencial ni eficacia clínica comprobada."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "eucalyptus-cold-cough-chest-ointment",
+      "plantId": "eucalyptus",
+      "plantName": "Eucalipto",
+      "scientificName": "Eucalyptus globulus Labill.",
+      "symptomIds": [
+        "cough-associated-with-cold"
+      ],
+      "symptomLabels": [
+        "Tos asociada al resfriado"
+      ],
+      "preparationId": "chest-ointment-10pct",
+      "title": "Ungüento torácico con eucalipto (producto formulado)",
+      "administrationRoute": "cutaneous",
+      "ingredients": [
+        {
+          "name": "Ungüento comercial para uso cutáneo con aceite de eucalipto al 10 %",
+          "amount": "Una capa fina"
+        },
+        {
+          "name": "Manos limpias",
+          "amount": "—"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Revisa que el envase indique uso tópico y aceite de eucalipto al 10 %."
+        },
+        {
+          "number": 2,
+          "instruction": "Sobre piel intacta, extiende una capa fina en pecho y espalda según el prospecto."
+        },
+        {
+          "number": 3,
+          "instruction": "Lávate las manos después de aplicarlo y evita tocarte los ojos o la cara."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar la tos?",
+        "explanation": "El 1,8-cineol del aceite se investiga por modular mediadores inflamatorios y la secreción de mucinas en vías respiratorias. El olor también puede cambiar la sensación subjetiva al respirar, pero no demuestra que destape las vías aéreas ni que este ungüento cure el resfriado.",
+        "interactiveSteps": [
+          {
+            "title": "Vías respiratorias irritadas",
+            "description": "El resfriado puede provocar tos y producción aumentada de moco."
+          },
+          {
+            "title": "1,8-cineol",
+            "description": "En estudios preclínicos modula mediadores inflamatorios y procesos asociados a mucinas."
+          },
+          {
+            "title": "Alivio tradicional",
+            "description": "La aplicación tópica se utiliza tradicionalmente; no equivale a la administración de cineol purificado."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos en esta guía. No aplicar en rostro, nariz, heridas o piel irritada; evitar ojos y mucosas. No ingerir ni aplicar aceite esencial puro. Evitar durante embarazo, lactancia o si hay alergia; consultar ante dificultad respiratoria, fiebre, flema purulenta o tos de más de una semana.",
+      "references": [
+        {
+          "id": "EMA_eucalyptus_oil_monograph_2025",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Eucalyptus globulus; Eucalyptus polybractea; Eucalyptus smithii, aetheroleum — Revision 1 (2025)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-eucalyptus-globulus-labill-eucalyptus-polybractea-rt-baker-eucalyptus-smithii-rt-baker-aetheroleum-revision-1_en.pdf",
+          "supports": [
+            "Uso tradicional para tos de resfriado y dolor muscular localizado",
+            "Ungüentos semisólidos con aceite de eucalipto al 10 %",
+            "Aplicación tópica y precauciones sobre piel intacta"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_eucalyptus_oil_public",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Eucalypti aetheroleum — summary for the public",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-aetheroleum",
+          "supports": [
+            "Indicaciones tradicionales",
+            "La eficacia no se considera demostrada mediante ensayos clínicos",
+            "Composición diferente del cineol aislado"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PubMed_cineole_inflammation",
+          "organization": "PubMed/NIH National Library of Medicine",
+          "title": "Anti-inflammatory properties of the monoterpene 1.8-cineole: current evidence for co-medication in inflammatory airway diseases",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24831245/",
+          "supports": [
+            "Efectos preclínicos del cineol sobre inflamación de vías aéreas y secreción de moco"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "NIH_MedlinePlus_eucalyptus_oil_overdose",
+          "organization": "NIH/MedlinePlus",
+          "title": "Sobredosis de aceite de eucalipto",
+          "url": "https://medlineplus.gov/spanish/ency/article/002646.htm",
+          "supports": [
+            "Riesgo de intoxicación por ingestión de aceite de eucalipto"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (guía de uso conservadora; consultar el prospecto del producto)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "formulation": "Ungüento comercial con aceite de eucalipto al 10 %",
+        "application": "Capa fina sobre pecho y espalda",
+        "frequency": "2–3 veces al día según monografía EMA; respetar prospecto",
+        "note": "Uso tradicional; no sustituir por aceite esencial puro. La monografía incluye más edades, pero esta guía se restringe a adultos."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "eucalyptus-local-muscle-pain-ointment",
+      "plantId": "eucalyptus",
+      "plantName": "Eucalipto",
+      "scientificName": "Eucalyptus globulus Labill.",
+      "symptomIds": [
+        "localized-muscle-pain"
+      ],
+      "symptomLabels": [
+        "Dolor muscular localizado leve"
+      ],
+      "preparationId": "muscle-ointment-10pct",
+      "title": "Ungüento de eucalipto para dolor muscular localizado",
+      "administrationRoute": "cutaneous",
+      "ingredients": [
+        {
+          "name": "Ungüento comercial con aceite de eucalipto al 10 %",
+          "amount": "Una capa fina"
+        },
+        {
+          "name": "Manos limpias",
+          "amount": "—"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Comprueba que el producto esté indicado para aplicación cutánea sobre músculos."
+        },
+        {
+          "number": 2,
+          "instruction": "Aplica una capa fina sobre la zona muscular dolorida, con la piel intacta, siguiendo el prospecto."
+        },
+        {
+          "number": 3,
+          "instruction": "Lávate las manos y evita el contacto con ojos y mucosas."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar el dolor muscular?",
+        "explanation": "El 1,8-cineol presenta actividad antiinflamatoria en estudios experimentales y puede modular mediadores celulares. Esto ofrece una hipótesis para su uso tradicional sobre molestias musculares, pero no demuestra una acción analgésica específica del ungüento en personas.",
+        "interactiveSteps": [
+          {
+            "title": "Molestia muscular",
+            "description": "El dolor localizado puede incluir señales inflamatorias y sensitivas."
+          },
+          {
+            "title": "Cineol y mediadores",
+            "description": "En modelos experimentales el 1,8-cineol modifica ciertas respuestas inflamatorias."
+          },
+          {
+            "title": "Posible alivio",
+            "description": "La EMA reconoce el uso tópico tradicional, pero no una eficacia clínica concluyente."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos en esta guía. No aplicar sobre heridas, piel inflamada o irritada ni cerca de ojos y mucosas. Suspender si aparece irritación o alergia. No ingerir aceite esencial. Consultar si hay hinchazón, enrojecimiento, dolor intenso o si persiste más de dos semanas.",
+      "references": [
+        {
+          "id": "EMA_eucalyptus_oil_monograph_2025",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Eucalyptus globulus; Eucalyptus polybractea; Eucalyptus smithii, aetheroleum — Revision 1 (2025)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-eucalyptus-globulus-labill-eucalyptus-polybractea-rt-baker-eucalyptus-smithii-rt-baker-aetheroleum-revision-1_en.pdf",
+          "supports": [
+            "Uso tradicional para tos de resfriado y dolor muscular localizado",
+            "Ungüentos semisólidos con aceite de eucalipto al 10 %",
+            "Aplicación tópica y precauciones sobre piel intacta"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_eucalyptus_oil_public",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Eucalypti aetheroleum — summary for the public",
+          "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-aetheroleum",
+          "supports": [
+            "Indicaciones tradicionales",
+            "La eficacia no se considera demostrada mediante ensayos clínicos",
+            "Composición diferente del cineol aislado"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PubMed_cineole_inflammation",
+          "organization": "PubMed/NIH National Library of Medicine",
+          "title": "Anti-inflammatory properties of the monoterpene 1.8-cineole: current evidence for co-medication in inflammatory airway diseases",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24831245/",
+          "supports": [
+            "Efectos preclínicos del cineol sobre inflamación de vías aéreas y secreción de moco"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "NIH_MedlinePlus_eucalyptus_oil_overdose",
+          "organization": "NIH/MedlinePlus",
+          "title": "Sobredosis de aceite de eucalipto",
+          "url": "https://medlineplus.gov/spanish/ency/article/002646.htm",
+          "supports": [
+            "Riesgo de intoxicación por ingestión de aceite de eucalipto"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (guía de uso conservadora; consultar el prospecto del producto)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "formulation": "Ungüento comercial con aceite de eucalipto al 10 %",
+        "application": "Capa fina en zona muscular dolorida, piel intacta",
+        "frequency": "2–3 veces al día según monografía EMA; respetar prospecto",
+        "note": "Uso tradicional, no equivale al aceite esencial puro."
       },
       "display": {
         "sections": [

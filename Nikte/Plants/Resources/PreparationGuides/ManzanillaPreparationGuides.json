@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "language": "es-MX",
   "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "lastReviewed": "2026-11-18",
   "plantId": "chamomile",
   "guides": [
     {
@@ -49,20 +49,20 @@
         }
       ],
       "chemistry": {
-        "title": "De la flor al agua",
-        "explanation": "El agua caliente disuelve y extrae compuestos polares, como la apigenina-7-O-glucósido. La infusión tiene una composición distinta del aceite esencial.",
+        "title": "¿Cómo podría aliviar los espasmos digestivos?",
+        "explanation": "Flavonoides de la manzanilla, como la apigenina, presentan actividad relajante del músculo liso en estudios experimentales. Al modular señales relacionadas con Ca²⁺, podrían disminuir los espasmos asociados a molestias e hinchazón; no se ha demostrado que eliminen directamente los gases.",
         "interactiveSteps": [
           {
-            "title": "Flores",
-            "description": "Contienen flavonoides y otros compuestos."
+            "title": "Flavonoides",
+            "description": "La apigenina y otros constituyentes se estudian por su actividad antiespasmódica."
           },
           {
-            "title": "Agua caliente",
-            "description": "Facilita la disolución y difusión."
+            "title": "Señalización del Ca²⁺",
+            "description": "El calcio participa en la contracción del músculo intestinal; ciertos extractos pueden modificar esa respuesta en laboratorio."
           },
           {
-            "title": "Infusión",
-            "description": "Los compuestos solubles pasan al agua."
+            "title": "Menos espasmos",
+            "description": "La relajación muscular podría aliviar parte del malestar digestivo, sin garantizar un efecto clínico de la infusión."
           }
         ]
       },
@@ -128,6 +128,17 @@
             "variación según extracción"
           ],
           "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "GI_anti_spasmodic_review",
+          "organization": "PubMed / PubMed Central",
+          "title": "Antispasmodic Potential of Medicinal Plants: A Comprehensive Review",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8601825/",
+          "supports": [
+            "actividad relajante de extractos de manzanilla sobre músculo liso en modelos experimentales",
+            "posibles mecanismos de canales de Ca²⁺ y K⁺"
+          ],
+          "sourceType": "peer_reviewed_research"
         }
       ],
       "reviewStatus": "source_checked",
@@ -159,6 +170,319 @@
         "showDosageFrequency": false,
         "showSafetyFooter": true
       }
+    },
+    {
+      "id": "chamomile-mouth-rinse",
+      "plantId": "chamomile",
+      "plantName": "Manzanilla",
+      "scientificName": "Matricaria chamomilla L.",
+      "symptomIds": [
+        "mild-mouth-inflammation",
+        "minor-mouth-ulcers",
+        "mild-throat-irritation"
+      ],
+      "preparationId": "oromucosal-infusion",
+      "title": "Enjuague de manzanilla",
+      "administrationRoute": "oromucosal",
+      "ingredients": [
+        {
+          "name": "Flores secas de manzanilla aptas para infusión",
+          "amount": "1–5 g"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "100 mL"
+        },
+        {
+          "name": "Taza con tapa y colador",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 1–5 g de flores secas en una taza limpia."
+        },
+        {
+          "number": 2,
+          "instruction": "Añade 100 mL de agua hirviendo y tapa."
+        },
+        {
+          "number": 3,
+          "instruction": "Deja reposar entre 5 y 15 minutos; cuela y enfría hasta que esté tibio."
+        },
+        {
+          "number": 4,
+          "instruction": "Enjuaga la boca o haz gárgaras suavemente y escupe el líquido; no lo tragues."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar la irritación bucal?",
+        "explanation": "En estudios experimentales, extractos de manzanilla pueden disminuir la activación de NF-κB y la producción de mediadores inflamatorios como el óxido nítrico generado por iNOS. Esa modulación podría contribuir a aliviar la inflamación superficial de la mucosa; no significa que el enjuague cure aftas o infecciones.",
+        "interactiveSteps": [
+          {
+            "title": "Mucosa irritada",
+            "description": "Las células inflamadas activan rutas como NF-κB y liberan señales inflamatorias."
+          },
+          {
+            "title": "Compuestos fenólicos",
+            "description": "Componentes de extractos de manzanilla pueden atenuar esas rutas en modelos experimentales."
+          },
+          {
+            "title": "Respuesta inflamatoria",
+            "description": "Una menor señalización inflamatoria podría contribuir a calmar la irritación bucal."
+          }
+        ]
+      },
+      "displaySafetyNote": "Uso externo en boca y garganta, para adultos y mayores de 12 años. No tragar. Evitar si hay alergia a manzanilla/Asteraceae; se han descrito reacciones alérgicas graves al contacto con mucosas. Consultar ante dolor intenso, fiebre, dificultad para tragar o síntomas que persisten más de una semana.",
+      "references": [
+        {
+          "id": "EMA_matricaria_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Matricaria recutita L., flos",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-matricaria-recutita-l-flos-first-version_en.pdf",
+          "supports": [
+            "uso tradicional de enjuagues para úlceras e inflamaciones bucales leves",
+            "1–5 g en 100 mL para uso oromucoso",
+            "precauciones de alergia"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_general_herbal_tea_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "agua hirviendo",
+            "definición de infusión",
+            "intervalo general de 5–15 minutos"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_chamomile",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Chamomile: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/chamomile",
+          "supports": [
+            "límites de evidencia clínica",
+            "alergias",
+            "interacciones",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "CHAMOMILE_PHYTOCHEMISTRY",
+          "organization": "PubMed Central / Molecules",
+          "title": "Chamomile: A Review of Its Traditional Uses, Chemical Constituents, Pharmacological Activities and Quality Control Studies",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9822300/",
+          "supports": [
+            "compuestos químicos de manzanilla",
+            "variación según extracción"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "CHAM_iNOS_NFkB",
+          "organization": "PubMed / PubMed Central",
+          "title": "Chamomile: an anti-inflammatory agent inhibits inducible nitric oxide synthase expression by blocking RelA/p65 activity",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2982259/",
+          "supports": [
+            "extractos de manzanilla atenúan activación NF-κB e iNOS en macrófagos en laboratorio",
+            "no se evaluó esta receta casera"
+          ],
+          "sourceType": "peer_reviewed_research"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Inflamación bucal leve",
+        "Pequeñas aftas",
+        "Irritación leve de garganta"
+      ],
+      "targetPopulation": {
+        "display": "Adultos y adolescentes mayores de 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes mayores de 12 años",
+        "herbalMaterial": "1–5 g",
+        "waterVolume": "100 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "Varias veces al día según monografía EMA; no mostrar como recomendación personalizada",
+        "note": "Dosis de flores y agua: monografía EMA (uso tradicional); tiempo de reposo: guía general EMA para infusiones. No es una pauta individualizada."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "chamomile-skin-compress",
+      "plantId": "chamomile",
+      "plantName": "Manzanilla",
+      "scientificName": "Matricaria chamomilla L.",
+      "symptomIds": [
+        "mild-skin-irritation",
+        "mild-sunburn"
+      ],
+      "preparationId": "cutaneous-infusion-compress",
+      "title": "Compresa de manzanilla",
+      "administrationRoute": "cutaneous",
+      "ingredients": [
+        {
+          "name": "Flores secas de manzanilla de calidad apta para preparación",
+          "amount": "3–10 g"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "100 mL"
+        },
+        {
+          "name": "Recipiente limpio, colador y gasa o paño limpio",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Coloca 3–10 g de flores secas en un recipiente limpio."
+        },
+        {
+          "number": 2,
+          "instruction": "Añade 100 mL de agua hirviendo, tapa y deja reposar 5–15 minutos."
+        },
+        {
+          "number": 3,
+          "instruction": "Cuela bien y deja enfriar por completo."
+        },
+        {
+          "number": 4,
+          "instruction": "Humedece una gasa o paño limpio con la preparación fría y aplícala suavemente sobre piel intacta irritada; retira si aparece molestia."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar la irritación de la piel?",
+        "explanation": "Flavonoides de la manzanilla han mostrado actividad antiinflamatoria experimental, incluida la modulación de mediadores asociados a NF-κB y COX-2. Esto podría favorecer el alivio de irritaciones leves; no está comprobado que una compresa casera alcance las concentraciones de los extractos estudiados.",
+        "interactiveSteps": [
+          {
+            "title": "Piel irritada",
+            "description": "Las células activan señales que promueven mediadores de inflamación."
+          },
+          {
+            "title": "Flavonoides",
+            "description": "Componentes estudiados de la manzanilla pueden modular vías inflamatorias en modelos de laboratorio."
+          },
+          {
+            "title": "Posible alivio",
+            "description": "Una menor respuesta inflamatoria podría contribuir a reducir la molestia superficial."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo sobre piel intacta y zonas pequeñas. No aplicar en ojos, heridas abiertas, ampollas, quemaduras extensas o infecciones. Evitar si hay alergia a manzanilla/Asteraceae. En quemaduras solares, enfriar primero la zona; consultar por ampollas, fiebre o empeoramiento. Preparar fresco y desechar sobrantes.",
+      "references": [
+        {
+          "id": "EMA_matricaria_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Matricaria recutita L., flos",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-matricaria-recutita-l-flos-first-version_en.pdf",
+          "supports": [
+            "uso tradicional para inflamación leve de piel y quemadura solar leve",
+            "3–10 g en 100 mL para lavados y apósitos impregnados",
+            "precauciones en uso cutáneo"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "EMA_general_herbal_tea_glossary",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "Glossary on herbal teas",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/glossary-herbal-teas_en.pdf",
+          "supports": [
+            "agua hirviendo",
+            "definición de infusión",
+            "intervalo general de 5–15 minutos"
+          ],
+          "sourceType": "official_guideline"
+        },
+        {
+          "id": "NIH_chamomile",
+          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
+          "title": "Chamomile: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/chamomile",
+          "supports": [
+            "límites de evidencia clínica",
+            "alergias",
+            "interacciones",
+            "embarazo y lactancia"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "CHAMOMILE_PHYTOCHEMISTRY",
+          "organization": "PubMed Central / Molecules",
+          "title": "Chamomile: A Review of Its Traditional Uses, Chemical Constituents, Pharmacological Activities and Quality Control Studies",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9822300/",
+          "supports": [
+            "compuestos químicos de manzanilla",
+            "variación según extracción"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "CHAM_topical_flavonoids",
+          "organization": "PubMed / PubMed Central",
+          "title": "Validation of a RP-HPLC-DAD Method for Chamomile Preparations and Assessment of the Marker, Apigenin-7-glucoside, Safety and Anti-Inflammatory Effect",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26421053/",
+          "supports": [
+            "actividad antiinflamatoria experimental de componentes de manzanilla en preparaciones tópicas",
+            "no establece eficacia clínica de compresas caseras"
+          ],
+          "sourceType": "peer_reviewed_research"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "symptomLabels": [
+        "Irritación cutánea leve",
+        "Quemadura solar leve sin ampollas"
+      ],
+      "targetPopulation": {
+        "display": "Adultos y adolescentes mayores de 12 años"
+      },
+      "dosage": {
+        "population": "Adultos y adolescentes mayores de 12 años",
+        "herbalMaterial": "3–10 g",
+        "waterVolume": "100 mL",
+        "steepingMinutes": "5–15",
+        "frequency": "Varias veces al día según monografía EMA; no mostrar como recomendación personalizada",
+        "note": "Dosis de flores y agua: monografía EMA (uso tradicional); tiempo de reposo: guía general EMA para infusiones. No es una pauta individualizada."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "guidanceScope": "Se limita a piel intacta por precaución; aunque EMA incluye heridas superficiales entre las indicaciones tradicionales, una preparación casera no es estéril."
     }
   ]
 }

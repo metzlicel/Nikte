@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "language": "es-MX",
-  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "purpose": "Guías breves de uso por malestar en Nikte; mecanismos relacionados con el síntoma, no explicación de extracción",
+  "lastReviewed": "2026-11-18",
   "plantId": "peppermint",
   "guides": [
     {
@@ -49,20 +49,20 @@
         }
       ],
       "chemistry": {
-        "title": "De la hoja al agua",
-        "explanation": "El agua caliente extrae compuestos polares, como el ácido rosmarínico, y parte de las sustancias aromáticas. La infusión no tiene la misma concentración de mentol que el aceite esencial.",
+        "title": "¿Cómo podría aliviar las molestias digestivas?",
+        "explanation": "El mentol de la menta puede disminuir la entrada de Ca²⁺ en células de músculo liso intestinal en modelos experimentales. Esto favorece la relajación y podría disminuir espasmos; no demuestra que la infusión elimine los gases ni que equivalga al aceite entérico.",
         "interactiveSteps": [
           {
-            "title": "Hojas",
-            "description": "Contienen compuestos fenólicos y aceite esencial."
+            "title": "Molestia intestinal",
+            "description": "La contracción del músculo liso depende en parte del Ca²⁺ intracelular."
           },
           {
-            "title": "Agua caliente",
-            "description": "Favorece la disolución y difusión de sustancias extraíbles."
+            "title": "Mentol y señalización",
+            "description": "El mentol puede limitar corrientes de Ca²⁺ en modelos de músculo liso; la cantidad presente en el té es variable."
           },
           {
-            "title": "Infusión",
-            "description": "Algunos compuestos pasan al agua; otros quedan en las hojas o se volatilizan."
+            "title": "Posible relajación",
+            "description": "Una menor contracción podría aliviar espasmos, sin demostrar eficacia clínica de esta infusión."
           }
         ]
       },
@@ -146,6 +146,249 @@
         "showDosageFrequency": false,
         "showSafetyFooter": true
       }
+    },
+    {
+      "id": "peppermint-ibs-enteric-capsules",
+      "plantId": "peppermint",
+      "plantName": "Menta",
+      "scientificName": "Mentha × piperita L.",
+      "symptomIds": [
+        "irritable-bowel-syndrome",
+        "ibs-abdominal-pain",
+        "ibs-intestinal-spasms"
+      ],
+      "symptomLabels": [
+        "Dolor abdominal y espasmos asociados al síndrome de intestino irritable (SII)"
+      ],
+      "preparationId": "enteric-coated-peppermint-oil",
+      "title": "Cápsulas entéricas de aceite de menta",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Cápsulas comerciales gastrorresistentes de aceite de menta, con composición y dosis declaradas",
+          "amount": null
+        },
+        {
+          "name": "Agua potable",
+          "amount": "Para tragarlas"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Elige un producto medicinal de aceite de menta con recubrimiento entérico; no prepares cápsulas caseras."
+        },
+        {
+          "number": 2,
+          "instruction": "Comprueba en el envase la dosis y las restricciones para tu edad o consúltalas con un profesional de salud."
+        },
+        {
+          "number": 3,
+          "instruction": "Traga la cápsula entera con agua, sin masticarla, abrirla ni triturarla."
+        },
+        {
+          "number": 4,
+          "instruction": "Respeta la pauta y duración del producto; consulta si el dolor persiste, empeora o hay síntomas de alarma."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo puede disminuir los espasmos intestinales?",
+        "explanation": "El mentol del aceite de menta puede reducir la entrada de Ca²⁺ en el músculo liso del intestino, favoreciendo su relajación. La cubierta entérica evita la liberación temprana del aceite y permite que actúe más adelante en el tubo digestivo.",
+        "interactiveSteps": [
+          {
+            "title": "Espasmo intestinal",
+            "description": "El Ca²⁺ intracelular participa en la contracción del músculo liso."
+          },
+          {
+            "title": "Acción del mentol",
+            "description": "Puede disminuir corrientes de Ca²⁺ y la intensidad de ciertas contracciones."
+          },
+          {
+            "title": "Menor espasmo",
+            "description": "En formulaciones entéricas se ha observado alivio modesto a corto plazo de algunos síntomas del SII."
+          }
+        ]
+      },
+      "displaySafetyNote": "No ingerir aceite esencial puro ni fabricar cápsulas caseras. Puede causar acidez y empeorar el reflujo; consultar si existen cálculos biliares o enfermedad hepática. Los antiácidos y supresores del ácido pueden interferir con la cubierta entérica. Evitar durante embarazo o lactancia sin valoración profesional. Dolor intenso, sangrado o pérdida de peso requieren evaluación médica.",
+      "targetPopulation": {
+        "display": "Adultos; otras edades solo con orientación profesional y producto autorizado"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "La EMA documenta 0.2–0.4 mL de aceite en cápsulas gastrorresistentes por toma en adolescentes y adultos, pero la vista no debe presentar una pauta universal: utilizar la ficha del medicamento específico. La dosis depende de la formulación."
+      },
+      "references": [
+        {
+          "id": "EMA_peppermint_oil_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Mentha x piperita L., aetheroleum — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/european-union-herbal-monograph-mentha-x-piperita-l-aetheroleum-revision-1_en.pdf",
+          "supports": [
+            "uso establecido de cápsulas gastrorresistentes para espasmos, flatulencia y dolor abdominal, especialmente SII",
+            "uso establecido de preparados tópicos al 10 % para cefalea tensional leve",
+            "advertencias de uso, grupos de edad e interacciones con antiácidos"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_peppermint_oil_2025",
+          "organization": "NIH — NCCIH",
+          "title": "Peppermint Oil: Usefulness and Safety (updated May 2025)",
+          "url": "https://www.nccih.nih.gov/health/peppermint-oil",
+          "supports": [
+            "beneficio posiblemente modesto de cápsulas con cubierta entérica en SII",
+            "evidencia limitada para cefalea tensional tópica",
+            "riesgo de acidez e irritación"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "PEPPERMINT_IBS_META_2022",
+          "organization": "PubMed",
+          "title": "Systematic review and meta-analysis: efficacy of peppermint oil in irritable bowel syndrome (2022)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35942669/",
+          "supports": [
+            "resultados de ensayos de aceite de menta para síntomas y dolor en SII",
+            "calidad de evidencia muy baja y efectos adversos"
+          ],
+          "sourceType": "peer_reviewed_systematic_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "guidanceScope": "Producto medicinal formulado, no receta casera. Aplicable a síntomas de SII; no sustituye diagnóstico ni tratamiento."
+    },
+    {
+      "id": "peppermint-tension-headache-topical",
+      "plantId": "peppermint",
+      "plantName": "Menta",
+      "scientificName": "Mentha × piperita L.",
+      "symptomIds": [
+        "mild-tension-headache"
+      ],
+      "symptomLabels": [
+        "Cefalea tensional leve"
+      ],
+      "preparationId": "commercial-10-percent-peppermint-topical",
+      "title": "Preparado tópico de menta para cefalea tensional",
+      "administrationRoute": "cutaneous",
+      "ingredients": [
+        {
+          "name": "Preparado tópico comercial con 10 % de aceite de menta formulado para cefalea tensional",
+          "amount": "Según el envase"
+        },
+        {
+          "name": "Piel limpia y seca de frente y sienes",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Usa solo un preparado tópico formulado para cefalea tensional; no mezcles aceite esencial con alcohol en casa."
+        },
+        {
+          "number": 2,
+          "instruction": "Comprueba las instrucciones y posibles alergias; úsalo únicamente en adultos."
+        },
+        {
+          "number": 3,
+          "instruction": "Aplica en la frente y las sienes siguiendo el envase y evitando ojos, mucosas y piel dañada."
+        },
+        {
+          "number": 4,
+          "instruction": "Lávate las manos después. Suspende si irrita y busca valoración si el dolor persiste o cambia de características."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría aliviar la cefalea tensional?",
+        "explanation": "El mentol activa canales TRPM8 de neuronas sensoriales, provocando sensación de frío y modificando la percepción del dolor. Esto podría contribuir al alivio de algunas cefaleas tensionales leves con formulaciones tópicas específicas.",
+        "interactiveSteps": [
+          {
+            "title": "Mentol en la piel",
+            "description": "Interacciona con el canal termosensible TRPM8 de neuronas sensoriales."
+          },
+          {
+            "title": "Señal nerviosa",
+            "description": "TRPM8 permite el flujo de cationes y desencadena sensación de frescura."
+          },
+          {
+            "title": "Percepción del dolor",
+            "description": "La estimulación sensorial puede modular el dolor; el beneficio clínico se ha estudiado con formulaciones específicas."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos. No usar aceite esencial puro ni fabricar diluciones caseras: el preparado estudiado es una formulación específica al 10 %. Evitar ojos, mucosas y piel irritada; lavarse las manos. Suspender si causa dermatitis. Cefalea súbita muy intensa o acompañada de debilidad, alteración visual o fiebre requiere atención médica urgente.",
+      "targetPopulation": {
+        "display": "Adultos (18 años o más)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "La EMA documenta formulación tópica al 10 % en etanol para cefalea tensional leve; no usar esta concentración como instrucción para preparación casera. Seguir el producto comercial."
+      },
+      "references": [
+        {
+          "id": "EMA_peppermint_oil_monograph",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Mentha x piperita L., aetheroleum — Revision 1",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/european-union-herbal-monograph-mentha-x-piperita-l-aetheroleum-revision-1_en.pdf",
+          "supports": [
+            "uso establecido de cápsulas gastrorresistentes para espasmos, flatulencia y dolor abdominal, especialmente SII",
+            "uso establecido de preparados tópicos al 10 % para cefalea tensional leve",
+            "advertencias de uso, grupos de edad e interacciones con antiácidos"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_peppermint_oil_2025",
+          "organization": "NIH — NCCIH",
+          "title": "Peppermint Oil: Usefulness and Safety (updated May 2025)",
+          "url": "https://www.nccih.nih.gov/health/peppermint-oil",
+          "supports": [
+            "beneficio posiblemente modesto de cápsulas con cubierta entérica en SII",
+            "evidencia limitada para cefalea tensional tópica",
+            "riesgo de acidez e irritación"
+          ],
+          "sourceType": "official_health_information"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      },
+      "guidanceScope": "Uso de formulación comercial, no receta casera."
     }
   ]
 }

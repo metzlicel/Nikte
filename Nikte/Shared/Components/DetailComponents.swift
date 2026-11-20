@@ -64,19 +64,21 @@ struct QuickFact: View {
     let label: String
     let value: String
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(label.uppercased())
-                .font(.system(size: 10, weight: .medium, design: .serif))
-                .tracking(1)
-                .foregroundStyle(Palette.brown)
-            Text(value)
-                .font(.system(size: 14, design: .serif))
-                .foregroundStyle(Palette.ink)
-                .fixedSize(horizontal: false, vertical: true)
+        if label != "Explicación científica" {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(label.uppercased())
+                    .font(.system(size: 10, weight: .medium, design: .serif))
+                    .tracking(1)
+                    .foregroundStyle(Palette.brown)
+                Text(value)
+                    .font(.system(size: 14, design: .serif))
+                    .foregroundStyle(Palette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(11)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Palette.sage.opacity(0.16), in: RoundedRectangle(cornerRadius: 12))
         }
-        .padding(11)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Palette.sage.opacity(0.16), in: RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -99,4 +101,3 @@ struct BulletFacts: View {
         }
     }
 }
-

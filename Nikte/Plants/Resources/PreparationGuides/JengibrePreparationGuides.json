@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "language": "es-MX",
-  "purpose": "Guías de preparación breves para búsqueda por malestar en Nikte",
-  "lastReviewed": "2026-11-16",
+  "purpose": "Tres guías breves de uso por malestar para Nikte; química enfocada en el efecto sobre el síntoma",
+  "lastReviewed": "2026-11-18",
   "plantId": "zingiber_officinale",
   "guides": [
     {
@@ -45,20 +45,20 @@
         }
       ],
       "chemistry": {
-        "title": "Del rizoma al organismo",
-        "explanation": "El polvo conserva gingeroles y shogaoles del rizoma; al tomarlo con agua no se filtran ni se separan por extracción. Estos compuestos pueden modular señales 5-HT₃ relacionadas con las náuseas en estudios experimentales.",
+        "title": "¿Cómo podría influir en las náuseas por viaje?",
+        "explanation": "Gingeroles y shogaoles pueden modular receptores serotoninérgicos 5-HT₃ implicados en señales de náusea. Sin embargo, la mayoría de los ensayos sobre mareo por movimiento no ha encontrado un beneficio claro del jengibre.",
         "interactiveSteps": [
           {
-            "title": "Rizoma seco",
-            "description": "Contiene gingeroles y, según el procesamiento, shogaoles."
+            "title": "Movimiento y náusea",
+            "description": "Se activan vías nerviosas relacionadas con el equilibrio y las náuseas; 5-HT₃ participa en parte de su transmisión."
           },
           {
-            "title": "Pulverización",
-            "description": "Rompe el material vegetal y aumenta la superficie expuesta."
+            "title": "Gingeroles y shogaoles",
+            "description": "En experimentos pueden disminuir la activación de determinados receptores 5-HT₃."
           },
           {
-            "title": "Polvo con agua",
-            "description": "Se ingiere la mezcla completa; no se prepara una infusión filtrada."
+            "title": "Efecto incierto en viajes",
+            "description": "Esta interacción no ha demostrado un alivio consistente de las náuseas por movimiento en humanos."
           }
         ]
       },
@@ -76,18 +76,6 @@
             "hipersensibilidad, acidez, molestias gástricas y precauciones en embarazo/lactancia"
           ],
           "sourceType": "official_monograph"
-        },
-        {
-          "id": "NIH_NCCIH_ginger",
-          "organization": "NIH — National Center for Complementary and Integrative Health (NCCIH)",
-          "title": "Ginger: Usefulness and Safety",
-          "url": "https://www.nccih.nih.gov/health/ginger",
-          "supports": [
-            "beneficios y limitaciones para náuseas según su causa",
-            "los estudios clínicos generalmente evaluaron suplementos, no alimentos o bebidas",
-            "efectos adversos e interacciones potenciales"
-          ],
-          "sourceType": "official_health_information"
         },
         {
           "id": "NIH_PubMed_ginger_5HT3",
@@ -109,6 +97,18 @@
             "diferencia entre uso tradicional y uso documentado con estudios"
           ],
           "sourceType": "official_summary"
+        },
+        {
+          "id": "NIH_NCCIH_ginger",
+          "organization": "NIH / NCCIH",
+          "title": "Ginger: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/ginger",
+          "supports": [
+            "evidencia variable por indicación; suplementos estudiados mayormente",
+            "posibles molestias digestivas, reflujo y riesgos de interacciones",
+            "los estudios de mareo por viaje mayoritariamente no demuestran eficacia; suplementos podrían reducir cólicos menstruales"
+          ],
+          "sourceType": "official_health_information"
         }
       ],
       "reviewStatus": "source_checked",
@@ -126,6 +126,275 @@
         "steepingMinutes": null,
         "frequency": "Una toma una hora antes del viaje, según monografía EMA (no mostrar como recomendación individual)",
         "note": "La EMA documenta esta dosis para polvo ingerido por vía oral antes del viaje. No extrapolarla a té de jengibre fresco, infusiones filtradas ni a náuseas de otras causas."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "ginger-digestive-warm-drink",
+      "plantId": "zingiber_officinale",
+      "plantName": "Jengibre",
+      "scientificName": "Zingiber officinale Roscoe",
+      "symptomIds": [
+        "mild-digestive-discomfort",
+        "bloating",
+        "flatulence"
+      ],
+      "symptomLabels": [
+        "Indigestión leve",
+        "Hinchazón abdominal",
+        "Gases"
+      ],
+      "preparationId": "powdered-rhizome-warm-drink",
+      "title": "Bebida tibia de jengibre con miel (limón opcional)",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Jengibre seco en polvo de calidad alimentaria",
+          "amount": "0.18–1 g (rango de la monografía EMA por toma, para adultos)"
+        },
+        {
+          "name": "Agua potable tibia",
+          "amount": "150 mL (volumen culinario orientativo, no validado por EMA)"
+        },
+        {
+          "name": "Miel",
+          "amount": "1 cucharadita, opcional; solo para sabor"
+        },
+        {
+          "name": "Limón",
+          "amount": "Unas gotas, opcional, solo si no provoca acidez"
+        },
+        {
+          "name": "Taza, cuchara y báscula alimentaria",
+          "amount": null
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Mide el jengibre seco en polvo y colócalo en una taza."
+        },
+        {
+          "number": 2,
+          "instruction": "Agrega aproximadamente 150 mL de agua tibia y mezcla."
+        },
+        {
+          "number": 3,
+          "instruction": "Si deseas, añade miel y unas gotas de limón; omite el limón si te produce acidez."
+        },
+        {
+          "number": 4,
+          "instruction": "Bebe la mezcla completa; no filtres el polvo."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría ayudar con la digestión?",
+        "explanation": "Los compuestos del jengibre pueden modificar la motilidad del estómago. En un estudio pequeño se aceleró el vaciamiento gástrico, pero no mejoraron los síntomas; su uso para gases e indigestión se considera tradicional. La miel y el limón solo aportan sabor en esta receta.",
+        "interactiveSteps": [
+          {
+            "title": "Molestias digestivas",
+            "description": "La hinchazón y la indigestión pueden asociarse con distintos cambios de motilidad y sensibilidad digestiva."
+          },
+          {
+            "title": "Compuestos del jengibre",
+            "description": "Gingeroles y otros constituyentes se han estudiado por su acción sobre señalización gastrointestinal."
+          },
+          {
+            "title": "Posible cambio de motilidad",
+            "description": "Se ha observado mayor vaciamiento gástrico en un estudio pequeño, sin alivio demostrado de síntomas en ese ensayo."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos. El jengibre puede causar acidez, ardor y molestias abdominales; omite limón si empeora la sensación. No usar si hay alergia. Consultar en embarazo, lactancia, con medicamentos (especialmente anticoagulantes) o si los síntomas persisten, se intensifican o aparecen señales de alarma.",
+      "references": [
+        {
+          "id": "EMA_ginger_monograph_2025",
+          "organization": "European Medicines Agency (EMA)",
+          "title": "European Union herbal monograph on Zingiber officinale Roscoe, rhizoma — Revision 1 (2025)",
+          "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-zingiber-officinale-roscoe-rhizoma-revision-1_en.pdf",
+          "supports": [
+            "polvo 0.18–1 g tres veces al día en adultos para molestias gastrointestinales espasmódicas leves, hinchazón y flatulencia: uso tradicional",
+            "1–2 g de rizoma pulverizado una hora antes de viajar para prevención de cinetosis: uso bien establecido de la preparación sólida"
+          ],
+          "sourceType": "official_monograph"
+        },
+        {
+          "id": "NIH_NCCIH_ginger",
+          "organization": "NIH / NCCIH",
+          "title": "Ginger: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/ginger",
+          "supports": [
+            "evidencia variable por indicación; suplementos estudiados mayormente",
+            "posibles molestias digestivas, reflujo y riesgos de interacciones",
+            "los estudios de mareo por viaje mayoritariamente no demuestran eficacia; suplementos podrían reducir cólicos menstruales"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "GINGER_motility_2011",
+          "organization": "World Journal of Gastroenterology (PubMed)",
+          "title": "Effect of ginger on gastric motility and symptoms of functional dyspepsia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21218090/",
+          "supports": [
+            "en estudio pequeño, jengibre aceleró vaciamiento gástrico sin mejorar síntomas de dispepsia; no fue esta bebida"
+          ],
+          "sourceType": "peer_reviewed_trial"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos (18 años o más)"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": "0.18–1 g de jengibre seco en polvo por toma",
+        "waterVolume": "150 mL (elección culinaria, no de la EMA)",
+        "steepingMinutes": null,
+        "frequency": "La monografía EMA indica 3 veces al día para esta indicación tradicional; no mostrar como recomendación personalizada",
+        "note": "La dosis EMA es para rizoma seco pulverizado, no para infusión filtrada ni rizoma fresco. Miel y limón son opcionales y no se les atribuye efecto digestivo demostrado."
+      },
+      "display": {
+        "sections": [
+          "plant",
+          "symptom",
+          "ingredients",
+          "steps",
+          "chemistry"
+        ],
+        "showReferences": false,
+        "showDetailedMechanisms": false,
+        "showDosageFrequency": false,
+        "showSafetyFooter": true
+      }
+    },
+    {
+      "id": "ginger-menstrual-cramps-capsules",
+      "plantId": "zingiber_officinale",
+      "plantName": "Jengibre",
+      "scientificName": "Zingiber officinale Roscoe",
+      "symptomIds": [
+        "mild-menstrual-cramps",
+        "primary-dysmenorrhea"
+      ],
+      "symptomLabels": [
+        "Cólicos menstruales leves",
+        "Dolor menstrual primario"
+      ],
+      "preparationId": "measured-ginger-powder-capsules",
+      "title": "Cápsulas comerciales de jengibre",
+      "administrationRoute": "oral",
+      "ingredients": [
+        {
+          "name": "Cápsulas comerciales con jengibre seco pulverizado y cantidad declarada en miligramos",
+          "amount": "Según etiqueta y orientación profesional"
+        },
+        {
+          "name": "Agua potable",
+          "amount": "Un vaso"
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "instruction": "Comprueba que el envase indique especie, cantidad de jengibre por cápsula y vía oral."
+        },
+        {
+          "number": 2,
+          "instruction": "Consulta con un profesional antes de utilizarlo para dolor menstrual, especialmente si tomas medicamentos."
+        },
+        {
+          "number": 3,
+          "instruction": "Sigue las instrucciones del producto y toma la cápsula entera con agua; no prepares cápsulas caseras con aceite esencial."
+        }
+      ],
+      "chemistry": {
+        "title": "¿Cómo podría influir en los cólicos?",
+        "explanation": "Los gingeroles y shogaoles pueden modular vías COX y la formación de prostaglandinas, sustancias relacionadas con contracciones uterinas y dolor menstrual. Ensayos con productos dosificados sugieren un posible alivio, pero no prueban que una bebida casera produzca el mismo efecto.",
+        "interactiveSteps": [
+          {
+            "title": "Contracciones y dolor",
+            "description": "Las prostaglandinas participan en la contracción uterina y la sensibilización al dolor."
+          },
+          {
+            "title": "Gingeroles y shogaoles",
+            "description": "En modelos experimentales pueden modular procesos relacionados con COX y síntesis de prostaglandinas."
+          },
+          {
+            "title": "Posible alivio",
+            "description": "Ensayos con formulaciones medidas sugieren reducir la intensidad del dolor menstrual en algunas personas."
+          }
+        ]
+      },
+      "displaySafetyNote": "Solo adultos. No sustituye la valoración de dolor menstrual intenso, nuevo o incapacitante. Puede causar acidez o molestias gastrointestinales. Consultar en embarazo o lactancia y si se toman medicamentos, en especial anticoagulantes. No ingerir aceite esencial.",
+      "references": [
+        {
+          "id": "NIH_NCCIH_ginger",
+          "organization": "NIH / NCCIH",
+          "title": "Ginger: Usefulness and Safety",
+          "url": "https://www.nccih.nih.gov/health/ginger",
+          "supports": [
+            "evidencia variable por indicación; suplementos estudiados mayormente",
+            "posibles molestias digestivas, reflujo y riesgos de interacciones",
+            "los estudios de mareo por viaje mayoritariamente no demuestran eficacia; suplementos podrían reducir cólicos menstruales"
+          ],
+          "sourceType": "official_health_information"
+        },
+        {
+          "id": "GINGER_dysmenorrhea_2024",
+          "organization": "PubMed / Journal of Integrative and Complementary Medicine",
+          "title": "Ginger for Pain Management in Primary Dysmenorrhea: A Systematic Review and Meta-Analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38770631/",
+          "supports": [
+            "ensayos con preparados medidos muestran posible reducción del dolor menstrual; no evalúan equivalencia con bebida casera"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "GINGER_dysmenorrhea_2021",
+          "organization": "PubMed Central",
+          "title": "Efficacy of Ginger in the Treatment of Primary Dysmenorrhea: A Systematic Review and Meta-analysis",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8021506/",
+          "supports": [
+            "ensayos evaluaron cápsulas y polvo de jengibre con dosis medibles"
+          ],
+          "sourceType": "peer_reviewed_review"
+        },
+        {
+          "id": "GINGER_antiinflam_2025",
+          "organization": "Frontiers in Reproductive Health",
+          "title": "Complementary and alternative therapies in the treatment of primary dysmenorrhea",
+          "url": "https://www.frontiersin.org/journals/reproductive-health/articles/10.3389/frph.2025.1730164/full",
+          "supports": [
+            "gingeroles y compuestos afines pueden modificar vías COX y producción de prostaglandinas en modelos experimentales"
+          ],
+          "sourceType": "peer_reviewed_review"
+        }
+      ],
+      "reviewStatus": "source_checked",
+      "medicalReviewStatus": "not_clinically_reviewed",
+      "targetPopulation": {
+        "display": "Adultos"
+      },
+      "dosage": {
+        "population": "Adultos",
+        "herbalMaterial": null,
+        "waterVolume": null,
+        "steepingMinutes": null,
+        "frequency": null,
+        "note": "No se prescribe dosificación genérica: los estudios usaron cápsulas y formulaciones diferentes; seguir etiquetado y orientación profesional. No extrapolar a té o bebidas."
       },
       "display": {
         "sections": [

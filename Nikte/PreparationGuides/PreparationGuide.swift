@@ -36,29 +36,94 @@ struct PreparationGuideRequest: Equatable {
     let preparationId: String
 
     static func forAilment(plantMatchID: String, ailmentID: String) -> Self? {
+        if plantMatchID == "menta" {
+            let symptoms = [
+                "sindrome_intestino_irritable": ("irritable-bowel-syndrome", "enteric-coated-peppermint-oil"),
+                "dolor_abdominal_sii": ("ibs-abdominal-pain", "enteric-coated-peppermint-oil"),
+                "espasmos_intestinales_sii": ("ibs-intestinal-spasms", "enteric-coated-peppermint-oil"),
+                "cefalea_tensional_leve": ("mild-tension-headache", "commercial-10-percent-peppermint-topical")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "peppermint", symptomId: symptomID, preparationId: preparationID)
+            }
+        }
+        if plantMatchID == "manzanilla" {
+            let symptoms = [
+                "inflamacion_bucal_leve": ("mild-mouth-inflammation", "oromucosal-infusion"),
+                "aftas_pequenas": ("minor-mouth-ulcers", "oromucosal-infusion"),
+                "irritacion_garganta_leve": ("mild-throat-irritation", "oromucosal-infusion"),
+                "irritacion_cutanea_leve": ("mild-skin-irritation", "cutaneous-infusion-compress"),
+                "quemadura_solar_leve": ("mild-sunburn", "cutaneous-infusion-compress")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "chamomile", symptomId: symptomID, preparationId: preparationID)
+            }
+        }
         if plantMatchID == "ginseng", ailmentID == "cansancio_debilidad_leves" {
             return Self(plantId: "ginseng", symptomId: "fatigue-weakness", preparationId: "decoction")
         }
-        if plantMatchID == "valeriana", ailmentID == "dificultad_ocasional_dormir" {
-            return Self(plantId: "valerian", symptomId: "occasional-sleep-difficulty", preparationId: "infusion")
+        if plantMatchID == "valeriana" {
+            let symptoms = [
+                "dificultad_ocasional_dormir": ("occasional-sleep-difficulty", "infusion"),
+                "estres_leve": ("mild-mental-stress", "commercial-herbal-tea-blend"),
+                "tension_nerviosa_leve": ("mild-nervous-tension", "commercial-herbal-tea-blend")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "valerian", symptomId: symptomID, preparationId: preparationID)
+            }
         }
-        if plantMatchID == "romero", ailmentID == "estomago" {
-            return Self(plantId: "rosemary", symptomId: "mild-digestive-discomfort", preparationId: "infusion")
+        if plantMatchID == "romero" {
+            let symptoms = [
+                "estomago": ("mild-digestive-discomfort", "infusion"),
+                "dolor_muscular_localizado_leve": ("mild-muscle-pain", "rosemary-leaf-bath"),
+                "dolor_muscular_leve": ("mild-muscle-pain", "rosemary-leaf-bath"),
+                "molestias_articulares_leves": ("mild-joint-pain", "rosemary-leaf-bath"),
+                "piernas_cansadas_leves": ("minor-peripheral-circulation-discomfort", "rosemary-leaf-bath")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "rosemary", symptomId: symptomID, preparationId: preparationID)
+            }
         }
         if plantMatchID == "eucalipto", ailmentID == "tos_resfriado" {
             return Self(plantId: "eucalyptus", symptomId: "cough-associated-with-cold", preparationId: "infusion")
         }
+        if plantMatchID == "eucalipto", ailmentID == "dolor_muscular_localizado_leve" {
+            return Self(plantId: "eucalyptus", symptomId: "localized-muscle-pain", preparationId: "muscle-ointment-10pct")
+        }
         if plantMatchID == "lavanda" {
-            let symptoms = ["estres_leve": "mild-stress", "dificultad_ocasional_dormir": "occasional-sleep-difficulty"]
-            if let symptomID = symptoms[ailmentID] {
-                return Self(plantId: "lavender", symptomId: symptomID, preparationId: "infusion")
+            let symptoms = [
+                "estres_leve": ("mild-stress", "infusion"),
+                "dificultad_ocasional_dormir": ("occasional-sleep-difficulty", "infusion"),
+                "sintomas_ansiedad_leve": ("mild-anxiety-symptoms", "standard_oral"),
+                "estres_leve_agotamiento": ("mild-stress", "lavender-bath-product"),
+                "agotamiento_leve": ("mild-exhaustion", "lavender-bath-product")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "lavender", symptomId: symptomID, preparationId: preparationID)
             }
         }
         if plantMatchID == "aloe_vera", ailmentID == "quemaduras_superficiales_leves" {
             return Self(plantId: "aloe_vera", symptomId: "minor-superficial-burn", preparationId: "purified-inner-leaf-gel-topical")
         }
-        if plantMatchID == "jengibre", ailmentID == "nauseas_movimiento" {
-            return Self(plantId: "zingiber_officinale", symptomId: "motion-sickness-nausea", preparationId: "powdered-rhizome-with-water")
+        if plantMatchID == "aloe_vera" {
+            let symptoms = ["psoriasis_leve_diagnosticada": "mild-plaque-psoriasis", "placas_psoriasis_diagnosticada": "localized-psoriasis-plaques"]
+            if let symptomID = symptoms[ailmentID] {
+                return Self(plantId: "aloe_vera", symptomId: symptomID, preparationId: "commercial-aloe-topical-cream")
+            }
+        }
+        if plantMatchID == "jengibre" {
+            let symptoms = [
+                "nauseas_movimiento": ("motion-sickness-nausea", "powdered-rhizome-with-water"),
+                "estomago": ("mild-digestive-discomfort", "powdered-rhizome-warm-drink"),
+                "indigestion_leve": ("mild-digestive-discomfort", "powdered-rhizome-warm-drink"),
+                "hinchazon_abdominal": ("bloating", "powdered-rhizome-warm-drink"),
+                "gases": ("flatulence", "powdered-rhizome-warm-drink"),
+                "colicos_menstruales_leves": ("mild-menstrual-cramps", "measured-ginger-powder-capsules"),
+                "dolor_menstrual_primario": ("primary-dysmenorrhea", "measured-ginger-powder-capsules")
+            ]
+            if let (symptomID, preparationID) = symptoms[ailmentID] {
+                return Self(plantId: "zingiber_officinale", symptomId: symptomID, preparationId: preparationID)
+            }
         }
         guard ["estomago", "gases"].contains(ailmentID) else { return nil }
         let plants = ["manzanilla": "chamomile", "menta": "peppermint", "curcuma": "turmeric"]

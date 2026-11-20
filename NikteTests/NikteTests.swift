@@ -39,6 +39,62 @@ struct NikteTests {
         #expect(document.guide(for: mismatch) == nil)
     }
 
+    @Test @MainActor func chamomileMouthAndSkinGuidesRouteAndLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "chamomile")
+        #expect(document.guides.count == 3)
+        let routes = [
+            ("inflamacion_bucal_leve", "mild-mouth-inflammation", "oromucosal-infusion"),
+            ("aftas_pequenas", "minor-mouth-ulcers", "oromucosal-infusion"),
+            ("irritacion_garganta_leve", "mild-throat-irritation", "oromucosal-infusion"),
+            ("irritacion_cutanea_leve", "mild-skin-irritation", "cutaneous-infusion-compress"),
+            ("quemadura_solar_leve", "mild-sunburn", "cutaneous-infusion-compress")
+        ]
+        for (ailment, symptom, preparation) in routes {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "manzanilla", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == preparation)
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.steps.count == 4)
+            #expect(guide.chemistry.interactiveSteps.count == 3)
+            #expect(guide.medicalReviewStatus == "not_clinically_reviewed")
+            #expect(!guide.references.isEmpty)
+            #expect(guide.ingredients.dropFirst().first?.amount == "100 mL")
+            if preparation == "oromucosal-infusion" {
+                #expect(guide.id == "chamomile-mouth-rinse")
+                #expect(guide.administrationRoute == "oromucosal")
+                #expect(guide.ingredients.first?.amount == "1–5 g")
+                #expect(guide.displaySafetyNote.contains("No tragar"))
+            } else {
+                #expect(guide.id == "chamomile-skin-compress")
+                #expect(guide.administrationRoute == "cutaneous")
+                #expect(guide.ingredients.first?.amount == "3–10 g")
+                #expect(guide.displaySafetyNote.contains("piel intacta"))
+                #expect(guide.displaySafetyNote.contains("ampollas"))
+            }
+            #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: ailment) == nil)
+            let mismatch = PreparationGuideRequest(plantId: "chamomile", symptomId: symptom, preparationId: "infusion")
+            #expect(document.guide(for: mismatch) == nil)
+        }
+    }
+
+    @Test @MainActor func chamomileBiochemicalMechanismsLoadForEachPreparation() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "chamomile")
+        let cases = [
+            ("estomago", "¿Cómo podría aliviar los espasmos digestivos?", "Señalización del Ca²⁺", "contracción del músculo intestinal"),
+            ("inflamacion_bucal_leve", "¿Cómo podría aliviar la irritación bucal?", "Compuestos fenólicos", "modelos experimentales"),
+            ("irritacion_cutanea_leve", "¿Cómo podría aliviar la irritación de la piel?", "Flavonoides", "vías inflamatorias")
+        ]
+        for (ailment, title, stage, detail) in cases {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "manzanilla", ailmentID: ailment))
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.chemistry.title == title)
+            #expect(!guide.chemistry.explanation.isEmpty)
+            #expect(guide.chemistry.interactiveSteps.count == 3)
+            #expect(guide.chemistry.interactiveSteps[1].title == stage)
+            #expect(guide.chemistry.interactiveSteps[1].description.contains(detail))
+        }
+    }
+
     @Test @MainActor func peppermintDigestiveGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "peppermint")
         #expect(document.plantId == "peppermint")
@@ -66,6 +122,50 @@ struct NikteTests {
         #expect(chamomile.guide(for: mintRequest) == nil)
     }
 
+    @Test @MainActor func peppermintIBSAndHeadacheGuidesRouteAndLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "peppermint")
+        #expect(document.guides.count == 3)
+        let routes = [
+            ("sindrome_intestino_irritable", "irritable-bowel-syndrome"),
+            ("dolor_abdominal_sii", "ibs-abdominal-pain"),
+            ("espasmos_intestinales_sii", "ibs-intestinal-spasms")
+        ]
+        for (ailment, symptom) in routes {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == "enteric-coated-peppermint-oil")
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.id == "peppermint-ibs-enteric-capsules")
+            #expect(guide.administrationRoute == "oral")
+            #expect(guide.steps.count == 4)
+            #expect(guide.steps[2].instruction.contains("entera"))
+            #expect(guide.displaySafetyNote.contains("No ingerir aceite esencial puro"))
+            #expect(guide.displaySafetyNote.contains("antiácidos"))
+            #expect(guide.chemistry.interactiveSteps[1].title == "Acción del mentol")
+            #expect(!guide.references.isEmpty)
+            #expect(!guide.display.showReferences)
+            #expect(document.guide(for: .init(plantId: "peppermint", symptomId: symptom, preparationId: "infusion")) == nil)
+            #expect(PreparationGuideRequest.forAilment(plantMatchID: "manzanilla", ailmentID: ailment) == nil)
+        }
+        let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "cefalea_tensional_leve"))
+        #expect(request.symptomId == "mild-tension-headache")
+        #expect(request.preparationId == "commercial-10-percent-peppermint-topical")
+        let guide = try #require(document.guide(for: request))
+        #expect(guide.id == "peppermint-tension-headache-topical")
+        #expect(guide.administrationRoute == "cutaneous")
+        #expect(guide.ingredients.first?.name.contains("10 %") == true)
+        #expect(guide.steps.count == 4)
+        #expect(guide.displaySafetyNote.contains("Solo adultos"))
+        #expect(guide.displaySafetyNote.contains("ojos, mucosas"))
+        #expect(guide.chemistry.explanation.contains("TRPM8"))
+        #expect(guide.chemistry.interactiveSteps.count == 3)
+        #expect(!guide.references.isEmpty)
+        #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "cabeza") == nil)
+        let infusionRequest = try #require(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "gases"))
+        let infusion = try #require(document.guide(for: infusionRequest))
+        #expect(infusion.chemistry.interactiveSteps[1].title == "Mentol y señalización")
+    }
+
     @Test @MainActor func gingerMotionSicknessGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "zingiber_officinale")
         let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: "nauseas_movimiento"))
@@ -84,7 +184,48 @@ struct NikteTests {
         #expect(guide.displaySafetyNote.contains("Solo adultos"))
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: "nauseas") == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "nauseas_movimiento") == nil)
-        #expect(document.guides(forSymptomID: "mild-digestive-discomfort").isEmpty)
+        #expect(document.guides(forSymptomID: "mild-digestive-discomfort").first?.id == "ginger-digestive-warm-drink")
+    }
+
+    @Test @MainActor func gingerDigestiveAndMenstrualGuidesRouteAndLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "zingiber_officinale")
+        #expect(document.guides.count == 3)
+        let digestive = [("estomago", "mild-digestive-discomfort"), ("indigestion_leve", "mild-digestive-discomfort"), ("hinchazon_abdominal", "bloating"), ("gases", "flatulence")]
+        for (ailment, symptom) in digestive {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == "powdered-rhizome-warm-drink")
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.id == "ginger-digestive-warm-drink")
+            #expect(guide.ingredients[2].amount?.contains("opcional") == true)
+            #expect(guide.ingredients[3].amount?.contains("opcional") == true)
+            #expect(guide.steps.count == 4)
+            #expect(guide.steps[3].instruction.contains("no filtres"))
+            #expect(guide.chemistry.interactiveSteps[1].title == "Compuestos del jengibre")
+            #expect(guide.chemistry.explanation.contains("no mejoraron los síntomas"))
+            #expect(guide.displaySafetyNote.contains("anticoagulantes"))
+            #expect(!guide.references.isEmpty)
+            #expect(!guide.display.showReferences)
+        }
+        for (ailment, symptom) in [("colicos_menstruales_leves", "mild-menstrual-cramps"), ("dolor_menstrual_primario", "primary-dysmenorrhea")] {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == "measured-ginger-powder-capsules")
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.id == "ginger-menstrual-cramps-capsules")
+            #expect(guide.steps.count == 3)
+            #expect(guide.chemistry.explanation.contains("no prueban que una bebida casera"))
+            #expect(guide.chemistry.interactiveSteps[1].description.contains("COX"))
+            #expect(guide.displaySafetyNote.contains("anticoagulantes"))
+            #expect(!guide.references.isEmpty)
+            #expect(document.guide(for: .init(plantId: "zingiber_officinale", symptomId: symptom, preparationId: "powdered-rhizome-warm-drink")) == nil)
+            #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: ailment) == nil)
+        }
+        let motion = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: "nauseas_movimiento"))
+        let guide = try #require(document.guide(for: motion))
+        #expect(guide.chemistry.explanation.contains("no ha encontrado un beneficio claro"))
+        #expect(guide.chemistry.interactiveSteps.count == 3)
+        #expect(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: "colicos") == nil)
     }
 
     @Test @MainActor func aloeMinorBurnGuideRoutesAndLoads() throws {
@@ -106,6 +247,36 @@ struct NikteTests {
         #expect(guide.dosage.frequency == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "aloe_vera", ailmentID: "estomago") == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "quemaduras_superficiales_leves") == nil)
+    }
+
+    @Test @MainActor func aloeDiagnosedPsoriasisGuideRoutesAndLoads() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "aloe_vera")
+        let routes = [("psoriasis_leve_diagnosticada", "mild-plaque-psoriasis"), ("placas_psoriasis_diagnosticada", "localized-psoriasis-plaques")]
+        for (ailment, symptom) in routes {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "aloe_vera", ailmentID: ailment))
+            #expect(request.plantId == "aloe_vera")
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == "commercial-aloe-topical-cream")
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.id == "aloe-vera-mild-plaque-psoriasis-topical-cream")
+            #expect(guide.administrationRoute == "topical")
+            #expect(guide.ingredients.first?.name.contains("Crema comercial") == true)
+            #expect(guide.steps.count == 4)
+            #expect(guide.steps.first?.instruction.contains("diagnosticada") == true)
+            #expect(guide.chemistry.explanation.contains("contradictorios"))
+            #expect(guide.chemistry.interactiveSteps.count == 3)
+            #expect(guide.chemistry.interactiveSteps[1].title == "Componentes del aloe")
+            #expect(guide.displaySafetyNote.contains("No sustituye"))
+            #expect(guide.displaySafetyNote.contains("infectadas"))
+            #expect(!guide.references.isEmpty)
+            #expect(!guide.display.showReferences)
+            #expect(document.guide(for: .init(plantId: "aloe_vera", symptomId: symptom, preparationId: "purified-inner-leaf-gel-topical")) == nil)
+            #expect(PreparationGuideRequest.forAilment(plantMatchID: "manzanilla", ailmentID: ailment) == nil)
+        }
+        let burn = try #require(PreparationGuideRequest.forAilment(plantMatchID: "aloe_vera", ailmentID: "quemaduras_superficiales_leves"))
+        let guide = try #require(document.guide(for: burn))
+        #expect(guide.chemistry.explanation.contains("acemanano"))
+        #expect(guide.chemistry.interactiveSteps[1].title == "Acemanano y células reparadoras")
     }
 
     @Test @MainActor func lavenderMildStressAndOccasionalSleepGuideLoads() throws {
@@ -132,6 +303,44 @@ struct NikteTests {
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "estres_leve") == nil)
     }
 
+    @Test @MainActor func lavenderStandardizedOilAndBathGuidesRouteAndLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "lavender")
+        #expect(document.guides.count == 3)
+        let oral = try #require(PreparationGuideRequest.forAilment(plantMatchID: "lavanda", ailmentID: "sintomas_ansiedad_leve"))
+        #expect(oral.symptomId == "mild-anxiety-symptoms")
+        #expect(oral.preparationId == "standard_oral")
+        let capsules = try #require(document.guide(for: oral))
+        #expect(capsules.id == "lavender-standardized-oil-anxiety")
+        #expect(capsules.administrationRoute == "oral")
+        #expect(capsules.steps.count == 4)
+        #expect(capsules.displaySafetyNote.contains("No ingerir aceite esencial puro"))
+        #expect(capsules.displaySafetyNote.contains("sedantes"))
+        #expect(capsules.chemistry.interactiveSteps[1].title == "Aceite estandarizado")
+        #expect(!capsules.references.isEmpty)
+        #expect(!capsules.display.showReferences)
+        for (ailment, symptom) in [("estres_leve_agotamiento", "mild-stress"), ("agotamiento_leve", "mild-exhaustion")] {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "lavanda", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(request.preparationId == "lavender-bath-product")
+            let bath = try #require(document.guide(for: request))
+            #expect(bath.id == "lavender-bath-mild-stress")
+            #expect(bath.administrationRoute == "bath")
+            #expect(bath.steps.count == 4)
+            #expect(bath.steps[2].instruction.contains("no añadas aceite esencial puro"))
+            #expect(bath.displaySafetyNote.contains("no beber"))
+            #expect(bath.displaySafetyNote.contains("heridas abiertas"))
+            #expect(bath.chemistry.interactiveSteps[1].title == "Receptores olfativos")
+            #expect(!bath.references.isEmpty)
+            #expect(!bath.display.showReferences)
+            #expect(PreparationGuideRequest.forAilment(plantMatchID: "valeriana", ailmentID: ailment) == nil)
+        }
+        let infusion = try #require(PreparationGuideRequest.forAilment(plantMatchID: "lavanda", ailmentID: "estres_leve"))
+        let guide = try #require(document.guide(for: infusion))
+        #expect(guide.preparationId == "infusion")
+        #expect(guide.chemistry.interactiveSteps[1].title == "Terpenos de lavanda")
+        #expect(document.guide(for: .init(plantId: "lavender", symptomId: "mild-anxiety-symptoms", preparationId: "lavender-bath-product")) == nil)
+    }
+
     @Test @MainActor func eucalyptusColdCoughGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "eucalyptus")
         let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "eucalipto", ailmentID: "tos_resfriado"))
@@ -152,6 +361,44 @@ struct NikteTests {
         #expect(!guide.references.isEmpty)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "eucalipto", ailmentID: "congestion") == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "tos_resfriado") == nil)
+    }
+
+    @Test @MainActor func eucalyptusOintmentGuidesAndCoughSelectionLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "eucalyptus")
+        let cough = document.guides(forSymptomID: "cough-associated-with-cold")
+        #expect(Set(cough.map(\.preparationId)) == Set(["infusion", "chest-ointment-10pct"]))
+        for preparation in ["infusion", "chest-ointment-10pct"] {
+            let request = PreparationGuideRequest(plantId: "eucalyptus", symptomId: "cough-associated-with-cold", preparationId: preparation)
+            let guide = try #require(document.guide(for: request))
+            #expect(guide.chemistry.interactiveSteps.count == 3)
+            #expect(guide.chemistry.interactiveSteps[1].title == "1,8-cineol")
+            #expect(!guide.references.isEmpty)
+            #expect(!guide.display.showReferences)
+            if preparation == "infusion" {
+                #expect(guide.administrationRoute == "oral")
+                #expect(guide.displaySafetyNote.contains("No agregar aceite esencial"))
+            } else {
+                #expect(guide.id == "eucalyptus-cold-cough-chest-ointment")
+                #expect(guide.administrationRoute == "cutaneous")
+                #expect(guide.steps.count == 3)
+                #expect(guide.displaySafetyNote.contains("No ingerir"))
+                #expect(guide.displaySafetyNote.contains("rostro, nariz"))
+            }
+        }
+        let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "eucalipto", ailmentID: "dolor_muscular_localizado_leve"))
+        #expect(request.symptomId == "localized-muscle-pain")
+        #expect(request.preparationId == "muscle-ointment-10pct")
+        let guide = try #require(document.guide(for: request))
+        #expect(guide.id == "eucalyptus-local-muscle-pain-ointment")
+        #expect(guide.administrationRoute == "cutaneous")
+        #expect(guide.ingredients.first?.name.contains("10 %") == true)
+        #expect(guide.steps.count == 3)
+        #expect(guide.displaySafetyNote.contains("heridas"))
+        #expect(guide.displaySafetyNote.contains("Solo adultos"))
+        #expect(guide.chemistry.interactiveSteps[1].title == "Cineol y mediadores")
+        #expect(!guide.references.isEmpty)
+        #expect(document.guide(for: .init(plantId: "eucalyptus", symptomId: "localized-muscle-pain", preparationId: "chest-ointment-10pct")) == nil)
+        #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "dolor_muscular_localizado_leve") == nil)
     }
 
     @Test @MainActor func rosemaryDigestiveGuideRoutesAndLoads() throws {
@@ -176,6 +423,41 @@ struct NikteTests {
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "eucalipto", ailmentID: "estomago") == nil)
     }
 
+    @Test @MainActor func rosemaryBathAndOintmentGuidesRouteAndLoad() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "rosemary")
+        #expect(document.guides.count == 3)
+        for (ailment, symptom) in [("dolor_muscular_localizado_leve", "mild-muscle-pain"), ("dolor_muscular_leve", "mild-muscle-pain"), ("molestias_articulares_leves", "mild-joint-pain")] {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "romero", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            #expect(Set(document.guides(forSymptomID: symptom).map(\.preparationId)) == Set(["rosemary-leaf-bath", "rosemary-oil-commercial-ointment"]))
+            let bath = try #require(document.guide(for: request))
+            #expect(bath.id == "rosemary-muscle-joint-bath")
+            #expect(bath.administrationRoute == "bath")
+            #expect(bath.ingredients.first?.amount == "50 g")
+            #expect(bath.steps.count == 4)
+            #expect(bath.displaySafetyNote.contains("pierna súbitamente hinchada"))
+            #expect(bath.chemistry.interactiveSteps[1].title == "Compuestos fenólicos del romero")
+            #expect(!bath.references.isEmpty)
+            let ointment = try #require(document.guide(for: .init(plantId: "rosemary", symptomId: symptom, preparationId: "rosemary-oil-commercial-ointment")))
+            #expect(ointment.id == "rosemary-local-muscle-pain-ointment")
+            #expect(ointment.administrationRoute == "topical")
+            #expect(ointment.steps.count == 3)
+            #expect(ointment.displaySafetyNote.contains("Solo adultos"))
+            #expect(ointment.displaySafetyNote.contains("nunca aceite esencial sin diluir"))
+            #expect(ointment.chemistry.interactiveSteps[1].title == "Monoterpenos del romero")
+            #expect(!ointment.references.isEmpty)
+            #expect(!ointment.display.showReferences)
+        }
+        let circulation = try #require(PreparationGuideRequest.forAilment(plantMatchID: "romero", ailmentID: "piernas_cansadas_leves"))
+        #expect(circulation.symptomId == "minor-peripheral-circulation-discomfort")
+        #expect(document.guides(forSymptomID: circulation.symptomId).count == 1)
+        #expect(document.guide(for: circulation)?.id == "rosemary-muscle-joint-bath")
+        #expect(document.guide(for: .init(plantId: "rosemary", symptomId: circulation.symptomId, preparationId: "rosemary-oil-commercial-ointment")) == nil)
+        let digestive = try #require(PreparationGuideRequest.forAilment(plantMatchID: "romero", ailmentID: "estomago"))
+        #expect(document.guide(for: digestive)?.chemistry.interactiveSteps[1].title == "Componentes del romero")
+        #expect(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: "molestias_articulares_leves") == nil)
+    }
+
     @Test @MainActor func turmericDigestiveGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "turmeric")
         for ailment in ["estomago", "gases"] {
@@ -191,11 +473,24 @@ struct NikteTests {
             #expect(guide.dosage.steepingMinutes == "5–15")
             #expect(guide.steps.count == 4)
             #expect(guide.chemistry.interactiveSteps.count == 3)
-            #expect(guide.chemistry.explanation.contains("muy baja solubilidad"))
-            #expect(guide.chemistry.explanation.contains("no equivale a un extracto concentrado"))
+            #expect(guide.chemistry.explanation.contains("poca curcumina disuelta"))
+            #expect(guide.chemistry.interactiveSteps[1].title == "Compuestos del rizoma")
             #expect(guide.displaySafetyNote.contains("Solo adultos"))
             #expect(guide.displaySafetyNote.contains("lesión hepática"))
             #expect(!guide.references.isEmpty)
+            #expect(Set(document.guides(forSymptomID: request.symptomId).map(\.preparationId)) == Set(["infusion", "powdered-rhizome-food"]))
+            let foodRequest = PreparationGuideRequest(plantId: "turmeric", symptomId: request.symptomId, preparationId: "powdered-rhizome-food")
+            let food = try #require(document.guide(for: foodRequest))
+            #expect(food.id == "turmeric-digestive-powder-food")
+            #expect(food.administrationRoute == "oral")
+            #expect(food.steps.count == 3)
+            #expect(food.steps[2].instruction.contains("no intentes alcanzar una dosis medicinal"))
+            #expect(food.chemistry.interactiveSteps[1].title == "Constituyentes de cúrcuma")
+            #expect(food.chemistry.interactiveSteps[2].description.contains("no equivale"))
+            #expect(food.displaySafetyNote.contains("enfermedad hepática"))
+            #expect(food.displaySafetyNote.contains("ictericia"))
+            #expect(!food.references.isEmpty)
+            #expect(!food.display.showReferences)
         }
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "curcuma", ailmentID: "colicos") == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "curcuma", ailmentID: "nauseas") == nil)
@@ -214,12 +509,41 @@ struct NikteTests {
         #expect(guide.ingredients.dropFirst().first?.amount == "150 mL")
         #expect(guide.steps.count == 4)
         #expect(guide.chemistry.interactiveSteps.count == 3)
-        #expect(guide.chemistry.explanation.contains("no equivale a un extracto estandarizado"))
+        #expect(guide.chemistry.explanation.contains("misma exposición que un extracto estandarizado"))
         #expect(guide.displaySafetyNote.contains("somnolencia"))
         #expect(guide.displaySafetyNote.contains("sedantes"))
         #expect(!guide.references.isEmpty)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "valeriana", ailmentID: "insomnio") == nil)
-        #expect(PreparationGuideRequest.forAilment(plantMatchID: "valeriana", ailmentID: "estres_leve") == nil)
+        #expect(guide.chemistry.interactiveSteps[1].title == "Receptor GABA-A")
+    }
+
+    @Test @MainActor func valerianSharedSymptomsOfferMatchingPreparations() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "valerian")
+        #expect(document.guides.count == 3)
+        for (ailment, symptom, count) in [("dificultad_ocasional_dormir", "occasional-sleep-difficulty", 3), ("estres_leve", "mild-mental-stress", 2), ("tension_nerviosa_leve", "mild-nervous-tension", 2)] {
+            let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "valeriana", ailmentID: ailment))
+            #expect(request.symptomId == symptom)
+            let guides = document.guides(forSymptomID: symptom)
+            #expect(guides.count == count)
+            for guide in guides {
+                let selected = PreparationGuideRequest(plantId: "valerian", symptomId: symptom, preparationId: guide.preparationId)
+                #expect(document.guide(for: selected)?.id == guide.id)
+                #expect(guide.administrationRoute == "oral")
+                #expect(guide.steps.count == 4)
+                #expect(guide.chemistry.interactiveSteps.count == 3)
+                #expect(guide.displaySafetyNote.contains("somnolencia"))
+                #expect(guide.displaySafetyNote.contains("alcohol"))
+                #expect(guide.displaySafetyNote.contains("sedantes"))
+                #expect(!guide.references.isEmpty)
+                #expect(!guide.display.showReferences)
+            }
+            let blend = try #require(guides.first { $0.preparationId == "commercial-herbal-tea-blend" })
+            #expect(blend.chemistry.explanation.contains("sinergia clínica"))
+            #expect(blend.chemistry.interactiveSteps[1].title == "Sistema GABA")
+            let capsules = try #require(guides.first { $0.preparationId == "standardized-ethanolic-dry-extract-capsules" })
+            #expect(capsules.chemistry.interactiveSteps[1].title == "Modulación GABA-A")
+            #expect(capsules.chemistry.explanation.contains("no todas las cápsulas o suplementos son equivalentes"))
+        }
     }
 
     @Test @MainActor func ginsengFatigueDecoctionGuideRoutesAndLoads() throws {
@@ -239,13 +563,43 @@ struct NikteTests {
         #expect(guide.steps.count == 4)
         #expect(guide.steps[1].instruction.contains("agua fría"))
         #expect(guide.chemistry.interactiveSteps.count == 3)
-        #expect(guide.chemistry.explanation.contains("difusión de ginsenósidos"))
-        #expect(guide.chemistry.explanation.contains("ginseng rojo"))
+        #expect(guide.chemistry.explanation.contains("modelos experimentales"))
+        #expect(guide.chemistry.explanation.contains("limitada y heterogénea"))
+        #expect(guide.chemistry.interactiveSteps[1].title == "Ginsenósidos y señalización")
         #expect(guide.displaySafetyNote.contains("anticoagulantes"))
         #expect(guide.displaySafetyNote.contains("insomnio"))
         #expect(!guide.references.isEmpty)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "ginseng", ailmentID: "insomnio") == nil)
         #expect(PreparationGuideRequest.forAilment(plantMatchID: "lavanda", ailmentID: "cansancio_debilidad_leves") == nil)
+    }
+
+    @Test @MainActor func ginsengFatiguePreparationSelectionLoads() throws {
+        let document = try PreparationGuideDocument.load(forPlantID: "ginseng")
+        let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "ginseng", ailmentID: "cansancio_debilidad_leves"))
+        let guides = document.guides(forSymptomID: request.symptomId)
+        #expect(Set(guides.map(\.preparationId)) == Set(["decoction", "powder-food", "standardized-oral-extract"]))
+        for guide in guides {
+            let selection = PreparationGuideRequest(plantId: "ginseng", symptomId: request.symptomId, preparationId: guide.preparationId)
+            #expect(document.guide(for: selection)?.id == guide.id)
+            #expect(guide.administrationRoute == "oral")
+            #expect(guide.steps.count == 4)
+            #expect(guide.chemistry.interactiveSteps.count == 3)
+            #expect(guide.displaySafetyNote.contains("anticoagulantes"))
+            #expect(guide.displaySafetyNote.contains("insomnio"))
+            #expect(guide.displaySafetyNote.contains("diabetes"))
+            #expect(!guide.references.isEmpty)
+            #expect(!guide.display.showReferences)
+        }
+        let powder = try #require(guides.first { $0.preparationId == "powder-food" })
+        #expect(powder.ingredients.first?.amount?.contains("250–600 mg") == true)
+        #expect(powder.steps[1].instruction.contains("báscula de precisión"))
+        #expect(powder.chemistry.explanation.contains("preclínica"))
+        #expect(powder.chemistry.interactiveSteps[2].description.contains("sin confirmarse"))
+        let extract = try #require(guides.first { $0.preparationId == "standardized-oral-extract" })
+        #expect(extract.steps[1].instruction.contains("no son equivalentes"))
+        #expect(extract.steps[3].instruction.contains("No combines"))
+        #expect(extract.chemistry.explanation.contains("no son consistentes"))
+        #expect(extract.chemistry.interactiveSteps[1].title == "Ginsenósidos del extracto")
     }
 
     @Test func example() async throws {
