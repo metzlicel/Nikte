@@ -40,13 +40,8 @@ struct ChamomileDetailView: View {
                         Text("Explora las moléculas y toca sus grupos funcionales.")
                             .font(.system(size: 14, design: .serif))
                             .foregroundStyle(Palette.brown)
-                        Picker("Compuesto", selection: $selectedCompound) {
-                            ForEach(compounds) { compound in Text(compound.name).tag(compound.id) }
-                        }.tint(Palette.olive).pickerStyle(.menu)
+                        MechanismPicker(options: compounds.map { (id: $0.id, title: $0.name) }, selection: $selectedCompound, label: "Compuesto")
                         if let compound = compounds.first(where: { $0.id == selectedCompound }) {
-                            Text(compound.name)
-                                .font(.system(size: 22, design: .serif)).bold()
-                                .foregroundStyle(Palette.olive)
                             FactChip(text: compound.formula, symbol: "atom")
                             QuickFact(label: "Familia química", value: compound.family)
                             MolecularDiagramView(compoundID: selectedCompound)
@@ -65,11 +60,7 @@ struct ChamomileDetailView: View {
                         BiologicalMechanismsView()
                     }
                     ExpandableCard(title: "04 · Extracciones", subtitle: "Cómo cambia la composición") {
-                        Picker("Presentación", selection: $extraction) {
-                            ForEach(extractions.indices, id: \.self) { index in
-                                Text(extractions[index].1).tag(extractions[index].0)
-                            }
-                        }.tint(Palette.olive).pickerStyle(.menu)
+                        MechanismPicker(options: extractions.map { (id: $0.0, title: $0.1) }, selection: $extraction, label: "Presentación")
                         ExtractionExplorerView(extraction: extraction)
                         ExtractionComparison(extraction: extraction)
                     }

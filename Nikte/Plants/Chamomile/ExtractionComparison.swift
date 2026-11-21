@@ -22,9 +22,6 @@ struct ExtractionComparison: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(contents.title)
-                .font(.system(size: 21, design: .serif)).bold()
-                .foregroundStyle(Palette.olive)
             Text("QUÉ CONTIENE O FAVORECE")
                 .font(.system(size: 11, design: .serif)).tracking(1.3)
                 .foregroundStyle(Palette.brown)

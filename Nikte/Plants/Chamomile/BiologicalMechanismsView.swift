@@ -36,34 +36,12 @@ struct BiologicalMechanismsView: View {
 
         VStack(alignment: .leading, spacing: 16) {
 
-            Text("Selecciona una propiedad para descubrir cómo actúan sus compuestos.")
-                .font(.system(size: 14, design: .serif))
-                .foregroundStyle(Palette.brown)
-
-            // MARK: - Dropdown de mecanismos
-
-            Picker("Mecanismo molecular", selection: $selectedMechanism) {
-
-                Text("Antiinflamatorio")
-                    .tag("inflammation")
-
-                Text("Relajante")
-                    .tag("relaxation")
-
-                Text("Digestivo y antiespasmódico")
-                    .tag("digestive")
-
-                Text("Antioxidante")
-                    .tag("antioxidant")
-            }
-            .pickerStyle(.menu)
-            .tint(Palette.olive)
-            .padding(12)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
-                Palette.sage.opacity(0.20),
-                in: RoundedRectangle(cornerRadius: 14)
-            )
+            MechanismPicker(options: [
+                (id: "inflammation", title: "Mecanismo antiinflamatorio"),
+                (id: "relaxation", title: "Mecanismo relajante"),
+                (id: "digestive", title: "Mecanismo digestivo y antiespasmódico"),
+                (id: "antioxidant", title: "Mecanismo antioxidante")
+            ], selection: $selectedMechanism)
 
             // MARK: - Contenido según selección
 
@@ -92,11 +70,6 @@ struct BiologicalMechanismsView: View {
     private var antiInflammatoryView: some View {
 
         VStack(alignment: .leading, spacing: 14) {
-
-            mechanismTitle(
-                "Mecanismo antiinflamatorio",
-                symbol: "flame"
-            )
 
             QuickFact(
                 label: "Compuestos relacionados",
@@ -154,11 +127,6 @@ struct BiologicalMechanismsView: View {
 
         VStack(alignment: .leading, spacing: 14) {
 
-            mechanismTitle(
-                "Mecanismo relajante",
-                symbol: "moon.stars"
-            )
-
             QuickFact(
                 label: "Compuesto relacionado",
                 value: "Apigenina"
@@ -214,11 +182,6 @@ struct BiologicalMechanismsView: View {
     private var digestiveView: some View {
 
         VStack(alignment: .leading, spacing: 14) {
-
-            mechanismTitle(
-                "Mecanismo digestivo y antiespasmódico",
-                symbol: "waveform.path.ecg"
-            )
 
             QuickFact(
                 label: "Compuestos relacionados",
@@ -276,11 +239,6 @@ struct BiologicalMechanismsView: View {
 
         VStack(alignment: .leading, spacing: 14) {
 
-            mechanismTitle(
-                "Mecanismo antioxidante",
-                symbol: "sparkles"
-            )
-
             QuickFact(
                 label: "Compuestos relacionados",
                 value: "Apigenina y otros flavonoides fenólicos."
@@ -333,29 +291,6 @@ struct BiologicalMechanismsView: View {
     }
 
     // MARK: - COMPONENTES VISUALES COMPARTIDOS
-
-    private func mechanismTitle(
-        _ title: String,
-        symbol: String
-    ) -> some View {
-
-        HStack(spacing: 10) {
-
-            Image(systemName: symbol)
-                .font(.system(size: 25))
-                .foregroundStyle(Palette.olive)
-                .frame(width: 42, height: 42)
-                .background(
-                    Palette.sage.opacity(0.25),
-                    in: RoundedRectangle(cornerRadius: 12)
-                )
-
-            Text(title)
-                .font(.system(size: 21, design: .serif))
-                .bold()
-                .foregroundStyle(Palette.olive)
-        }
-    }
 
     private func pathwayStep(
         number: String,

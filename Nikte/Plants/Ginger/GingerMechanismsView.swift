@@ -7,14 +7,9 @@ struct GingerMechanismsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Selecciona un mecanismo y toca cada etapa para explorarla.")
-                .font(.system(size: 14, design: .serif)).foregroundStyle(Palette.brown)
-            Picker("Mecanismo molecular", selection: $selectedMechanism) {
-                ForEach(profile.section3.items) { Text($0.title).tag($0.id) }
-            }.pickerStyle(.menu).tint(Palette.olive)
+            MechanismPicker(options: profile.section3.items.map { (id: $0.id, title: $0.title) }, selection: $selectedMechanism)
 
             if let mechanism = profile.section3.items.first(where: { $0.id == selectedMechanism }) {
-                Text(mechanism.title).font(.system(size: 21, design: .serif)).bold().foregroundStyle(Palette.olive)
                 QuickFact(label: "Compuestos relacionados", value: names(mechanism.compoundIds))
                 ForEach(Array(mechanism.steps.enumerated()), id: \.offset) { index, step in
                     if index > 0 {

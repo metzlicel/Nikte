@@ -7,339 +7,49 @@ import SwiftUI
 struct AilmentOption: Identifiable {
     let id: String
     let name: String
-    let matches: [PlantMatch]
 }
 
-struct PlantMatch: Identifiable {
-    let id: String
-    let plantName: String
-    let description: String
-}
-
-
-// MARK: - 09.2 · DATOS DE MALESTARES
-
-private let ailmentOptions: [AilmentOption] = [
-
-    AilmentOption(
-        id: "ansiedad",
-        name: "Ansiedad",
-        matches: [
-            PlantMatch(
-                id: "lavanda",
-                plantName: "Lavanda",
-                description: "Se estudian sus posibles efectos sobre la ansiedad."
-            ),
-            PlantMatch(
-                id: "manzanilla",
-                plantName: "Manzanilla",
-                description: "Contiene apigenina, investigada por su interacción con GABA-A."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "colicos",
-        name: "Cólicos",
-        matches: [
-            PlantMatch(
-                id: "manzanilla",
-                plantName: "Manzanilla",
-                description: "Actividad antiespasmódica investigada experimentalmente."
-            ),
-            PlantMatch(
-                id: "menta",
-                plantName: "Menta",
-                description: "El aceite de menta se ha estudiado para espasmos intestinales."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "congestion",
-        name: "Congestión nasal",
-        matches: []
-    ),
-
-    AilmentOption(
-        id: "cabeza",
-        name: "Dolor de cabeza",
-        matches: []
-    ),
-
-    AilmentOption(
-        id: "estomago",
-        name: "Dolor de estómago",
-        matches: [
-            PlantMatch(
-                id: "manzanilla",
-                plantName: "Manzanilla",
-                description: "Uso tradicional para molestias digestivas leves."
-            ),
-            PlantMatch(
-                id: "menta",
-                plantName: "Menta",
-                description: "Algunas preparaciones se estudian para síntomas digestivos."
-            ),
-            PlantMatch(
-                id: "romero",
-                plantName: "Romero",
-                description: "Infusión de hojas para molestias digestivas leves, de uso tradicional."
-            ),
-            PlantMatch(
-                id: "curcuma",
-                plantName: "Cúrcuma",
-                description: "Infusión o cúrcuma en polvo con alimentos para molestias digestivas leves."
-            ),
-            PlantMatch(
-                id: "jengibre",
-                plantName: "Jengibre",
-                description: "Bebida tibia de jengibre en polvo para molestias digestivas leves, de uso tradicional."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "gases",
-        name: "Gases",
-        matches: [
-            PlantMatch(
-                id: "menta",
-                plantName: "Menta",
-                description: "Uso tradicional relacionado con molestias digestivas."
-            ),
-            PlantMatch(
-                id: "manzanilla",
-                plantName: "Manzanilla",
-                description: "Uso tradicional para molestias gastrointestinales leves."
-            ),
-            PlantMatch(
-                id: "curcuma",
-                plantName: "Cúrcuma",
-                description: "Infusión o cúrcuma en polvo con alimentos para gases leves."
-            ),
-            PlantMatch(
-                id: "jengibre",
-                plantName: "Jengibre",
-                description: "Bebida tibia de jengibre en polvo para gases, de uso tradicional."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "insomnio",
-        name: "Insomnio",
-        matches: [
-            PlantMatch(
-                id: "lavanda",
-                plantName: "Lavanda",
-                description: "Se ha investigado su relación con el sueño y la relajación."
-            ),
-            PlantMatch(
-                id: "manzanilla",
-                plantName: "Manzanilla",
-                description: "La apigenina presenta interacciones moleculares investigadas con GABA-A."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "nauseas",
-        name: "Náuseas",
-        matches: [
-            PlantMatch(
-                id: "jengibre",
-                plantName: "Jengibre",
-                description: "Los gingeroles y shogaoles se investigan por su actividad antiemética."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "nauseas_movimiento",
-        name: "Náuseas por movimiento",
-        matches: [
-            PlantMatch(
-                id: "jengibre",
-                plantName: "Jengibre",
-                description: "Preparación de rizoma seco pulverizado para náuseas por movimiento."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "quemaduras_superficiales_leves",
-        name: "Quemaduras superficiales leves",
-        matches: [
-            PlantMatch(
-                id: "aloe_vera",
-                plantName: "Aloe Vera",
-                description: "Gel interno purificado, formulado para aplicación cutánea."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "estres_leve",
-        name: "Estrés leve",
-        matches: [
-            PlantMatch(
-                id: "lavanda",
-                plantName: "Lavanda",
-                description: "Infusión de flores para estrés leve, de uso tradicional."
-            ),
-            PlantMatch(
-                id: "valeriana",
-                plantName: "Valeriana",
-                description: "Mezcla de valeriana con melisa o extracto seco comercial para tensión leve."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "dificultad_ocasional_dormir",
-        name: "Dificultad ocasional para dormir",
-        matches: [
-            PlantMatch(
-                id: "lavanda",
-                plantName: "Lavanda",
-                description: "Infusión de flores como ayuda tradicional para dormir."
-            ),
-            PlantMatch(
-                id: "valeriana",
-                plantName: "Valeriana",
-                description: "Infusiones o extracto seco comercial de valeriana para dificultad ocasional para dormir."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "tos_resfriado",
-        name: "Tos asociada al resfriado",
-        matches: [
-            PlantMatch(
-                id: "eucalipto",
-                plantName: "Eucalipto",
-                description: "Infusión de hojas o ungüento torácico comercial para tos asociada al resfriado."
-            )
-        ]
-    ),
-
-    AilmentOption(
-        id: "tension_nerviosa_leve", name: "Tensión nerviosa leve",
-        matches: [PlantMatch(id: "valeriana", plantName: "Valeriana", description: "Mezcla de valeriana con melisa o extracto seco comercial para tensión leve.")]
-    ),
-
-    AilmentOption(
-        id: "dolor_muscular_localizado_leve", name: "Dolor muscular localizado leve",
-        matches: [
-            PlantMatch(id: "eucalipto", plantName: "Eucalipto", description: "Ungüento comercial de eucalipto para uso cutáneo en dolor muscular localizado."),
-            PlantMatch(id: "romero", plantName: "Romero", description: "Baño de hojas o preparado cutáneo comercial de romero para molestias musculares leves.")
-        ]
-    ),
-    AilmentOption(
-        id: "dolor_muscular_leve", name: "Dolor muscular leve",
-        matches: [PlantMatch(id: "romero", plantName: "Romero", description: "Baño de hojas o preparado cutáneo comercial de romero para molestias musculares leves.")]
-    ),
-    AilmentOption(
-        id: "molestias_articulares_leves", name: "Molestias articulares leves",
-        matches: [PlantMatch(id: "romero", plantName: "Romero", description: "Baño de hojas o preparado cutáneo comercial de romero para molestias articulares leves.")]
-    ),
-    AilmentOption(
-        id: "piernas_cansadas_leves", name: "Piernas cansadas sin signos de alarma",
-        matches: [PlantMatch(id: "romero", plantName: "Romero", description: "Baño de hojas de romero para sensación leve de piernas cansadas.")]
-    ),
-
-    AilmentOption(
-        id: "sintomas_ansiedad_leve", name: "Síntomas leves de ansiedad",
-        matches: [PlantMatch(id: "lavanda", plantName: "Lavanda", description: "Cápsulas comerciales de aceite de lavanda estandarizado para uso oral.")]
-    ),
-    AilmentOption(
-        id: "estres_leve_agotamiento", name: "Estrés leve y agotamiento",
-        matches: [PlantMatch(id: "lavanda", plantName: "Lavanda", description: "Baño con producto comercial de lavanda para uso externo.")]
-    ),
-    AilmentOption(
-        id: "agotamiento_leve", name: "Agotamiento leve",
-        matches: [PlantMatch(id: "lavanda", plantName: "Lavanda", description: "Baño con producto comercial de lavanda para uso externo.")]
-    ),
-
-    AilmentOption(
-        id: "psoriasis_leve_diagnosticada", name: "Psoriasis leve diagnosticada",
-        matches: [PlantMatch(id: "aloe_vera", plantName: "Aloe Vera", description: "Crema comercial con aloe como complemento para psoriasis leve diagnosticada.")]
-    ),
-    AilmentOption(
-        id: "placas_psoriasis_diagnosticada", name: "Placas localizadas de psoriasis diagnosticada",
-        matches: [PlantMatch(id: "aloe_vera", plantName: "Aloe Vera", description: "Crema comercial con aloe como complemento para psoriasis leve diagnosticada.")]
-    ),
-
-    AilmentOption(
-        id: "indigestion_leve", name: "Indigestión leve",
-        matches: [PlantMatch(id: "jengibre", plantName: "Jengibre", description: "Bebida tibia de jengibre en polvo, de uso tradicional.")]
-    ),
-    AilmentOption(
-        id: "hinchazon_abdominal", name: "Hinchazón abdominal",
-        matches: [PlantMatch(id: "jengibre", plantName: "Jengibre", description: "Bebida tibia de jengibre en polvo, de uso tradicional.")]
-    ),
-    AilmentOption(
-        id: "colicos_menstruales_leves", name: "Cólicos menstruales leves",
-        matches: [PlantMatch(id: "jengibre", plantName: "Jengibre", description: "Cápsulas comerciales de jengibre para dolor menstrual.")]
-    ),
-    AilmentOption(
-        id: "dolor_menstrual_primario", name: "Dolor menstrual primario",
-        matches: [PlantMatch(id: "jengibre", plantName: "Jengibre", description: "Cápsulas comerciales de jengibre para dolor menstrual.")]
-    ),
-
-    AilmentOption(
-        id: "sindrome_intestino_irritable", name: "Síndrome de intestino irritable",
-        matches: [PlantMatch(id: "menta", plantName: "Menta", description: "Cápsulas comerciales entéricas de aceite de menta para síntomas del SII.")]
-    ),
-    AilmentOption(
-        id: "dolor_abdominal_sii", name: "Dolor abdominal asociado al síndrome de intestino irritable",
-        matches: [PlantMatch(id: "menta", plantName: "Menta", description: "Cápsulas comerciales entéricas de aceite de menta para síntomas del SII.")]
-    ),
-    AilmentOption(
-        id: "espasmos_intestinales_sii", name: "Espasmos intestinales asociados al síndrome de intestino irritable",
-        matches: [PlantMatch(id: "menta", plantName: "Menta", description: "Cápsulas comerciales entéricas de aceite de menta para síntomas del SII.")]
-    ),
-    AilmentOption(
-        id: "cefalea_tensional_leve", name: "Cefalea tensional leve",
-        matches: [PlantMatch(id: "menta", plantName: "Menta", description: "Preparado tópico comercial de menta para cefalea tensional leve.")]
-    ),
-
-    AilmentOption(
-        id: "inflamacion_bucal_leve", name: "Inflamación bucal leve",
-        matches: [PlantMatch(id: "manzanilla", plantName: "Manzanilla", description: "Enjuague de manzanilla para uso bucal; no tragar.")]
-    ),
-    AilmentOption(
-        id: "aftas_pequenas", name: "Pequeñas aftas",
-        matches: [PlantMatch(id: "manzanilla", plantName: "Manzanilla", description: "Enjuague de manzanilla para uso bucal; no tragar.")]
-    ),
-    AilmentOption(
-        id: "irritacion_garganta_leve", name: "Irritación leve de garganta",
-        matches: [PlantMatch(id: "manzanilla", plantName: "Manzanilla", description: "Enjuague de manzanilla para boca y garganta; no tragar.")]
-    ),
-    AilmentOption(
-        id: "irritacion_cutanea_leve", name: "Irritación cutánea leve",
-        matches: [PlantMatch(id: "manzanilla", plantName: "Manzanilla", description: "Compresa de manzanilla para pequeñas zonas de piel intacta.")]
-    ),
-    AilmentOption(
-        id: "quemadura_solar_leve", name: "Quemadura solar leve sin ampollas",
-        matches: [PlantMatch(id: "manzanilla", plantName: "Manzanilla", description: "Compresa de manzanilla para pequeñas zonas de piel intacta.")]
-    ),
-
-    AilmentOption(
-        id: "cansancio_debilidad_leves",
-        name: "Cansancio y debilidad leves",
-        matches: [
-            PlantMatch(
-                id: "ginseng",
-                plantName: "Ginseng",
-                description: "Decocción, polvo de raíz blanca o extracto comercial para cansancio y debilidad leves."
-            )
-        ]
-    )
+// Nombres del buscador; las relaciones con plantas provienen de GuideRecommendations.
+let ailmentOptions: [AilmentOption] = [
+    .init(id: "ansiedad", name: "Ansiedad"),
+    .init(id: "colicos", name: "Cólicos"),
+    .init(id: "congestion", name: "Congestión nasal"),
+    .init(id: "cabeza", name: "Dolor de cabeza"),
+    .init(id: "estomago", name: "Dolor de estómago"),
+    .init(id: "molestias_digestivas_leves", name: "Molestias digestivas leves"),
+    .init(id: "gases", name: "Gases leves"),
+    .init(id: "insomnio", name: "Insomnio"),
+    .init(id: "nauseas", name: "Náuseas"),
+    .init(id: "nauseas_movimiento", name: "Náuseas por movimiento"),
+    .init(id: "quemaduras_superficiales_leves", name: "Quemaduras superficiales leves"),
+    .init(id: "estres_leve", name: "Estrés leve"),
+    .init(id: "dificultad_ocasional_dormir", name: "Dificultad ocasional para dormir"),
+    .init(id: "tos_resfriado", name: "Tos asociada al resfriado"),
+    .init(id: "tension_nerviosa_leve", name: "Tensión nerviosa leve"),
+    .init(id: "dolor_muscular_localizado_leve", name: "Dolor muscular localizado leve"),
+    .init(id: "dolor_muscular_leve", name: "Dolor muscular leve"),
+    .init(id: "molestias_articulares_leves", name: "Molestias articulares leves"),
+    .init(id: "piernas_cansadas_leves", name: "Piernas cansadas sin signos de alarma"),
+    .init(id: "sintomas_ansiedad_leve", name: "Síntomas leves de ansiedad"),
+    .init(id: "estres_leve_agotamiento", name: "Estrés leve y agotamiento"),
+    .init(id: "agotamiento_leve", name: "Agotamiento leve"),
+    .init(id: "psoriasis_leve_diagnosticada", name: "Psoriasis leve diagnosticada"),
+    .init(id: "placas_psoriasis_diagnosticada", name: "Placas localizadas de psoriasis diagnosticada"),
+    .init(id: "indigestion_leve", name: "Indigestión leve"),
+    .init(id: "hinchazon_abdominal", name: "Hinchazón abdominal"),
+    .init(id: "colicos_menstruales_leves", name: "Cólicos menstruales leves"),
+    .init(id: "dolor_menstrual_primario", name: "Dolor menstrual primario"),
+    .init(id: "sindrome_intestino_irritable", name: "Síndrome de intestino irritable"),
+    .init(id: "dolor_abdominal_sii", name: "Dolor abdominal asociado al síndrome de intestino irritable"),
+    .init(id: "espasmos_intestinales_sii", name: "Espasmos intestinales asociados al síndrome de intestino irritable"),
+    .init(id: "cefalea_tensional_leve", name: "Cefalea tensional leve"),
+    .init(id: "inflamacion_bucal_leve", name: "Inflamación bucal leve"),
+    .init(id: "aftas_pequenas", name: "Pequeñas aftas"),
+    .init(id: "irritacion_garganta_leve", name: "Irritación leve de garganta"),
+    .init(id: "irritacion_cutanea_leve", name: "Irritación cutánea leve"),
+    .init(id: "quemadura_solar_leve", name: "Quemadura solar leve sin ampollas"),
+    .init(id: "cansancio_debilidad_leves", name: "Cansancio y debilidad leves")
 ]
-
 
 // MARK: =============================================
 // MARK: - 09.3 · VISTA PRINCIPAL
@@ -365,6 +75,7 @@ struct AilmentView: View {
         "quemaduras_superficiales_leves",
         "cabeza",
         "estomago",
+        "molestias_digestivas_leves",
         "gases"
     ]
 
@@ -869,8 +580,10 @@ struct AilmentView: View {
     private func resultsView(
         for ailment: AilmentOption
     ) -> some View {
-
-        VStack(alignment: .leading, spacing: 16) {
+        let matches = GuideRecommendations.forAilment(ailment.id).filter { recommendation in
+            glossaryPlants.contains { $0.imageName == recommendation.imageName }
+        }
+        return VStack(alignment: .leading, spacing: 16) {
 
             HStack {
 
@@ -884,44 +597,36 @@ struct AilmentView: View {
 
                 Spacer()
 
-                Text("\(ailment.matches.count)")
+                Text("\(matches.count)")
                     .font(.system(size: 13))
                     .foregroundStyle(Palette.brown)
             }
 
-            if ailment.matches.isEmpty {
+            if matches.isEmpty {
 
                 noMatchesView
 
             } else {
 
-                ForEach(ailment.matches) { match in
+                ForEach(matches) { match in
 
                     if let plant = glossaryPlants.first(
-                        where: { $0.commonName == match.plantName }
+                        where: { $0.imageName == match.imageName }
                     ) {
 
                         NavigationLink {
 
-                            if let request = PreparationGuideRequest.forAilment(plantMatchID: match.id, ailmentID: ailment.id) {
-                                if (request.plantId == "ginseng" && request.symptomId == "fatigue-weakness") ||
-                                    (request.plantId == "valerian" && ["occasional-sleep-difficulty", "mild-mental-stress", "mild-nervous-tension"].contains(request.symptomId)) ||
-                                    (request.plantId == "turmeric" && request.symptomId == "mild-digestive-discomfort") ||
-                                    (request.plantId == "eucalyptus" && request.symptomId == "cough-associated-with-cold") ||
-                                    (request.plantId == "rosemary" && ["mild-muscle-pain", "mild-joint-pain"].contains(request.symptomId)) {
-                                    PreparationGuideSelectionView(plantId: request.plantId, symptomId: request.symptomId)
-                                } else {
-                                    PreparationGuideView(request: request)
-                                }
-                            } else {
-                                plantDestination(plant)
+                            if match.requests.count > 1 {
+                                PreparationGuideSelectionView(requests: match.requests)
+                            } else if let request = match.requests.first {
+                                PreparationGuideView(request: request)
                             }
 
                         } label: {
 
                             AilmentPlantCard(
                                 plant: plant,
-                                description: match.description
+                                description: match.titles.count == 1 ? match.titles[0] : "\(match.titles.count) preparaciones disponibles"
                             )
                         }
                         .buttonStyle(.plain)
@@ -930,52 +635,6 @@ struct AilmentView: View {
             }
         }
         .padding(.top, 14)
-    }
-
-    // MARK: =========================================
-    // MARK: - 09.8 · NAVEGACIÓN A FICHAS
-    // MARK: =========================================
-
-    @ViewBuilder
-    private func plantDestination(
-        _ plant: PlantGlossaryItem
-    ) -> some View {
-
-        switch plant.commonName {
-
-        case "Manzanilla":
-            ChamomileDetailView()
-
-        case "Menta":
-            MintDetailView()
-
-        case "Jengibre":
-            GingerDetailView()
-
-        case "Aloe Vera":
-            AloeDetailView()
-
-        case "Lavanda":
-            LavenderDetailView()
-
-        case "Eucalipto":
-            EucalyptusDetailView()
-
-        case "Romero":
-            RosemaryDetailView()
-
-        case "Cúrcuma":
-            TurmericDetailView()
-
-        case "Valeriana":
-            ValerianDetailView()
-
-        case "Ginseng":
-            GinsengDetailView()
-
-        default:
-            PlaceholderPlantView(plant: plant)
-        }
     }
 
     // MARK: =========================================
@@ -1007,14 +666,14 @@ struct AilmentView: View {
         VStack(alignment: .leading, spacing: 10) {
 
             Label(
-                "Sin plantas asociadas por ahora",
+                "Sin guías disponibles por ahora",
                 systemImage: "leaf"
             )
             .font(.system(size: 18, design: .serif))
             .foregroundStyle(Palette.olive)
 
             Text(
-                "Todavía no contamos con una asociación suficientemente documentada para este malestar dentro del catálogo."
+                "No contamos con una guía de preparación para este malestar. Busca una opción más específica si corresponde."
             )
             .font(.system(size: 14))
             .foregroundStyle(Palette.ink)

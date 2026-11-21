@@ -50,20 +50,13 @@ private struct GingerProfileView: View {
             Text(profile.summary).font(.system(size: 14)).foregroundStyle(Palette.ink)
 
             ExpandableCard(title: "01 · Propiedades", subtitle: profile.section1.title) {
-                Text("Toca una propiedad para explorar su química")
-                    .font(.system(size: 14, design: .serif)).italic().foregroundStyle(Palette.brown)
-                ForEach(profile.section1.items) { property in
-                    PropertyCard(property: propertyInfo(property))
-                }
+                PropertyGallery(items: profile.section1.items.map { propertyInfo($0) })
             }
 
             ExpandableCard(title: "02 · Composición química", subtitle: profile.section2.title) {
-                Picker("Compuesto", selection: $selectedCompound) {
-                    ForEach(profile.section2.items) { Text($0.name).tag($0.id) }
-                }.tint(Palette.olive).pickerStyle(.menu)
+                MechanismPicker(options: profile.section2.items.map { (id: $0.id, title: $0.name) }, selection: $selectedCompound, label: "Compuesto")
                 if let item = profile.section2.items.first(where: { $0.id == selectedCompound }) {
                     let compound = item.compound
-                    Text(compound.name).font(.system(size: 22, design: .serif)).bold().foregroundStyle(Palette.olive)
                     FactChip(text: compound.formula, symbol: "atom")
                     QuickFact(label: "Familia química", value: compound.family)
                     PlantMoleculeView(compound: item, imagePrefix: "ginger", cid: GingerDocument.structureCID(for: item))
@@ -77,9 +70,7 @@ private struct GingerProfileView: View {
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: profile.section4.title) {
-                Picker("Presentación", selection: $selectedPreparation) {
-                    ForEach(profile.section4.items) { Text($0.title).tag($0.id) }
-                }.tint(Palette.olive).pickerStyle(.menu)
+                MechanismPicker(options: profile.section4.items.map { (id: $0.id, title: $0.title) }, selection: $selectedPreparation, label: "Presentación")
                 if let preparation = profile.section4.items.first(where: { $0.id == selectedPreparation }) {
                     QuickFact(label: "Método", value: preparation.extractionMethod)
                     Text(preparation.description).font(.system(size: 14)).foregroundStyle(Palette.ink)
@@ -107,7 +98,6 @@ private struct GingerProfileView: View {
                             .tint(Palette.olive)
                         }
                     } else {
-                        Text(preparation.title).font(.system(size: 21, design: .serif)).bold().foregroundStyle(Palette.olive)
                         QuickFact(label: "Compuestos destacados", value: compoundNames(preparation.highlightCompoundIds))
                     }
                     if let warning = preparation.warning {

@@ -76,15 +76,17 @@ struct PropertyCard: View {
 }
 
 struct PropertyGallery: View {
+    let items: [PropertyInfo]
+
+    init(items: [PropertyInfo]? = nil) {
+        self.items = items ?? chamomileProperties
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Toca una propiedad para explorar su química")
-                .font(.system(size: 14, design: .serif)).italic()
-                .foregroundStyle(Palette.brown)
-            ForEach(chamomileProperties) { item in
+            ForEach(items) { item in
                 PropertyCard(property: item)
             }
         }
     }
 }
-

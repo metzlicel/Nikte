@@ -60,6 +60,52 @@ struct FactChip: View {
     }
 }
 
+struct MechanismPicker: View {
+    let options: [(id: String, title: String)]
+    @Binding var selection: String
+    var label: String = "Mecanismo molecular"
+
+    private var selectedTitle: String {
+        options.first { $0.id == selection }?.title ?? options.first?.title ?? label
+    }
+
+    var body: some View {
+        if options.count > 1 {
+            Menu {
+                Picker(label, selection: $selection) {
+                    ForEach(options, id: \.id) { option in
+                        Text(option.title).tag(option.id)
+                    }
+                }.pickerStyle(.inline)
+            } label: {
+                heading(showChevron: true)
+            }
+            .accessibilityHint("Elegir \(label.lowercased())")
+        } else if !options.isEmpty {
+            heading(showChevron: false)
+        }
+    }
+
+    private func heading(showChevron: Bool) -> some View {
+        HStack(alignment: .center, spacing: 10) {
+            Text(selectedTitle)
+                .font(.system(size: 21, weight: .bold, design: .serif))
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            if showChevron {
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 13, weight: .semibold))
+                    .accessibilityHidden(true)
+            }
+        }
+        .foregroundStyle(Palette.olive)
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Palette.sage.opacity(0.20), in: RoundedRectangle(cornerRadius: 14))
+        .contentShape(Rectangle())
+    }
+}
+
 struct QuickFact: View {
     let label: String
     let value: String

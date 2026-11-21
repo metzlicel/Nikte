@@ -10,11 +10,85 @@ import XCTest
 final class NikteUITests: XCTestCase {
 
     @MainActor
+    func testInsomniaDoesNotRecommendUnguidedPlants() {
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Malestares"].tap()
+        let insomnia = app.buttons["insomnio"]
+        XCTAssertTrue(insomnia.waitForExistence(timeout: 10))
+        insomnia.tap()
+        let empty = app.staticTexts["Sin guías disponibles por ahora"]
+        for _ in 0..<6 where !empty.isHittable { app.swipeUp() }
+        XCTAssertTrue(empty.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["Manzanilla"].exists)
+        XCTAssertFalse(app.staticTexts["Lavanda"].exists)
+    }
+
+    @MainActor
+    func testLavenderSleepShowsAllMatchingGuides() {
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Malestares"].tap()
+        let option = app.buttons["dificultad ocasional para dormir"]
+        for _ in 0..<5 where !option.isHittable { app.swipeUp() }
+        XCTAssertTrue(option.waitForExistence(timeout: 10))
+        option.tap()
+        let lavender = app.staticTexts["Lavanda"]
+        for _ in 0..<7 where !lavender.isHittable { app.swipeUp() }
+        XCTAssertTrue(lavender.waitForExistence(timeout: 5))
+        lavender.tap()
+        XCTAssertTrue(app.navigationBars["Preparaciones"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Infusión de lavanda"].exists)
+        let bath = app.staticTexts["Baño relajante con producto de lavanda"]
+        XCTAssertTrue(bath.exists)
+        bath.tap()
+        XCTAssertTrue(app.navigationBars["Guía de preparación"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Baño relajante con producto de lavanda"].exists)
+    }
+
+    @MainActor
+    func testMintCompoundAndExtractionSelectorsUpdateContent() {
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Plantas"].tap()
+        let search = app.textFields["Buscar planta..."]
+        XCTAssertTrue(search.waitForExistence(timeout: 10))
+        search.tap()
+        search.typeText("menta")
+        let mint = app.staticTexts["Menta"]
+        XCTAssertTrue(mint.waitForExistence(timeout: 5))
+        mint.tap()
+        let composition = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "02 · Composición química")).firstMatch
+        for _ in 0..<6 where !composition.isHittable { app.swipeUp() }
+        XCTAssertTrue(composition.waitForExistence(timeout: 10))
+        composition.tap()
+        let menthol = app.buttons["Mentol"]
+        for _ in 0..<5 where !menthol.isHittable { app.swipeUp() }
+        XCTAssertTrue(menthol.waitForExistence(timeout: 5))
+        menthol.tap()
+        app.buttons["Mentona"].tap()
+        XCTAssertTrue(app.buttons["Mentona"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["C10H18O"].exists)
+
+        let extractions = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "04 · Extracciones")).firstMatch
+        for _ in 0..<10 where !extractions.isHittable { app.swipeUp() }
+        XCTAssertTrue(extractions.waitForExistence(timeout: 5))
+        extractions.tap()
+        let leaves = app.buttons["Hojas frescas o secas"]
+        for _ in 0..<6 where !leaves.isHittable { app.swipeUp() }
+        XCTAssertTrue(leaves.waitForExistence(timeout: 5))
+        leaves.tap()
+        app.buttons["Infusión de hojas"].tap()
+        XCTAssertTrue(app.buttons["Infusión de hojas"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     func testDigestiveChamomileOpensPreparationGuide() throws {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["gases"]
+        let gases = app.buttons["molestias digestivas leves"]
+        for _ in 0..<5 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
         let chamomile = app.staticTexts["Manzanilla"]
@@ -78,7 +152,8 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["gases"]
+        let gases = app.buttons["molestias digestivas leves"]
+        for _ in 0..<5 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
         let mint = app.staticTexts["Menta"]
@@ -333,7 +408,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let stomach = app.buttons["dolor de estómago"]
+        let stomach = app.buttons["molestias digestivas leves"]
         for _ in 0..<5 where !stomach.isHittable { app.swipeUp() }
         XCTAssertTrue(stomach.waitForExistence(timeout: 10))
         stomach.tap()
@@ -407,7 +482,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["gases"]
+        let gases = app.buttons["molestias digestivas leves"]
         for _ in 0..<6 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
@@ -429,7 +504,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let stomach = app.buttons["dolor de estómago"]
+        let stomach = app.buttons["molestias digestivas leves"]
         for _ in 0..<6 where !stomach.isHittable { app.swipeUp() }
         XCTAssertTrue(stomach.waitForExistence(timeout: 10))
         stomach.tap()
@@ -573,6 +648,8 @@ final class NikteUITests: XCTestCase {
         for _ in 0..<5 where !lavender.isHittable { app.swipeUp() }
         XCTAssertTrue(lavender.waitForExistence(timeout: 5))
         lavender.tap()
+        XCTAssertTrue(app.navigationBars["Preparaciones"].waitForExistence(timeout: 10))
+        app.staticTexts["Infusión de lavanda"].tap()
         XCTAssertTrue(app.navigationBars["Guía de preparación"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Infusión de lavanda"].exists)
         XCTAssertTrue(app.staticTexts["1–2 g"].exists)

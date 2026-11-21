@@ -1,11 +1,14 @@
 import SwiftUI
 
 struct PreparationGuideSelectionView: View {
-    let plantId: String
-    let symptomId: String
+    let requests: [PreparationGuideRequest]
 
-    private var guides: [PreparationGuide]? {
-        (try? PreparationGuideDocument.load(forPlantID: plantId))?.guides(forSymptomID: symptomId)
+    private var entries: [(guide: PreparationGuide, request: PreparationGuideRequest)]? {
+        guard let plantId = requests.first?.plantId,
+              let document = try? PreparationGuideDocument.load(forPlantID: plantId) else { return nil }
+        return requests.compactMap { request in
+            document.guide(for: request).map { (guide: $0, request: request) }
+        }
     }
 
     var body: some View {
@@ -13,11 +16,11 @@ struct PreparationGuideSelectionView: View {
             BotanicalBackground().allowsHitTesting(false)
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    SectionTitle(kicker: guides?.first?.plantName.uppercased() ?? "PREPARACIONES", title: "Elige una preparación")
-                    if let guides, !guides.isEmpty {
-                        ForEach(guides) { guide in
+                    SectionTitle(kicker: entries?.first?.guide.plantName.uppercased() ?? "PREPARACIONES", title: "Elige una preparación")
+                    if let entries, !entries.isEmpty {
+                        ForEach(entries, id: \.guide.id) { guide, request in
                             NavigationLink {
-                                PreparationGuideView(request: .init(plantId: plantId, symptomId: symptomId, preparationId: guide.preparationId))
+                                PreparationGuideView(request: request)
                             } label: {
                                 PaperCard {
                                     HStack {
