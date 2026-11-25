@@ -47,60 +47,26 @@ struct GuideRecommendation: Identifiable {
 }
 
 enum GuideRecommendations {
-    // Equivalencias explícitas del catálogo de malestares; no se amplían por coincidencia de texto.
-    static let symptomIDs: [String: [String]] = [
-        "molestias_digestivas_leves": ["mild-digestive-discomfort"],
-        "indigestion_leve": ["mild-digestive-discomfort"],
-        "gases": ["flatulence", "mild-digestive-discomfort"],
-        "hinchazon_abdominal": ["bloating"],
-        "nauseas_movimiento": ["motion-sickness-nausea"],
-        "quemaduras_superficiales_leves": ["minor-superficial-burn"],
-        "estres_leve": ["mild-stress", "mild-mental-stress"],
-        "estres_leve_agotamiento": ["mild-exhaustion"],
-        "agotamiento_leve": ["mild-exhaustion"],
-        "dificultad_ocasional_dormir": ["occasional-sleep-difficulty"],
-        "tension_nerviosa_leve": ["mild-nervous-tension"],
-        "sintomas_ansiedad_leve": ["mild-anxiety-symptoms"],
-        "tos_resfriado": ["cough-associated-with-cold"],
-        "dolor_muscular_localizado_leve": ["localized-muscle-pain", "mild-muscle-pain"],
-        "dolor_muscular_leve": ["mild-muscle-pain"],
-        "molestias_articulares_leves": ["mild-joint-pain"],
-        "piernas_cansadas_leves": ["minor-peripheral-circulation-discomfort"],
-        "psoriasis_leve_diagnosticada": ["mild-plaque-psoriasis"],
-        "placas_psoriasis_diagnosticada": ["localized-psoriasis-plaques"],
-        "colicos_menstruales_leves": ["mild-menstrual-cramps"],
-        "dolor_menstrual_primario": ["primary-dysmenorrhea"],
-        "sindrome_intestino_irritable": ["irritable-bowel-syndrome"],
-        "dolor_abdominal_sii": ["ibs-abdominal-pain"],
-        "espasmos_intestinales_sii": ["ibs-intestinal-spasms"],
-        "cefalea_tensional_leve": ["mild-tension-headache"],
-        "inflamacion_bucal_leve": ["mild-mouth-inflammation"],
-        "aftas_pequenas": ["minor-mouth-ulcers"],
-        "irritacion_garganta_leve": ["mild-throat-irritation"],
-        "irritacion_cutanea_leve": ["mild-skin-irritation"],
-        "quemadura_solar_leve": ["mild-sunburn"],
-        "cansancio_debilidad_leves": ["fatigue-weakness"]
-    ]
-
     static func matchingSymptom(for guide: PreparationGuide, ailmentID: String) -> String? {
-        guard let symptoms = symptomIDs[ailmentID] else { return nil }
-        return symptoms.first { symptom in
-            guard guide.symptomIds.contains(symptom) else { return false }
-            if symptom == "mild-digestive-discomfort", ["gases", "indigestion_leve"].contains(ailmentID) {
-                let term = ailmentID == "gases" ? "gases" : "indigestion"
-                return guide.symptomLabels.contains { label in
-                    let normalized = label.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "es_MX"))
-                    return normalized.components(separatedBy: CharacterSet.letters.inverted).contains(term)
-                }
-            }
-            return true
-        }
+        SymptomCatalog.entries.first { $0.id == ailmentID }?.symptomIDs.first { guide.symptomIds.contains($0) }
     }
 
     static func forAilment(_ ailmentID: String, from bundle: Bundle = .main) -> [GuideRecommendation] {
-        guard symptomIDs[ailmentID] != nil else { return [] }
-        return PreparationGuideDocument.resources.keys.sorted().compactMap { plantID in
-            guard let document = try? PreparationGuideDocument.load(forPlantID: plantID, from: bundle) else { return nil }
+        forAilment(ailmentID, documents: documents(from: bundle))
+    }
+
+    static func documents(from bundle: Bundle = .main) -> [PreparationGuideDocument] {
+        PreparationGuideDocument.resources.keys.sorted().compactMap { plantID in
+            guard let plant = PlantDetailID(rawValue: plantID),
+                  glossaryPlants.contains(where: { $0.id == plant }) else { return nil }
+            return try? PreparationGuideDocument.load(forPlantID: plantID, from: bundle)
+        }
+    }
+
+    static func forAilment(_ ailmentID: String, documents: [PreparationGuideDocument]) -> [GuideRecommendation] {
+        guard SymptomCatalog.entries.contains(where: { $0.id == ailmentID }) else { return [] }
+        return documents.compactMap { document in
+            let plantID = document.plantId
             let matches = document.guides.compactMap { guide -> (PreparationGuide, PreparationGuideRequest)? in
                 guard guide.plantId == plantID,
                       let symptom = matchingSymptom(for: guide, ailmentID: ailmentID) else { return nil }

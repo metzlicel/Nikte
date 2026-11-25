@@ -7,49 +7,51 @@ import SwiftUI
 struct AilmentOption: Identifiable {
     let id: String
     let name: String
+    let symptomIDs: [String]
+    var frequent: Bool = false
 }
 
-// Nombres del buscador; las relaciones con plantas provienen de GuideRecommendations.
-let ailmentOptions: [AilmentOption] = [
-    .init(id: "ansiedad", name: "Ansiedad"),
-    .init(id: "colicos", name: "Cólicos"),
-    .init(id: "congestion", name: "Congestión nasal"),
-    .init(id: "cabeza", name: "Dolor de cabeza"),
-    .init(id: "estomago", name: "Dolor de estómago"),
-    .init(id: "molestias_digestivas_leves", name: "Molestias digestivas leves"),
-    .init(id: "gases", name: "Gases leves"),
-    .init(id: "insomnio", name: "Insomnio"),
-    .init(id: "nauseas", name: "Náuseas"),
-    .init(id: "nauseas_movimiento", name: "Náuseas por movimiento"),
-    .init(id: "quemaduras_superficiales_leves", name: "Quemaduras superficiales leves"),
-    .init(id: "estres_leve", name: "Estrés leve"),
-    .init(id: "dificultad_ocasional_dormir", name: "Dificultad ocasional para dormir"),
-    .init(id: "tos_resfriado", name: "Tos asociada al resfriado"),
-    .init(id: "tension_nerviosa_leve", name: "Tensión nerviosa leve"),
-    .init(id: "dolor_muscular_localizado_leve", name: "Dolor muscular localizado leve"),
-    .init(id: "dolor_muscular_leve", name: "Dolor muscular leve"),
-    .init(id: "molestias_articulares_leves", name: "Molestias articulares leves"),
-    .init(id: "piernas_cansadas_leves", name: "Piernas cansadas sin signos de alarma"),
-    .init(id: "sintomas_ansiedad_leve", name: "Síntomas leves de ansiedad"),
-    .init(id: "estres_leve_agotamiento", name: "Estrés leve y agotamiento"),
-    .init(id: "agotamiento_leve", name: "Agotamiento leve"),
-    .init(id: "psoriasis_leve_diagnosticada", name: "Psoriasis leve diagnosticada"),
-    .init(id: "placas_psoriasis_diagnosticada", name: "Placas localizadas de psoriasis diagnosticada"),
-    .init(id: "indigestion_leve", name: "Indigestión leve"),
-    .init(id: "hinchazon_abdominal", name: "Hinchazón abdominal"),
-    .init(id: "colicos_menstruales_leves", name: "Cólicos menstruales leves"),
-    .init(id: "dolor_menstrual_primario", name: "Dolor menstrual primario"),
-    .init(id: "sindrome_intestino_irritable", name: "Síndrome de intestino irritable"),
-    .init(id: "dolor_abdominal_sii", name: "Dolor abdominal asociado al síndrome de intestino irritable"),
-    .init(id: "espasmos_intestinales_sii", name: "Espasmos intestinales asociados al síndrome de intestino irritable"),
-    .init(id: "cefalea_tensional_leve", name: "Cefalea tensional leve"),
-    .init(id: "inflamacion_bucal_leve", name: "Inflamación bucal leve"),
-    .init(id: "aftas_pequenas", name: "Pequeñas aftas"),
-    .init(id: "irritacion_garganta_leve", name: "Irritación leve de garganta"),
-    .init(id: "irritacion_cutanea_leve", name: "Irritación cutánea leve"),
-    .init(id: "quemadura_solar_leve", name: "Quemadura solar leve sin ampollas"),
-    .init(id: "cansancio_debilidad_leves", name: "Cansancio y debilidad leves")
-]
+// Etiquetas de presentación; solo se muestran si hay guías resolubles para sus IDs.
+enum SymptomCatalog {
+    static let entries: [AilmentOption] = [
+        .init(id: "dificultad_ocasional_dormir", name: "Insomnio", symptomIDs: ["occasional-sleep-difficulty"], frequent: true),
+        .init(id: "estres_leve", name: "Estrés", symptomIDs: ["mild-stress", "mild-mental-stress"], frequent: true),
+        .init(id: "sintomas_ansiedad_leve", name: "Ansiedad", symptomIDs: ["mild-anxiety-symptoms"], frequent: true),
+        .init(id: "cansancio_debilidad_leves", name: "Cansancio", symptomIDs: ["fatigue-weakness"], frequent: true),
+        .init(id: "nauseas_movimiento", name: "Mareo por viaje", symptomIDs: ["motion-sickness-nausea"], frequent: true),
+        .init(id: "tos_resfriado", name: "Tos", symptomIDs: ["cough-associated-with-cold"], frequent: true),
+        .init(id: "quemaduras_superficiales_leves", name: "Quemaduras", symptomIDs: ["minor-superficial-burn"], frequent: true),
+        .init(id: "molestias_digestivas_leves", name: "Indigestión", symptomIDs: ["mild-digestive-discomfort"], frequent: true),
+        .init(id: "gases", name: "Gases", symptomIDs: ["flatulence"], frequent: true),
+        .init(id: "hinchazon_abdominal", name: "Hinchazón abdominal", symptomIDs: ["bloating"]),
+        .init(id: "tension_nerviosa_leve", name: "Tensión nerviosa", symptomIDs: ["mild-nervous-tension"]),
+        .init(id: "agotamiento_leve", name: "Agotamiento", symptomIDs: ["mild-exhaustion"]),
+        .init(id: "dolor_muscular_localizado_leve", name: "Dolor muscular", symptomIDs: ["localized-muscle-pain", "mild-muscle-pain"]),
+        .init(id: "molestias_articulares_leves", name: "Dolor articular", symptomIDs: ["mild-joint-pain"]),
+        .init(id: "piernas_cansadas_leves", name: "Piernas cansadas", symptomIDs: ["minor-peripheral-circulation-discomfort"]),
+        .init(id: "psoriasis_leve_diagnosticada", name: "Psoriasis diagnosticada", symptomIDs: ["mild-plaque-psoriasis", "localized-psoriasis-plaques"]),
+        .init(id: "colicos_menstruales_leves", name: "Dolor menstrual", symptomIDs: ["mild-menstrual-cramps", "primary-dysmenorrhea"]),
+        .init(id: "sindrome_intestino_irritable", name: "Intestino irritable", symptomIDs: ["irritable-bowel-syndrome"]),
+        .init(id: "dolor_abdominal_sii", name: "Dolor abdominal por intestino irritable", symptomIDs: ["ibs-abdominal-pain"]),
+        .init(id: "espasmos_intestinales_sii", name: "Espasmos por intestino irritable", symptomIDs: ["ibs-intestinal-spasms"]),
+        .init(id: "cefalea_tensional_leve", name: "Cefalea tensional", symptomIDs: ["mild-tension-headache"]),
+        .init(id: "inflamacion_bucal_leve", name: "Inflamación bucal", symptomIDs: ["mild-mouth-inflammation"]),
+        .init(id: "aftas_pequenas", name: "Aftas", symptomIDs: ["minor-mouth-ulcers"]),
+        .init(id: "irritacion_garganta_leve", name: "Irritación de garganta", symptomIDs: ["mild-throat-irritation"]),
+        .init(id: "irritacion_cutanea_leve", name: "Irritación cutánea", symptomIDs: ["mild-skin-irritation"]),
+        .init(id: "quemadura_solar_leve", name: "Quemadura solar", symptomIDs: ["mild-sunburn"])
+    ]
+
+    static func available(from bundle: Bundle = .main) -> [AilmentOption] {
+        available(documents: GuideRecommendations.documents(from: bundle))
+    }
+
+    static func available(documents: [PreparationGuideDocument]) -> [AilmentOption] {
+        entries.filter { !GuideRecommendations.forAilment($0.id, documents: documents).isEmpty }
+    }
+}
+
+var ailmentOptions: [AilmentOption] { SymptomCatalog.available() }
 
 // MARK: =============================================
 // MARK: - 09.3 · VISTA PRINCIPAL
@@ -63,21 +65,7 @@ struct AilmentView: View {
     @State private var showDropdown = false
 
 
-    private let frequentIDs = [
-        "insomnio",
-        "ansiedad",
-        "estres_leve",
-        "dificultad_ocasional_dormir",
-        "tos_resfriado",
-        "cansancio_debilidad_leves",
-        "nauseas",
-        "nauseas_movimiento",
-        "quemaduras_superficiales_leves",
-        "cabeza",
-        "estomago",
-        "molestias_digestivas_leves",
-        "gases"
-    ]
+    private let ailmentOptions = SymptomCatalog.available()
 
     // MARK: - Normalización de búsqueda
 
@@ -530,11 +518,7 @@ struct AilmentView: View {
 
             AilmentFlowLayout(spacing: 9) {
 
-                ForEach(frequentIDs, id: \.self) { id in
-
-                    if let ailment = ailmentOptions.first(
-                        where: { $0.id == id }
-                    ) {
+                ForEach(ailmentOptions.filter(\.frequent)) { ailment in
 
                         Button {
 
@@ -551,7 +535,7 @@ struct AilmentView: View {
                                 .padding(.horizontal, 15)
                                 .padding(.vertical, 10)
                                 .background(
-                                    selectedAilment?.id == id
+                                    selectedAilment?.id == ailment.id
                                         ? Palette.sage.opacity(0.55)
                                         : Palette.card,
                                     in: Capsule()
@@ -559,7 +543,7 @@ struct AilmentView: View {
                                 .overlay(
                                     Capsule()
                                         .stroke(
-                                            selectedAilment?.id == id
+                                            selectedAilment?.id == ailment.id
                                                 ? Palette.olive
                                                 : .clear,
                                             lineWidth: 1.5
@@ -567,7 +551,6 @@ struct AilmentView: View {
                                 )
                         }
                         .buttonStyle(.plain)
-                    }
                 }
             }
         }
@@ -580,9 +563,7 @@ struct AilmentView: View {
     private func resultsView(
         for ailment: AilmentOption
     ) -> some View {
-        let matches = GuideRecommendations.forAilment(ailment.id).filter { recommendation in
-            glossaryPlants.contains { $0.imageName == recommendation.imageName }
-        }
+        let matches = GuideRecommendations.forAilment(ailment.id)
         return VStack(alignment: .leading, spacing: 16) {
 
             HStack {
@@ -611,7 +592,7 @@ struct AilmentView: View {
                 ForEach(matches) { match in
 
                     if let plant = glossaryPlants.first(
-                        where: { $0.imageName == match.imageName }
+                        where: { $0.id.rawValue == match.plantId }
                     ) {
 
                         NavigationLink {

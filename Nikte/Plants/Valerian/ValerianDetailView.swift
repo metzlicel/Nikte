@@ -58,7 +58,6 @@ private struct ValerianProfileView: View {
 
             ExpandableCard(title: "03 · Reacciones y mecanismos", subtitle: "Actividad molecular investigada") {
                 LavenderMechanismsView(profile: profile.mechanismProfile, initialMechanism: "gaba_a")
-                ValerianDegradationView(profile: profile)
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: "Procesos y presentaciones") {

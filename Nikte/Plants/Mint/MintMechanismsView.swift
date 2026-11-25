@@ -45,19 +45,8 @@ struct MintMechanismsView: View {
                     QuickFact(label: "Símbolos", value: "ArOH: compuesto fenólico; R•: radical libre; ArO•: radical fenóxico; RH: producto de transferencia de hidrógeno.")
                 }
                 QuickFact(label: "Explicación científica", value: mechanism.explanation)
-                QuickFact(label: "En palabras sencillas", value: mechanism.plainLanguage)
-                if let evidence = evidence(for: mechanism.id) {
-                    Label(evidence, systemImage: "info.circle")
-                        .font(.system(size: 12)).foregroundStyle(Palette.brown)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
+                PlainLanguageCard(text: mechanism.plainLanguage)
             }
-
-            let featured = profile.section3.featuredChemistry
-            Text(featured.title).font(.system(size: 19, design: .serif)).bold().foregroundStyle(Palette.olive)
-            ReactionStrip(lhs: "C₁₀H₁₈O + 2[H]", rhs: "C₁₀H₂₀O", note: featured.reactionClass)
-            Text(featured.description).font(.system(size: 13)).foregroundStyle(Palette.ink)
-            Text(featured.educationalValue).font(.system(size: 12, design: .serif)).foregroundStyle(Palette.brown)
         }
         .onChange(of: selectedMechanism) { _, _ in selectedStep = 0 }
     }
@@ -66,8 +55,4 @@ struct MintMechanismsView: View {
         ids.compactMap { id in profile.section2.items.first { $0.id == id }?.name }.joined(separator: " · ")
     }
 
-    private func evidence(for id: String) -> String? {
-        let propertyID = ["intestinal_relaxation": "digestive", "trpm8_cooling": "cooling_analgesic", "membrane_antimicrobial": "antimicrobial", "phenolic_antioxidant": "antioxidant"][id]
-        return profile.section1.items.first { $0.id == propertyID }?.evidenceContext
-    }
 }

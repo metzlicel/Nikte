@@ -1,5 +1,23 @@
 import SwiftUI
 
+struct PlainLanguageCard: View {
+    let text: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Label("En palabras sencillas", systemImage: "lightbulb")
+                .font(.system(size: 16, design: .serif)).bold()
+                .foregroundStyle(Palette.olive)
+            Text(text)
+                .font(.system(size: 14)).foregroundStyle(Palette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Palette.sage.opacity(0.22), in: RoundedRectangle(cornerRadius: 14))
+    }
+}
+
 // MARK: - 11 · TARJETAS DESPLEGABLES Y COMPONENTES DE FICHA
 
 struct ExpandableCard<Content: View>: View {

@@ -104,6 +104,8 @@ private struct PreparationGuideContent: View {
                     .frame(maxWidth: .infinity, alignment: .center)
             }
             SectionTitle(kicker: guide.plantName.uppercased(), title: guide.title)
+            Text("Malestares documentados")
+                .font(.system(size: 13, design: .serif)).foregroundStyle(Palette.brown)
             Text(guide.symptomLabels.joined(separator: " · "))
                 .font(.system(size: 17, design: .serif)).foregroundStyle(Palette.olive)
                 .fixedSize(horizontal: false, vertical: true)
@@ -211,6 +213,33 @@ private struct PreparationGuideContent: View {
                 .font(.system(size: 12)).foregroundStyle(Palette.brown)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 4)
+            }
+
+            if let plant = PlantDetailID(rawValue: guide.plantId) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("¿Quieres conocer más sobre esta planta?")
+                        .font(.system(size: 17, design: .serif)).bold()
+                        .foregroundStyle(Palette.olive)
+                        .fixedSize(horizontal: false, vertical: true)
+                    NavigationLink {
+                        PlantDetailDestination(plant: plant)
+                    } label: {
+                        HStack(spacing: 8) {
+                            Text("Ver ficha técnica")
+                            Image(systemName: "arrow.right")
+                        }
+                        .font(.system(size: 15, design: .serif)).bold()
+                        .foregroundStyle(Palette.olive)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 12)
+                        .background(Palette.sage.opacity(0.3), in: RoundedRectangle(cornerRadius: 10))
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Palette.card, in: RoundedRectangle(cornerRadius: 16))
+                .overlay(RoundedRectangle(cornerRadius: 16).stroke(Palette.line, lineWidth: 1))
             }
         }
     }

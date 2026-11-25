@@ -65,7 +65,6 @@ private struct AloeProfileView: View {
 
             ExpandableCard(title: "03 · Reacciones y mecanismos", subtitle: profile.section3.title) {
                 AloeMechanismsView(profile: profile)
-                AloeLayersView(profile: profile)
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: profile.section4.title) {

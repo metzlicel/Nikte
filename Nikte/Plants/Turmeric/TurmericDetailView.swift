@@ -64,7 +64,6 @@ private struct TurmericProfileView: View {
 
             ExpandableCard(title: "03 · Reacciones y mecanismos", subtitle: "Actividad molecular investigada") {
                 LavenderMechanismsView(profile: profile.mechanismProfile, initialMechanism: "nfkb")
-                TurmericTautomerView(featured: profile.section3.featuredChemistry)
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: "Procesos y presentaciones") {

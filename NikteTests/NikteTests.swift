@@ -22,6 +22,54 @@ private extension PreparationGuideRequest {
 
 struct NikteTests {
 
+    @Test @MainActor func symptomSuggestionsHaveValidGuidesAndCoverDocumentedIDs() throws {
+        let documents = GuideRecommendations.documents()
+        let options = SymptomCatalog.available()
+        #expect(SymptomCatalog.available(documents: []).isEmpty)
+        let ginger = documents.filter { $0.plantId == "zingiber_officinale" }
+        #expect(SymptomCatalog.available(documents: ginger).allSatisfy {
+            !GuideRecommendations.forAilment($0.id, documents: ginger).isEmpty
+        })
+        #expect(!SymptomCatalog.available(documents: ginger).contains { $0.name == "Tos" })
+        #expect(Set(options.map(\.name)).count == options.count)
+        #expect(Set(options.map(\.id)).count == options.count)
+        let documented = Set(documents.flatMap { document in
+            document.guides.filter { $0.plantId == document.plantId }.flatMap(\.symptomIds)
+        })
+        #expect(documented == Set(options.flatMap(\.symptomIDs)))
+        for option in options {
+            let recommendations = GuideRecommendations.forAilment(option.id, documents: documents)
+            #expect(!recommendations.isEmpty)
+            for recommendation in recommendations {
+                let document = try #require(documents.first { $0.plantId == recommendation.plantId })
+                #expect(!recommendation.requests.isEmpty)
+                for request in recommendation.requests {
+                    let guide = try #require(document.guide(for: request))
+                    #expect(option.symptomIDs.contains(request.symptomId))
+                    #expect(guide.symptomIds.contains(request.symptomId))
+                    #expect(!guide.symptomLabels.isEmpty)
+                }
+            }
+        }
+        #expect(GuideRecommendations.forAilment("nauseas", documents: documents).isEmpty)
+        #expect(Set(GuideRecommendations.forAilment("nauseas_movimiento", documents: documents).map(\.plantId)) == ["zingiber_officinale"])
+    }
+
+    @Test @MainActor func allPreparationGuidesHaveMatchingPlantDetailRoutes() throws {
+        let routes = Set(PlantDetailID.allCases.map(\.rawValue))
+        #expect(routes == Set(PreparationGuideDocument.resources.keys))
+        #expect(Set(glossaryPlants.map(\.id)) == Set(PlantDetailID.allCases))
+        for plantID in PreparationGuideDocument.resources.keys {
+            let document = try PreparationGuideDocument.load(forPlantID: plantID)
+            for guide in document.guides {
+                let route = try #require(PlantDetailID(rawValue: guide.plantId))
+                #expect(route.rawValue == plantID)
+                #expect(glossaryPlants.contains { $0.id == route })
+            }
+        }
+        #expect(PlantDetailID(rawValue: "unknown") == nil)
+    }
+
     @Test @MainActor func recommendationsAlwaysResolveToMatchingBundledGuides() throws {
         #expect(PreparationGuideDocument.resources.count == 10)
         for plantID in PreparationGuideDocument.resources.keys {
@@ -35,7 +83,7 @@ struct NikteTests {
             }
         }
         for option in ailmentOptions {
-            let symptomIDs = GuideRecommendations.symptomIDs[option.id] ?? []
+            let symptomIDs = option.symptomIDs
             let recommendations = GuideRecommendations.forAilment(option.id)
             #expect(Set(recommendations.map(\.plantId)).count == recommendations.count)
             for recommendation in recommendations {
@@ -59,7 +107,7 @@ struct NikteTests {
             #expect(GuideRecommendations.forAilment(id).isEmpty)
         }
         #expect(GuideRecommendations.forAilment("unknown").isEmpty)
-        #expect(Set(GuideRecommendations.forAilment("gases").map(\.plantId)) == Set(["peppermint", "turmeric", "zingiber_officinale"]))
+        #expect(Set(GuideRecommendations.forAilment("gases").map(\.plantId)) == Set(["zingiber_officinale"]))
         #expect(!GuideRecommendations.forAilment("gases").contains { $0.plantId == "rosemary" || $0.plantId == "chamomile" })
         #expect(GuideRecommendations.forAilment("tos_resfriado").first?.requests.count == 2)
         #expect(GuideRecommendations.forAilment("cansancio_debilidad_leves").first?.requests.count == 3)
@@ -156,7 +204,7 @@ struct NikteTests {
         #expect(document.plantId == "peppermint")
         #expect(document.guides(forSymptomID: "mild-digestive-discomfort").count == 1)
         #expect(document.guides(forSymptomID: "insomnia").isEmpty)
-        for symptom in ["molestias_digestivas_leves", "indigestion_leve"] {
+        for symptom in ["molestias_digestivas_leves"] {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "menta", ailmentID: symptom))
             let guide = try #require(document.guide(for: request))
             #expect(guide.id == "peppermint-digestive-infusion")
@@ -246,7 +294,7 @@ struct NikteTests {
     @Test @MainActor func gingerDigestiveAndMenstrualGuidesRouteAndLoad() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "zingiber_officinale")
         #expect(document.guides.count == 3)
-        let digestive = [("molestias_digestivas_leves", "mild-digestive-discomfort"), ("indigestion_leve", "mild-digestive-discomfort"), ("hinchazon_abdominal", "bloating"), ("gases", "flatulence")]
+        let digestive = [("molestias_digestivas_leves", "mild-digestive-discomfort"), ("hinchazon_abdominal", "bloating"), ("gases", "flatulence")]
         for (ailment, symptom) in digestive {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: ailment))
             #expect(request.symptomId == symptom)
@@ -263,7 +311,7 @@ struct NikteTests {
             #expect(!guide.references.isEmpty)
             #expect(!guide.display.showReferences)
         }
-        for (ailment, symptom) in [("colicos_menstruales_leves", "mild-menstrual-cramps"), ("dolor_menstrual_primario", "primary-dysmenorrhea")] {
+        for (ailment, symptom) in [("colicos_menstruales_leves", "mild-menstrual-cramps")] {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "jengibre", ailmentID: ailment))
             #expect(request.symptomId == symptom)
             #expect(request.preparationId == "measured-ginger-powder-capsules")
@@ -307,7 +355,7 @@ struct NikteTests {
 
     @Test @MainActor func aloeDiagnosedPsoriasisGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "aloe_vera")
-        let routes = [("psoriasis_leve_diagnosticada", "mild-plaque-psoriasis"), ("placas_psoriasis_diagnosticada", "localized-psoriasis-plaques")]
+        let routes = [("psoriasis_leve_diagnosticada", "mild-plaque-psoriasis")]
         for (ailment, symptom) in routes {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "aloe_vera", ailmentID: ailment))
             #expect(request.plantId == "aloe_vera")
@@ -374,7 +422,7 @@ struct NikteTests {
         #expect(capsules.chemistry.interactiveSteps[1].title == "Aceite estandarizado")
         #expect(!capsules.references.isEmpty)
         #expect(!capsules.display.showReferences)
-        for (ailment, symptom) in [("estres_leve_agotamiento", "mild-exhaustion"), ("agotamiento_leve", "mild-exhaustion")] {
+        for (ailment, symptom) in [("agotamiento_leve", "mild-exhaustion")] {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "lavanda", ailmentID: ailment))
             #expect(request.symptomId == symptom)
             #expect(request.preparationId == "lavender-bath-product")
@@ -482,7 +530,7 @@ struct NikteTests {
     @Test @MainActor func rosemaryBathAndOintmentGuidesRouteAndLoad() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "rosemary")
         #expect(document.guides.count == 3)
-        for (ailment, symptom) in [("dolor_muscular_localizado_leve", "mild-muscle-pain"), ("dolor_muscular_leve", "mild-muscle-pain"), ("molestias_articulares_leves", "mild-joint-pain")] {
+        for (ailment, symptom) in [("dolor_muscular_localizado_leve", "mild-muscle-pain"), ("molestias_articulares_leves", "mild-joint-pain")] {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "romero", ailmentID: ailment))
             #expect(request.symptomId == symptom)
             #expect(Set(document.guides(forSymptomID: symptom).map(\.preparationId)) == Set(["rosemary-leaf-bath", "rosemary-oil-commercial-ointment"]))
@@ -516,7 +564,7 @@ struct NikteTests {
 
     @Test @MainActor func turmericDigestiveGuideRoutesAndLoads() throws {
         let document = try PreparationGuideDocument.load(forPlantID: "turmeric")
-        for ailment in ["molestias_digestivas_leves", "gases"] {
+        for ailment in ["molestias_digestivas_leves"] {
             let request = try #require(PreparationGuideRequest.forAilment(plantMatchID: "curcuma", ailmentID: ailment))
             #expect(request.plantId == "turmeric")
             #expect(request.symptomId == "mild-digestive-discomfort")

@@ -115,9 +115,6 @@ struct BiologicalMechanismsView: View {
                 "Algunas moléculas de la manzanilla pueden disminuir señales celulares que favorecen la inflamación."
             )
 
-            evidenceNote(
-                "Resultados observados principalmente en modelos celulares y animales."
-            )
         }
     }
 
@@ -171,9 +168,6 @@ struct BiologicalMechanismsView: View {
                 "La apigenina puede interactuar con proteínas neuronales relacionadas con la regulación de la excitabilidad del sistema nervioso."
             )
 
-            evidenceNote(
-                "No debe interpretarse que la apigenina abre directamente el canal GABA-A ni que actúa igual que una benzodiacepina."
-            )
         }
     }
 
@@ -227,9 +221,6 @@ struct BiologicalMechanismsView: View {
                 "Algunos compuestos de la manzanilla podrían modificar mecanismos que regulan las contracciones musculares del sistema digestivo."
             )
 
-            evidenceNote(
-                "No está demostrado que la apigenina bloquee directamente los canales de calcio del intestino humano."
-            )
         }
     }
 
@@ -284,9 +275,6 @@ struct BiologicalMechanismsView: View {
                 "Los grupos fenólicos de algunos flavonoides pueden participar en reacciones de oxidación-reducción y estabilizar radicales."
             )
 
-            evidenceNote(
-                "La actividad antioxidante experimental no demuestra que beber manzanilla reduzca el daño oxidativo en humanos."
-            )
         }
     }
 
@@ -342,41 +330,6 @@ struct BiologicalMechanismsView: View {
     }
 
     private func explanation(_ text: String) -> some View {
-
-        VStack(alignment: .leading, spacing: 7) {
-
-            Label(
-                "En palabras sencillas",
-                systemImage: "lightbulb"
-            )
-            .font(.system(size: 16, design: .serif))
-            .bold()
-            .foregroundStyle(Palette.olive)
-
-            Text(text)
-                .font(.system(size: 14))
-                .foregroundStyle(Palette.ink)
-        }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            Palette.sage.opacity(0.22),
-            in: RoundedRectangle(cornerRadius: 14)
-        )
-    }
-
-    private func evidenceNote(_ text: String) -> some View {
-
-        HStack(alignment: .top, spacing: 8) {
-
-            Image(systemName: "info.circle")
-                .foregroundStyle(Palette.brown)
-
-            Text(text)
-                .font(.system(size: 12))
-                .foregroundStyle(Palette.brown)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(.top, 5)
+        PlainLanguageCard(text: text)
     }
 }

@@ -65,7 +65,6 @@ private struct GinsengProfileView: View {
 
             ExpandableCard(title: "03 · Reacciones y mecanismos", subtitle: "Actividad molecular investigada") {
                 LavenderMechanismsView(profile: profile.mechanismProfile, initialMechanism: "fatigue_pathways")
-                GinsengTransformationView(profile: profile)
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: "Procesos y presentaciones") {

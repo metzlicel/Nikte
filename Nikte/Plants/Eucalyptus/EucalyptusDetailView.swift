@@ -57,10 +57,6 @@ private struct EucalyptusProfileView: View {
 
             ExpandableCard(title: "03 · Reacciones y mecanismos", subtitle: "Actividad molecular investigada") {
                 LavenderMechanismsView(profile: profile, initialMechanism: "mucus")
-                QuickFact(label: profile.section3.featuredChemistry.title, value: profile.section3.featuredChemistry.description)
-                Text(profile.section3.featuredChemistry.reactionClass)
-                    .font(.system(size: 12)).foregroundStyle(Palette.brown)
-                    .fixedSize(horizontal: false, vertical: true)
             }
 
             ExpandableCard(title: "04 · Extracciones", subtitle: "Procesos y presentaciones") {

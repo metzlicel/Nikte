@@ -178,7 +178,7 @@ struct PlantGlossaryView: View {
 
                                     NavigationLink {
 
-                                        destinationView(for: plant)
+                                        PlantDetailDestination(plant: plant.id)
 
                                     } label: {
 
@@ -204,47 +204,4 @@ struct PlantGlossaryView: View {
         .toolbar(.hidden, for: .navigationBar)
     }
 
-    // MARK: - 05.3 · NAVEGACIÓN A FICHAS TÉCNICAS
-
-    @ViewBuilder
-    private func destinationView(
-        for plant: PlantGlossaryItem
-    ) -> some View {
-
-        switch plant.commonName {
-
-        case "Manzanilla":
-            ChamomileDetailView()
-
-        case "Menta":
-            MintDetailView()
-
-        case "Jengibre":
-            GingerDetailView()
-
-        case "Aloe Vera":
-            AloeDetailView()
-
-        case "Lavanda":
-            LavenderDetailView()
-
-        case "Eucalipto":
-            EucalyptusDetailView()
-
-        case "Romero":
-            RosemaryDetailView()
-
-        case "Cúrcuma":
-            TurmericDetailView()
-
-        case "Valeriana":
-            ValerianDetailView()
-
-        case "Ginseng":
-            GinsengDetailView()
-
-        default:
-            PlaceholderPlantView(plant: plant)
-        }
-    }
 }

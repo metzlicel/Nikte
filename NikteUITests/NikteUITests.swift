@@ -10,18 +10,17 @@ import XCTest
 final class NikteUITests: XCTestCase {
 
     @MainActor
-    func testInsomniaDoesNotRecommendUnguidedPlants() {
+    func testInsomniaShowsDocumentedPreparations() {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
         let insomnia = app.buttons["insomnio"]
         XCTAssertTrue(insomnia.waitForExistence(timeout: 10))
         insomnia.tap()
-        let empty = app.staticTexts["Sin guías disponibles por ahora"]
-        for _ in 0..<6 where !empty.isHittable { app.swipeUp() }
-        XCTAssertTrue(empty.waitForExistence(timeout: 5))
+        let lavender = app.staticTexts["Lavanda"]
+        for _ in 0..<6 where !lavender.isHittable { app.swipeUp() }
+        XCTAssertTrue(lavender.waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts["Manzanilla"].exists)
-        XCTAssertFalse(app.staticTexts["Lavanda"].exists)
     }
 
     @MainActor
@@ -29,7 +28,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let option = app.buttons["dificultad ocasional para dormir"]
+        let option = app.buttons["insomnio"]
         for _ in 0..<5 where !option.isHittable { app.swipeUp() }
         XCTAssertTrue(option.waitForExistence(timeout: 10))
         option.tap()
@@ -87,7 +86,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["molestias digestivas leves"]
+        let gases = app.buttons["indigestión"]
         for _ in 0..<5 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
@@ -107,12 +106,12 @@ final class NikteUITests: XCTestCase {
 
     @MainActor
     func testChamomileMouthRinseNavigation() {
-        assertChamomileSearch(query: "inflamacion bucal", option: "Inflamación bucal leve", title: "Enjuague de manzanilla", chemistryTitle: "¿Cómo podría aliviar la irritación bucal?", stage: "Compuestos fenólicos", detail: "Componentes de extractos de manzanilla pueden atenuar esas rutas en modelos experimentales.")
+        assertChamomileSearch(query: "inflamacion buc", option: "Inflamación bucal", title: "Enjuague de manzanilla", chemistryTitle: "¿Cómo podría aliviar la irritación bucal?", stage: "Compuestos fenólicos", detail: "Componentes de extractos de manzanilla pueden atenuar esas rutas en modelos experimentales.")
     }
 
     @MainActor
     func testChamomileSkinCompressNavigation() {
-        assertChamomileSearch(query: "irritacion cutanea", option: "Irritación cutánea leve", title: "Compresa de manzanilla", chemistryTitle: "¿Cómo podría aliviar la irritación de la piel?", stage: "Flavonoides", detail: "Componentes estudiados de la manzanilla pueden modular vías inflamatorias en modelos de laboratorio.")
+        assertChamomileSearch(query: "irritacion cutan", option: "Irritación cutánea", title: "Compresa de manzanilla", chemistryTitle: "¿Cómo podría aliviar la irritación de la piel?", stage: "Flavonoides", detail: "Componentes estudiados de la manzanilla pueden modular vías inflamatorias en modelos de laboratorio.")
     }
 
     @MainActor
@@ -152,7 +151,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["molestias digestivas leves"]
+        let gases = app.buttons["indigestión"]
         for _ in 0..<5 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
@@ -171,12 +170,12 @@ final class NikteUITests: XCTestCase {
 
     @MainActor
     func testPeppermintIBSCapsulesNavigation() {
-        assertPeppermintSearch(query: "dolor abdominal asociado", option: "Dolor abdominal asociado al síndrome de intestino irritable", title: "Cápsulas entéricas de aceite de menta", chemistryTitle: "¿Cómo puede disminuir los espasmos intestinales?", stage: "Acción del mentol", detail: "Puede disminuir corrientes de Ca²⁺ y la intensidad de ciertas contracciones.")
+        assertPeppermintSearch(query: "dolor abdominal por", option: "Dolor abdominal por intestino irritable", title: "Cápsulas entéricas de aceite de menta", chemistryTitle: "¿Cómo puede disminuir los espasmos intestinales?", stage: "Acción del mentol", detail: "Puede disminuir corrientes de Ca²⁺ y la intensidad de ciertas contracciones.")
     }
 
     @MainActor
     func testPeppermintTensionHeadacheNavigation() {
-        assertPeppermintSearch(query: "cefalea tensional", option: "Cefalea tensional leve", title: "Preparado tópico de menta para cefalea tensional", chemistryTitle: "¿Cómo podría aliviar la cefalea tensional?", stage: "Señal nerviosa", detail: "TRPM8 permite el flujo de cationes y desencadena sensación de frescura.")
+        assertPeppermintSearch(query: "cefalea tension", option: "Cefalea tensional", title: "Preparado tópico de menta para cefalea tensional", chemistryTitle: "¿Cómo podría aliviar la cefalea tensional?", stage: "Señal nerviosa", detail: "TRPM8 permite el flujo de cationes y desencadena sensación de frescura.")
     }
 
     @MainActor
@@ -205,7 +204,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let nausea = app.buttons["náuseas por movimiento"]
+        let nausea = app.buttons["mareo por viaje"]
         for _ in 0..<3 where !nausea.isHittable {
             app.swipeUp()
         }
@@ -226,12 +225,12 @@ final class NikteUITests: XCTestCase {
 
     @MainActor
     func testGingerDigestiveDrinkNavigation() {
-        assertGingerSearch(query: "indigestion", option: "Indigestión leve", title: "Bebida tibia de jengibre con miel (limón opcional)", chemistryTitle: "¿Cómo podría ayudar con la digestión?", stage: "Compuestos del jengibre", detail: "Gingeroles y otros constituyentes se han estudiado por su acción sobre señalización gastrointestinal.")
+        assertGingerSearch(query: "indigest", option: "Indigestión", title: "Bebida tibia de jengibre con miel (limón opcional)", chemistryTitle: "¿Cómo podría ayudar con la digestión?", stage: "Compuestos del jengibre", detail: "Gingeroles y otros constituyentes se han estudiado por su acción sobre señalización gastrointestinal.")
     }
 
     @MainActor
     func testGingerMenstrualCapsulesNavigation() {
-        assertGingerSearch(query: "colicos menstruales", option: "Cólicos menstruales leves", title: "Cápsulas comerciales de jengibre", chemistryTitle: "¿Cómo podría influir en los cólicos?", stage: "Gingeroles y shogaoles", detail: "En modelos experimentales pueden modular procesos relacionados con COX y síntesis de prostaglandinas.")
+        assertGingerSearch(query: "dolor menstru", option: "Dolor menstrual", title: "Cápsulas comerciales de jengibre", chemistryTitle: "¿Cómo podría influir en los cólicos?", stage: "Gingeroles y shogaoles", detail: "En modelos experimentales pueden modular procesos relacionados con COX y síntesis de prostaglandinas.")
     }
 
     @MainActor
@@ -260,7 +259,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let burn = app.buttons["quemaduras superficiales leves"]
+        let burn = app.buttons["quemaduras"]
         for _ in 0..<4 where !burn.isHittable {
             app.swipeUp()
         }
@@ -286,8 +285,8 @@ final class NikteUITests: XCTestCase {
         let search = app.textFields["¿Qué malestar tienes?"]
         XCTAssertTrue(search.waitForExistence(timeout: 10))
         search.tap()
-        search.typeText("psoriasis leve")
-        let option = app.buttons["Psoriasis leve diagnosticada"]
+        search.typeText("psoriasis")
+        let option = app.buttons["Psoriasis diagnosticada"]
         XCTAssertTrue(option.waitForExistence(timeout: 5))
         option.tap()
         let aloe = app.staticTexts["Aloe Vera"]
@@ -301,22 +300,22 @@ final class NikteUITests: XCTestCase {
 
     @MainActor
     func testMildStressLavenderOpensPreparationGuide() throws {
-        assertLavenderGuide(ailment: "estrés leve")
+        assertLavenderGuide(ailment: "estrés")
     }
 
     @MainActor
     func testOccasionalSleepLavenderOpensPreparationGuide() throws {
-        assertLavenderGuide(ailment: "dificultad ocasional para dormir")
+        assertLavenderGuide(ailment: "insomnio")
     }
 
     @MainActor
     func testLavenderAnxietyCapsulesNavigation() {
-        assertLavenderSearch(query: "sintomas leves de ansie", option: "Síntomas leves de ansiedad", title: "Cápsulas de aceite de lavanda estandarizado", chemistryTitle: "¿Cómo podría disminuir la ansiedad?", stage: "Aceite estandarizado", detail: "En modelos experimentales modula determinados canales de Ca²⁺ dependientes de voltaje.")
+        assertLavenderSearch(query: "ansied", option: "Ansiedad", title: "Cápsulas de aceite de lavanda estandarizado", chemistryTitle: "¿Cómo podría disminuir la ansiedad?", stage: "Aceite estandarizado", detail: "En modelos experimentales modula determinados canales de Ca²⁺ dependientes de voltaje.")
     }
 
     @MainActor
     func testLavenderBathNavigation() {
-        assertLavenderSearch(query: "estres leve y", option: "Estrés leve y agotamiento", title: "Baño relajante con producto de lavanda", chemistryTitle: "¿Cómo podría favorecer una sensación de calma?", stage: "Receptores olfativos", detail: "La unión de odorantes activa señales nerviosas que el cerebro interpreta como aroma.")
+        assertLavenderSearch(query: "agotamien", option: "Agotamiento", title: "Baño relajante con producto de lavanda", chemistryTitle: "¿Cómo podría favorecer una sensación de calma?", stage: "Receptores olfativos", detail: "La unión de odorantes activa señales nerviosas que el cerebro interpreta como aroma.")
     }
 
     @MainActor
@@ -345,7 +344,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let cough = app.buttons["tos asociada al resfriado"]
+        let cough = app.buttons["tos"]
         for _ in 0..<5 where !cough.isHittable { app.swipeUp() }
         XCTAssertTrue(cough.waitForExistence(timeout: 10))
         cough.tap()
@@ -367,7 +366,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let cough = app.buttons["tos asociada al resfriado"]
+        let cough = app.buttons["tos"]
         for _ in 0..<5 where !cough.isHittable { app.swipeUp() }
         XCTAssertTrue(cough.waitForExistence(timeout: 10))
         cough.tap()
@@ -390,8 +389,8 @@ final class NikteUITests: XCTestCase {
         let search = app.textFields["¿Qué malestar tienes?"]
         XCTAssertTrue(search.waitForExistence(timeout: 10))
         search.tap()
-        search.typeText("dolor muscular localizado")
-        let option = app.buttons["Dolor muscular localizado leve"]
+        search.typeText("dolor musc")
+        let option = app.buttons["Dolor muscular"]
         XCTAssertTrue(option.waitForExistence(timeout: 5))
         option.tap()
         let eucalyptus = app.staticTexts["Eucalipto"]
@@ -408,7 +407,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let stomach = app.buttons["molestias digestivas leves"]
+        let stomach = app.buttons["indigestión"]
         for _ in 0..<5 where !stomach.isHittable { app.swipeUp() }
         XCTAssertTrue(stomach.waitForExistence(timeout: 10))
         stomach.tap()
@@ -424,12 +423,12 @@ final class NikteUITests: XCTestCase {
 
     @MainActor
     func testRosemaryMuscleBathNavigation() {
-        assertRosemarySelection(query: "dolor muscular le", option: "Dolor muscular leve", title: "Baño con hojas de romero", chemistryTitle: "¿Cómo podría aliviar músculos y articulaciones?", stage: "Compuestos fenólicos del romero", detail: "En estudios experimentales, algunos modulan NF-κB y procesos vinculados a la inflamación; no se ha verificado este efecto con el baño.")
+        assertRosemarySelection(query: "dolor musc", option: "Dolor muscular", title: "Baño con hojas de romero", chemistryTitle: "¿Cómo podría aliviar músculos y articulaciones?", stage: "Compuestos fenólicos del romero", detail: "En estudios experimentales, algunos modulan NF-κB y procesos vinculados a la inflamación; no se ha verificado este efecto con el baño.")
     }
 
     @MainActor
     func testRosemaryJointOintmentNavigation() {
-        assertRosemarySelection(query: "molestias articulares", option: "Molestias articulares leves", title: "Crema o ungüento de romero", chemistryTitle: "¿Cómo podría aliviar las molestias musculares?", stage: "Monoterpenos del romero", detail: "Compuestos como el 1,8-cineol y el alcanfor han mostrado acciones biológicas en modelos experimentales.")
+        assertRosemarySelection(query: "dolor articul", option: "Dolor articular", title: "Crema o ungüento de romero", chemistryTitle: "¿Cómo podría aliviar las molestias musculares?", stage: "Monoterpenos del romero", detail: "Compuestos como el 1,8-cineol y el alcanfor han mostrado acciones biológicas en modelos experimentales.")
     }
 
     @MainActor
@@ -465,8 +464,8 @@ final class NikteUITests: XCTestCase {
         let search = app.textFields["¿Qué malestar tienes?"]
         XCTAssertTrue(search.waitForExistence(timeout: 10))
         search.tap()
-        search.typeText("piernas cansadas")
-        let option = app.buttons["Piernas cansadas sin signos de alarma"]
+        search.typeText("piernas cansad")
+        let option = app.buttons["Piernas cansadas"]
         XCTAssertTrue(option.waitForExistence(timeout: 5))
         option.tap()
         let rosemary = app.staticTexts["Romero"]
@@ -482,7 +481,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let gases = app.buttons["molestias digestivas leves"]
+        let gases = app.buttons["indigestión"]
         for _ in 0..<6 where !gases.isHittable { app.swipeUp() }
         XCTAssertTrue(gases.waitForExistence(timeout: 10))
         gases.tap()
@@ -504,7 +503,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let stomach = app.buttons["molestias digestivas leves"]
+        let stomach = app.buttons["indigestión"]
         for _ in 0..<6 where !stomach.isHittable { app.swipeUp() }
         XCTAssertTrue(stomach.waitForExistence(timeout: 10))
         stomach.tap()
@@ -528,7 +527,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let sleep = app.buttons["dificultad ocasional para dormir"]
+        let sleep = app.buttons["insomnio"]
         for _ in 0..<5 where !sleep.isHittable { app.swipeUp() }
         XCTAssertTrue(sleep.waitForExistence(timeout: 10))
         sleep.tap()
@@ -583,7 +582,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let fatigue = app.buttons["cansancio y debilidad leves"]
+        let fatigue = app.buttons["cansancio"]
         for _ in 0..<5 where !fatigue.isHittable { app.swipeUp() }
         XCTAssertTrue(fatigue.waitForExistence(timeout: 10))
         fatigue.tap()
@@ -617,7 +616,7 @@ final class NikteUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Malestares"].tap()
-        let fatigue = app.buttons["cansancio y debilidad leves"]
+        let fatigue = app.buttons["cansancio"]
         for _ in 0..<5 where !fatigue.isHittable { app.swipeUp() }
         XCTAssertTrue(fatigue.waitForExistence(timeout: 10))
         fatigue.tap()

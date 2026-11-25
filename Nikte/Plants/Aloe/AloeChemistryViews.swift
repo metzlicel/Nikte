@@ -88,7 +88,7 @@ struct AloeMechanismsView: View {
                     }.buttonStyle(.plain)
                 }
                 QuickFact(label: "Explicación científica", value: mechanism.explanation)
-                QuickFact(label: "En palabras sencillas", value: mechanism.plainLanguage)
+                PlainLanguageCard(text: mechanism.plainLanguage)
             }
         }.onChange(of: selectedMechanism) { _, _ in selectedStep = 0 }
     }

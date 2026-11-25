@@ -12,7 +12,7 @@
       "preparations"
     ],
     "implementation": "Reutilizar la arquitectura Codable y los componentes SwiftUI compartidos existentes, sin duplicar vistas ni alterar fichas previas.",
-    "scientificIntegrity": "Distinguir mecanismo de aceite total vs molécula aislada, aromaterapia vs aceite oral estandarizado, infusión vs destilado; no confundir actividad experimental con eficacia clínica. Mantener notas breves de seguridad en el contenido, sin quinta sección de bibliografía.",
+    "scientificIntegrity": "Distinguir mecanismo de aceite total vs molécula aislada, aromaterapia vs aceite oral estandarizado, infusión vs deAlcoholstilado; no confundir actividad experimental con eficacia clínica. Mantener notas breves de seguridad en el contenido, sin quinta sección de bibliografía.",
     "extractionUI": "Cada plant.section4.items[*].extractionExperience proporciona el contenido para diagramas de tres pasos. Usar visualType si existe, de lo contrario fallback genérico.",
     "extractionSchema": "extractionExperience: {heading, processTitle, steps:[{index,title,detail}], chemicalPrinciples:[string], focusCompoundIds:[id], visualType, comparisonNote, isExtraction, sourceIds}",
     "featuredChemistry": "Mostrar la relación alcohol-ester linalool/acetato de linalilo con hidrólisis como reacción química conceptual, NO afirmar que ocurre cuantitativamente durante una infusión ni una destilación."

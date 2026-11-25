@@ -46,7 +46,7 @@ struct LavenderMechanismsView: View {
                     ReactionStrip(lhs: "ArOH + R•", rhs: "ArO• + RH", note: reaction.note)
                 }
                 QuickFact(label: "Explicación científica", value: mechanism.explanation)
-                QuickFact(label: "En palabras sencillas", value: mechanism.plainLanguage)
+                PlainLanguageCard(text: mechanism.plainLanguage)
             }
         }.onChange(of: selectedMechanism) { _, _ in selectedStep = 0 }
     }

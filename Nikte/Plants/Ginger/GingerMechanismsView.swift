@@ -45,10 +45,8 @@ struct GingerMechanismsView: View {
                     QuickFact(label: "Símbolos", value: "ArOH: molécula con grupo fenólico; R•: radical libre; ArO•: radical fenóxico que puede estabilizarse por resonancia; RH: especie que recibió hidrógeno.")
                 }
                 QuickFact(label: "Explicación científica", value: mechanism.explanation)
-                QuickFact(label: "En palabras sencillas", value: mechanism.plainLanguage)
+                PlainLanguageCard(text: mechanism.plainLanguage)
             }
-
-            GingerTransformationView(featured: profile.section3.featuredChemistry)
         }
         .onChange(of: selectedMechanism) { _, _ in selectedStep = 0 }
     }
